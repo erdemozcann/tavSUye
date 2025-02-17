@@ -10,7 +10,7 @@ CREATE TABLE User (
     minor VARCHAR(255) NULL, -- Minor
     second_major VARCHAR(255) NULL, -- Second major
     start_term INT NULL, -- University start term (e.g., 202401)
-    graduation_term INT NULL, -- Expected graduation term (e.g., 202506)
+    graduation_term INT NULL, -- Expected graduation term (e.g., 202502)
 
     -- 2FA & Email Verification
     is_2fa_enabled BOOLEAN DEFAULT FALSE, -- Is 2FA enabled?
