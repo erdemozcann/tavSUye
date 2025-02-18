@@ -131,7 +131,7 @@ CREATE TABLE StudentPlan (
     plan_id INT AUTO_INCREMENT PRIMARY KEY, -- Plan ID
     user_id INT NOT NULL, -- Student ID
     course_id INT NOT NULL, -- Course ID
-    term INT NOT NULL, -- Term (e.g., 1, 2, 3...12)
+    term INT NOT NULL, -- Term (e.g., 202503)
     FOREIGN KEY (user_id) REFERENCES User(user_id), -- Relation with User table
     FOREIGN KEY (course_id) REFERENCES Course(course_id) -- Relation with Course table
 );
