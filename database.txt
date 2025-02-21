@@ -6,7 +6,7 @@ CREATE TABLE User (
     email VARCHAR(255) UNIQUE NOT NULL, -- Email address
     hashed_password CHAR(128) NULL, -- Argon2id hashed password (Base64 or Hex), set after email verification
     salt CHAR(64) NULL, -- 32-byte salt (Hex format), set after email verification
-    role ENUM('student', 'admin') NOT NULL, -- User role
+    role VARCHAR(255) NOT NULL, -- User role
     major VARCHAR(255) NULL, -- Major
     minor VARCHAR(255) NULL, -- Minor
     second_major VARCHAR(255) NULL, -- Second major
@@ -14,8 +14,8 @@ CREATE TABLE User (
     graduation_term INT NULL, -- Expected graduation term (e.g., 202503)
     
     -- User Account Status
-    account_status ENUM('active', 'inactive', 'banned', 'pending', 'suspended', 'deleted') 
-    DEFAULT 'pending', -- User account status (pending until email verification)
+    account_status ENUM('ACTIVE', 'INACTIVE', 'BANNED', 'PENDING', 'SUSPENDED', 'DELETED') 
+    NOT NULL DEFAULT 'PENDING', -- User account status (pending until email verification)
 
     -- 2FA & Email Verification
     is_2fa_enabled BOOLEAN DEFAULT FALSE, -- Is 2FA enabled?
@@ -95,6 +95,13 @@ CREATE TABLE Course (
     faculty ENUM('FENS', 'FASS', 'SL', 'FMAN') NULL -- Faculty affiliation
 );
 
+-- Instructor Table
+CREATE TABLE Instructor (
+    instructor_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    department VARCHAR(255)
+);
+
 -- Prerequisite Table
 CREATE TABLE Prerequisite (
     prerequisite_id INT AUTO_INCREMENT PRIMARY KEY, -- Prerequisite record ID
@@ -110,18 +117,7 @@ CREATE TABLE ProgramCourse (
     program_course_id INT AUTO_INCREMENT PRIMARY KEY, -- Relationship record ID
     program_id INT NOT NULL, -- Program ID
     course_id INT NOT NULL, -- Course ID
-    course_group ENUM(
-        'university', 
-        'required', 
-        'core', 
-        'core_elective_i', 
-        'core_elective_ii', 
-        'area', 
-        'free_elective', 
-        'faculty', 
-        'math_required', 
-        'philosophy_required'
-    ) NOT NULL, -- Course category
+    course_group VARCHAR(50) NOT NULL, -- Course category
     FOREIGN KEY (program_id) REFERENCES Program(program_id), -- Relation with Program table
     FOREIGN KEY (course_id) REFERENCES Course(course_id) -- Relation with Course table
 );
@@ -142,14 +138,17 @@ CREATE TABLE Comment (
     user_id INT NOT NULL, -- User who made the comment
     course_id INT NULL, -- Course related to the comment
     parent_comment_id INT NULL, -- Parent comment ID (NULL if top-level comment)
+    instructor_id INT NULL;
     term_taken INT NULL, -- Term when the course was taken (e.g., 202401, 202402, 202403)
     grade_received VARCHAR(10) NULL, -- Grade received (e.g., A, B, C)
     content TEXT NOT NULL, -- Comment content
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Creation timestamp
     is_anonymous BOOLEAN NOT NULL, -- Anonymity status
+    is_deleted BOOLEAN DEFAULT FALSE, -- For soft delete
     FOREIGN KEY (user_id) REFERENCES User(user_id),
     FOREIGN KEY (course_id) REFERENCES Course(course_id),
     FOREIGN KEY (parent_comment_id) REFERENCES Comment(comment_id) -- Relation with parent comment
+    FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id);
 );
 
 -- Rating Table
@@ -219,5 +218,5 @@ CREATE TABLE InstructorViewLog (
     ip_address VARCHAR(45) NULL, -- User's IP address (optional)
     user_agent TEXT NULL, -- Browser/device information (optional)
     FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (instructor_id) REFERENCES User(user_id)
+    FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id)
 );
