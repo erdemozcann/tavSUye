@@ -1,11 +1,12 @@
 -- User Table
 CREATE TABLE User (
     user_id INT AUTO_INCREMENT PRIMARY KEY, -- User ID
-    name VARCHAR(255) NOT NULL, -- Full name
-    username VARCHAR(50) NULL UNIQUE, -- Unique username
+    name VARCHAR(255) NOT NULL, -- Name
+    surname VARCHAR(255) NOT NULL, -- Surname
+    username VARCHAR(50) NOT NULL UNIQUE, -- Unique username
     email VARCHAR(255) UNIQUE NOT NULL, -- Email address
-    hashed_password CHAR(128) NULL, -- Argon2id hashed password (Base64 or Hex), set after email verification
-    salt CHAR(64) NULL, -- 32-byte salt (Hex format), set after email verification
+    hashed_password CHAR(128) NOT NULL, -- Argon2id hashed password (Base64 or Hex), set after email verification
+    salt CHAR(64) NOT NULL, -- 32-byte salt (Hex format), set after email verification
     role VARCHAR(255) NOT NULL, -- User role
     major VARCHAR(255) NULL, -- Major
     minor VARCHAR(255) NULL, -- Minor
