@@ -1,0 +1,222 @@
+-- User Table
+CREATE TABLE User (
+    user_id INT AUTO_INCREMENT PRIMARY KEY, -- User ID
+    name VARCHAR(255) NOT NULL, -- Full name
+    username VARCHAR(50) NULL UNIQUE, -- Unique username
+    email VARCHAR(255) UNIQUE NOT NULL, -- Email address
+    hashed_password CHAR(128) NULL, -- Argon2id hashed password (Base64 or Hex), set after email verification
+    salt CHAR(64) NULL, -- 32-byte salt (Hex format), set after email verification
+    role VARCHAR(255) NOT NULL, -- User role
+    major VARCHAR(255) NULL, -- Major
+    minor VARCHAR(255) NULL, -- Minor
+    second_major VARCHAR(255) NULL, -- Second major
+    start_term INT NULL, -- University start term (e.g., 202401)
+    graduation_term INT NULL, -- Expected graduation term (e.g., 202503)
+    
+    -- User Account Status
+    account_status ENUM('ACTIVE', 'INACTIVE', 'BANNED', 'PENDING', 'SUSPENDED', 'DELETED') 
+    NOT NULL DEFAULT 'PENDING', -- User account status (pending until email verification)
+
+    -- 2FA & Email Verification
+    is_2fa_enabled BOOLEAN DEFAULT FALSE, -- Is 2FA enabled?
+    email_verification_code CHAR(6) NULL, -- 6-digit email verification code
+    email_verification_expires DATETIME NULL, -- Expiry time for the verification code
+    email_verified BOOLEAN DEFAULT FALSE, -- Is email verified?
+
+    -- Password Reset Mechanism
+    password_reset_token CHAR(64) NULL, -- One-time token for password reset
+    password_reset_expires DATETIME NULL, -- Expiration time for the reset token
+    password_reset_used BOOLEAN DEFAULT FALSE, -- Indicates whether the token has been used
+
+    -- Failed Login Attempts
+    failed_login_attempts INT DEFAULT 0, -- Number of failed login attempts
+    last_failed_attempt DATETIME NULL, -- Timestamp of the last failed login attempt
+
+    -- Tracking User Activity
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- User creation timestamp
+    last_login DATETIME NULL -- Last login timestamp
+);
+
+-- Program Table
+CREATE TABLE Program (
+    program_id INT AUTO_INCREMENT PRIMARY KEY, -- Program ID
+    name_en VARCHAR(255) NOT NULL, -- Program name (English)
+    name_tr VARCHAR(255) NOT NULL, -- Program name (Turkish)
+    admission_term INT NOT NULL, -- Admission term (e.g., 202401 or 202302)
+
+    university_credits INT NULL, -- Minimum SU credits required from university courses
+    university_min_courses INT NULL, -- Minimum number of university courses required
+
+    required_credits INT NULL, -- Minimum SU credits required from mandatory courses
+    required_min_courses INT NULL, -- Minimum number of mandatory courses required
+
+    core_credits INT NULL, -- Minimum SU credits required from core courses
+    core_min_courses INT NULL, -- Minimum number of core courses required
+
+    core_elective_credits_i INT NULL, -- Core Elective I credits
+    core_elective_min_courses_i INT NULL, -- Core Elective I course count
+    core_elective_credits_ii INT NULL, -- Core Elective II credits
+    core_elective_min_courses_ii INT NULL, -- Core Elective II course count
+
+    area_credits INT NULL, -- Minimum SU credits required from area elective courses
+    area_min_courses INT NULL, -- Minimum number of area elective courses required
+
+    free_elective_credits INT NULL, -- Minimum SU credits required from free elective courses
+    free_elective_min_courses INT NULL, -- Minimum number of free elective courses required
+
+    faculty_credits INT NULL, -- Minimum SU credits required from faculty courses
+    faculty_min_courses INT NULL, -- Minimum number of faculty courses required
+
+    math_required_credits INT NULL, -- Minimum credits required from mathematics courses
+    math_min_courses INT NULL, -- Minimum number of mathematics courses required
+
+    philosophy_required_credits INT NULL, -- Minimum credits required from philosophy obligation courses
+    philosophy_min_courses INT NULL, -- Minimum number of philosophy obligation courses required
+
+    engineering_ects INT NULL, -- Engineering ECTS credits
+    basic_science_ects INT NULL -- Basic Science ECTS credits
+);
+
+-- Course Table
+CREATE TABLE Course (
+    course_id INT AUTO_INCREMENT PRIMARY KEY, -- Course ID
+    subject VARCHAR(10) NOT NULL, -- Course subject code prefix (e.g., "CS")
+    course_code VARCHAR(10) NOT NULL, -- Course numerical code (e.g., "201")
+    course_name_en VARCHAR(255) NOT NULL, -- Course name (English)
+    course_name_tr VARCHAR(255) NOT NULL, -- Course name (Turkish)
+    su_credit INT NOT NULL, -- SU credits
+    ects_credit INT NOT NULL, -- ECTS credits
+    engineering_ects INT NULL, -- Engineering ECTS credits
+    basic_science_ects INT NULL, -- Basic Science ECTS credits
+    content_en TEXT NULL, -- Course content (English)
+    content_tr TEXT NULL, -- Course content (Turkish)
+    link_en TEXT NULL, -- Course link (English)
+    link_tr TEXT NULL, -- Course link (Turkish)
+    faculty ENUM('FENS', 'FASS', 'SL', 'FMAN') NULL -- Faculty affiliation
+);
+
+-- Instructor Table
+CREATE TABLE Instructor (
+    instructor_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    department VARCHAR(255)
+);
+
+-- Prerequisite Table
+CREATE TABLE Prerequisite (
+    prerequisite_id INT AUTO_INCREMENT PRIMARY KEY, -- Prerequisite record ID
+    course_id INT NOT NULL, -- Course with prerequisite
+    prerequisite_course_id INT NOT NULL, -- Prerequisite course
+    is_and BOOLEAN NOT NULL, -- Prerequisite AND/OR relation: 1 = AND, 0 = OR
+    FOREIGN KEY (course_id) REFERENCES Course(course_id), -- Related course
+    FOREIGN KEY (prerequisite_course_id) REFERENCES Course(course_id) -- Prerequisite course
+);
+
+-- ProgramCourse (Program and Course Relationship) Table
+CREATE TABLE ProgramCourse (
+    program_course_id INT AUTO_INCREMENT PRIMARY KEY, -- Relationship record ID
+    program_id INT NOT NULL, -- Program ID
+    course_id INT NOT NULL, -- Course ID
+    course_group VARCHAR(50) NOT NULL, -- Course category
+    FOREIGN KEY (program_id) REFERENCES Program(program_id), -- Relation with Program table
+    FOREIGN KEY (course_id) REFERENCES Course(course_id) -- Relation with Course table
+);
+
+-- StudentPlan Table
+CREATE TABLE StudentPlan (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY, -- Plan ID
+    user_id INT NOT NULL, -- Student ID
+    course_id INT NOT NULL, -- Course ID
+    term INT NOT NULL, -- Term (e.g., 202503)
+    FOREIGN KEY (user_id) REFERENCES User(user_id), -- Relation with User table
+    FOREIGN KEY (course_id) REFERENCES Course(course_id) -- Relation with Course table
+);
+
+-- Comment Table
+CREATE TABLE Comment (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY, -- Comment ID
+    user_id INT NOT NULL, -- User who made the comment
+    course_id INT NULL, -- Course related to the comment
+    parent_comment_id INT NULL, -- Parent comment ID (NULL if top-level comment)
+    instructor_id INT NULL;
+    term_taken INT NULL, -- Term when the course was taken (e.g., 202401, 202402, 202403)
+    grade_received VARCHAR(10) NULL, -- Grade received (e.g., A, B, C)
+    content TEXT NOT NULL, -- Comment content
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Creation timestamp
+    is_anonymous BOOLEAN NOT NULL, -- Anonymity status
+    is_deleted BOOLEAN DEFAULT FALSE, -- For soft delete
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (course_id) REFERENCES Course(course_id),
+    FOREIGN KEY (parent_comment_id) REFERENCES Comment(comment_id) -- Relation with parent comment
+    FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id);
+);
+
+-- Rating Table
+CREATE TABLE Rating (
+    rating_id INT AUTO_INCREMENT PRIMARY KEY, -- Rating ID
+    user_id INT NOT NULL, -- User who rated the comment
+    comment_id INT NOT NULL, -- Rated comment
+    is_like BOOLEAN NOT NULL, -- Like status
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Rating timestamp
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (comment_id) REFERENCES Comment(comment_id)
+);
+
+-- Note Table
+CREATE TABLE Note (
+    note_id INT AUTO_INCREMENT PRIMARY KEY, -- Note ID
+    user_id INT NOT NULL, -- User who uploaded the note
+    course_id INT NOT NULL, -- Course related to the note
+    term_taken INT NULL, -- Term when the course was taken (e.g., 202401, 202402, 202403)
+    instructor_taken VARCHAR(255) NULL, -- Instructor who taught the course
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Creation timestamp
+    cloud_link TEXT NOT NULL, -- Cloud storage link for the note
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (course_id) REFERENCES Course(course_id)
+);
+
+-- CourseChange Table (Course Name Changes)
+CREATE TABLE CourseChange (
+    change_id INT AUTO_INCREMENT PRIMARY KEY, -- Change ID
+    old_course_id INT NOT NULL, -- Old course ID
+    new_course_id INT NOT NULL, -- New course ID
+    change_term INT NOT NULL, -- Term when the change occurred (e.g., 202401, 202302)
+    FOREIGN KEY (old_course_id) REFERENCES Course(course_id), -- Relation with old course
+    FOREIGN KEY (new_course_id) REFERENCES Course(course_id) -- Relation with new course
+);
+
+-- Logging Table
+CREATE TABLE UserLog (
+    log_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique Log ID
+    user_id INT NOT NULL, -- The user performing the action
+    action VARCHAR(255) NOT NULL, -- 'LOGIN', 'PASSWORD_RESET', 'COMMENT_ADDED', etc.
+    action_details TEXT NULL, -- Details about the action (comment ID, ban reason, role change, etc.)
+    ip_address VARCHAR(45) NULL, -- User's IP address
+    user_agent TEXT NULL, -- User's browser/device information
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, -- Action timestamp
+    FOREIGN KEY (user_id) REFERENCES User(user_id) -- Link to User table
+);
+
+-- Course View Log Table
+CREATE TABLE CourseViewLog (
+    view_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique View Log ID
+    user_id INT NOT NULL, -- The user who viewed the course
+    course_id INT NOT NULL, -- The course being viewed
+    viewed_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Timestamp of the view
+    ip_address VARCHAR(45) NULL, -- User's IP address (optional)
+    user_agent TEXT NULL, -- Browser/device information (optional)
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (course_id) REFERENCES Course(course_id)
+);
+
+-- Instructor View Log Table
+CREATE TABLE InstructorViewLog (
+    view_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique View Log ID
+    user_id INT NOT NULL, -- The user who viewed the instructor (NOT NULL since guests are not allowed)
+    instructor_id INT NOT NULL, -- The instructor being viewed
+    viewed_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Timestamp of the view
+    ip_address VARCHAR(45) NULL, -- User's IP address (optional)
+    user_agent TEXT NULL, -- Browser/device information (optional)
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id)
+);
