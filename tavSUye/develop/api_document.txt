@@ -1,0 +1,64 @@
+API Endpoints Documentation
+
+1. POST /api/auth/register
+   - Description: Registers a new user.
+   - Request Body:
+     {
+       "firstName": "string",
+       "lastName": "string",
+       "username": "string",
+       "email": "string",
+       "password": "string"
+     }
+   - Response:
+     - 200 OK: "User registered successfully. Please verify your email."
+     - 400 Bad Request: "User already exists. Please verify your email."
+
+2. POST /api/auth/login
+   - Description: Logs in a user and starts a session.
+   - Request Body:
+     {
+       "usernameOrEmail": "string",
+       "password": "string"
+     }
+   - Response:
+     - 200 OK: "Login successful. Session ID: {sessionId}"
+     - 401 Unauthorized: "Invalid credentials"
+     - 403 Forbidden: "Email not verified. Please verify your email."
+     - 403 Forbidden: "Account is suspended. Please verify your email to reactivate."
+
+3. POST /api/auth/logout
+   - Description: Logs out a user and invalidates the session.
+   - Response:
+     - 200 OK: "Logged out successfully"
+     - 401 Unauthorized: "You are not logged in."
+
+4. POST /api/auth/verify-email
+   - Description: Verifies user email with a verification code.
+   - Request Body:
+     {
+       "email": "string",
+       "verificationCode": "string"
+     }
+   - Response:
+     - 200 OK: "Email successfully verified."
+     - 400 Bad Request: "Invalid or expired verification code."
+
+5. POST /api/auth/verify-2fa
+   - Description: Verifies 2FA authentication during login.
+   - Request Body:
+     {
+       "email": "string",
+       "verificationCode": "string"
+     }
+   - Response:
+     - 200 OK: "2FA verification successful."
+     - 400 Bad Request: "Invalid or expired verification code."
+
+Notes:
+- All authentication endpoints operate with session-based authentication.
+- Email verification codes and 2FA codes expire in 3 minutes.
+- If a user fails login 5 times, the account is suspended and requires email verification to reactivate.
+- Passwords are securely hashed using Argon2.
+- Only verified and active accounts can log in.
+

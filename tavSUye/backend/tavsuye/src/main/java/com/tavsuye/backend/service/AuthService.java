@@ -2,7 +2,6 @@ package com.tavsuye.backend.service;
 
 import com.tavsuye.backend.dto.LoginRequest;
 import com.tavsuye.backend.dto.UserRegistrationRequest;
-import com.tavsuye.backend.dto.VerificationRequest;
 import com.tavsuye.backend.entity.User;
 import com.tavsuye.backend.repository.UserRepository;
 import com.tavsuye.backend.utils.EmailService;
@@ -21,108 +20,202 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final EmailService emailService;
+    private static final int MAX_FAILED_ATTEMPTS = 5; // Maximum failed login attempts
 
     public AuthService(UserRepository userRepository, EmailService emailService) {
         this.userRepository = userRepository;
         this.emailService = emailService;
     }
 
-    /**
-     * Register a new user
-     */
+    // Register a new user (Handles email verification expiration)
     public String registerUser(UserRegistrationRequest request) {
-        // Generate a 32-byte salt
+        Optional<User> existingUserByEmail = userRepository.findByEmail(request.getEmail().toLowerCase());
+        Optional<User> existingUserByUsername = userRepository.findByUsername(request.getUsername());
+
+        // ❌ If email is in use and not pending, reject registration
+        if (existingUserByEmail.isPresent() && existingUserByEmail.get().getAccountStatus() != User.AccountStatus.PENDING) {
+            return "Email is already registered.";
+        }
+
+        // ❌ If username is in use and not pending, reject registration
+        if (existingUserByUsername.isPresent() && existingUserByUsername.get().getAccountStatus() != User.AccountStatus.PENDING) {
+            return "Username is already taken.";
+        }
+
+        // 🔄 If the user exists in PENDING status, check email verification expiration
+        if (existingUserByEmail.isPresent()) {
+            User user = existingUserByEmail.get();
+
+            if (user.getEmailVerificationExpires().isBefore(LocalDateTime.now())) {
+                userRepository.delete(user); // Delete old pending user and allow re-registration
+            } else {
+                return "User already exists. Please verify your email.";
+            }
+        }
+
+        // ✅ Proceed with user registration
         byte[] saltBytes = new byte[32];
         new SecureRandom().nextBytes(saltBytes);
         String salt = Base64.getEncoder().encodeToString(saltBytes);
 
-        // Hash password using Argon2
         Argon2 argon2 = Argon2Factory.create();
         String hashedPassword = argon2.hash(2, 65536, 1, (salt + request.getPassword()).toCharArray());
 
-        // Generate 6-digit email verification code
-        String verificationCode = String.format("%06d", new Random().nextInt(999999));
+        String verificationCode = generateVerificationCode();
 
         User user = new User();
         user.setName(request.getFirstName());
         user.setSurname(request.getLastName());
         user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
+        user.setEmail(request.getEmail().toLowerCase()); // Store email in lowercase
         user.setHashedPassword(hashedPassword);
         user.setSalt(salt);
         user.setAccountStatus(User.AccountStatus.PENDING);
         user.setEmailVerificationCode(verificationCode);
         user.setEmailVerificationExpires(LocalDateTime.now().plusMinutes(3));
         user.setRole("USER");
-        
+
         userRepository.save(user);
 
-        // Send verification email
         emailService.sendVerificationEmail(user.getEmail(), verificationCode);
 
         return "User registered successfully. Please verify your email.";
     }
 
-    /**
-     * Login user with email/username and password
-     */
-    public String login(LoginRequest request) {
-        Optional<User> userOptional = userRepository.findByEmailOrUsername(request.getUsernameOrEmail(), request.getUsernameOrEmail());
+    // User login process (Handles password attempts and 2FA support)
+    public Optional<User> login(LoginRequest request) {
+        Optional<User> userOptional = userRepository.findByEmailOrUsername(
+            request.getUsernameOrEmail().toLowerCase(), request.getUsernameOrEmail()
+        );
 
         if (userOptional.isEmpty()) {
-            return "Invalid username or email";
+            return Optional.empty();
         }
 
         User user = userOptional.get();
 
-        // Verify password with stored salt
+        // If the account is SUSPENDED, prevent login and force email verification
+        if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
+            LocalDateTime now = LocalDateTime.now();
+
+            // If the verification period expired, generate a new code and send it
+            if (user.getEmailVerificationExpires().isBefore(now)) {
+                String verificationCode = generateVerificationCode();
+                user.setEmailVerificationCode(verificationCode);
+                user.setEmailVerificationExpires(now.plusMinutes(3)); // New code is valid for 3 minutes
+                emailService.sendVerificationEmail(user.getEmail(), verificationCode);
+                userRepository.save(user);
+            }
+
+            return Optional.of(user);
+        }
+
+        // If the account is not ACTIVE, prevent login
+        if (user.getAccountStatus() != User.AccountStatus.ACTIVE) {
+            return Optional.empty();
+        }
+
+        // Verify password using Argon2
         Argon2 argon2 = Argon2Factory.create();
         if (!argon2.verify(user.getHashedPassword(), (user.getSalt() + request.getPassword()).toCharArray())) {
             user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
+
+            // If the user fails 5 times, suspend the account and send verification code ONCE
+            if (user.getFailedLoginAttempts() >= MAX_FAILED_ATTEMPTS &&
+                user.getAccountStatus() != User.AccountStatus.SUSPENDED) {
+
+                user.setAccountStatus(User.AccountStatus.SUSPENDED);
+                String verificationCode = generateVerificationCode();
+                user.setEmailVerificationCode(verificationCode);
+                user.setEmailVerificationExpires(LocalDateTime.now().plusMinutes(3)); // Code valid for 3 minutes
+                emailService.sendVerificationEmail(user.getEmail(), verificationCode);
+                userRepository.save(user);
+            }
+
             userRepository.save(user);
-            return "Incorrect password";
+            return Optional.empty();
         }
 
-        // Reset failed login attempts
+        // Successful login -> Reset failed attempts and update last login time
         user.setFailedLoginAttempts(0);
         user.setLastLogin(LocalDateTime.now());
 
-        // If 2FA is enabled, send verification code
+        // If 2FA is enabled, send a new verification code
         if (Boolean.TRUE.equals(user.getIs2faEnabled())) {
-            String verificationCode = String.format("%06d", new Random().nextInt(999999));
+            String verificationCode = generateVerificationCode();
             user.setEmailVerificationCode(verificationCode);
             user.setEmailVerificationExpires(LocalDateTime.now().plusMinutes(3));
             userRepository.save(user);
             emailService.sendVerificationEmail(user.getEmail(), verificationCode);
-            return "2FA verification code sent";
+            return Optional.of(user); // Return user object instead of empty, so frontend knows 2FA is required
         }
 
         userRepository.save(user);
-        return "Login successful";
+        return Optional.of(user);
     }
 
-    /**
-     * Verify email with the provided verification code
-     */
+    // Email verification process
     public boolean verifyEmail(String email, String verificationCode) {
-        Optional<User> userOptional = userRepository.findByEmail(email);
-        
+        Optional<User> userOptional = userRepository.findByEmail(email.toLowerCase());
+
         if (userOptional.isEmpty()) {
             return false;
         }
 
         User user = userOptional.get();
 
-        // Check if the verification code matches and is not expired
-        if (user.getEmailVerificationCode().equals(verificationCode) && 
+        // If the code matches and has not expired, verify the email
+        if (user.getEmailVerificationCode().equals(verificationCode) &&
             user.getEmailVerificationExpires().isAfter(LocalDateTime.now())) {
-            
+
             user.setEmailVerified(true);
-            user.setAccountStatus(User.AccountStatus.ACTIVE);
+
+            // If the account is SUSPENDED, activate it after verification
+            if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
+                user.setAccountStatus(User.AccountStatus.ACTIVE);
+                user.setFailedLoginAttempts(0); // Reset failed attempts counter
+            } else {
+                user.setAccountStatus(User.AccountStatus.ACTIVE);
+            }
+
+            // Expire the verification code immediately after use
+            user.setEmailVerificationCode(null);
+            user.setEmailVerificationExpires(null);
+
             userRepository.save(user);
             return true;
         }
 
         return false;
+    }
+
+    // Verify 2FA Code
+    public boolean verify2FA(String email, String verificationCode) {
+        Optional<User> userOptional = userRepository.findByEmail(email.toLowerCase());
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            // Check if the 2FA code matches and is not expired
+            if (user.getEmailVerificationCode().equals(verificationCode) &&
+                user.getEmailVerificationExpires().isAfter(LocalDateTime.now())) {
+
+                // Clear the verification code and expiration
+                user.setEmailVerificationCode(null);
+                user.setEmailVerificationExpires(null);
+                userRepository.save(user);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email.toLowerCase());
+    }
+
+    // Generates a 6-digit verification code
+    private String generateVerificationCode() {
+        return String.format("%06d", new Random().nextInt(999999));
     }
 }
