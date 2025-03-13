@@ -1,64 +1,111 @@
-API Endpoints Documentation
+API Use Case Scenarios and Expected Outputs
 
-1. POST /api/auth/register
-   - Description: Registers a new user.
-   - Request Body:
-     {
-       "firstName": "string",
-       "lastName": "string",
-       "username": "string",
-       "email": "string",
-       "password": "string"
-     }
-   - Response:
-     - 200 OK: "User registered successfully. Please verify your email."
-     - 400 Bad Request: "User already exists. Please verify your email."
+1. User Registration (POST /api/auth/register)
+   Input:
+   {
+       "firstName": "Erdem",
+       "lastName": "Özcan",
+       "username": "erdemozcan",
+       "email": "erdemozcan@sabanciuniv.edu",
+       "password": "Sifre123."
+   }
+   
+   Expected Outputs:
+   - If email and username are available:
+     "User registered successfully. Please verify your email."
+   - If email is already registered:
+     "Email is already registered."
+   - If username is already taken:
+     "Username is already taken."
+   - If account is pending and verification expired:
+     "User already exists. Please verify your email."
 
-2. POST /api/auth/login
-   - Description: Logs in a user and starts a session.
-   - Request Body:
-     {
-       "usernameOrEmail": "string",
-       "password": "string"
-     }
-   - Response:
-     - 200 OK: "Login successful. Session ID: {sessionId}"
-     - 401 Unauthorized: "Invalid credentials"
-     - 403 Forbidden: "Email not verified. Please verify your email."
-     - 403 Forbidden: "Account is suspended. Please verify your email to reactivate."
+2. Email Verification (POST /api/auth/verify-email)
+   Input:
+   {
+       "email": "erdemozcan@sabanciuniv.edu",
+       "verificationCode": "123456"
+   }
+   
+   Expected Outputs:
+   - If verification is successful:
+     "Email successfully verified."
+   - If code is incorrect or expired:
+     "Invalid or expired verification code."
+   - If account was suspended, it becomes active after verification.
 
-3. POST /api/auth/logout
-   - Description: Logs out a user and invalidates the session.
-   - Response:
-     - 200 OK: "Logged out successfully"
-     - 401 Unauthorized: "You are not logged in."
+3. User Login (POST /api/auth/login)
+   Input:
+   {
+       "usernameOrEmail": "erdemozcan@sabanciuniv.edu",
+       "password": "Sifre123."
+   }
+   
+   Expected Outputs:
+   - If login is successful and 2FA is disabled:
+     "Login successful. Session ID: <JSESSIONID>"
+   - If email is not verified:
+     "Email not verified. Please verify your email."
+   - If account is suspended:
+     "Account is suspended. Please verify your email to reactivate."
+   - If 2FA is enabled:
+     "2FA verification required. Please enter the code sent to your email."
+   - If password is incorrect:
+     "Invalid credentials."
+   - If the user enters the wrong password 5 times:
+     "Account is suspended. Please verify your email to reactivate."
 
-4. POST /api/auth/verify-email
-   - Description: Verifies user email with a verification code.
-   - Request Body:
-     {
-       "email": "string",
-       "verificationCode": "string"
-     }
-   - Response:
-     - 200 OK: "Email successfully verified."
-     - 400 Bad Request: "Invalid or expired verification code."
+4. Two-Factor Authentication Verification (POST /api/auth/verify-2fa)
+   Input:
+   {
+       "email": "erdemozcan@sabanciuniv.edu",
+       "verificationCode": "273991"
+   }
+   
+   Expected Outputs:
+   - If verification is successful:
+     "2FA verification successful. You are now logged in."
+   - If verification code is incorrect or expired:
+     "Invalid or expired 2FA verification code."
+   - Successful 2FA login returns JSESSIONID session cookie.
 
-5. POST /api/auth/verify-2fa
-   - Description: Verifies 2FA authentication during login.
-   - Request Body:
-     {
-       "email": "string",
-       "verificationCode": "string"
-     }
-   - Response:
-     - 200 OK: "2FA verification successful."
-     - 400 Bad Request: "Invalid or expired verification code."
+5. User Logout (POST /api/auth/logout)
+   Headers:
+   JSESSIONID: <Session_ID>
+   
+   Expected Outputs:
+   - If the user is logged in:
+     "Logged out successfully."
+   - If the user is not logged in:
+     "You are not logged in."
 
-Notes:
-- All authentication endpoints operate with session-based authentication.
-- Email verification codes and 2FA codes expire in 3 minutes.
-- If a user fails login 5 times, the account is suspended and requires email verification to reactivate.
-- Passwords are securely hashed using Argon2.
-- Only verified and active accounts can log in.
+6. Invalid Login Attempts and Responses
+   - If the password is incorrect:
+     "Invalid credentials."
+   - If the user fails login 5 times:
+     "Account is suspended. Please verify your email to reactivate."
+   - After email verification, account becomes active again.
+
+7. Database Updates and Queries
+   - Enable 2FA for a user:
+     UPDATE User SET is_2fa_enabled = TRUE WHERE username = 'erdemozcan';
+   - Find a pending user by email:
+     SELECT * FROM User WHERE email = 'erdemozcan@sabanciuniv.edu' AND account_status = 'PENDING';
+   - Reactivate a suspended account:
+     UPDATE User SET account_status = 'ACTIVE', failed_login_attempts = 0 WHERE email = 'erdemozcan@sabanciuniv.edu';
+
+Summary of Completed Work
+- Authentication flow implemented (Register -> Email Verify -> Login -> 2FA -> Logout)
+- Session management (JSESSIONID) integrated
+- Incorrect login attempt restrictions (max 5 attempts) added
+- Account status transitions and security mechanisms improved
+- Comprehensive Postman tests conducted
+- 2FA mandatory email verification tested
+
+Next Steps
+- Frontend integration for user scenarios
+- Add password reset API
+- Expand authorization roles (Admin, User)
+
+All use case scenarios and expected API outputs have been successfully documented and validated.
 
