@@ -35,7 +35,7 @@ public class Rating {
      * Indicates whether this rating is a "like" (true) or not (false).
      */
     @Column(name = "is_like", nullable = false)
-    private Boolean isLike;
+    private Boolean liked;
 
     /**
      * The timestamp when this rating was created.
@@ -74,12 +74,12 @@ public class Rating {
         this.comment = comment;
     }
 
-    public Boolean getIsLike() {
-        return isLike;
+    public Boolean getLiked() {
+        return liked;
     }
 
-    public void setIsLike(Boolean isLike) {
-        this.isLike = isLike;
+    public void setLiked(Boolean liked) {
+        this.liked = liked;
     }
 
     public LocalDateTime getCreatedAt() {

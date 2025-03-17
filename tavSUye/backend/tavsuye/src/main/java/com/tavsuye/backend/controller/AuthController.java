@@ -39,71 +39,67 @@ public class AuthController {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
-            // If the email is not verified, deny login
+            // ❌ If the user is banned, deny login
+            if (user.getAccountStatus() == User.AccountStatus.BANNED) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new LoginResponse("Your account has been banned. Contact support.", false, null));
+            }
+
+            // ❌ If email is not verified, deny login
             if (!user.getEmailVerified()) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                        .body(new LoginResponse("Email not verified. Please verify your email.", false));
+                        .body(new LoginResponse("Email not verified. Please verify your email.", false, null));
             }
 
-            // If the account is suspended, force verification before allowing login
+            // ❌ If the account is suspended, force verification before login
             if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                        .body(new LoginResponse("Account is suspended. Please verify your email to reactivate.", false));
+                        .body(new LoginResponse("Account is suspended. Please verify your email to reactivate.", false, null));
             }
 
-            // If 2FA is enabled, request 2FA verification first
+            // ❌ If 2FA is enabled, request verification first
             if (Boolean.TRUE.equals(user.getIs2faEnabled())) {
                 return ResponseEntity.status(HttpStatus.ACCEPTED)
-                        .body(new LoginResponse("2FA verification required. A code has been sent to your email.", true));
+                        .body(new LoginResponse("2FA verification required. A code has been sent to your email.", true, user.getRole()));
             }
 
-            // Store user information in the session (Only necessary fields for security)
+            // ✅ Store user information in the session
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("username", user.getUsername());
             session.setAttribute("role", user.getRole());
 
-            // Set session timeout (30 minutes)
-            session.setMaxInactiveInterval(30 * 60);
+            session.setMaxInactiveInterval(30 * 60); // 30 minutes
 
-            return ResponseEntity.ok(new LoginResponse("Login successful. Session ID: " + session.getId(), false));
+            return ResponseEntity.ok(new LoginResponse("Login successful.", false, user.getRole()));
         }
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(new LoginResponse("Invalid credentials.", false));
+                .body(new LoginResponse("Invalid credentials.", false, null));
     }
 
     // 2FA Verification Endpoint
     @PostMapping("/verify-2fa")
-    public ResponseEntity<String> verifyTwoFactorAuth(@RequestBody VerificationRequest request, HttpSession session) {
+    public ResponseEntity<LoginResponse> verifyTwoFactorAuth(@RequestBody VerificationRequest request, HttpSession session) {
         boolean isVerified = authService.verify2FA(request.getEmail(), request.getVerificationCode());
 
-        if (!isVerified) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired 2FA verification code.");
+        if (isVerified) {
+            Optional<User> userOptional = authService.findByEmail(request.getEmail());
+
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+
+                // Store session information
+                session.setAttribute("userId", user.getUserId());
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("role", user.getRole());
+
+                session.setMaxInactiveInterval(30 * 60); // 30 minutes
+
+                return ResponseEntity.ok(new LoginResponse("2FA verification successful. You are now logged in.", false, user.getRole()));
+            }
         }
-
-        // Retrieve the user from the database after successful verification
-        Optional<User> userOptional = authService.findByEmail(request.getEmail());
-
-        if (userOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-        }
-
-        User user = userOptional.get();
-
-        // Ensure the user account is still active before logging them in
-        if (user.getAccountStatus() != User.AccountStatus.ACTIVE) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Your account is not active. Please contact support.");
-        }
-
-        // Store session details
-        session.setAttribute("userId", user.getUserId());
-        session.setAttribute("username", user.getUsername());
-        session.setAttribute("role", user.getRole());
-
-        // Set session timeout (30 minutes)
-        session.setMaxInactiveInterval(30 * 60);
-
-        return ResponseEntity.ok("2FA verification successful. You are now logged in.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new LoginResponse("Invalid or expired 2FA verification code.", false, null));
     }
 
     // Logout endpoint (Destroy session)

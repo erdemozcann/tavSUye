@@ -29,7 +29,16 @@ public class AuthService {
 
     // Register a new user (Handles email verification expiration)
     public String registerUser(UserRegistrationRequest request) {
-        Optional<User> existingUserByEmail = userRepository.findByEmail(request.getEmail().toLowerCase());
+    	String email = request.getEmail().toLowerCase();
+
+        // ✅ Allow only Sabancı University domains
+        if (!email.endsWith("@sabanciuniv.edu") &&
+            !email.endsWith("@alumni.sabanciuniv.edu") &&
+            !email.endsWith("@emeritus.sabanciuniv.edu")) {
+            return "Only Sabancı University email addresses are allowed.";
+        }
+    	
+    	Optional<User> existingUserByEmail = userRepository.findByEmail(request.getEmail().toLowerCase());
         Optional<User> existingUserByUsername = userRepository.findByUsername(request.getUsername());
 
         // ❌ If email is in use and not pending, reject registration
@@ -94,15 +103,20 @@ public class AuthService {
 
         User user = userOptional.get();
 
-        // If the account is SUSPENDED, prevent login and force email verification
+        // ❌ If the account is BANNED, prevent login and do not increase failed attempts
+        if (user.getAccountStatus() == User.AccountStatus.BANNED) {
+            return Optional.of(user); // Return user object so the controller can send a proper response
+        }
+
+        // ❌ If the account is SUSPENDED, prevent login and force email verification
         if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
             LocalDateTime now = LocalDateTime.now();
 
-            // If the verification period expired, generate a new code and send it
+            // If verification expired, send a new code
             if (user.getEmailVerificationExpires().isBefore(now)) {
                 String verificationCode = generateVerificationCode();
                 user.setEmailVerificationCode(verificationCode);
-                user.setEmailVerificationExpires(now.plusMinutes(3)); // New code is valid for 3 minutes
+                user.setEmailVerificationExpires(now.plusMinutes(3)); // Code valid for 3 minutes
                 emailService.sendVerificationEmail(user.getEmail(), verificationCode);
                 userRepository.save(user);
             }
@@ -110,17 +124,17 @@ public class AuthService {
             return Optional.of(user);
         }
 
-        // If the account is not ACTIVE, prevent login
+        // ❌ If the account is not ACTIVE, deny login
         if (user.getAccountStatus() != User.AccountStatus.ACTIVE) {
             return Optional.empty();
         }
 
-        // Verify password using Argon2
+        // ✅ Verify password using Argon2
         Argon2 argon2 = Argon2Factory.create();
         if (!argon2.verify(user.getHashedPassword(), (user.getSalt() + request.getPassword()).toCharArray())) {
             user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
 
-            // If the user fails 5 times, suspend the account and send verification code ONCE
+            // If the user fails 5 times, suspend the account
             if (user.getFailedLoginAttempts() >= MAX_FAILED_ATTEMPTS &&
                 user.getAccountStatus() != User.AccountStatus.SUSPENDED) {
 
@@ -136,7 +150,7 @@ public class AuthService {
             return Optional.empty();
         }
 
-        // Successful login -> Reset failed attempts and update last login time
+        // ✅ Successful login -> Reset failed attempts and update last login time
         user.setFailedLoginAttempts(0);
         user.setLastLogin(LocalDateTime.now());
 
@@ -147,7 +161,7 @@ public class AuthService {
             user.setEmailVerificationExpires(LocalDateTime.now().plusMinutes(3));
             userRepository.save(user);
             emailService.sendVerificationEmail(user.getEmail(), verificationCode);
-            return Optional.of(user); // Return user object instead of empty, so frontend knows 2FA is required
+            return Optional.empty();
         }
 
         userRepository.save(user);

@@ -179,4 +179,11 @@ public class Comment {
     public void setIsDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
+    
+    public Integer getParentCommentId() {
+        return parentComment != null ? parentComment.getCommentId() : null;
+    }
+
 }
+
+

@@ -3,10 +3,6 @@ package com.tavsuye.backend.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * JPA entity representation of the "CourseViewLog" table.
- * This class logs when a user views a course, including metadata such as IP address and user agent.
- */
 @Entity
 @Table(name = "CourseViewLog")
 public class CourseViewLog {
@@ -16,43 +12,35 @@ public class CourseViewLog {
     @Column(name = "view_id")
     private Integer viewId;
 
-    /**
-     * The user who viewed the course.
-     */
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    /**
-     * The course that was viewed.
-     */
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    /**
-     * The timestamp of when the course was viewed.
-     */
     @Column(name = "viewed_at", nullable = false)
     private LocalDateTime viewedAt = LocalDateTime.now();
 
-    /**
-     * The IP address from which the course was viewed.
-     */
     @Column(name = "ip_address", length = 45)
     private String ipAddress;
 
-    /**
-     * The user agent of the browser or device used to view the course.
-     */
     @Column(name = "user_agent", columnDefinition = "TEXT")
     private String userAgent;
 
-    // JPA requires a no-argument constructor
     public CourseViewLog() {
     }
 
-    // --------------------- GETTERS AND SETTERS ---------------------
+    public CourseViewLog(User user, Course course, String ipAddress, String userAgent) {
+        this.user = user;
+        this.course = course;
+        this.ipAddress = ipAddress;
+        this.userAgent = userAgent;
+        this.viewedAt = LocalDateTime.now();
+    }
+
+    // Getters and Setters
 
     public Integer getViewId() {
         return viewId;
