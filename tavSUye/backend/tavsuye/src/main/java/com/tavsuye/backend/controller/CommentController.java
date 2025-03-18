@@ -31,7 +31,7 @@ public class CommentController {
         return commentService.addComment(userId, request);
     }
     
- // 📌 API: Delete a Comment
+    // 📌 API: Delete a Comment
     @DeleteMapping("/delete/{commentId}")
     public ResponseEntity<String> deleteComment(@PathVariable Integer commentId, HttpSession session) {
         // 🔒 Ensure user is authenticated
@@ -43,5 +43,17 @@ public class CommentController {
         // 🚀 Call Service to Delete the Comment
         return commentService.deleteComment(userId, commentId);
     }
-    
+
+    // 📌 API: Modify a Comment
+    @PutMapping("/modify/{commentId}")
+    public ResponseEntity<String> modifyComment(@PathVariable Integer commentId, @Valid @RequestBody CommentRequest request, HttpSession session) {
+        // 🔒 Ensure user is authenticated
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not authenticated.");
+        }
+
+        // 🚀 Call Service to Modify the Comment
+        return commentService.modifyComment(userId, commentId, request);
+    }
 }

@@ -32,7 +32,7 @@ public class CourseService {
         Course course = courseRepository.findBySubjectAndCourseCode(subject, courseCode)
                 .orElseThrow(() -> new RuntimeException("Course not found"));
 
-        List<Comment> comments = commentRepository.findByCourse_CourseIdAndIsDeletedFalse(course.getCourseId());
+        List<Comment> comments = commentRepository.findByCourse_CourseIdAndDeletedFalse(course.getCourseId());
 
         List<CommentResponse> commentResponses = comments.stream()
                 .map(comment -> {
@@ -48,7 +48,7 @@ public class CourseService {
                         comment.getGradeReceived(),
                         comment.getContent(),
                         comment.getCreatedAt(),
-                        comment.getIsAnonymous(),
+                        comment.getAnonymous(),
                         ratingRepository.countByCommentCommentIdAndLiked(comment.getCommentId(), true),
                         ratingRepository.countByCommentCommentIdAndLiked(comment.getCommentId(), false)
                     );

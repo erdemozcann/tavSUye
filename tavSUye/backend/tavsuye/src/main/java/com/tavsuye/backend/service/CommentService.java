@@ -70,11 +70,11 @@ public class CommentService {
         comment.setCourse(course);
         comment.setParentComment(parentComment);
         comment.setContent(request.getContent().trim()); // Trim spaces
-        comment.setIsAnonymous(request.getIsAnonymous() != null ? request.getIsAnonymous() : false);
+        comment.setAnonymous(request.getIsAnonymous() != null ? request.getIsAnonymous() : false);
         comment.setTermTaken(request.getTermTaken());
         comment.setGradeReceived(request.getGradeReceived());
         comment.setCreatedAt(LocalDateTime.now());
-        comment.setIsDeleted(false);
+        comment.setDeleted(false);
 
         commentRepository.save(comment);
 
@@ -96,7 +96,7 @@ public class CommentService {
         }
 
         // 🛠 Check if the comment has replies
-        List<Comment> childComments = commentRepository.findByParentCommentAndIsDeletedFalse(comment);
+        List<Comment> childComments = commentRepository.findByParentCommentAndDeletedFalse(comment);
         if (!childComments.isEmpty()) {
             for (Comment child : childComments) {
                 // ⏭ Move replies up to the grandparent (or set to null if no grandparent)
@@ -106,7 +106,7 @@ public class CommentService {
         }
 
         // ❌ Soft delete the comment (mark as deleted)
-        comment.setIsDeleted(true);
+        comment.setDeleted(true);
         commentRepository.save(comment);
 
         return ResponseEntity.ok("Comment deleted successfully.");

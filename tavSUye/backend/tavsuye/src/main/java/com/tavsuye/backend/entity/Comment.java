@@ -78,13 +78,13 @@ public class Comment {
      * Whether this comment is posted anonymously.
      */
     @Column(name = "is_anonymous", nullable = false)
-    private Boolean isAnonymous;
+    private Boolean anonymous;
 
     /**
      * For soft deletion, indicating whether the comment is considered "deleted".
      */
     @Column(name = "is_deleted", nullable = false)
-    private Boolean isDeleted = false;
+    private Boolean deleted = false;
 
     // JPA requires a no-argument constructor
     public Comment() {
@@ -164,20 +164,20 @@ public class Comment {
         this.createdAt = createdAt;
     }
 
-    public Boolean getIsAnonymous() {
-        return isAnonymous;
+    public Boolean getAnonymous() {
+        return anonymous;
     }
 
-    public void setIsAnonymous(Boolean isAnonymous) {
-        this.isAnonymous = isAnonymous;
+    public void setAnonymous(Boolean anonymous) {
+        this.anonymous = anonymous;
     }
 
-    public Boolean getIsDeleted() {
-        return isDeleted;
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
     
     public Integer getParentCommentId() {
