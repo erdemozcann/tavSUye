@@ -73,12 +73,30 @@ public class CourseViewLogService {
     }
 
     // ✅ Get Top 10 Most Viewed Courses in the Last 30 Days (By Unique Users)
-    public List<Integer> getMostViewedCoursesLast30Days() {
+    public List<CourseViewLogService.CourseViewLogResponse> getMostViewedCoursesLast30Days() {
         LocalDateTime since = LocalDateTime.now().minusDays(30);
         List<Object[]> results = courseViewLogRepository.findMostViewedCoursesSince(since);
 
         return results.stream()
-                      .map(row -> (Integer) row[0]) // Extract course IDs
+                      .map(row -> new CourseViewLogResponse((Course) row[0], (Long) row[1])) // Extract course objects and view counts
                       .collect(Collectors.toList());
+    }
+
+    public static class CourseViewLogResponse {
+        private final Course course;
+        private final Long viewCount;
+
+        public CourseViewLogResponse(Course course, Long viewCount) {
+            this.course = course;
+            this.viewCount = viewCount;
+        }
+
+        public Course getCourse() {
+            return course;
+        }
+
+        public Long getViewCount() {
+            return viewCount;
+        }
     }
 }

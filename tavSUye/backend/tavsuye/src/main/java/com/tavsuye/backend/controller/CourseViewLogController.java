@@ -1,6 +1,7 @@
 package com.tavsuye.backend.controller;
 
 import com.tavsuye.backend.service.CourseViewLogService;
+import com.tavsuye.backend.service.CourseViewLogService.CourseViewLogResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
@@ -38,8 +39,8 @@ public class CourseViewLogController {
 
     // ✅ API: Get Top 10 Most Viewed Courses in the Last 30 Days
     @GetMapping("/most-viewed")
-    public ResponseEntity<List<Integer>> getMostViewedCourses() {
-        List<Integer> courseIds = courseViewLogService.getMostViewedCoursesLast30Days();
-        return ResponseEntity.ok(courseIds);
+    public ResponseEntity<List<CourseViewLogResponse>> getMostViewedCourses() {
+        List<CourseViewLogResponse> courses = courseViewLogService.getMostViewedCoursesLast30Days();
+        return ResponseEntity.ok(courses);
     }
 }
