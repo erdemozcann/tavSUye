@@ -7,7 +7,6 @@ import com.tavsuye.backend.entity.Course;
 import com.tavsuye.backend.repository.CommentRepository;
 import com.tavsuye.backend.repository.CourseRepository;
 import com.tavsuye.backend.repository.RatingRepository;
-import com.tavsuye.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,14 +17,12 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final CommentRepository commentRepository;
     private final RatingRepository ratingRepository;
-    private final UserRepository userRepository;
 
     public CourseService(CourseRepository courseRepository, CommentRepository commentRepository, 
-                         RatingRepository ratingRepository, UserRepository userRepository) {
+                         RatingRepository ratingRepository) {
         this.courseRepository = courseRepository;
         this.commentRepository = commentRepository;
         this.ratingRepository = ratingRepository;
-        this.userRepository = userRepository;
     }
 
     public CourseDetailsResponse getCourseDetails(String subject, String courseCode) {
