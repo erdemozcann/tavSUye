@@ -1,11 +1,14 @@
 package com.tavsuye.backend.service;
 
 import com.tavsuye.backend.dto.CommentRequest;
+import com.tavsuye.backend.dto.UserRatingResponse;
 import com.tavsuye.backend.entity.Comment;
 import com.tavsuye.backend.entity.Course;
+import com.tavsuye.backend.entity.Rating;
 import com.tavsuye.backend.entity.User;
 import com.tavsuye.backend.repository.CommentRepository;
 import com.tavsuye.backend.repository.CourseRepository;
+import com.tavsuye.backend.repository.RatingRepository;
 import com.tavsuye.backend.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CommentService {
@@ -21,11 +25,13 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final CourseRepository courseRepository;
     private final UserRepository userRepository;
+    private final RatingRepository ratingRepository;
 
-    public CommentService(CommentRepository commentRepository, CourseRepository courseRepository, UserRepository userRepository) {
+    public CommentService(CommentRepository commentRepository, CourseRepository courseRepository, UserRepository userRepository, RatingRepository ratingRepository) {
         this.commentRepository = commentRepository;
         this.courseRepository = courseRepository;
         this.userRepository = userRepository;
+        this.ratingRepository = ratingRepository;
     }
 
     // 🎯 Handles Adding a Comment
@@ -110,5 +116,138 @@ public class CommentService {
         commentRepository.save(comment);
 
         return ResponseEntity.ok("Comment deleted successfully.");
+    }
+
+    // 🎯 Handles Modifying a Comment
+    public ResponseEntity<String> modifyComment(Integer userId, Integer commentId, CommentRequest request) {
+        // ✅ Find the Comment
+        Optional<Comment> commentOptional = commentRepository.findById(commentId);
+        if (commentOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found.");
+        }
+        Comment comment = commentOptional.get();
+
+        // 🔒 Ensure the user is the owner of the comment
+        if (!comment.getUser().getUserId().equals(userId)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not allowed to modify this comment.");
+        }
+
+        // ❌ Prevent empty or whitespace-only comments
+        if (request.getContent().trim().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Comment content cannot be empty or only spaces.");
+        }
+
+        // 🔄 Update the comment content and other fields
+        comment.setContent(request.getContent().trim());
+        comment.setAnonymous(request.getIsAnonymous() != null ? request.getIsAnonymous() : comment.getAnonymous());
+        comment.setTermTaken(request.getTermTaken());
+        comment.setGradeReceived(request.getGradeReceived());
+
+        commentRepository.save(comment);
+
+        return ResponseEntity.ok("Comment modified successfully.");
+    }
+
+    // 🎯 Handles Modifying a Course Comment
+    public ResponseEntity<String> modifyCourseComment(Integer userId, Integer commentId, CommentRequest request) {
+        // ✅ Find the Comment
+        Optional<Comment> commentOptional = commentRepository.findById(commentId);
+        if (commentOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found.");
+        }
+        Comment comment = commentOptional.get();
+
+        // 🔒 Ensure the user is the owner of the comment
+        if (!comment.getUser().getUserId().equals(userId)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not allowed to modify this comment.");
+        }
+
+        // ❌ Prevent empty or whitespace-only comments
+        if (request.getContent().trim().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Comment content cannot be empty or only spaces.");
+        }
+
+        // 🔄 Update the comment content and course-specific fields
+        comment.setContent(request.getContent().trim());
+        comment.setAnonymous(request.getIsAnonymous() != null ? request.getIsAnonymous() : comment.getAnonymous());
+
+        // Only update course-specific fields if they are provided
+        if (request.getTermTaken() != null) {
+            comment.setTermTaken(request.getTermTaken());
+        }
+        if (request.getGradeReceived() != null) {
+            comment.setGradeReceived(request.getGradeReceived());
+        }
+
+        commentRepository.save(comment);
+
+        return ResponseEntity.ok("Course comment modified successfully.");
+    }
+
+    // 🎯 Handles Liking a Comment
+    public ResponseEntity<String> likeComment(Integer userId, Integer commentId) {
+        // ✅ Validate User
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+        User user = userOptional.get();
+
+        // ✅ Validate Comment
+        Optional<Comment> commentOptional = commentRepository.findById(commentId);
+        if (commentOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+        }
+        Comment comment = commentOptional.get();
+
+        // 🔥 Create and Save the Like Rating
+        Rating rating = new Rating();
+        rating.setUser(user);
+        rating.setComment(comment);
+        rating.setLiked(true);
+        rating.setCreatedAt(LocalDateTime.now());
+
+        ratingRepository.save(rating);
+
+        return ResponseEntity.ok("Comment liked successfully.");
+    }
+
+    // 🎯 Handles Disliking a Comment
+    public ResponseEntity<String> dislikeComment(Integer userId, Integer commentId) {
+        // ✅ Validate User
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+        User user = userOptional.get();
+
+        // ✅ Validate Comment
+        Optional<Comment> commentOptional = commentRepository.findById(commentId);
+        if (commentOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+        }
+        Comment comment = commentOptional.get();
+
+        // 🔥 Create and Save the Dislike Rating
+        Rating rating = new Rating();
+        rating.setUser(user);
+        rating.setComment(comment);
+        rating.setLiked(false);
+        rating.setCreatedAt(LocalDateTime.now());
+
+        ratingRepository.save(rating);
+
+        return ResponseEntity.ok("Comment disliked successfully.");
+    }
+
+    // 🎯 Get user's ratings for a specific course
+    public ResponseEntity<List<UserRatingResponse>> getUserRatingsForCourse(Integer userId, Integer courseId) {
+        List<Object[]> ratings = ratingRepository.findUserRatingsForCourse(userId, courseId);
+
+        List<UserRatingResponse> response = ratings.stream()
+                .map(rating -> new UserRatingResponse((Integer) rating[0], (Boolean) rating[1]))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(response);
     }
 }

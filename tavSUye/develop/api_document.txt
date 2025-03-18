@@ -1,4 +1,4 @@
-API Use Case Scenarios and Expected Outputs
+API Documentation
 
 1. User Registration (POST /api/auth/register)
    Input:
@@ -9,7 +9,7 @@ API Use Case Scenarios and Expected Outputs
        "email": "erdemozcan@sabanciuniv.edu",
        "password": "Sifre123."
    }
-   
+
    Expected Outputs:
    - If email and username are available:
      "User registered successfully. Please verify your email."
@@ -26,7 +26,7 @@ API Use Case Scenarios and Expected Outputs
        "email": "erdemozcan@sabanciuniv.edu",
        "verificationCode": "123456"
    }
-   
+
    Expected Outputs:
    - If verification is successful:
      "Email successfully verified."
@@ -40,7 +40,7 @@ API Use Case Scenarios and Expected Outputs
        "usernameOrEmail": "erdemozcan@sabanciuniv.edu",
        "password": "Sifre123."
    }
-   
+
    Expected Outputs:
    - If login is successful and 2FA is disabled:
      "Login successful. Session ID: <JSESSIONID>"
@@ -61,18 +61,17 @@ API Use Case Scenarios and Expected Outputs
        "email": "erdemozcan@sabanciuniv.edu",
        "verificationCode": "273991"
    }
-   
+
    Expected Outputs:
    - If verification is successful:
      "2FA verification successful. You are now logged in."
    - If verification code is incorrect or expired:
      "Invalid or expired 2FA verification code."
-   - Successful 2FA login returns JSESSIONID session cookie.
 
 5. User Logout (POST /api/auth/logout)
    Headers:
    JSESSIONID: <Session_ID>
-   
+
    Expected Outputs:
    - If the user is logged in:
      "Logged out successfully."
@@ -93,6 +92,113 @@ API Use Case Scenarios and Expected Outputs
      SELECT * FROM User WHERE email = 'erdemozcan@sabanciuniv.edu' AND account_status = 'PENDING';
    - Reactivate a suspended account:
      UPDATE User SET account_status = 'ACTIVE', failed_login_attempts = 0 WHERE email = 'erdemozcan@sabanciuniv.edu';
+
+8. Add Comment (POST /api/comments/course/add)
+   Headers:
+   JSESSIONID: <Session_ID>
+   Input:
+   {
+       "courseId": 1,
+       "parentCommentId": null,
+       "content": "This is a comment.",
+       "isAnonymous": false,
+       "termTaken": 202401,
+       "gradeReceived": "A"
+   }
+
+   Expected Outputs:
+   - If the comment is added successfully:
+     "Comment added successfully."
+   - If the user is not authenticated:
+     "User not authenticated. Please log in again."
+   - If the course is not found:
+     "Course not found."
+   - If the parent comment is not found:
+     "Parent comment not found."
+   - If the comment content is empty or only spaces:
+     "Comment content cannot be empty or only spaces."
+
+9. Modify Course Comment (PUT /api/comments/course/modify/{commentId})
+   Headers:
+   JSESSIONID: <Session_ID>
+   Input:
+   {
+       "content": "This is an updated comment.",
+       "isAnonymous": true,
+       "termTaken": 202402,
+       "gradeReceived": "B"
+   }
+
+   Expected Outputs:
+   - If the comment is modified successfully:
+     "Comment modified successfully."
+   - If the user is not authenticated:
+     "User not authenticated."
+   - If the comment is not found:
+     "Comment not found."
+   - If the user is not the owner of the comment:
+     "You are not allowed to modify this comment."
+   - If the comment content is empty or only spaces:
+     "Comment content cannot be empty or only spaces."
+
+10. Delete Comment (DELETE /api/comments/delete/{commentId})
+    Headers:
+    JSESSIONID: <Session_ID>
+    
+    Expected Outputs:
+    - If the comment is deleted successfully:
+      "Comment deleted successfully."
+    - If the user is not authenticated:
+      "User not authenticated."
+    - If the comment is not found:
+      "Comment not found."
+    - If the user is not the owner of the comment:
+      "You are not allowed to delete this comment."
+
+11. Like Comment (POST /api/comments/like/{commentId})
+    Headers:
+    JSESSIONID: <Session_ID>
+    
+    Expected Outputs:
+    - If the comment is liked successfully:
+      "Comment liked successfully."
+    - If the user is not authenticated:
+      "User not authenticated."
+    - If the comment is not found:
+      "Comment not found."
+
+12. Dislike Comment (POST /api/comments/dislike/{commentId})
+    Headers:
+    JSESSIONID: <Session_ID>
+    
+    Expected Outputs:
+    - If the comment is disliked successfully:
+      "Comment disliked successfully."
+    - If the user is not authenticated:
+      "User not authenticated."
+    - If the comment is not found:
+      "Comment not found."
+
+13. Get Course Details (GET /api/courses/{subject}-{courseCode})
+    Headers:
+    JSESSIONID: <Session_ID>
+    
+    Expected Outputs:
+    - If the course is found:
+      {
+          "course": { ... },
+          "comments": [ ... ]
+      }
+    - If the course is not found:
+      "Course not found."
+
+14. Get Most Viewed Courses (GET /api/course-views/most-viewed)
+    Headers:
+    JSESSIONID: <Session_ID>
+    
+    Expected Outputs:
+    - If the most viewed courses are retrieved successfully:
+      [ ... ]
 
 Summary of Completed Work
 - Authentication flow implemented (Register -> Email Verify -> Login -> 2FA -> Logout)
