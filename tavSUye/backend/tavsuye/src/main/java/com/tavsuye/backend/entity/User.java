@@ -3,7 +3,6 @@ package com.tavsuye.backend.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-
 @Entity
 @Table(name = "User")
 public class User {
@@ -15,7 +14,7 @@ public class User {
 
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @Column(name = "surname", nullable = false)
     private String surname;
 
@@ -90,7 +89,7 @@ public class User {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
-    // JPA requires a no-argument constructor
+    // No-arg constructor
     public User() {
     }
 
@@ -111,7 +110,7 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getSurname() {
         return surname;
     }
@@ -297,6 +296,7 @@ public class User {
     }
 
     // --------------------- NESTED ENUM FOR ACCOUNT STATUS ---------------------
+
     public enum AccountStatus {
         ACTIVE,
         INACTIVE,

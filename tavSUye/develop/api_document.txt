@@ -245,6 +245,14 @@ API Documentation
      {
        "message": "User not authenticated."
      }
+   - If the course is not found:
+     HTTP 404 Not Found
+     {
+       "message": "Course not found."
+     }
+   - If the user has not rated any comments for the course:
+     HTTP 200 OK
+     []
 
 9. Log Course View (POST /api/course-views/{subject}-{courseCode})
    Headers:

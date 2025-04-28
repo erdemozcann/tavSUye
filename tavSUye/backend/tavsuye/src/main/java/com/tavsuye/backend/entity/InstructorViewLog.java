@@ -3,11 +3,6 @@ package com.tavsuye.backend.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/*
- * JPA entity representation of the "InstructorViewLog" table.
- * This class logs when a user views an instructor's profile, including metadata such as IP address and user agent.
- */
-
 @Entity
 @Table(name = "InstructorViewLog")
 public class InstructorViewLog {
@@ -17,30 +12,26 @@ public class InstructorViewLog {
     @Column(name = "view_id")
     private Integer viewId;
 
-    // The user who viewed the instructor.
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // The instructor that was viewed.
     @ManyToOne
     @JoinColumn(name = "instructor_id", nullable = false)
     private Instructor instructor;
 
-	// The timestamp of when the instructor was viewed.
     @Column(name = "viewed_at", nullable = false)
     private LocalDateTime viewedAt = LocalDateTime.now();
 
-    // The IP address from which the instructor was viewed.
-    @Column(name = "ip_address", length = 45)
-    private String ipAddress;
-
-    // The user agent of the browser or device used to view the instructor.
-    @Column(name = "user_agent", columnDefinition = "TEXT")
-    private String userAgent;
-
-    // JPA requires a no-argument constructor
+    // No-arg constructor
     public InstructorViewLog() {
+    }
+
+    // Optional constructor for quick initialization
+    public InstructorViewLog(User user, Instructor instructor) {
+        this.user = user;
+        this.instructor = instructor;
+        this.viewedAt = LocalDateTime.now();
     }
 
     // --------------------- GETTERS AND SETTERS ---------------------
@@ -75,21 +66,5 @@ public class InstructorViewLog {
 
     public void setViewedAt(LocalDateTime viewedAt) {
         this.viewedAt = viewedAt;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public String getUserAgent() {
-        return userAgent;
-    }
-
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
     }
 }

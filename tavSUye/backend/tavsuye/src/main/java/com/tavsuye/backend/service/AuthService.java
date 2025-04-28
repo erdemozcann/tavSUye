@@ -29,29 +29,29 @@ public class AuthService {
 
     // Register a new user (Handles email verification expiration)
     public String registerUser(UserRegistrationRequest request) {
-    	String email = request.getEmail().toLowerCase();
+        String email = request.getEmail().toLowerCase();
 
-        // ✅ Allow only Sabancı University domains
+        // Allow only Sabancı University domains
         if (!email.endsWith("@sabanciuniv.edu") &&
             !email.endsWith("@alumni.sabanciuniv.edu") &&
             !email.endsWith("@emeritus.sabanciuniv.edu")) {
             return "Only Sabancı University email addresses are allowed.";
         }
-    	
-    	Optional<User> existingUserByEmail = userRepository.findByEmail(request.getEmail().toLowerCase());
+
+        Optional<User> existingUserByEmail = userRepository.findByEmail(request.getEmail().toLowerCase());
         Optional<User> existingUserByUsername = userRepository.findByUsername(request.getUsername());
 
-        // ❌ If email is in use and not pending, reject registration
+        // If email is in use and not pending, reject registration
         if (existingUserByEmail.isPresent() && existingUserByEmail.get().getAccountStatus() != User.AccountStatus.PENDING) {
             return "Email is already registered.";
         }
 
-        // ❌ If username is in use and not pending, reject registration
+        // If username is in use and not pending, reject registration
         if (existingUserByUsername.isPresent() && existingUserByUsername.get().getAccountStatus() != User.AccountStatus.PENDING) {
             return "Username is already taken.";
         }
 
-        // 🔄 If the user exists in PENDING status, check email verification expiration
+        // If the user exists in PENDING status, check email verification expiration
         if (existingUserByEmail.isPresent()) {
             User user = existingUserByEmail.get();
 
@@ -62,7 +62,7 @@ public class AuthService {
             }
         }
 
-        // ✅ Proceed with user registration
+        // Proceed with user registration
         byte[] saltBytes = new byte[32];
         new SecureRandom().nextBytes(saltBytes);
         String salt = Base64.getEncoder().encodeToString(saltBytes);
@@ -103,12 +103,12 @@ public class AuthService {
 
         User user = userOptional.get();
 
-        // ❌ If the account is BANNED, prevent login and do not increase failed attempts
+        // If the account is BANNED, prevent login and do not increase failed attempts
         if (user.getAccountStatus() == User.AccountStatus.BANNED) {
             return Optional.of(user); // Return user object so the controller can send a proper response
         }
 
-        // ❌ If the account is SUSPENDED, prevent login and force email verification
+        // If the account is SUSPENDED, prevent login and force email verification
         if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
             LocalDateTime now = LocalDateTime.now();
 
@@ -124,12 +124,12 @@ public class AuthService {
             return Optional.of(user);
         }
 
-        // ❌ If the account is not ACTIVE, deny login
+        // If the account is not ACTIVE, deny login
         if (user.getAccountStatus() != User.AccountStatus.ACTIVE) {
             return Optional.empty();
         }
 
-        // ✅ Verify password using Argon2
+        // Verify password using Argon2
         Argon2 argon2 = Argon2Factory.create();
         if (!argon2.verify(user.getHashedPassword(), (user.getSalt() + request.getPassword()).toCharArray())) {
             user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
@@ -150,7 +150,7 @@ public class AuthService {
             return Optional.empty();
         }
 
-        // ✅ Successful login -> Reset failed attempts and update last login time
+        // Successful login -> Reset failed attempts and update last login time
         user.setFailedLoginAttempts(0);
         user.setLastLogin(LocalDateTime.now());
 
@@ -223,7 +223,7 @@ public class AuthService {
         }
         return false;
     }
-    
+
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email.toLowerCase());
     }

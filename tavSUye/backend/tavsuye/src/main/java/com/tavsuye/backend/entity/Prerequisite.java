@@ -2,7 +2,6 @@ package com.tavsuye.backend.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "Prerequisite")
 public class Prerequisite {
@@ -12,31 +11,18 @@ public class Prerequisite {
     @Column(name = "prerequisite_id")
     private Integer prerequisiteId;
 
-    /**
-     * The course that has a prerequisite.
-     * This is mapped with a foreign key referencing the Course table.
-     */
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    /**
-     * The prerequisite course itself.
-     * Also references the Course table.
-     */
     @ManyToOne
     @JoinColumn(name = "prerequisite_course_id", nullable = false)
     private Course prerequisiteCourse;
 
-    /**
-     * Indicates whether this prerequisite is an "AND" condition.
-     * If true, this prerequisite must be taken in conjunction with other courses.
-     * If false, it represents an "OR" condition.
-     */
     @Column(name = "is_and", nullable = false)
     private Boolean isAnd;
 
-    // JPA requires a no-argument constructor
+    // No-arg constructor
     public Prerequisite() {
     }
 

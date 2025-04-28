@@ -6,97 +6,36 @@ import com.tavsuye.backend.entity.User;
 import com.tavsuye.backend.repository.CourseRepository;
 import com.tavsuye.backend.repository.CourseViewLogRepository;
 import com.tavsuye.backend.repository.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CourseViewLogService {
 
     private final CourseViewLogRepository courseViewLogRepository;
-    private final CourseRepository courseRepository;
     private final UserRepository userRepository;
+    private final CourseRepository courseRepository;
 
-    public CourseViewLogService(CourseViewLogRepository courseViewLogRepository, CourseRepository courseRepository, UserRepository userRepository) {
+    public CourseViewLogService(CourseViewLogRepository courseViewLogRepository, UserRepository userRepository, CourseRepository courseRepository) {
         this.courseViewLogRepository = courseViewLogRepository;
-        this.courseRepository = courseRepository;
         this.userRepository = userRepository;
+        this.courseRepository = courseRepository;
     }
 
-    // ✅ Log a Course View (Ensures unique user-course entries)
-    @Transactional
-    public String logCourseView(String subject, String courseCode, Integer userId, HttpServletRequest request) {
-        // 🔎 Validate User
-        Optional<User> userOptional = userRepository.findById(userId);
-        if (userOptional.isEmpty()) {
-            return "User not found";
-        }
-        User user = userOptional.get();
+    public void logCourseVisit(Integer userId, Integer courseId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
 
-        // 🔎 Validate Course
-        Optional<Course> courseOptional = courseRepository.findBySubjectAndCourseCode(subject, courseCode);
-        if (courseOptional.isEmpty()) {
-            return "Course not found";
-        }
-        Course course = courseOptional.get();
-
-        // 🔍 Check if the user has already viewed this course
-        Optional<CourseViewLog> existingLog = courseViewLogRepository.findByUser_UserIdAndCourse_CourseId(userId, course.getCourseId());
-
-        if (existingLog.isPresent()) {
-            // 🔄 Update the existing log timestamp
-            CourseViewLog log = existingLog.get();
-            log.setViewedAt(LocalDateTime.now());
-            log.setIpAddress(request.getRemoteAddr());
-            log.setUserAgent(request.getHeader("User-Agent"));
-            courseViewLogRepository.save(log);
-        } else {
-            // 🆕 Create a new log entry
-            CourseViewLog newLog = new CourseViewLog();
-            newLog.setUser(user);
-            newLog.setCourse(course);
-            newLog.setViewedAt(LocalDateTime.now());
-            newLog.setIpAddress(request.getRemoteAddr());
-            newLog.setUserAgent(request.getHeader("User-Agent"));
-            courseViewLogRepository.save(newLog);
-        }
-
-        // 🗑️ Cleanup old duplicate views to keep only the latest one per user-course pair
-        courseViewLogRepository.removeDuplicateViews();
-
-        return "Course view logged successfully";
+        CourseViewLog log = new CourseViewLog(user, course);
+        courseViewLogRepository.save(log);
     }
 
-    // ✅ Get Top 10 Most Viewed Courses in the Last 30 Days (By Unique Users)
-    public List<CourseViewLogService.CourseViewLogResponse> getMostViewedCoursesLast30Days() {
-        LocalDateTime since = LocalDateTime.now().minusDays(30);
-        List<Object[]> results = courseViewLogRepository.findMostViewedCoursesSince(since);
-
-        return results.stream()
-                      .map(row -> new CourseViewLogResponse((Course) row[0], (Long) row[1])) // Extract course objects and view counts
-                      .collect(Collectors.toList());
-    }
-
-    public static class CourseViewLogResponse {
-        private final Course course;
-        private final Long viewCount;
-
-        public CourseViewLogResponse(Course course, Long viewCount) {
-            this.course = course;
-            this.viewCount = viewCount;
-        }
-
-        public Course getCourse() {
-            return course;
-        }
-
-        public Long getViewCount() {
-            return viewCount;
-        }
+    public List<Object[]> getTopVisitedCourses() {
+        LocalDateTime thirtyDaysAgo = LocalDateTime.now().minusDays(30);
+        return courseViewLogRepository.findTopVisitedCourses(thirtyDaysAgo);
     }
 }

@@ -2,7 +2,6 @@ package com.tavsuye.backend.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "Program")
 public class Program {
@@ -87,7 +86,7 @@ public class Program {
     @Column(name = "basic_science_ects")
     private Integer basicScienceEcts;
 
-    // JPA requires a no-argument constructor
+    // No-arg constructor
     public Program() {
     }
 

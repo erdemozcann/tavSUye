@@ -23,24 +23,18 @@ public class CourseViewLog {
     @Column(name = "viewed_at", nullable = false)
     private LocalDateTime viewedAt = LocalDateTime.now();
 
-    @Column(name = "ip_address", length = 45)
-    private String ipAddress;
-
-    @Column(name = "user_agent", columnDefinition = "TEXT")
-    private String userAgent;
-
+    // No-arg constructor
     public CourseViewLog() {
     }
 
-    public CourseViewLog(User user, Course course, String ipAddress, String userAgent) {
+    // Optional constructor for quick initialization
+    public CourseViewLog(User user, Course course) {
         this.user = user;
         this.course = course;
-        this.ipAddress = ipAddress;
-        this.userAgent = userAgent;
         this.viewedAt = LocalDateTime.now();
     }
 
-    // Getters and Setters
+    // --------------------- GETTERS AND SETTERS ---------------------
 
     public Integer getViewId() {
         return viewId;
@@ -72,21 +66,5 @@ public class CourseViewLog {
 
     public void setViewedAt(LocalDateTime viewedAt) {
         this.viewedAt = viewedAt;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public String getUserAgent() {
-        return userAgent;
-    }
-
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
     }
 }

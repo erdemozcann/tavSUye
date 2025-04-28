@@ -18,10 +18,10 @@ public class Course {
     @Column(name = "course_code", nullable = false, length = 10)
     private String courseCode;
 
-    @Column(name = "course_name_en", nullable = false)
+    @Column(name = "course_name_en", nullable = false, length = 255)
     private String courseNameEn;
 
-    @Column(name = "course_name_tr", nullable = false)
+    @Column(name = "course_name_tr", nullable = false, length = 255)
     private String courseNameTr;
 
     @Column(name = "su_credit", nullable = false)
@@ -52,7 +52,10 @@ public class Course {
     @Column(name = "faculty")
     private Faculty faculty;
 
-    // JPA requires a no-argument constructor
+    @Column(name = "course_status", nullable = false)
+    private Boolean courseStatus = true;
+
+    // No-arg constructor
     public Course() {
     }
 
@@ -170,6 +173,14 @@ public class Course {
         this.faculty = faculty;
     }
     
+    public Boolean getCourseStatus() {
+        return courseStatus;
+    }
+    
+    public void setCourseStatus(Boolean courseStatus) {
+        this.courseStatus = courseStatus;
+    }
+
  // --------------------- NESTED ENUM FOR FACULTY ---------------------
     public enum Faculty {
         FASS,

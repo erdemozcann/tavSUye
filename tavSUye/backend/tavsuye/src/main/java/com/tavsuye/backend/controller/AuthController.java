@@ -24,14 +24,14 @@ public class AuthController {
         this.authService = authService;
     }
 
-    // User registration endpoint
+    // Endpoint for user registration
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
         String response = authService.registerUser(request);
         return ResponseEntity.ok(response);
     }
 
-    // User login endpoint (Session-Based)
+    // Endpoint for user login (Session-Based)
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@Valid @RequestBody LoginRequest request, HttpSession session) {
         Optional<User> userOptional = authService.login(request);
@@ -39,31 +39,31 @@ public class AuthController {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
-            // ❌ If the user is banned, deny login
+            // If the user is banned, deny login
             if (user.getAccountStatus() == User.AccountStatus.BANNED) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN)
                         .body(new LoginResponse("Your account has been banned. Contact support.", false, null));
             }
 
-            // ❌ If email is not verified, deny login
+            // If email is not verified, deny login
             if (!user.getEmailVerified()) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN)
                         .body(new LoginResponse("Email not verified. Please verify your email.", false, null));
             }
 
-            // ❌ If the account is suspended, force verification before login
+            // If the account is suspended, force verification before login
             if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN)
                         .body(new LoginResponse("Account is suspended. Please verify your email to reactivate.", false, null));
             }
 
-            // ❌ If 2FA is enabled, request verification first
+            // If 2FA is enabled, request verification first
             if (Boolean.TRUE.equals(user.getIs2faEnabled())) {
                 return ResponseEntity.status(HttpStatus.ACCEPTED)
                         .body(new LoginResponse("2FA verification required. A code has been sent to your email.", true, user.getRole()));
             }
 
-            // ✅ Store user information in the session
+            // Store user information in the session
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("username", user.getUsername());
             session.setAttribute("role", user.getRole());
@@ -77,7 +77,7 @@ public class AuthController {
                 .body(new LoginResponse("Invalid credentials.", false, null));
     }
 
-    // 2FA Verification Endpoint
+    // Endpoint for 2FA verification
     @PostMapping("/verify-2fa")
     public ResponseEntity<LoginResponse> verifyTwoFactorAuth(@RequestBody VerificationRequest request, HttpSession session) {
         boolean isVerified = authService.verify2FA(request.getEmail(), request.getVerificationCode());
@@ -102,7 +102,7 @@ public class AuthController {
                 .body(new LoginResponse("Invalid or expired 2FA verification code.", false, null));
     }
 
-    // Logout endpoint (Destroy session)
+    // Endpoint for user logout (Destroy session)
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpSession session) {
         if (session.getAttribute("userId") != null) {
@@ -113,7 +113,7 @@ public class AuthController {
         }
     }
 
-    // Email verification endpoint
+    // Endpoint for email verification
     @PostMapping("/verify-email")
     public ResponseEntity<String> verifyEmail(@RequestBody VerificationRequest request, HttpSession session) {
         boolean isVerified = authService.verifyEmail(request.getEmail(), request.getVerificationCode());
