@@ -17,12 +17,12 @@ public class CourseCommentRatingService {
 
     private final CourseCommentRatingRepository ratingRepository;
     private final CourseCommentRepository commentRepository;
-    private final UserRepository userRepository; // Add UserRepository
+    private final UserRepository userRepository;
 
     public CourseCommentRatingService(
             CourseCommentRatingRepository ratingRepository,
             CourseCommentRepository commentRepository,
-            UserRepository userRepository) { // Inject UserRepository
+            UserRepository userRepository) {
         this.ratingRepository = ratingRepository;
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
@@ -30,7 +30,7 @@ public class CourseCommentRatingService {
 
     // Rate a comment (like or dislike)
     public void rateComment(Integer commentId, Integer userId, Boolean isLike) {
-        Optional<CourseCommentRating> existingRating = ratingRepository.findByCommentIdAndUserId(commentId, userId);
+        Optional<CourseCommentRating> existingRating = ratingRepository.findByComment_CommentIdAndUser_UserId(commentId, userId);
 
         if (existingRating.isPresent()) {
             // Update the existing rating
@@ -47,7 +47,7 @@ public class CourseCommentRatingService {
 
             CourseCommentRating rating = new CourseCommentRating();
             rating.setComment(comment);
-            rating.setUser(user); // Associate the existing User object
+            rating.setUser(user);
             rating.setLiked(isLike);
             ratingRepository.save(rating);
         }
@@ -55,7 +55,7 @@ public class CourseCommentRatingService {
 
     // Remove a rating from a comment
     public void removeRating(Integer commentId, Integer userId) {
-        Optional<CourseCommentRating> existingRating = ratingRepository.findByCommentIdAndUserId(commentId, userId);
+        Optional<CourseCommentRating> existingRating = ratingRepository.findByComment_CommentIdAndUser_UserId(commentId, userId);
 
         if (existingRating.isPresent()) {
             ratingRepository.delete(existingRating.get());
@@ -66,8 +66,8 @@ public class CourseCommentRatingService {
 
     // Get total likes and dislikes for a comment
     public Map<String, Integer> getCommentStats(Integer commentId) {
-        int likes = ratingRepository.countByCommentIdAndLiked(commentId, true);
-        int dislikes = ratingRepository.countByCommentIdAndLiked(commentId, false);
+        int likes = ratingRepository.countByComment_CommentIdAndLiked(commentId, true);
+        int dislikes = ratingRepository.countByComment_CommentIdAndLiked(commentId, false);
 
         Map<String, Integer> stats = new HashMap<>();
         stats.put("likes", likes);
@@ -78,7 +78,7 @@ public class CourseCommentRatingService {
 
     // Check if the user liked or disliked a comment
     public Boolean getUserRating(Integer commentId, Integer userId) {
-        Optional<CourseCommentRating> rating = ratingRepository.findByCommentIdAndUserId(commentId, userId);
+        Optional<CourseCommentRating> rating = ratingRepository.findByComment_CommentIdAndUser_UserId(commentId, userId);
         return rating.map(CourseCommentRating::getLiked).orElse(null);
     }
 }

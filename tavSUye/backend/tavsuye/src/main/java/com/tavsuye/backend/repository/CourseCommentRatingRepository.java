@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface CourseCommentRatingRepository extends JpaRepository<CourseCommentRating, Integer> {
     // Find a rating by comment ID and user ID
-    Optional<CourseCommentRating> findByCommentIdAndUserId(Integer commentId, Integer userId);
+    Optional<CourseCommentRating> findByComment_CommentIdAndUser_UserId(Integer commentId, Integer userId);
 
     // Count likes or dislikes for a specific comment
-    int countByCommentIdAndLiked(Integer commentId, Boolean liked);
+    int countByComment_CommentIdAndLiked(Integer commentId, Boolean liked);
 }
