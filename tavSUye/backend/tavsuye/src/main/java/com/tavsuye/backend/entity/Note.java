@@ -26,6 +26,9 @@ public class Note {
     @Column(name = "instructor_taken", length = 255)
     private String instructorTaken;
 
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -76,6 +79,14 @@ public class Note {
 
     public void setInstructorTaken(String instructorTaken) {
         this.instructorTaken = instructorTaken;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getCreatedAt() {
