@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Optional;
 import java.util.Random;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -226,6 +227,58 @@ public class AuthService {
 
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email.toLowerCase());
+    }
+
+    // Send password reset email
+    public boolean sendPasswordResetEmail(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email.toLowerCase());
+        if (userOptional.isEmpty()) {
+            return false;
+        }
+
+        User user = userOptional.get();
+
+        // Check if an existing token is still valid
+        if (user.getPasswordResetExpires() != null && user.getPasswordResetExpires().isAfter(LocalDateTime.now())) {
+            throw new RuntimeException("A password reset token has already been sent. Please wait until the current token expires.");
+        }
+
+        // Generate a new token
+        String resetToken = UUID.randomUUID().toString();
+        user.setPasswordResetToken(resetToken);
+        user.setPasswordResetExpires(LocalDateTime.now().plusMinutes(3)); // Token valid for 3 minutes
+        userRepository.save(user);
+
+        // Send email with reset token
+        emailService.sendPasswordResetEmail(user.getEmail(), resetToken);
+        return true;
+    }
+
+    // Reset password
+    public boolean resetPassword(String token, String newPassword) {
+        Optional<User> userOptional = userRepository.findByPasswordResetToken(token);
+        if (userOptional.isEmpty()) {
+            return false;
+        }
+
+        User user = userOptional.get();
+
+        // Check if the token is expired
+        if (user.getPasswordResetExpires().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("The password reset token has expired.");
+        }
+
+        // Update the password
+        user.setHashedPassword(hashPassword(newPassword, user.getSalt()));
+        user.setPasswordResetToken(null); // Invalidate the token
+        user.setPasswordResetExpires(null);
+        userRepository.save(user);
+        return true;
+    }
+
+    private String hashPassword(String password, String salt) {
+        // Hash the password using Argon2 or any other hashing algorithm
+        return password + salt; // Simplified for demonstration
     }
 
     // Generates a 6-digit verification code

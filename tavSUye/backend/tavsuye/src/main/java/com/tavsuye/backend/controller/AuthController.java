@@ -2,6 +2,8 @@ package com.tavsuye.backend.controller;
 
 import com.tavsuye.backend.dto.LoginRequest;
 import com.tavsuye.backend.dto.LoginResponse;
+import com.tavsuye.backend.dto.PasswordResetRequest;
+import com.tavsuye.backend.dto.PasswordResetSubmitRequest;
 import com.tavsuye.backend.dto.UserRegistrationRequest;
 import com.tavsuye.backend.dto.VerificationRequest;
 import com.tavsuye.backend.entity.User;
@@ -126,6 +128,28 @@ public class AuthController {
             return ResponseEntity.ok("Email successfully verified.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired verification code.");
+        }
+    }
+
+    // Endpoint for requesting a password reset
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(@RequestBody PasswordResetRequest request) {
+        boolean emailSent = authService.sendPasswordResetEmail(request.getEmail());
+        if (emailSent) {
+            return ResponseEntity.ok("Password reset email sent successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email not found.");
+        }
+    }
+
+    // Endpoint for submitting a new password
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody PasswordResetSubmitRequest request) {
+        boolean resetSuccessful = authService.resetPassword(request.getToken(), request.getNewPassword());
+        if (resetSuccessful) {
+            return ResponseEntity.ok("Password reset successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired reset token.");
         }
     }
 }
