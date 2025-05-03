@@ -59,4 +59,21 @@ public class CourseController {
         Course course = courseService.getCourseDetails(subject, courseCode);
         return ResponseEntity.ok(course);
     }
+
+    // API: Add a new course (Admin only)
+    @PostMapping("/add")
+    public ResponseEntity<String> addCourse(@RequestBody Course course, HttpSession session) {
+        // Session control
+        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        if (isAdmin == null || !isAdmin) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to add a course.");
+        }
+
+        // Set course_status to active (true) by default
+        course.setCourseStatus(true);
+
+        // Save the course
+        courseService.addCourse(course);
+        return ResponseEntity.ok("Course added successfully.");
+    }
 }

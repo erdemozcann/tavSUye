@@ -27,4 +27,9 @@ public class CourseService {
         return courseRepository.findBySubjectAndCourseCode(subject, courseCode)
                 .orElseThrow(() -> new RuntimeException("Course not found"));
     }
+
+    // Add a new course
+    public void addCourse(Course course) {
+        courseRepository.save(course);
+    }
 }
