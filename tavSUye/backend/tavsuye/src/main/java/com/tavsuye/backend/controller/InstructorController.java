@@ -52,4 +52,35 @@ public class InstructorController {
         Instructor instructor = instructorService.getInstructorById(id);
         return ResponseEntity.ok(instructor);
     }
+
+    // API: Add a new instructor (Admin only)
+    @PostMapping("/add")
+    public ResponseEntity<String> addInstructor(@RequestBody Instructor instructor, HttpSession session) {
+        // Session control
+        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        if (isAdmin == null || !isAdmin) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to add an instructor.");
+        }
+
+        // Save the instructor
+        instructorService.addInstructor(instructor);
+        return ResponseEntity.ok("Instructor added successfully.");
+    }
+
+    // API: Update an instructor (Admin only)
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateInstructor(
+            @PathVariable Integer id,
+            @RequestBody Instructor updatedInstructor,
+            HttpSession session) {
+        // Session control
+        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        if (isAdmin == null || !isAdmin) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to update an instructor.");
+        }
+
+        // Update the instructor
+        instructorService.updateInstructor(id, updatedInstructor);
+        return ResponseEntity.ok("Instructor updated successfully.");
+    }
 }
