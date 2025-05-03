@@ -32,4 +32,57 @@ public class CourseService {
     public void addCourse(Course course) {
         courseRepository.save(course);
     }
+
+    // Update a course
+    public void updateCourse(Integer courseId, Course updatedCourse) {
+        Course existingCourse = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found with ID: " + courseId));
+
+        // Update fields
+        if (updatedCourse.getSubject() != null) {
+            existingCourse.setSubject(updatedCourse.getSubject());
+        }
+        if (updatedCourse.getCourseCode() != null) {
+            existingCourse.setCourseCode(updatedCourse.getCourseCode());
+        }
+        if (updatedCourse.getCourseNameEn() != null) {
+            existingCourse.setCourseNameEn(updatedCourse.getCourseNameEn());
+        }
+        if (updatedCourse.getCourseNameTr() != null) {
+            existingCourse.setCourseNameTr(updatedCourse.getCourseNameTr());
+        }
+        if (updatedCourse.getSuCredit() != null) {
+            existingCourse.setSuCredit(updatedCourse.getSuCredit());
+        }
+        if (updatedCourse.getEctsCredit() != null) {
+            existingCourse.setEctsCredit(updatedCourse.getEctsCredit());
+        }
+        if (updatedCourse.getEngineeringEcts() != null) {
+            existingCourse.setEngineeringEcts(updatedCourse.getEngineeringEcts());
+        }
+        if (updatedCourse.getBasicScienceEcts() != null) {
+            existingCourse.setBasicScienceEcts(updatedCourse.getBasicScienceEcts());
+        }
+        if (updatedCourse.getContentEn() != null) {
+            existingCourse.setContentEn(updatedCourse.getContentEn());
+        }
+        if (updatedCourse.getContentTr() != null) {
+            existingCourse.setContentTr(updatedCourse.getContentTr());
+        }
+        if (updatedCourse.getLinkEn() != null) {
+            existingCourse.setLinkEn(updatedCourse.getLinkEn());
+        }
+        if (updatedCourse.getLinkTr() != null) {
+            existingCourse.setLinkTr(updatedCourse.getLinkTr());
+        }
+        if (updatedCourse.getFaculty() != null) {
+            existingCourse.setFaculty(updatedCourse.getFaculty());
+        }
+        if (updatedCourse.getCourseStatus() != null) {
+            existingCourse.setCourseStatus(updatedCourse.getCourseStatus());
+        }
+
+        // Save the updated course
+        courseRepository.save(existingCourse);
+    }
 }

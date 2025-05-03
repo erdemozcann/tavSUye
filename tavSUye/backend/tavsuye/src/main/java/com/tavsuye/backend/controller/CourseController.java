@@ -76,4 +76,21 @@ public class CourseController {
         courseService.addCourse(course);
         return ResponseEntity.ok("Course added successfully.");
     }
+
+    // API: Update a course (Admin only)
+    @PutMapping("/{courseId}")
+    public ResponseEntity<String> updateCourse(
+            @PathVariable Integer courseId,
+            @RequestBody Course updatedCourse,
+            HttpSession session) {
+        // Session control
+        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        if (isAdmin == null || !isAdmin) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to update a course.");
+        }
+
+        // Update the course
+        courseService.updateCourse(courseId, updatedCourse);
+        return ResponseEntity.ok("Course updated successfully.");
+    }
 }
