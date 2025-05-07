@@ -71,4 +71,32 @@ public class EmailService {
             System.out.println("Error sending email: " + e.getMessage());
         }
     }
+
+    public void sendBanNotificationEmail(String email, String reason) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setTo(email);
+            helper.setSubject("Account Banned / Hesabınız Yasaklandı");
+            helper.setText(
+                "Hello,\n\n" +
+                "Your account has been banned due to the following reason:\n\n" +
+                reason + "\n\n" +
+                "If you believe this is a mistake, please contact support.\n\n" +
+                "Merhaba,\n\n" +
+                "Hesabınız aşağıdaki sebepten dolayı yasaklanmıştır:\n\n" +
+                reason + "\n\n" +
+                "Eğer bunun bir hata olduğunu düşünüyorsanız, lütfen destek ile iletişime geçin.",
+                false
+            );
+            helper.setFrom("tavsuye@gmail.com");
+
+            mailSender.send(message);
+            System.out.println("Ban notification email sent to: " + email);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            System.out.println("Error sending ban notification email: " + e.getMessage());
+        }
+    }
 }
