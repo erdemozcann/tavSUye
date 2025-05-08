@@ -46,4 +46,18 @@ public class ProgramController {
         Program program = programService.getProgramDetails(nameEn, admissionTerm);
         return ResponseEntity.ok(program);
     }
+
+    // API: Get courses by program ID
+    @GetMapping("/{programId}/courses")
+    public ResponseEntity<List<Map<String, String>>> getCoursesByProgramId(
+            @PathVariable Integer programId,
+            HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        List<Map<String, String>> courses = programService.getCoursesByProgramId(programId);
+        return ResponseEntity.ok(courses);
+    }
 }

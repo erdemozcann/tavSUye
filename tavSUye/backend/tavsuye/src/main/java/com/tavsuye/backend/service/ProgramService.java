@@ -1,6 +1,8 @@
 package com.tavsuye.backend.service;
 
 import com.tavsuye.backend.entity.Program;
+import com.tavsuye.backend.entity.ProgramCourse;
+import com.tavsuye.backend.repository.ProgramCourseRepository;
 import com.tavsuye.backend.repository.ProgramRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +13,11 @@ import java.util.stream.Collectors;
 public class ProgramService {
 
     private final ProgramRepository programRepository;
+    private final ProgramCourseRepository programCourseRepository;
 
-    public ProgramService(ProgramRepository programRepository) {
+    public ProgramService(ProgramRepository programRepository, ProgramCourseRepository programCourseRepository) {
         this.programRepository = programRepository;
+        this.programCourseRepository = programCourseRepository;
     }
 
     // Get all unique program names
@@ -38,5 +42,19 @@ public class ProgramService {
     public Program getProgramDetails(String nameEn, Integer admissionTerm) {
         return programRepository.findByNameEnAndAdmissionTerm(nameEn, admissionTerm)
                 .orElseThrow(() -> new RuntimeException("Program not found with name: " + nameEn + " and admission term: " + admissionTerm));
+    }
+
+    // Get courses by program ID
+    public List<Map<String, String>> getCoursesByProgramId(Integer programId) {
+        List<ProgramCourse> programCourses = programCourseRepository.findByProgram_ProgramId(programId);
+
+        return programCourses.stream()
+                .map(pc -> Map.of(
+                        "courseId", pc.getCourse().getCourseId().toString(),
+                        "courseGroup", pc.getCourseGroup(),
+                        "subject", pc.getCourse().getSubject(),
+                        "courseCode", pc.getCourse().getCourseCode()
+                ))
+                .collect(Collectors.toList());
     }
 }
