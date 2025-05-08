@@ -1,5 +1,6 @@
 package com.tavsuye.backend.controller;
 
+import com.tavsuye.backend.entity.Program;
 import com.tavsuye.backend.service.ProgramService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,20 @@ public class ProgramController {
 
         List<Map<String, String>> uniqueProgramNames = programService.getUniqueProgramNames();
         return ResponseEntity.ok(uniqueProgramNames);
+    }
+
+    // API: Get program details by name and term
+    @GetMapping("/details")
+    public ResponseEntity<Program> getProgramDetails(
+            @RequestParam String nameEn,
+            @RequestParam Integer admissionTerm,
+            HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        Program program = programService.getProgramDetails(nameEn, admissionTerm);
+        return ResponseEntity.ok(program);
     }
 }

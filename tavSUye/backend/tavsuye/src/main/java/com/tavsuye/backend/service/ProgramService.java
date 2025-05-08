@@ -33,4 +33,10 @@ public class ProgramService {
                 .map(entry -> Map.of("name_en", entry.getKey(), "name_tr", entry.getValue()))
                 .collect(Collectors.toList());
     }
+
+    // Get program details by name and term
+    public Program getProgramDetails(String nameEn, Integer admissionTerm) {
+        return programRepository.findByNameEnAndAdmissionTerm(nameEn, admissionTerm)
+                .orElseThrow(() -> new RuntimeException("Program not found with name: " + nameEn + " and admission term: " + admissionTerm));
+    }
 }
