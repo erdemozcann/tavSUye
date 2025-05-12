@@ -125,19 +125,27 @@ Controller: AuthController
 - Method + Link: POST /api/auth/forgot-password
 - Input:
   - email: The email address of the user.
+  {
+      "email": "john.doe@sabanciuniv.edu"
+  }
 - Expected Outputs:
   - HTTP 200 OK: "Password reset email sent successfully."
   - HTTP 400 Bad Request: "Email not found."
+  - HTTP 400 Bad Request: "A password reset code has already been sent. Please wait until the current code expires."
 
 7. Reset Password
 - Session-Based: No
 - Method + Link: POST /api/auth/reset-password
 - Input:
-  - token: The password reset token sent to the user's email.
+  - code: The password reset code sent to the user's email.
   - newPassword: The new password for the user account.
+  {
+      "code": "123456",
+      "newPassword": "newSecurePassword123"
+  }
 - Expected Outputs:
   - HTTP 200 OK: "Password reset successfully."
-  - HTTP 400 Bad Request: "Invalid or expired reset token."
+  - HTTP 400 Bad Request: "Invalid or expired password reset code."
 
 ---
 
