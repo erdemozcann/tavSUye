@@ -1,447 +1,148 @@
 API Documentation
 
-1. User Registration (POST /api/auth/register)
-   Input:
-   {
-       "firstName": "Erdem",
-       "lastName": "Özcan",
-       "username": "erdemozcan",
-       "email": "erdemozcan@sabanciuniv.edu",
-       "password": "Sifre123."
-   }
+Session Information:
+The following attributes are stored in the session:
+- userId: The unique identifier of the logged-in user.
+- username: The username of the logged-in user.
+- role: The role of the logged-in user (e.g., ADMIN, USER).
+- emailVerified: A boolean indicating whether the user's email is verified.
 
-   Expected Outputs:
-   - If email and username are available:
-     HTTP 200 OK
-     {
-       "message": "User registered successfully. Please verify your email."
-     }
-   - If email is already registered:
-     HTTP 400 Bad Request
-     {
-       "message": "Email is already registered."
-     }
-   - If username is already taken:
-     HTTP 400 Bad Request
-     {
-       "message": "Username is already taken."
-     }
-   - If account is pending and verification expired:
-     HTTP 400 Bad Request
-     {
-       "message": "User already exists. Please verify your email."
-     }
-   - If email domain is not allowed:
-     HTTP 400 Bad Request
-     {
-       "message": "Only Sabancı University email addresses are allowed."
-     }
+---
 
-2. Email Verification (POST /api/auth/verify-email)
-   Input:
-   {
-       "email": "erdemozcan@sabanciuniv.edu",
-       "verificationCode": "123456"
-   }
+Controller: AuthController
 
-   Expected Outputs:
-   - If verification is successful:
-     HTTP 200 OK
-     {
-       "message": "Email successfully verified."
-     }
-   - If code is incorrect or expired:
-     HTTP 400 Bad Request
-     {
-       "message": "Invalid or expired verification code."
-     }
-   - If account was suspended, it becomes active after verification:
-     HTTP 200 OK
-     {
-       "message": "Email successfully verified. Account is now active."
-     }
+1. User Registration
+- Session-Based: No
+- Method + Link: POST /api/auth/register
+- Input:
+  - firstName: The first name of the user.
+  - lastName: The last name of the user.
+  - username: The username of the user.
+  - email: The email address of the user (must be a valid Sabancı University email).
+  - password: The password for the user account.
+  {
+      "firstName": "John",
+      "lastName": "Doe",
+      "username": "john_doe",
+      "email": "john.doe@sabanciuniv.edu",
+      "password": "securePassword123"
+  }
+- Expected Outputs:
+  - HTTP 200 OK: "User registered successfully. Please verify your email."
+  - HTTP 400 Bad Request:
+    - "Only Sabancı University email addresses are allowed."
+    - "Email is already registered."
+    - "Username is already taken."
+    - "User already exists. Please verify your email."
 
-3. User Login (POST /api/auth/login)
-   Input:
-   {
-       "usernameOrEmail": "erdemozcan@sabanciuniv.edu",
-       "password": "Sifre123."
-   }
+2. User Login
+- Session-Based: No (Creates a session)
+- Method + Link: POST /api/auth/login
+- Input:
+  - usernameOrEmail: The username or email address of the user.
+  - password: The password for the user account.
+  {
+      "usernameOrEmail": "john.doe@sabanciuniv.edu",
+      "password": "securePassword123"
+  }
+  OR 
+  {
+      "usernameOrEmail": "john_doe",
+      "password": "securePassword123"
+  }
+- Expected Outputs:
+  - HTTP 200 OK:
+    {
+        "message": "Login successful.",
+        "requires2FA": false,
+        "role": "USER"
+    }
+    - HTTP 202 Accepted:
+    {
+        "message": "2FA verification required. A code has been sent to your email.",
+        "requires2FA": true,
+        "role": "USER"
+    }
+  - HTTP 401 Unauthorized:
+    {
+        "message": "Invalid credentials.",
+        "requires2FA": false,
+        "role": null
+    }
+  - HTTP 403 Forbidden:
+    - "Your account has been banned. Contact support."
+    - "Email not verified. Please verify your email."
+    - "Account is suspended. Please verify your email to reactivate."
 
-   Expected Outputs:
-   - If login is successful and 2FA is disabled:
-     HTTP 200 OK
-     {
-       "message": "Login successful.",
-       "twoFactorRequired": false,
-       "role": "USER"
-     }
-   - If email is not verified:
-     HTTP 403 Forbidden
-     {
-       "message": "Email not verified. Please verify your email.",
-       "twoFactorRequired": false,
-       "role": null
-     }
-   - If account is suspended:
-     HTTP 403 Forbidden
-     {
-       "message": "Account is suspended. Please verify your email to reactivate.",
-       "twoFactorRequired": false,
-       "role": null
-     }
-   - If the user is banned:
-     HTTP 403 Forbidden
-     {
-       "message": "Your account has been banned. Contact support.",
-       "twoFactorRequired": false,
-       "role": null
-     }
-   - If 2FA is enabled:
-     HTTP 202 Accepted
-     {
-       "message": "2FA verification required. A code has been sent to your email.",
-       "twoFactorRequired": true,
-       "role": "USER"
-     }
-   - If password is incorrect:
-     HTTP 401 Unauthorized
-     {
-       "message": "Invalid credentials.",
-       "twoFactorRequired": false,
-       "role": null
-     }
-   - If the user enters the wrong password 5 times:
-     HTTP 403 Forbidden
-     {
-       "message": "Account is suspended. Please verify your email to reactivate.",
-       "twoFactorRequired": false,
-       "role": null
-     }
+3. Two-Factor Authentication Verification
+- Session-Based: No (Creates a session upon successful verification)
+- Method + Link: POST /api/auth/verify-2fa
+- Input:
+  - email: The email address of the user.
+  - verificationCode: The 2FA verification code sent to the user's email.
+  {
+      "email": "john.doe@sabanciuniv.edu",
+      "verificationCode": "123456"
+  }
+- Expected Outputs:
+  - HTTP 200 OK:
+    {
+        "message": "2FA verification successful. You are now logged in.",
+        "requires2FA": false,
+        "role": "USER"
+    }
+  - HTTP 400 Bad Request:
+    {
+        "message": "Invalid or expired 2FA verification code.",
+        "requires2FA": false,
+        "role": null
+    }
 
-4. Two-Factor Authentication Verification (POST /api/auth/verify-2fa)
-   Input:
-   {
-       "email": "erdemozcan@sabanciuniv.edu",
-       "verificationCode": "273991"
-   }
+4. User Logout
+- Session-Based: Yes
+- Method + Link: POST /api/auth/logout
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK: "Logged out successfully."
+  - HTTP 401 Unauthorized: "You are not logged in."
 
-   Expected Outputs:
-   - If verification is successful:
-     HTTP 200 OK
-     {
-       "message": "2FA verification successful. You are now logged in.",
-       "twoFactorRequired": false,
-       "role": "USER"
-     }
-   - If verification code is incorrect or expired:
-     HTTP 400 Bad Request
-     {
-       "message": "Invalid or expired 2FA verification code.",
-       "twoFactorRequired": false,
-       "role": null
-     }
+5. Email Verification
+- Session-Based: No
+- Method + Link: POST /api/auth/verify-email
+- Input:
+  - email: The email address of the user.
+  - verificationCode: The verification code sent to the user's email.
+  {
+      "email": "john.doe@sabanciuniv.edu",
+      "verificationCode": "123456"
+  }
+- Expected Outputs:
+  - HTTP 200 OK: "Email successfully verified."
+  - HTTP 400 Bad Request: "Invalid or expired verification code."
 
-5. User Logout (POST /api/auth/logout)
-   Headers:
-   JSESSIONID: <Session_ID>
+6. Forgot Password
+- Session-Based: No
+- Method + Link: POST /api/auth/forgot-password
+- Input:
+  - email: The email address of the user.
+- Expected Outputs:
+  - HTTP 200 OK: "Password reset email sent successfully."
+  - HTTP 400 Bad Request: "Email not found."
 
-   Expected Outputs:
-   - If the user is logged in:
-     HTTP 200 OK
-     {
-       "message": "Logged out successfully."
-     }
-   - If the user is not logged in:
-     HTTP 401 Unauthorized
-     {
-       "message": "You are not logged in."
-     }
+7. Reset Password
+- Session-Based: No
+- Method + Link: POST /api/auth/reset-password
+- Input:
+  - token: The password reset token sent to the user's email.
+  - newPassword: The new password for the user account.
+- Expected Outputs:
+  - HTTP 200 OK: "Password reset successfully."
+  - HTTP 400 Bad Request: "Invalid or expired reset token."
 
-6. Get Most Viewed Courses (GET /api/course-views/most-viewed)
-   Headers:
-   JSESSIONID: <Session_ID>
-    
-   Expected Outputs:
-   - If the most viewed courses are retrieved successfully:
-     HTTP 200 OK
-     [
-       {
-         "courseId": 1,
-         "subject": "CS",
-         "courseCode": "101",
-         "courseNameEn": "Introduction to Computer Science",
-         "courseNameTr": "Bilgisayar Bilimine Giriş",
-         "viewCount": 150
-       },
-       {
-         "courseId": 2,
-         "subject": "MATH",
-         "courseCode": "201",
-         "courseNameEn": "Calculus I",
-         "courseNameTr": "Kalkülüs I",
-         "viewCount": 120
-       }
-       // Diğer kurslar...
-     ]
+---
 
-7. Get Course Details (GET /api/courses/{subject}-{courseCode})
-   Headers:
-   JSESSIONID: <Session_ID>
-    
-   Expected Outputs:
-   - If the course is found:
-     HTTP 200 OK
-     {
-       "course": {
-         "courseId": 1,
-         "subject": "CS",
-         "courseCode": "101",
-         "courseNameEn": "Introduction to Computer Science",
-         "courseNameTr": "Bilgisayar Bilimine Giriş"
-       },
-       "comments": [
-         {
-           "commentId": 123,
-           "username": "erdemozcan",
-           "name": "Erdem",
-           "surname": "Özcan",
-           "parentCommentId": null,
-           "termTaken": 202401,
-           "gradeReceived": "A",
-           "content": "This is a comment.",
-           "createdAt": "2025-03-18T12:34:56",
-           "isAnonymous": false,
-           "likes": 10,
-           "dislikes": 2
-         }
-       ]
-     }
-   - If the course is not found:
-     HTTP 404 Not Found
-     {
-       "message": "Course not found."
-     }
+Notes:
+- Session-Based APIs: APIs that require a valid session will return a 401 Unauthorized response if the user is not logged in.
+- Error Handling: All APIs return appropriate error messages for invalid inputs or unauthorized access.
+- Session Management: The session is created during login or 2FA verification and destroyed during logout.
 
-8. Get User's Ratings for a Specific Course (GET /api/comments/course/{courseId}/ratings)
-   Headers:
-   JSESSIONID: <Session_ID>
-    
-   Expected Outputs:
-   - If the user's ratings are retrieved successfully:
-     HTTP 200 OK
-     [
-         {
-             "commentId": 123,
-             "liked": true
-         },
-         {
-             "commentId": 124,
-             "liked": false
-         }
-     ]
-   - If the user is not authenticated:
-     HTTP 401 Unauthorized
-     {
-       "message": "User not authenticated."
-     }
-   - If the course is not found:
-     HTTP 404 Not Found
-     {
-       "message": "Course not found."
-     }
-   - If the user has not rated any comments for the course:
-     HTTP 200 OK
-     []
-
-9. Log Course View (POST /api/course-views/{subject}-{courseCode})
-   Headers:
-   JSESSIONID: <Session_ID>
-    
-   Expected Outputs:
-   - If the course view is logged successfully:
-     HTTP 200 OK
-     {
-       "message": "Course view logged successfully."
-     }
-   - If the user is not authenticated:
-     HTTP 401 Unauthorized
-     {
-       "message": "User must be logged in to view a course."
-     }
-   - If the course is not found:
-     HTTP 404 Not Found
-     {
-       "message": "Course not found."
-     }
-   - If the user is not found:
-     HTTP 404 Not Found
-     {
-       "message": "User not found."
-     }
-
-10. Add Comment (POST /api/comments/course/add)
-   Headers:
-   JSESSIONID: <Session_ID>
-   Input:
-   {
-       "courseId": 1,
-       "parentCommentId": null,
-       "content": "This is a comment.",
-       "isAnonymous": false,
-       "termTaken": 202401,
-       "gradeReceived": "A"
-   }
-
-   Expected Outputs:
-   - If the comment is added successfully:
-     HTTP 200 OK
-     {
-       "message": "Comment added successfully."
-     }
-   - If the user is not authenticated:
-     HTTP 401 Unauthorized
-     {
-       "message": "User not authenticated. Please log in again."
-     }
-   - If the course is not found:
-     HTTP 404 Not Found
-     {
-       "message": "Course not found."
-     }
-   - If the parent comment is not found:
-     HTTP 404 Not Found
-     {
-       "message": "Parent comment not found."
-     }
-   - If the comment content is empty or only spaces:
-     HTTP 400 Bad Request
-     {
-       "message": "Comment content cannot be empty or only spaces."
-     }
-   - If the user is banned:
-     HTTP 403 Forbidden
-     {
-       "message": "Your account is banned. You cannot comment."
-     }
-
-11. Modify Course Comment (PUT /api/comments/course/modify/{commentId})
-   Headers:
-   JSESSIONID: <Session_ID>
-   Input:
-   {
-       "content": "This is an updated comment.",
-       "isAnonymous": true,
-       "termTaken": 202402,
-       "gradeReceived": "B"
-   }
-
-   Expected Outputs:
-   - If the comment is modified successfully:
-     HTTP 200 OK
-     {
-       "message": "Comment modified successfully."
-     }
-   - If the user is not authenticated:
-     HTTP 401 Unauthorized
-     {
-       "message": "User not authenticated."
-     }
-   - If the comment is not found:
-     HTTP 404 Not Found
-     {
-       "message": "Comment not found."
-     }
-   - If the user is not the owner of the comment:
-     HTTP 403 Forbidden
-     {
-       "message": "You are not allowed to modify this comment."
-     }
-   - If the comment content is empty or only spaces:
-     HTTP 400 Bad Request
-     {
-       "message": "Comment content cannot be empty or only spaces."
-     }
-
-12. Delete Comment (DELETE /api/comments/delete/{commentId})
-    Headers:
-    JSESSIONID: <Session_ID>
-    
-    Expected Outputs:
-    - If the comment is deleted successfully:
-      HTTP 200 OK
-      {
-        "message": "Comment deleted successfully."
-      }
-    - If the user is not authenticated:
-      HTTP 401 Unauthorized
-      {
-        "message": "User not authenticated."
-      }
-    - If the comment is not found:
-      HTTP 404 Not Found
-      {
-        "message": "Comment not found."
-      }
-    - If the user is not the owner of the comment:
-      HTTP 403 Forbidden
-      {
-        "message": "You are not allowed to delete this comment."
-      }
-
-13. Like Comment (POST /api/comments/like/{commentId})
-    Headers:
-    JSESSIONID: <Session_ID>
-    
-    Expected Outputs:
-    - If the comment is liked successfully:
-      HTTP 200 OK
-      {
-        "message": "Comment liked successfully."
-      }
-    - If the user is not authenticated:
-      HTTP 401 Unauthorized
-      {
-        "message": "User not authenticated."
-      }
-    - If the comment is not found:
-      HTTP 404 Not Found
-      {
-        "message": "Comment not found."
-      }
-
-14. Dislike Comment (POST /api/comments/dislike/{commentId})
-    Headers:
-    JSESSIONID: <Session_ID>
-    
-    Expected Outputs:
-    - If the comment is disliked successfully:
-      HTTP 200 OK
-      {
-        "message": "Comment disliked successfully."
-      }
-    - If the user is not authenticated:
-      HTTP 401 Unauthorized
-      {
-        "message": "User not authenticated."
-      }
-    - If the comment is not found:
-      HTTP 404 Not Found
-      {
-        "message": "Comment not found."
-      }
-
-Summary of Completed Work
-- Authentication flow implemented (Register -> Email Verify -> Login -> 2FA -> Logout)
-- Session management (JSESSIONID) integrated
-- Incorrect login attempt restrictions (max 5 attempts) added
-- Account status transitions and security mechanisms improved
-- Comprehensive Postman tests conducted
-- 2FA mandatory email verification tested
-
-Next Steps
-- Frontend integration for user scenarios
-- Add password reset API
-- Expand authorization roles (Admin, User)
-
-All use case scenarios and expected API outputs have been successfully documented and validated.

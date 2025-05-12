@@ -179,24 +179,23 @@ public class AuthService {
 
         User user = userOptional.get();
 
-        // If the code matches and has not expired, verify the email
+        // Check if the code matches and is not expired
         if (user.getEmailVerificationCode().equals(verificationCode) &&
             user.getEmailVerificationExpires().isAfter(LocalDateTime.now())) {
 
             user.setEmailVerified(true);
 
-            // If the account is SUSPENDED, activate it after verification
+            // Activate the account if it was suspended
             if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
                 user.setAccountStatus(User.AccountStatus.ACTIVE);
-                user.setFailedLoginAttempts(0); // Reset failed attempts counter
+                user.setFailedLoginAttempts(0); // Reset failed attempts
             } else {
                 user.setAccountStatus(User.AccountStatus.ACTIVE);
             }
 
-            // Expire the verification code immediately after use
+            // Clear the verification code and expiration
             user.setEmailVerificationCode(null);
             user.setEmailVerificationExpires(null);
-
             userRepository.save(user);
             return true;
         }

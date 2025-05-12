@@ -117,14 +117,10 @@ public class AuthController {
 
     // Endpoint for email verification
     @PostMapping("/verify-email")
-    public ResponseEntity<String> verifyEmail(@RequestBody VerificationRequest request, HttpSession session) {
+    public ResponseEntity<String> verifyEmail(@RequestBody VerificationRequest request) {
         boolean isVerified = authService.verifyEmail(request.getEmail(), request.getVerificationCode());
 
         if (isVerified) {
-            // If the user is logged in, update session attributes
-            if (session.getAttribute("userId") != null) {
-                session.setAttribute("emailVerified", true);
-            }
             return ResponseEntity.ok("Email successfully verified.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired verification code.");
