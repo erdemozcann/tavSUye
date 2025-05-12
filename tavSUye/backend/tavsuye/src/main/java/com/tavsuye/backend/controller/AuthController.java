@@ -141,11 +141,11 @@ public class AuthController {
     // Endpoint for submitting a new password
     @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody PasswordResetSubmitRequest request) {
-        boolean resetSuccessful = authService.resetPassword(request.getToken(), request.getNewPassword());
+        boolean resetSuccessful = authService.resetPassword(request.getCode(), request.getNewPassword());
         if (resetSuccessful) {
             return ResponseEntity.ok("Password reset successfully.");
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired reset token.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired reset code.");
         }
     }
 }

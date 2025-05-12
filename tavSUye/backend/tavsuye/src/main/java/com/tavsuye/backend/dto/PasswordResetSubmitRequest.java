@@ -1,15 +1,15 @@
 package com.tavsuye.backend.dto;
 
 public class PasswordResetSubmitRequest {
-    private String token;
+    private String code; 
     private String newPassword;
 
-    public String getToken() {
-        return token;
+    public String getCode() {
+        return code;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getNewPassword() {
