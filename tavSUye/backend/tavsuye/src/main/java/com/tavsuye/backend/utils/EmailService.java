@@ -53,11 +53,11 @@ public class EmailService {
             helper.setSubject("Password Reset Request / Şifre Sıfırlama Talebi");
             helper.setText(
                 "Hello,\n\n" +
-                "You requested a password reset. Use the following token to reset your password:\n\n" +
+                "You requested a password reset. Use the following 6-digit code to reset your password:\n\n" +
                 resetToken + "\n\n" +
                 "If you did not request this, please ignore this email.\n\n" +
                 "Merhaba,\n\n" +
-                "Şifre sıfırlama talebinde bulundunuz. Şifrenizi sıfırlamak için aşağıdaki kodu kullanın:\n\n" +
+                "Şifre sıfırlama talebinde bulundunuz. Şifrenizi sıfırlamak için aşağıdaki 6 haneli kodu kullanın:\n\n" +
                 resetToken + "\n\n" +
                 "Eğer bu işlemi siz yapmadıysanız, lütfen bu e-postayı görmezden gelin.",
                 false

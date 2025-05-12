@@ -35,7 +35,21 @@ Controller: AuthController
     - "Username is already taken."
     - "User already exists. Please verify your email."
 
-2. User Login
+2. Email Verification
+- Session-Based: No
+- Method + Link: POST /api/auth/verify-email
+- Input:
+  - email: The email address of the user.
+  - verificationCode: The verification code sent to the user's email.
+  {
+      "email": "john.doe@sabanciuniv.edu",
+      "verificationCode": "123456"
+  }
+- Expected Outputs:
+  - HTTP 200 OK: "Email successfully verified."
+  - HTTP 400 Bad Request: "Invalid or expired verification code."
+
+3. User Login
 - Session-Based: No (Creates a session)
 - Method + Link: POST /api/auth/login
 - Input:
@@ -74,7 +88,7 @@ Controller: AuthController
     - "Email not verified. Please verify your email."
     - "Account is suspended. Please verify your email to reactivate."
 
-3. Two-Factor Authentication Verification
+4. Two-Factor Authentication Verification
 - Session-Based: No (Creates a session upon successful verification)
 - Method + Link: POST /api/auth/verify-2fa
 - Input:
@@ -98,27 +112,13 @@ Controller: AuthController
         "role": null
     }
 
-4. User Logout
+5. User Logout
 - Session-Based: Yes
 - Method + Link: POST /api/auth/logout
 - Input: None
 - Expected Outputs:
   - HTTP 200 OK: "Logged out successfully."
   - HTTP 401 Unauthorized: "You are not logged in."
-
-5. Email Verification
-- Session-Based: No
-- Method + Link: POST /api/auth/verify-email
-- Input:
-  - email: The email address of the user.
-  - verificationCode: The verification code sent to the user's email.
-  {
-      "email": "john.doe@sabanciuniv.edu",
-      "verificationCode": "123456"
-  }
-- Expected Outputs:
-  - HTTP 200 OK: "Email successfully verified."
-  - HTTP 400 Bad Request: "Invalid or expired verification code."
 
 6. Forgot Password
 - Session-Based: No
