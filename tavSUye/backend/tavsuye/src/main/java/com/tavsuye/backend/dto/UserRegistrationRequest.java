@@ -2,7 +2,6 @@ package com.tavsuye.backend.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class UserRegistrationRequest {
@@ -19,8 +18,6 @@ public class UserRegistrationRequest {
 
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
-    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@(sabanciuniv\\.edu|alumni\\.sabanciuniv\\.edu|emeritus\\.sabanciuniv\\.edu|connect\\.sabanciuniv\\.edu)$",
-             message = "Email must be a valid Sabancı University address")
     private String email;
 
     @NotBlank(message = "Password is required")

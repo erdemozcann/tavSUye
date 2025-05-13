@@ -30,53 +30,57 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
         String response = authService.registerUser(request);
-        return ResponseEntity.ok(response);
+
+        if (response.equals("User registered successfully. Please verify your email.")) {
+            // Başarılı kayıt, doğrulama gerektiriyor
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } else if (response.equals("Only Sabancı University email addresses are allowed.")) {
+            // Sabancı mail değilse
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+        } else if (response.equals("Email is already registered.")) {
+            // Email zaten kayıtlı
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+        } else if (response.equals("Username is already taken.")) {
+            // Username zaten alınmış
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+        } else if (response.equals("User already exists. Please verify your email.")) {
+            // Kullanıcı pending durumda
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+        } else {
+            // Diğer durumlar için generic bad request
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
     }
 
     // Endpoint for user login (Session-Based)
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@Valid @RequestBody LoginRequest request, HttpSession session) {
-        Optional<User> userOptional = authService.login(request);
+        AuthService.LoginResult result = authService.login(request);
 
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-
-            // If the user is banned, deny login
-            if (user.getAccountStatus() == User.AccountStatus.BANNED) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                        .body(new LoginResponse("Your account has been banned. Contact support.", false, null));
-            }
-
-            // If email is not verified, deny login
-            if (!user.getEmailVerified()) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                        .body(new LoginResponse("Email not verified. Please verify your email.", false, null));
-            }
-
-            // If the account is suspended, force verification before login
-            if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                        .body(new LoginResponse("Account is suspended. Please verify your email to reactivate.", false, null));
-            }
-
-            // If 2FA is enabled, request verification first
-            if (Boolean.TRUE.equals(user.getIs2faEnabled())) {
+        switch (result.type) {
+            case SUCCESS:
+                User user = result.user;
+                session.setAttribute("userId", user.getUserId());
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("role", user.getRole());
+                session.setMaxInactiveInterval(30 * 60);
+                return ResponseEntity.ok(new LoginResponse("Login successful.", false, user.getRole()));
+            case TWO_FA_REQUIRED:
                 return ResponseEntity.status(HttpStatus.ACCEPTED)
-                        .body(new LoginResponse("2FA verification required. A code has been sent to your email.", true, user.getRole()));
-            }
-
-            // Store user information in the session
-            session.setAttribute("userId", user.getUserId());
-            session.setAttribute("username", user.getUsername());
-            session.setAttribute("role", user.getRole());
-
-            session.setMaxInactiveInterval(30 * 60); // 30 minutes
-
-            return ResponseEntity.ok(new LoginResponse("Login successful.", false, user.getRole()));
+                    .body(new LoginResponse("2FA verification required. A code has been sent to your email.", true, result.user.getRole()));
+            case INVALID:
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new LoginResponse("Invalid credentials.", false, null));
+            case BANNED:
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body(new LoginResponse("Your account has been banned. Contact support.", false, null));
+            case SUSPENDED:
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body(new LoginResponse("Account is suspended. Please verify your email to reactivate.", false, null));
+            default:
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new LoginResponse("Invalid credentials.", false, null));
         }
-
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(new LoginResponse("Invalid credentials.", false, null));
     }
 
     // Endpoint for 2FA verification
@@ -130,18 +134,23 @@ public class AuthController {
     // Endpoint for requesting a password reset
     @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody PasswordResetRequest request) {
-        boolean emailSent = authService.sendPasswordResetEmail(request.getEmail());
-        if (emailSent) {
-            return ResponseEntity.ok("Password reset email sent successfully.");
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email not found.");
+        try {
+            boolean emailSent = authService.sendPasswordResetEmail(request.getEmail());
+            if (emailSent) {
+                return ResponseEntity.ok("Password reset email sent successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email not found.");
+            }
+        } catch (RuntimeException ex) {
+            // Burada exception mesajını döneceğiz
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
 
     // Endpoint for submitting a new password
     @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody PasswordResetSubmitRequest request) {
-        boolean resetSuccessful = authService.resetPassword(request.getCode(), request.getNewPassword());
+        boolean resetSuccessful = authService.resetPassword(request.getEmail(), request.getCode(), request.getNewPassword());
         if (resetSuccessful) {
             return ResponseEntity.ok("Password reset successfully.");
         } else {

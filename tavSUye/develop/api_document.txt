@@ -9,7 +9,7 @@ The following attributes are stored in the session:
 
 ---
 
-Controller: AuthController
+Controller: AuthController 1-7
 
 1. User Registration
 - Session-Based: No
@@ -28,9 +28,9 @@ Controller: AuthController
       "password": "securePassword123"
   }
 - Expected Outputs:
-  - HTTP 200 OK: "User registered successfully. Please verify your email."
-  - HTTP 400 Bad Request:
-    - "Only Sabancı University email addresses are allowed."
+  - HTTP 201 Created: "User registered successfully. Please verify your email."
+  - HTTP 403 Forbidden: "Only Sabancı University email addresses are allowed."
+  - HTTP 409 Conflict:
     - "Email is already registered."
     - "Username is already taken."
     - "User already exists. Please verify your email."
@@ -85,7 +85,6 @@ Controller: AuthController
     }
   - HTTP 403 Forbidden:
     - "Your account has been banned. Contact support."
-    - "Email not verified. Please verify your email."
     - "Account is suspended. Please verify your email to reactivate."
 
 4. Two-Factor Authentication Verification
@@ -140,8 +139,9 @@ Controller: AuthController
   - code: The password reset code sent to the user's email.
   - newPassword: The new password for the user account.
   {
-      "code": "123456",
-      "newPassword": "newSecurePassword123"
+    "email": "user@sabanciuniv.edu",
+    "code": "123456",
+    "newPassword": "newSecurePassword123"
   }
 - Expected Outputs:
   - HTTP 200 OK: "Password reset successfully."
@@ -153,4 +153,333 @@ Notes:
 - Session-Based APIs: APIs that require a valid session will return a 401 Unauthorized response if the user is not logged in.
 - Error Handling: All APIs return appropriate error messages for invalid inputs or unauthorized access.
 - Session Management: The session is created during login or 2FA verification and destroyed during logout.
+
+Controller: CourseController 8-12
+
+8. Get All Subjects
+- Session-Based: Yes
+- Method + Link: GET /api/courses/subjects
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    [
+        "CS",
+        "MATH",
+        "PHYS"
+    ]
+  - HTTP 401 Unauthorized: "Unauthorized"
+
+9. Get All Course Codes by Subject
+- Session-Based: Yes
+- Method + Link: GET /api/courses/{subject}/codes
+- Input:
+  - subject: The subject for which course codes are requested (e.g., "CS").
+  {
+      "subject": "CS"
+  }
+- Expected Outputs:
+  - HTTP 200 OK:
+    [
+        "101",
+        "102",
+        "201"
+    ]
+  - HTTP 401 Unauthorized: "Unauthorized"
+
+10. Get Course Details by Subject and Course Code
+- Session-Based: Yes
+- Method + Link: GET /api/courses/{subject}-{courseCode}
+- Input:
+  - subject: The subject of the course (e.g., "CS").
+  - courseCode: The course code (e.g., "101").
+- Expected Outputs:
+  - HTTP 200 OK:
+    {
+        "courseId": 1,
+        "subject": "CS",
+        "courseCode": "101",
+        "courseNameEn": "Introduction to Computer Science",
+        "courseNameTr": "Bilgisayar Bilimine Giriş",
+        "suCredit": 3,
+        "ectsCredit": 6,
+        "engineeringEcts": 3,
+        "basicScienceEcts": 0,
+        "contentEn": "This course introduces the basics of computer science.",
+        "contentTr": "Bu ders bilgisayar biliminin temellerini tanıtır.",
+        "linkEn": "http://example.com/cs101",
+        "linkTr": "http://example.com/cs101-tr",
+        "faculty": "Engineering",
+        "courseStatus": true
+    }
+  - HTTP 401 Unauthorized: "Unauthorized"
+  - HTTP 404 Not Found: "Course not found"
+
+11. Add a New Course (Admin Only)
+- Session-Based: Yes
+- Method + Link: POST /api/courses/add
+- Input:
+  {
+      "subject": "CS",
+      "courseCode": "103",
+      "courseNameEn": "Data Structures",
+      "courseNameTr": "Veri Yapıları",
+      "suCredit": 3,
+      "ectsCredit": 6,
+      "engineeringEcts": 3,
+      "basicScienceEcts": 0,
+      "contentEn": "This course covers data structures.",
+      "contentTr": "Bu ders veri yapılarını kapsar.",
+      "linkEn": "http://example.com/cs103",
+      "linkTr": "http://example.com/cs103-tr",
+      "faculty": "Engineering",
+      "courseStatus": true
+  }
+- Expected Outputs:
+  - HTTP 200 OK: "Course added successfully."
+  - HTTP 403 Forbidden: "You are not authorized to add a course."
+
+12. Update a Course (Admin Only)
+- Session-Based: Yes
+- Method + Link: PUT /api/courses/{courseId}
+- Input:
+  - courseId: The ID of the course to be updated.
+  {
+      "subject": "CS",
+      "courseCode": "103",
+      "courseNameEn": "Advanced Data Structures",
+      "courseNameTr": "İleri Veri Yapıları",
+      "suCredit": 4,
+      "ectsCredit": 7,
+      "engineeringEcts": 4,
+      "basicScienceEcts": 0,
+      "contentEn": "This course covers advanced data structures.",
+      "contentTr": "Bu ders ileri veri yapılarını kapsar.",
+      "linkEn": "http://example.com/cs103-advanced",
+      "linkTr": "http://example.com/cs103-advanced-tr",
+      "faculty": "Engineering",
+      "courseStatus": true
+  }
+- Expected Outputs:
+  - HTTP 200 OK: "Course updated successfully."
+  - HTTP 403 Forbidden: "You are not authorized to update a course."
+  - HTTP 404 Not Found: "Course not found with ID: {courseId}"
+
+---
+
+Controller: CourseCommentController 13-16
+
+13. Get All Comments for a Course
+- Session-Based: Yes
+- Method + Link: GET /api/course-comments/{courseId}
+- Input:
+  - courseId: The ID of the course for which comments are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "commentId": 1,
+            "content": "This course is very informative.",
+            "anonymous": false,
+            "createdAt": "2025-05-12T10:00:00",
+            "termTaken": 202401,
+            "gradeReceived": "A",
+            "user": {
+                "userId": 1,
+                "username": "john_doe"
+            },
+            "parentCommentId": null
+        },
+        {
+            "commentId": 2,
+            "content": "I found the course challenging but rewarding.",
+            "anonymous": true,
+            "createdAt": "2025-05-11T15:30:00",
+            "termTaken": 202301,
+            "gradeReceived": "B+",
+            "user": null,
+            "parentCommentId": 1
+        }
+    ]
+    ```
+  - HTTP 401 Unauthorized:
+    ```json
+    {
+        "message": "Unauthorized"
+    }
+    ```
+  - HTTP 404 Not Found:
+    ```json
+    {
+        "message": "Course not found"
+    }
+    ```
+
+14. Add a Comment to a Course
+- Session-Based: Yes
+- Method + Link: POST /api/course-comments/{courseId}
+- Input:
+  - courseId: The ID of the course to which the comment will be added.
+  ```json
+  {
+      "content": "This course is amazing!",
+      "anonymous": false,
+      "termTaken": 202401,
+      "gradeReceived": "A",
+      "parentCommentId": null
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Comment added successfully."
+  - HTTP 401 Unauthorized: "You must be logged in to add a comment."
+  - HTTP 404 Not Found: "Course not found."
+
+15. Update a Comment (Admin or Comment Owner Only)
+- Session-Based: Yes
+- Method + Link: PUT /api/course-comments/{commentId}
+- Input:
+  - commentId: The ID of the comment to be updated.
+  ```json
+  {
+      "content": "This course is fantastic!",
+      "anonymous": true,
+      "termTaken": 202401,
+      "gradeReceived": "A-"
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Comment updated successfully."
+  - HTTP 401 Unauthorized: "You must be logged in to edit a comment."
+  - HTTP 403 Forbidden: "You are not authorized to update this comment."
+  - HTTP 404 Not Found: "Comment not found."
+
+16. Delete a Comment (Admin or Comment Owner Only)
+- Session-Based: Yes
+- Method + Link: DELETE /api/course-comments/{commentId}
+- Input:
+  - commentId: The ID of the comment to be deleted.
+- Expected Outputs:
+  - HTTP 200 OK: "Comment deleted successfully."
+  - HTTP 401 Unauthorized: "You must be logged in to delete a comment."
+  - HTTP 403 Forbidden: "You are not authorized to delete this comment."
+  - HTTP 404 Not Found: "Comment not found."
+
+---
+
+Controller: CourseCommentRatingController 17-20
+
+17. Rate a Comment (Like or Dislike)
+- Session-Based: Yes
+- Method + Link: POST /api/course-comment-ratings/{commentId}/rate
+- Input:
+  - commentId: The ID of the comment to be rated.
+  - isLike: A boolean indicating whether the comment is liked (`true`) or disliked (`false`).
+  ```json
+  {
+      "isLike": true
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Comment rated successfully."
+  - HTTP 401 Unauthorized: "You must be logged in to rate a comment."
+  - HTTP 404 Not Found: "Comment not found."
+
+18. Get Comment Rating (Like/Dislike Status)
+- Session-Based: Yes
+- Method + Link: GET /api/course-comment-ratings/{commentId}
+- Input:
+  - commentId: The ID of the comment for which the rating status is requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    {
+        "commentId": 1,
+        "isLiked": true,
+        "isDisliked": false
+    }
+    ```
+  - HTTP 401 Unauthorized: "Unauthorized"
+  - HTTP 404 Not Found: "Comment not found"
+
+19. Get All Ratings for a Comment
+- Session-Based: Yes
+- Method + Link: GET /api/course-comment-ratings/{commentId}/all
+- Input:
+  - commentId: The ID of the comment for which all ratings are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    {
+        "commentId": 1,
+        "ratings": [
+            {
+                "userId": 1,
+                "username": "john_doe",
+                "isLiked": true,
+                "isDisliked": false
+            },
+            {
+                "userId": 2,
+                "username": "jane_doe",
+                "isLiked": false,
+                "isDisliked": true
+            }
+        ]
+    }
+    ```
+  - HTTP 401 Unauthorized: "Unauthorized"
+  - HTTP 404 Not Found: "Comment not found"
+
+20. Delete a Rating (Like or Dislike)
+- Session-Based: Yes
+- Method + Link: DELETE /api/course-comment-ratings/{commentId}/delete
+- Input:
+  - commentId: The ID of the comment for which the rating will be deleted.
+- Expected Outputs:
+  - HTTP 200 OK: "Rating deleted successfully."
+  - HTTP 401 Unauthorized: "You must be logged in to delete a rating."
+  - HTTP 404 Not Found: "Comment not found."
+
+---
+
+Controller: CourseViewLogController 21-22
+
+21. Log a Course Visit
+- Session-Based: Yes
+- Method + Link: POST /api/course-view-log/log
+- Input:
+  - courseId: The ID of the course being visited.
+  ```json
+  {
+      "courseId": 101
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Course visit logged successfully."
+  - HTTP 401 Unauthorized: "You must be logged in to log a course visit."
+  - HTTP 404 Not Found: "Course not found."
+
+22. Get Course Visit Log
+- Session-Based: Yes
+- Method + Link: GET /api/course-view-log
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "courseId": 101,
+            "visitedAt": "2025-05-12T10:00:00"
+        },
+        {
+            "courseId": 102,
+            "visitedAt": "2025-05-11T15:30:00"
+        }
+    ]
+    ```
+  - HTTP 401 Unauthorized: "Unauthorized"
+
+---
+
+Controller:
 

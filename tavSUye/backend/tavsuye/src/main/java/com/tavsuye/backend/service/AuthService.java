@@ -92,44 +92,27 @@ public class AuthService {
     }
 
     // User login process (Handles password attempts and 2FA support)
-    public Optional<User> login(LoginRequest request) {
+    public LoginResult login(LoginRequest request) {
         Optional<User> userOptional = userRepository.findByEmailOrUsername(
             request.getUsernameOrEmail().toLowerCase(), request.getUsernameOrEmail()
         );
 
         if (userOptional.isEmpty()) {
-            return Optional.empty();
+            return new LoginResult(LoginResult.Type.INVALID, null);
         }
 
         User user = userOptional.get();
 
-        // If the account is BANNED, prevent login and do not increase failed attempts
         if (user.getAccountStatus() == User.AccountStatus.BANNED) {
-            return Optional.of(user); // Return user object so the controller can send a proper response
+            return new LoginResult(LoginResult.Type.BANNED, user);
         }
-
-        // If the account is SUSPENDED, prevent login and force email verification
         if (user.getAccountStatus() == User.AccountStatus.SUSPENDED) {
-            LocalDateTime now = LocalDateTime.now();
-
-            // If verification expired, send a new code
-            if (user.getEmailVerificationExpires().isBefore(now)) {
-                String verificationCode = generateVerificationCode();
-                user.setEmailVerificationCode(verificationCode);
-                user.setEmailVerificationExpires(now.plusMinutes(3)); // Code valid for 3 minutes
-                emailService.sendVerificationEmail(user.getEmail(), verificationCode);
-                userRepository.save(user);
-            }
-
-            return Optional.of(user);
+            return new LoginResult(LoginResult.Type.SUSPENDED, user);
         }
-
-        // If the account is not ACTIVE, deny login
         if (user.getAccountStatus() != User.AccountStatus.ACTIVE) {
-            return Optional.empty();
+            return new LoginResult(LoginResult.Type.INVALID, null);
         }
 
-        // Verify password using Argon2
         Argon2 argon2 = Argon2Factory.create();
         if (!argon2.verify(user.getHashedPassword(), (user.getSalt() + request.getPassword()).toCharArray())) {
             user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
@@ -147,25 +130,24 @@ public class AuthService {
             }
 
             userRepository.save(user);
-            return Optional.empty();
+            return new LoginResult(LoginResult.Type.INVALID, null);
         }
 
-        // Successful login -> Reset failed attempts and update last login time
-        user.setFailedLoginAttempts(0);
-        user.setLastLogin(LocalDateTime.now());
-
-        // If 2FA is enabled, send a new verification code
+        // 2FA kontrolü
         if (Boolean.TRUE.equals(user.getIs2faEnabled())) {
             String verificationCode = generateVerificationCode();
             user.setEmailVerificationCode(verificationCode);
             user.setEmailVerificationExpires(LocalDateTime.now().plusMinutes(3));
             userRepository.save(user);
             emailService.sendVerificationEmail(user.getEmail(), verificationCode);
-            return Optional.empty();
+            return new LoginResult(LoginResult.Type.TWO_FA_REQUIRED, user);
         }
 
+        // Başarılı login
+        user.setFailedLoginAttempts(0);
+        user.setLastLogin(LocalDateTime.now());
         userRepository.save(user);
-        return Optional.of(user);
+        return new LoginResult(LoginResult.Type.SUCCESS, user);
     }
 
     // Email verification process
@@ -253,34 +235,48 @@ public class AuthService {
     }
 
     // Reset password
-    public boolean resetPassword(String code, String newPassword) {
-        Optional<User> userOptional = userRepository.findByPasswordResetToken(code);
+    public boolean resetPassword(String email, String code, String newPassword) {
+        Optional<User> userOptional = userRepository.findByEmailAndPasswordResetToken(email.toLowerCase(), code);
         if (userOptional.isEmpty()) {
             return false;
         }
 
         User user = userOptional.get();
 
-        // Check if the code is expired
-        if (user.getPasswordResetExpires().isBefore(LocalDateTime.now())) {
+        if (user.getPasswordResetExpires() == null || user.getPasswordResetExpires().isBefore(LocalDateTime.now())) {
             throw new RuntimeException("The password reset code has expired.");
         }
 
-        // Update the password
-        user.setHashedPassword(hashPassword(newPassword, user.getSalt()));
-        user.setPasswordResetToken(null); // Invalidate the code
+        // Yeni salt oluştur
+        byte[] saltBytes = new byte[32];
+        new java.security.SecureRandom().nextBytes(saltBytes);
+        String newSalt = java.util.Base64.getEncoder().encodeToString(saltBytes);
+
+        // Argon2 ile hashle
+        de.mkammerer.argon2.Argon2 argon2 = de.mkammerer.argon2.Argon2Factory.create();
+        String hashedPassword = argon2.hash(2, 65536, 1, (newSalt + newPassword).toCharArray());
+        user.setHashedPassword(hashedPassword);
+        user.setSalt(newSalt);
+
+        user.setPasswordResetToken(null);
         user.setPasswordResetExpires(null);
         userRepository.save(user);
         return true;
     }
 
-    private String hashPassword(String password, String salt) {
-        // Hash the password using Argon2 or any other hashing algorithm
-        return password + salt; // Simplified for demonstration
-    }
-
     // Generates a 6-digit verification code
     private String generateVerificationCode() {
         return String.format("%06d", new Random().nextInt(999999));
+    }
+
+    // LoginResult class for login outcomes
+    public static class LoginResult {
+        public enum Type { SUCCESS, INVALID, TWO_FA_REQUIRED, BANNED, SUSPENDED, EMAIL_NOT_VERIFIED }
+        public final Type type;
+        public final User user;
+        public LoginResult(Type type, User user) {
+            this.type = type;
+            this.user = user;
+        }
     }
 }
