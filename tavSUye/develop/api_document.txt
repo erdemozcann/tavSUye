@@ -1026,3 +1026,101 @@ Controller: StudentPlanController 47-49
 
 ---
 
+Controller: ProgramController 50-52
+
+50. Get All Unique Program Names
+- Session-Based: Yes
+- Method + Link: GET /api/programs/unique-names
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "name_en": "Computer Science and Engineering",
+            "name_tr": "Bilgisayar Bilimi ve Mühendisliği"
+        },
+        {
+            "name_en": "Industrial Engineering",
+            "name_tr": "Endüstri Mühendisliği"
+        }
+    ]
+    ```
+  - HTTP 403 Forbidden: "You must be logged in to access this resource."
+
+51. Get Program Details by Name and Admission Term
+- Session-Based: Yes
+- Method + Link: GET /api/programs/details
+- Input:
+  - nameEn: The English name of the program (as a query parameter).
+  - admissionTerm: The admission term of the program (as a query parameter, format: YYYYMM).
+  - Example: `/api/programs/details?nameEn=Computer%20Science%20and%20Engineering&admissionTerm=202101`
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    {
+        "programId": 1,
+        "nameEn": "Computer Science and Engineering",
+        "nameTr": "Bilgisayar Bilimi ve Mühendisliği",
+        "admissionTerm": 202101,
+        "universityCredits": 128,
+        "universityMinCourses": 40,
+        "requiredCredits": 82,
+        "requiredMinCourses": 25,
+        "coreCredits": 15,
+        "coreMinCourses": 5,
+        "coreElectiveCreditsI": 9,
+        "coreElectiveMinCoursesI": 3,
+        "coreElectiveCreditsII": 6,
+        "coreElectiveMinCoursesII": 2,
+        "areaCredits": 12,
+        "areaMinCourses": 4,
+        "freeElectiveCredits": 9,
+        "freeElectiveMinCourses": 3,
+        "facultyCredits": 6,
+        "facultyMinCourses": 2,
+        "mathRequiredCredits": 12,
+        "mathMinCourses": 4,
+        "philosophyRequiredCredits": 3,
+        "philosophyMinCourses": 1,
+        "engineeringEcts": 90,
+        "basicScienceEcts": 30
+    }
+    ```
+  - HTTP 403 Forbidden: "You must be logged in to access this resource."
+  - HTTP 404 Not Found: "Program not found with name: {nameEn} and admission term: {admissionTerm}"
+
+52. Get Courses by Program ID
+- Session-Based: Yes
+- Method + Link: GET /api/programs/{programId}/courses
+- Input:
+  - programId: The ID of the program for which courses are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "courseId": "101",
+            "courseGroup": "Required",
+            "subject": "CS",
+            "courseCode": "101"
+        },
+        {
+            "courseId": "102",
+            "courseGroup": "Core",
+            "subject": "CS",
+            "courseCode": "102"
+        },
+        {
+            "courseId": "103",
+            "courseGroup": "Elective",
+            "subject": "MATH",
+            "courseCode": "101"
+        }
+    ]
+    ```
+  - HTTP 403 Forbidden: "You must be logged in to access this resource."
+  - HTTP 404 Not Found: "Program not found with ID: {programId}"
+
+---
+

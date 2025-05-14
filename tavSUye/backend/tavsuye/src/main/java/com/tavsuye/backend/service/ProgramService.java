@@ -46,8 +46,14 @@ public class ProgramService {
 
     // Get courses by program ID
     public List<Map<String, String>> getCoursesByProgramId(Integer programId) {
+        // First check if the program exists
+        if (!programRepository.existsById(programId)) {
+            throw new RuntimeException("Program not found with ID: " + programId);
+        }
+        
         List<ProgramCourse> programCourses = programCourseRepository.findByProgram_ProgramId(programId);
-
+        
+        // If no courses were found for a valid program, return an empty list
         return programCourses.stream()
                 .map(pc -> Map.of(
                         "courseId", pc.getCourse().getCourseId().toString(),
