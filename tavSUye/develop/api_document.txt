@@ -913,3 +913,116 @@ Controller: PrerequisiteController 43
 
 ---
 
+Controller: ProfileController 44-46
+
+44. Get User Profile
+- Session-Based: Yes
+- Method + Link: GET /api/profile
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    {
+        "name": "John",
+        "surname": "Doe",
+        "username": "john_doe",
+        "email": "john.doe@sabanciuniv.edu",
+        "major": "Computer Science",
+        "minor": "Mathematics",
+        "second_major": null,
+        "start_term": 202101,
+        "graduation_term": 202501,
+        "is_2fa_enabled": false,
+        "last_failed_attempt": null,
+        "last_login": "2025-05-14T21:19:57"
+    }
+    ```
+  - HTTP 403 Forbidden
+
+45. Update Two-Factor Authentication Settings
+- Session-Based: Yes
+- Method + Link: PUT /api/profile/2fa
+- Input:
+  - is2faEnabled: Boolean value indicating whether to enable or disable 2FA (as a query parameter).
+  - Example: `/api/profile/2fa?is2faEnabled=true`
+- Expected Outputs:
+  - HTTP 200 OK: "Two-factor authentication setting updated successfully."
+  - HTTP 403 Forbidden: "You must be logged in to update 2FA settings."
+  - HTTP 404 Not Found: "User not found"
+
+46. Update User Profile
+- Session-Based: Yes
+- Method + Link: PUT /api/profile
+- Input:
+  ```json
+  {
+      "name": "John",
+      "surname": "Smith",
+      "major": "Computer Science and Engineering",
+      "minor": "Business",
+      "second_major": "Mathematics",
+      "start_term": 202101,
+      "graduation_term": 202501
+  }
+  ```
+  (All fields are optional; only include fields to be updated)
+- Expected Outputs:
+  - HTTP 200 OK: "Profile updated successfully."
+  - HTTP 403 Forbidden: "You must be logged in to update your profile."
+  - HTTP 404 Not Found: "User not found"
+
+---
+
+Controller: StudentPlanController 47-49
+
+47. Save a Student Plan
+- Session-Based: Yes
+- Method + Link: POST /api/student-plan/save
+- Input:
+  - courseId: The ID of the course to add to the student's plan (as a query parameter).
+  - term: The term in which the student plans to take the course (as a query parameter, format: YYYYMM).
+  - Example: `/api/student-plan/save?courseId=101&term=1`
+- Expected Outputs:
+  - HTTP 200 OK: "Student plan saved successfully."
+  - HTTP 403 Forbidden: "You must be logged in to save a plan."
+  - HTTP 404 Not Found: 
+    - "User not found with ID: {userId}"
+    - "Course not found with ID: {courseId}"
+  - HTTP 400 Bad Request: Other error messages
+
+48. Get All Student Plans
+- Session-Based: Yes
+- Method + Link: GET /api/student-plan/all
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "planId": 1,
+            "courseId": 101,
+            "subject": "CS",
+            "courseCode": "101",
+            "term": 202401
+        },
+        {
+            "planId": 2,
+            "courseId": 102,
+            "subject": "MATH",
+            "courseCode": "101",
+            "term": 202401
+        }
+    ]
+    ```
+  - HTTP 403 Forbidden
+
+49. Delete All Student Plans
+- Session-Based: Yes
+- Method + Link: DELETE /api/student-plan/delete-all
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK: "All student plans deleted successfully."
+  - HTTP 403 Forbidden: "You must be logged in to delete plans."
+
+---
+

@@ -1,5 +1,6 @@
 package com.tavsuye.backend.controller;
 
+import com.tavsuye.backend.dto.StudentPlanDTO;
 import com.tavsuye.backend.entity.StudentPlan;
 import com.tavsuye.backend.service.StudentPlanService;
 import org.springframework.http.HttpStatus;
@@ -27,23 +28,34 @@ public class StudentPlanController {
             HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to save a plan.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to save a plan.");
         }
 
-        studentPlanService.saveStudentPlan(userId, courseId, term);
-        return ResponseEntity.ok("Student plan saved successfully.");
+        try {
+            studentPlanService.saveStudentPlan(userId, courseId, term);
+            return ResponseEntity.ok("Student plan saved successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("User not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+            } else if (ex.getMessage().contains("Course not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // 2. API: Get all student plans for a user
     @GetMapping("/all")
-    public ResponseEntity<List<StudentPlan>> getAllStudentPlans(HttpSession session) {
+    public ResponseEntity<List<StudentPlanDTO>> getAllStudentPlans(HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
 
         List<StudentPlan> plans = studentPlanService.getAllStudentPlans(userId);
-        return ResponseEntity.ok(plans);
+        List<StudentPlanDTO> planDTOs = StudentPlanDTO.fromEntities(plans);
+        return ResponseEntity.ok(planDTOs);
     }
 
     // 3. API: Delete all student plans for a user
@@ -51,7 +63,7 @@ public class StudentPlanController {
     public ResponseEntity<String> deleteAllStudentPlans(HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to delete plans.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to delete plans.");
         }
 
         studentPlanService.deleteAllStudentPlans(userId);

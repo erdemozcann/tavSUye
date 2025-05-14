@@ -23,11 +23,19 @@ public class ProfileController {
     public ResponseEntity<Map<String, Object>> getUserProfile(HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
 
-        Map<String, Object> userProfile = profileService.getUserProfile(userId);
-        return ResponseEntity.ok(userProfile);
+        try {
+            Map<String, Object> userProfile = profileService.getUserProfile(userId);
+            return ResponseEntity.ok(userProfile);
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("User not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+        }
     }
 
     // 2. API: Update 2FA setting
@@ -35,11 +43,19 @@ public class ProfileController {
     public ResponseEntity<String> updateTwoFactorAuth(@RequestParam Boolean is2faEnabled, HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to update 2FA settings.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to update 2FA settings.");
         }
 
-        profileService.updateTwoFactorAuth(userId, is2faEnabled);
-        return ResponseEntity.ok("Two-factor authentication setting updated successfully.");
+        try {
+            profileService.updateTwoFactorAuth(userId, is2faEnabled);
+            return ResponseEntity.ok("Two-factor authentication setting updated successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("User not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // 3. API: Update user profile details
@@ -47,10 +63,18 @@ public class ProfileController {
     public ResponseEntity<String> updateUserProfile(@RequestBody Map<String, Object> updates, HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to update your profile.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to update your profile.");
         }
 
-        profileService.updateUserProfile(userId, updates);
-        return ResponseEntity.ok("Profile updated successfully.");
+        try {
+            profileService.updateUserProfile(userId, updates);
+            return ResponseEntity.ok("Profile updated successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("User not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 }
