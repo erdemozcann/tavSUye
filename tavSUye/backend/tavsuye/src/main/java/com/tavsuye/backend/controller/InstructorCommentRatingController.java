@@ -27,7 +27,7 @@ public class InstructorCommentRatingController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to rate a comment.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to rate a comment.");
         }
         
         Boolean isLike = requestBody.get("isLike");
@@ -57,7 +57,7 @@ public class InstructorCommentRatingController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to remove a rating.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to remove a rating.");
         }
 
         try {
@@ -87,7 +87,7 @@ public class InstructorCommentRatingController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
 
         Boolean isLiked = ratingService.getUserRating(commentId, userId);

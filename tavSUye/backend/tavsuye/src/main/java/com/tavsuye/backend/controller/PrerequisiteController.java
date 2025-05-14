@@ -26,7 +26,7 @@ public class PrerequisiteController {
             HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
 
         List<Map<String, Object>> prerequisites = prerequisiteService.getPrerequisitesByCourseId(courseId);

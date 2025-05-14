@@ -713,4 +713,203 @@ Controller: InstructorViewLogController 31-32
 
 ---
 
+Controller: InstructorCommentController 33-36
+
+33. Get All Comments for an Instructor
+- Session-Based: Yes
+- Method + Link: GET /api/instructor-comments/{instructorId}
+- Input:
+  - instructorId: The ID of the instructor for which comments are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "commentId": 1,
+            "userId": 9,
+            "username": "erdemozcan",
+            "instructorId": 3,
+            "parentCommentId": null,
+            "content": "This instructor is amazing!",
+            "createdAt": "2025-05-14T16:16:03",
+            "anonymous": false
+        },
+        {
+            "commentId": 2,
+            "userId": null,
+            "username": null,
+            "instructorId": 3,
+            "parentCommentId": 1,
+            "content": "Very knowledgeable in the subject.",
+            "createdAt": "2025-05-14T17:12:07",
+            "anonymous": true
+        }
+    ]
+    ```
+  - HTTP 403 Forbidden
+
+34. Add a Comment to an Instructor
+- Session-Based: Yes
+- Method + Link: POST /api/instructor-comments/{instructorId}
+- Input:
+  - instructorId: The ID of the instructor to which the comment will be added.
+  ```json
+  {
+      "content": "This instructor is amazing!",
+      "anonymous": false,
+      "parentCommentId": null
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Comment added successfully."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Instructor not found"
+  - HTTP 400 Bad Request: Error message details
+
+35. Update a Comment
+- Session-Based: Yes
+- Method + Link: PUT /api/instructor-comments/{commentId}
+- Input:
+  - commentId: The ID of the comment to be updated.
+  ```json
+  {
+      "content": "This instructor is really great!",
+      "anonymous": true
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Comment updated successfully."
+  - HTTP 403 Forbidden
+  - HTTP 403 Forbidden: "You are not authorized to edit this comment."
+  - HTTP 404 Not Found: "Comment not found"
+  - HTTP 400 Bad Request: Error message details
+
+36. Delete a Comment (Admin or Comment Owner Only)
+- Session-Based: Yes
+- Method + Link: DELETE /api/instructor-comments/{commentId}
+- Input:
+  - commentId: The ID of the comment to be deleted.
+- Expected Outputs:
+  - HTTP 200 OK: "Comment deleted successfully."
+  - HTTP 403 Forbidden
+  - HTTP 403 Forbidden: "You are not authorized to delete this comment."
+  - HTTP 404 Not Found: "Comment not found"
+  - HTTP 400 Bad Request: Error message details
+
+---
+
+Controller: InstructorCommentRatingController 37-40
+
+37. Rate a Comment (Like or Dislike)
+- Session-Based: Yes
+- Method + Link: POST /api/instructor-comment-ratings/{commentId}/rate
+- Input:
+  - commentId: The ID of the comment to be rated.
+  - isLike: A boolean indicating whether the comment is liked (`true`) or disliked (`false`).
+  ```json
+  {
+      "isLike": true
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Comment rated successfully."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Comment not found"
+  - HTTP 400 Bad Request: "The 'isLike' field is required." or other error details
+
+38. Get Comment Stats (Likes/Dislikes Count)
+- Session-Based: Yes
+- Method + Link: GET /api/instructor-comment-ratings/{commentId}/stats
+- Input:
+  - commentId: The ID of the comment for which the stats are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    {
+        "likes": 10,
+        "dislikes": 3
+    }
+    ```
+
+39. Get User's Rating for a Comment
+- Session-Based: Yes
+- Method + Link: GET /api/instructor-comment-ratings/{commentId}/user-rating
+- Input:
+  - commentId: The ID of the comment for which the user's rating is requested.
+- Expected Outputs:
+  - HTTP 200 OK: `true` (if liked), `false` (if disliked), or `null` (if not rated)
+  - HTTP 403 Forbidden
+
+40. Remove Rating from a Comment
+- Session-Based: Yes
+- Method + Link: DELETE /api/instructor-comment-ratings/{commentId}/rate
+- Input:
+  - commentId: The ID of the comment for which the rating will be removed.
+- Expected Outputs:
+  - HTTP 200 OK: "Rating removed successfully."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Rating not found"
+  - HTTP 400 Bad Request: Error message details
+
+---
+
+Controller: AdminController 41-42
+
+41. Ban a User (Admin Only)
+- Session-Based: Yes
+- Method + Link: POST /api/admin/ban-user
+- Input:
+  - userId: The ID of the user to be banned (as a query parameter).
+  - reason: The reason for the ban (as a query parameter).
+  - Example: `/api/admin/ban-user?userId=123&reason=Inappropriate%20behavior`
+- Expected Outputs:
+  - HTTP 200 OK: "User banned successfully."
+  - HTTP 403 Forbidden: "You are not authorized to ban a user."
+  - HTTP 404 Not Found: "User not found with ID: {userId}"
+
+42. Change Course Subject and Code (Admin Only)
+- Session-Based: Yes
+- Method + Link: POST /api/admin/change-course
+- Input:
+  - oldCourseId: The ID of the course to be changed (as a query parameter).
+  - newCourseId: The ID of the new course (as a query parameter).
+  - Example: `/api/admin/change-course?oldCourseId=101&newCourseId=102`
+- Expected Outputs:
+  - HTTP 200 OK: "Course changed successfully."
+  - HTTP 403 Forbidden: "You are not authorized to change a course."
+  - HTTP 404 Not Found: 
+    - "Old course not found with ID: {oldCourseId}"
+    - "New course not found with ID: {newCourseId}"
+
+---
+
+Controller: PrerequisiteController 43
+
+43. Get Prerequisites for a Course
+- Session-Based: Yes
+- Method + Link: GET /api/prerequisites/{courseId}
+- Input:
+  - courseId: The ID of the course for which prerequisites are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "courseId": 101,
+            "subject": "CS",
+            "courseCode": "101",
+            "isAnd": true
+        },
+        {
+            "courseId": 102,
+            "subject": "MATH",
+            "courseCode": "101",
+            "isAnd": false
+        }
+    ]
+    ```
+    or `null` if no prerequisites exist
+  - HTTP 403 Forbidden
+
+---
 

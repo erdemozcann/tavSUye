@@ -28,6 +28,19 @@ public class InstructorCommentService {
         Instructor instructor = instructorRepository.findById(instructorId)
                 .orElseThrow(() -> new RuntimeException("Instructor not found"));
 
+        // Check if parent comment exists if provided
+        if (comment.getParentCommentId() != null) {
+            InstructorComment parentComment = instructorCommentRepository.findById(comment.getParentCommentId())
+                    .orElseThrow(() -> new RuntimeException("Parent comment not found"));
+            
+            // Ensure parent comment belongs to the same instructor
+            if (!parentComment.getInstructor().getInstructorId().equals(instructorId)) {
+                throw new RuntimeException("Parent comment does not belong to this instructor");
+            }
+            
+            comment.setParentComment(parentComment);
+        }
+
         comment.setInstructor(instructor);
         comment.setCreatedAt(LocalDateTime.now());
         comment.setDeleted(false);

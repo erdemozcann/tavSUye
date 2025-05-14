@@ -1,5 +1,6 @@
 package com.tavsuye.backend.controller;
 
+import com.tavsuye.backend.dto.InstructorCommentDTO;
 import com.tavsuye.backend.entity.InstructorComment;
 import com.tavsuye.backend.entity.User;
 import com.tavsuye.backend.service.InstructorCommentService;
@@ -23,16 +24,18 @@ public class InstructorCommentController {
 
     // API: Get all comments for an instructor
     @GetMapping("/{instructorId}")
-    public ResponseEntity<List<InstructorComment>> getCommentsByInstructor(
+    public ResponseEntity<List<InstructorCommentDTO>> getCommentsByInstructor(
             @PathVariable Integer instructorId,
             HttpSession session) {
         // Session control
-        if (session.getAttribute("userId") == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Unauthorized
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null); // Forbidden
         }
 
         List<InstructorComment> comments = instructorCommentService.getCommentsByInstructor(instructorId);
-        return ResponseEntity.ok(comments);
+        List<InstructorCommentDTO> commentDTOs = InstructorCommentDTO.fromEntities(comments, userId);
+        return ResponseEntity.ok(commentDTOs);
     }
 
     // API: Add a comment to an instructor
@@ -44,7 +47,7 @@ public class InstructorCommentController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to add a comment.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to add a comment.");
         }
 
         User user = new User();
@@ -72,7 +75,7 @@ public class InstructorCommentController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to edit a comment.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to edit a comment.");
         }
 
         try {
@@ -100,7 +103,7 @@ public class InstructorCommentController {
         boolean isAdmin = role != null && role.equals("ADMIN");
         
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to delete a comment.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to delete a comment.");
         }
 
         try {

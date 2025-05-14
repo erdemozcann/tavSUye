@@ -29,9 +29,17 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to ban a user.");
         }
 
-        // Ban the user
-        adminService.banUser(userId, reason);
-        return ResponseEntity.ok("User banned successfully.");
+        try {
+            // Ban the user
+            adminService.banUser(userId, reason);
+            return ResponseEntity.ok("User banned successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("User not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Change course subject and code (Admin only)
@@ -46,8 +54,16 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to change a course.");
         }
 
-        // Change the course
-        adminService.changeCourse(oldCourseId, newCourseId);
-        return ResponseEntity.ok("Course changed successfully.");
+        try {
+            // Change the course
+            adminService.changeCourse(oldCourseId, newCourseId);
+            return ResponseEntity.ok("Course changed successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 }
