@@ -36,6 +36,13 @@ public class CourseViewLogService {
 
     public List<Object[]> getTopVisitedCourses() {
         LocalDateTime thirtyDaysAgo = LocalDateTime.now().minusDays(30);
-        return courseViewLogRepository.findTopVisitedCourses(thirtyDaysAgo);
+        List<Object[]> allTopCourses = courseViewLogRepository.findTopVisitedCourses(thirtyDaysAgo);
+        
+        // Limit to only 10 top courses
+        if (allTopCourses.size() > 10) {
+            return allTopCourses.subList(0, 10);
+        }
+        
+        return allTopCourses;
     }
 }

@@ -36,6 +36,13 @@ public class InstructorViewLogService {
 
     public List<Object[]> getTopVisitedInstructors() {
         LocalDateTime thirtyDaysAgo = LocalDateTime.now().minusDays(30);
-        return instructorViewLogRepository.findTopVisitedInstructors(thirtyDaysAgo);
+        List<Object[]> allTopInstructors = instructorViewLogRepository.findTopVisitedInstructors(thirtyDaysAgo);
+        
+        // Limit to only 10 top instructors
+        if (allTopInstructors.size() > 10) {
+            return allTopInstructors.subList(0, 10);
+        }
+        
+        return allTopInstructors;
     }
 }

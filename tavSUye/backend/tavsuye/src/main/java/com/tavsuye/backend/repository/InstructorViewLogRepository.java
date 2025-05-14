@@ -11,13 +11,15 @@ import java.util.List;
 @Repository
 public interface InstructorViewLogRepository extends JpaRepository<InstructorViewLog, Integer> {
 
-    @Query("""
-        SELECT i.instructorId, COUNT(DISTINCT ivl.user.userId) AS uniqueVisitCount
+    @Query(value = """
+        SELECT i.instructorId, i.name, i.surname, i.department, COUNT(DISTINCT ivl.user.userId) AS uniqueVisitCount
         FROM InstructorViewLog ivl
         JOIN ivl.instructor i
         WHERE ivl.viewedAt >= :thirtyDaysAgo
-        GROUP BY i.instructorId
+        GROUP BY i.instructorId, i.name, i.surname, i.department
         ORDER BY uniqueVisitCount DESC
-    """)
+        """, 
+        countQuery = "SELECT COUNT(*) FROM InstructorViewLog",
+        nativeQuery = false)
     List<Object[]> findTopVisitedInstructors(LocalDateTime thirtyDaysAgo);
 }

@@ -24,12 +24,20 @@ public class InstructorViewLogController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to log an instructor visit.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to log an instructor visit.");
         }
 
-        // Log user and instructor information
-        instructorViewLogService.logInstructorVisit(userId, instructorId);
-        return ResponseEntity.ok("Instructor visit logged successfully.");
+        try {
+            // Log user and instructor information
+            instructorViewLogService.logInstructorVisit(userId, instructorId);
+            return ResponseEntity.ok("Instructor visit logged successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Instructor not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Instructor not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Get top visited instructors in the last 30 days

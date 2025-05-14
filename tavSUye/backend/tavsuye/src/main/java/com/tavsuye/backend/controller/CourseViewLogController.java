@@ -24,12 +24,20 @@ public class CourseViewLogController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to log a course visit.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to log a course visit.");
         }
 
-        // Log user and course information
-        courseViewLogService.logCourseVisit(userId, courseId);
-        return ResponseEntity.ok("Course visit logged successfully.");
+        try {
+            // Log user and course information
+            courseViewLogService.logCourseVisit(userId, courseId);
+            return ResponseEntity.ok("Course visit logged successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Course not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Get top visited courses in the last 30 days

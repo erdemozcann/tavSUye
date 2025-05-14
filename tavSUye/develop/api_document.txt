@@ -447,36 +447,79 @@ Controller: CourseViewLogController 21-22
 - Session-Based: Yes
 - Method + Link: POST /api/course-view-log/log
 - Input:
-  - courseId: The ID of the course being visited.
-  ```json
-  {
-      "courseId": 101
-  }
-  ```
+  - courseId: The ID of the course being visited (as a query parameter).
+  - Example: `/api/course-view-log/log?courseId=101`
 - Expected Outputs:
   - HTTP 200 OK: "Course visit logged successfully."
-  - HTTP 401 Unauthorized: "You must be logged in to log a course visit."
-  - HTTP 404 Not Found: "Course not found."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Course not found"
 
-22. Get Course Visit Log
+22. Get Top Visited Courses
 - Session-Based: Yes
-- Method + Link: GET /api/course-view-log
+- Method + Link: GET /api/course-view-log/top-visited
 - Input: None
 - Expected Outputs:
   - HTTP 200 OK:
     ```json
     [
-        {
-            "courseId": 101,
-            "visitedAt": "2025-05-12T10:00:00"
-        },
-        {
-            "courseId": 102,
-            "visitedAt": "2025-05-11T15:30:00"
-        }
+        [
+            101,  // courseId
+            "CS",  // subject
+            "101", // courseCode
+            15     // visitCount
+        ],
+        [
+            102,  // courseId
+            "MATH", // subject
+            "101",  // courseCode
+            10     // visitCount
+        ]
     ]
     ```
-  - HTTP 401 Unauthorized: "Unauthorized"
+    (Returns at most 10 courses ordered by visit count)
+  - HTTP 403 Forbidden
+
+---
+
+Controller: InstructorViewLogController 23-24
+
+23. Log an Instructor Visit
+- Session-Based: Yes
+- Method + Link: POST /api/instructor-view-log/log
+- Input:
+  - instructorId: The ID of the instructor being visited (as a query parameter).
+  - Example: `/api/instructor-view-log/log?instructorId=101`
+- Expected Outputs:
+  - HTTP 200 OK: "Instructor visit logged successfully."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Instructor not found"
+
+24. Get Top Visited Instructors
+- Session-Based: Yes
+- Method + Link: GET /api/instructor-view-log/top-visited
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        [
+            101,   // instructorId
+            "John", // name
+            "Doe",  // surname
+            "Computer Science", // department
+            15     // visitCount
+        ],
+        [
+            102,   // instructorId
+            "Jane", // name
+            "Smith", // surname
+            "Mathematics", // department
+            10     // visitCount
+        ]
+    ]
+    ```
+    (Returns at most 10 instructors ordered by visit count)
+  - HTTP 403 Forbidden
 
 ---
 
