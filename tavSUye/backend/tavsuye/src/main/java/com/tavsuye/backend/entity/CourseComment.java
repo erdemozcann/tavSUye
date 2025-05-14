@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "CourseComment")
+@Table(name = "coursecomment")
 public class CourseComment {
 
     @Id
@@ -130,5 +130,15 @@ public class CourseComment {
 
     public Integer getParentCommentId() {
         return parentComment != null ? parentComment.getCommentId() : null;
+    }
+
+    public void setParentCommentId(Integer parentCommentId) {
+        if (parentCommentId != null) {
+            CourseComment parent = new CourseComment();
+            parent.setCommentId(parentCommentId);
+            this.parentComment = parent;
+        } else {
+            this.parentComment = null;
+        }
     }
 }

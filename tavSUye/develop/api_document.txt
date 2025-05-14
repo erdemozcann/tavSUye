@@ -237,7 +237,7 @@ Controller: CourseController 8-12
 - Expected Outputs:
   - HTTP 200 OK: "Course added successfully."
   - HTTP 400 Bad Request
-  - HTTP 403 Forbidden: "You are not authorized to add a course."
+  - HTTP 403 Forbidden: "You are not authorized to add a course." (NOT ADMIN)
   - HTTP 403 Forbidden
 
 12. Update a Course (Admin Only)
@@ -263,7 +263,7 @@ Controller: CourseController 8-12
   }
 - Expected Outputs:
   - HTTP 200 OK: "Course updated successfully."
-  - HTTP 403 Forbidden: "You are not authorized to update a course."
+  - HTTP 403 Forbidden: "You are not authorized to update a course." (NOT ADMIN)
   - HTTP 404 Not Found: "Course not found with ID: {courseId}"
   - HTTP 403 Forbidden
 
@@ -278,45 +278,58 @@ Controller: CourseCommentController 13-16
   - courseId: The ID of the course for which comments are requested.
 - Expected Outputs:
   - HTTP 200 OK:
-    ```json
     [
         {
             "commentId": 1,
-            "content": "This course is very informative.",
-            "anonymous": false,
-            "createdAt": "2025-05-12T10:00:00",
+            "userId": 9,
+            "username": "erdemozcan",
+            "courseId": 885,
+            "parentCommentId": null,
             "termTaken": 202401,
             "gradeReceived": "A",
-            "user": {
-                "userId": 1,
-                "username": "john_doe"
-            },
-            "parentCommentId": null
+            "content": "This course is amazing!",
+            "createdAt": "2025-05-14T16:16:03",
+            "anonymous": false
         },
         {
             "commentId": 2,
-            "content": "I found the course challenging but rewarding.",
-            "anonymous": true,
-            "createdAt": "2025-05-11T15:30:00",
-            "termTaken": 202301,
-            "gradeReceived": "B+",
-            "user": null,
-            "parentCommentId": 1
+            "userId": 9,
+            "username": "erdemozcan",
+            "courseId": 885,
+            "parentCommentId": null,
+            "termTaken": null,
+            "gradeReceived": null,
+            "content": "I agree!",
+            "createdAt": "2025-05-14T16:21:01",
+            "anonymous": false
+        },
+        {
+            "commentId": 3,
+            "userId": null,
+            "username": null,
+            "courseId": 885,
+            "parentCommentId": null,
+            "termTaken": null,
+            "gradeReceived": null,
+            "content": "çok gizli mesaj",
+            "createdAt": "2025-05-14T17:12:07",
+            "anonymous": true
+        },
+        {
+            "commentId": 4,
+            "userId": 11,
+            "username": "berkb",
+            "courseId": 885,
+            "parentCommentId": null,
+            "termTaken": null,
+            "gradeReceived": null,
+            "content": "çok gizli mesaj 2",
+            "createdAt": "2025-05-14T17:16:38",
+            "anonymous": true
         }
     ]
-    ```
-  - HTTP 401 Unauthorized:
-    ```json
-    {
-        "message": "Unauthorized"
-    }
-    ```
-  - HTTP 404 Not Found:
-    ```json
-    {
-        "message": "Course not found"
-    }
-    ```
+  - HTTP 403 Forbidden
+  - NOTE, IF NOT COURSEID NOT FOUND, RETURN EMPTY.
 
 14. Add a Comment to a Course
 - Session-Based: Yes
@@ -334,25 +347,23 @@ Controller: CourseCommentController 13-16
   ```
 - Expected Outputs:
   - HTTP 200 OK: "Comment added successfully."
-  - HTTP 401 Unauthorized: "You must be logged in to add a comment."
+  - HTTP 403 Forbidden
   - HTTP 404 Not Found: "Course not found."
 
-15. Update a Comment (Admin or Comment Owner Only)
+15. Update a Comment
 - Session-Based: Yes
 - Method + Link: PUT /api/course-comments/{commentId}
 - Input:
   - commentId: The ID of the comment to be updated.
-  ```json
   {
       "content": "This course is fantastic!",
       "anonymous": true,
       "termTaken": 202401,
       "gradeReceived": "A-"
   }
-  ```
 - Expected Outputs:
   - HTTP 200 OK: "Comment updated successfully."
-  - HTTP 401 Unauthorized: "You must be logged in to edit a comment."
+  - HTTP 403 Forbidden
   - HTTP 403 Forbidden: "You are not authorized to update this comment."
   - HTTP 404 Not Found: "Comment not found."
 

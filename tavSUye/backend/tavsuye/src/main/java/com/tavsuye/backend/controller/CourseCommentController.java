@@ -3,6 +3,7 @@ package com.tavsuye.backend.controller;
 import com.tavsuye.backend.entity.CourseComment;
 import com.tavsuye.backend.entity.User;
 import com.tavsuye.backend.service.CourseCommentService;
+import com.tavsuye.backend.dto.CourseCommentResponseDto;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,15 +24,16 @@ public class CourseCommentController {
 
     // API: Get all comments for a course
     @GetMapping("/{courseId}")
-    public ResponseEntity<List<CourseComment>> getCommentsByCourse(
+    public ResponseEntity<?> getCommentsByCourse(
             @PathVariable Integer courseId,
             HttpSession session) {
         // Session control
-        if (session.getAttribute("userId") == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Unauthorized
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to view comments.");
         }
 
-        List<CourseComment> comments = courseCommentService.getCommentsByCourse(courseId);
+        List<CourseCommentResponseDto> comments = courseCommentService.getCommentsByCourseFiltered(courseId, userId);
         return ResponseEntity.ok(comments);
     }
 
@@ -51,8 +53,12 @@ public class CourseCommentController {
         user.setUserId(userId); // Associate only with userId
         comment.setUser(user);
 
-        courseCommentService.addCommentToCourse(courseId, comment);
-        return ResponseEntity.ok("Comment added successfully.");
+        try {
+            courseCommentService.addCommentToCourse(courseId, comment);
+            return ResponseEntity.ok("Comment added successfully.");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found");
+        }
     }
 
     // API: Edit a comment
@@ -67,8 +73,18 @@ public class CourseCommentController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to edit a comment.");
         }
 
-        courseCommentService.editComment(commentId, updatedComment, userId);
-        return ResponseEntity.ok("Comment updated successfully.");
+        try {
+            courseCommentService.editComment(commentId, updatedComment, userId);
+            return ResponseEntity.ok("Comment updated successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Comment not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+            } else if (ex.getMessage().contains("not authorized")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Delete a comment
@@ -78,13 +94,25 @@ public class CourseCommentController {
             HttpSession session) {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        String role = (String) session.getAttribute("role");
+        boolean isAdmin = "ADMIN".equals(role);
+        
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to delete a comment.");
         }
 
-        // Admin control or user authorization
-        courseCommentService.deleteComment(commentId, userId, isAdmin != null && isAdmin);
-        return ResponseEntity.ok("Comment deleted successfully.");
+        try {
+            // Admin control or user authorization
+            courseCommentService.deleteComment(commentId, userId, isAdmin);
+            return ResponseEntity.ok("Comment deleted successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Comment not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+            } else if (ex.getMessage().contains("not authorized")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 }
