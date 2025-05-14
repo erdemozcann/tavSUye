@@ -92,6 +92,8 @@ CREATE TABLE Note (
     course_id INT NOT NULL, -- Course related to the note
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Creation timestamp
     cloud_link TEXT NOT NULL, -- Cloud storage link for the note
+    instructor_taken VARCHAR(255),
+    term_taken INT,
     FOREIGN KEY (user_id) REFERENCES User(user_id),
     FOREIGN KEY (course_id) REFERENCES Course(course_id)
 );
