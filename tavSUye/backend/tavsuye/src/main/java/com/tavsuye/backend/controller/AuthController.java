@@ -12,8 +12,11 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @RestController
@@ -64,6 +67,14 @@ public class AuthController {
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("role", user.getRole());
                 session.setMaxInactiveInterval(30 * 60);
+
+                // Spring Security context'e authentication ekle
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+                    user.getUsername(), null, Collections.emptyList() // veya user.getAuthorities() eğer rollerin varsa
+                );
+                SecurityContextHolder.getContext().setAuthentication(auth);
+                session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+
                 return ResponseEntity.ok(new LoginResponse("Login successful.", false, user.getRole()));
             case TWO_FA_REQUIRED:
                 return ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -98,8 +109,14 @@ public class AuthController {
                 session.setAttribute("userId", user.getUserId());
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("role", user.getRole());
-
                 session.setMaxInactiveInterval(30 * 60); // 30 minutes
+
+                // Spring Security context'e authentication ekle
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+                    user.getUsername(), null, Collections.emptyList()
+                );
+                SecurityContextHolder.getContext().setAuthentication(auth);
+                session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
                 return ResponseEntity.ok(new LoginResponse("2FA verification successful. You are now logged in.", false, user.getRole()));
             }

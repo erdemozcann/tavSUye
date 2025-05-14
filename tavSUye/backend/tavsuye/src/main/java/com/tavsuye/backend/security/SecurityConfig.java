@@ -31,19 +31,12 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/register", "/api/auth/login").permitAll() // Allow user registration & login
                 .requestMatchers("/api/auth/verify-email").permitAll() // Email verification open to all
-                .requestMatchers("/api/auth/verify-2fa", "/api/auth/logout").permitAll() // Require authentication for 2FA verification
+                .requestMatchers("/api/auth/verify-2fa").permitAll() // Require authentication for 2FA verification
                 .requestMatchers("/api/auth/forgot-password").permitAll() // Allow password recovery
                 .requestMatchers("/api/auth/reset-password").permitAll() // Allow password reset
                 .anyRequest().authenticated() // Require authentication for all other requests
             );
-            /*
-            // Logout configuration
-            .logout(logout -> logout
-                .logoutUrl("/api/auth/logout") // Custom logout endpoint
-                .invalidateHttpSession(true) // Destroy session on logout
-                .deleteCookies("JSESSIONID") // Remove session cookies
-            );
-        	*/
+            
         return http.build();
     }
 

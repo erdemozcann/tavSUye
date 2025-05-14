@@ -47,7 +47,7 @@ public class CourseController {
 
     // API: Get course details by subject and course code
     @GetMapping("/{subject}-{courseCode}")
-    public ResponseEntity<Course> getCourseDetails(
+    public ResponseEntity<?> getCourseDetails(
             @PathVariable String subject,
             @PathVariable String courseCode,
             HttpSession session) {
@@ -56,16 +56,20 @@ public class CourseController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Unauthorized
         }
 
-        Course course = courseService.getCourseDetails(subject, courseCode);
-        return ResponseEntity.ok(course);
+        try {
+            Course course = courseService.getCourseDetails(subject, courseCode);
+            return ResponseEntity.ok(course);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found");
+        }
     }
 
     // API: Add a new course (Admin only)
     @PostMapping("/add")
     public ResponseEntity<String> addCourse(@RequestBody Course course, HttpSession session) {
         // Session control
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-        if (isAdmin == null || !isAdmin) {
+        String role = (String) session.getAttribute("role");
+        if (!"ADMIN".equals(role)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to add a course.");
         }
 
@@ -84,13 +88,22 @@ public class CourseController {
             @RequestBody Course updatedCourse,
             HttpSession session) {
         // Session control
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-        if (isAdmin == null || !isAdmin) {
+        String role = (String) session.getAttribute("role");
+        if (!"ADMIN".equals(role)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to update a course.");
         }
 
         // Update the course
-        courseService.updateCourse(courseId, updatedCourse);
-        return ResponseEntity.ok("Course updated successfully.");
+        try {
+            courseService.updateCourse(courseId, updatedCourse);
+            return ResponseEntity.ok("Course updated successfully.");
+        } catch (RuntimeException ex) {
+            // If the exception contains "not found" in the message, return 404
+            if (ex.getMessage() != null && ex.getMessage().contains("not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+            }
+            // Otherwise, re-throw the exception to be handled as 500
+            throw ex;
+        }
     }
 }

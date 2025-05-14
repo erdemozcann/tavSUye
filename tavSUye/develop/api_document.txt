@@ -117,7 +117,7 @@ Controller: AuthController 1-7
 - Input: None
 - Expected Outputs:
   - HTTP 200 OK: "Logged out successfully."
-  - HTTP 401 Unauthorized: "You are not logged in."
+  - HTTP 403 Forbidden
 
 6. Forgot Password
 - Session-Based: No
@@ -167,7 +167,7 @@ Controller: CourseController 8-12
         "MATH",
         "PHYS"
     ]
-  - HTTP 401 Unauthorized: "Unauthorized"
+  - HTTP 403 Forbidden
 
 9. Get All Course Codes by Subject
 - Session-Based: Yes
@@ -184,7 +184,7 @@ Controller: CourseController 8-12
         "102",
         "201"
     ]
-  - HTTP 401 Unauthorized: "Unauthorized"
+  - HTTP 403 Forbidden
 
 10. Get Course Details by Subject and Course Code
 - Session-Based: Yes
@@ -211,7 +211,7 @@ Controller: CourseController 8-12
         "faculty": "Engineering",
         "courseStatus": true
     }
-  - HTTP 401 Unauthorized: "Unauthorized"
+  - HTTP 403 Forbidden
   - HTTP 404 Not Found: "Course not found"
 
 11. Add a New Course (Admin Only)
@@ -236,7 +236,9 @@ Controller: CourseController 8-12
   }
 - Expected Outputs:
   - HTTP 200 OK: "Course added successfully."
+  - HTTP 400 Bad Request
   - HTTP 403 Forbidden: "You are not authorized to add a course."
+  - HTTP 403 Forbidden
 
 12. Update a Course (Admin Only)
 - Session-Based: Yes
@@ -263,6 +265,7 @@ Controller: CourseController 8-12
   - HTTP 200 OK: "Course updated successfully."
   - HTTP 403 Forbidden: "You are not authorized to update a course."
   - HTTP 404 Not Found: "Course not found with ID: {courseId}"
+  - HTTP 403 Forbidden
 
 ---
 
