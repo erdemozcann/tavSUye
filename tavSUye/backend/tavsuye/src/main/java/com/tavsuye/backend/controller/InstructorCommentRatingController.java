@@ -22,16 +22,31 @@ public class InstructorCommentRatingController {
     @PostMapping("/{commentId}/rate")
     public ResponseEntity<String> rateComment(
             @PathVariable Integer commentId,
-            @RequestParam Boolean isLike,
+            @RequestBody Map<String, Boolean> requestBody,
             HttpSession session) {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to rate a comment.");
         }
+        
+        Boolean isLike = requestBody.get("isLike");
+        if (isLike == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The 'isLike' field is required.");
+        }
 
-        ratingService.rateComment(commentId, userId, isLike);
-        return ResponseEntity.ok("Comment rated successfully.");
+        try {
+            ratingService.rateComment(commentId, userId, isLike);
+            return ResponseEntity.ok("Comment rated successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Comment not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+            } else if (ex.getMessage().contains("User not found")) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Remove like or dislike from a comment
@@ -45,8 +60,16 @@ public class InstructorCommentRatingController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to remove a rating.");
         }
 
-        ratingService.removeRating(commentId, userId);
-        return ResponseEntity.ok("Rating removed successfully.");
+        try {
+            ratingService.removeRating(commentId, userId);
+            return ResponseEntity.ok("Rating removed successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Rating not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rating not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Get total likes and dislikes for a comment

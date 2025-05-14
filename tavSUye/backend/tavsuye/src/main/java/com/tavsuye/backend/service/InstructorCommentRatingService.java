@@ -36,6 +36,7 @@ public class InstructorCommentRatingService {
             // Update the existing rating
             InstructorCommentRating rating = existingRating.get();
             rating.setLiked(isLike);
+            rating.setCreatedAt(java.time.LocalDateTime.now());
             ratingRepository.save(rating);
         } else {
             // Create a new rating

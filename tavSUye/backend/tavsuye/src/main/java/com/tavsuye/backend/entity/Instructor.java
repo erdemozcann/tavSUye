@@ -3,7 +3,7 @@ package com.tavsuye.backend.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Instructor")
+@Table(name = "instructor")
 public class Instructor {
 
     @Id

@@ -374,7 +374,7 @@ Controller: CourseCommentController 13-16
   - commentId: The ID of the comment to be deleted.
 - Expected Outputs:
   - HTTP 200 OK: "Comment deleted successfully."
-  - HTTP 401 Unauthorized: "You must be logged in to delete a comment."
+  - HTTP 403 Forbidden
   - HTTP 403 Forbidden: "You are not authorized to delete this comment."
   - HTTP 404 Not Found: "Comment not found."
 
@@ -395,64 +395,49 @@ Controller: CourseCommentRatingController 17-20
   ```
 - Expected Outputs:
   - HTTP 200 OK: "Comment rated successfully."
-  - HTTP 401 Unauthorized: "You must be logged in to rate a comment."
+  - HTTP 403 Forbidden
   - HTTP 404 Not Found: "Comment not found."
 
-18. Get Comment Rating (Like/Dislike Status)
+18. Get Comment Stats (Likes/Dislikes Count)
 - Session-Based: Yes
-- Method + Link: GET /api/course-comment-ratings/{commentId}
+- Method + Link: GET /api/course-comment-ratings/{commentId}/stats
 - Input:
-  - commentId: The ID of the comment for which the rating status is requested.
+  - commentId: The ID of the comment for which the stats are requested.
 - Expected Outputs:
   - HTTP 200 OK:
     ```json
     {
-        "commentId": 1,
-        "isLiked": true,
-        "isDisliked": false
+        "likes": 10,
+        "dislikes": 3
     }
     ```
-  - HTTP 401 Unauthorized: "Unauthorized"
-  - HTTP 404 Not Found: "Comment not found"
-
-19. Get All Ratings for a Comment
-- Session-Based: Yes
-- Method + Link: GET /api/course-comment-ratings/{commentId}/all
-- Input:
-  - commentId: The ID of the comment for which all ratings are requested.
-- Expected Outputs:
-  - HTTP 200 OK:
+  - HTTP 200 OK (if comment doesn't exist):
     ```json
     {
-        "commentId": 1,
-        "ratings": [
-            {
-                "userId": 1,
-                "username": "john_doe",
-                "isLiked": true,
-                "isDisliked": false
-            },
-            {
-                "userId": 2,
-                "username": "jane_doe",
-                "isLiked": false,
-                "isDisliked": true
-            }
-        ]
+        "likes": 0,
+        "dislikes": 0
     }
     ```
-  - HTTP 401 Unauthorized: "Unauthorized"
-  - HTTP 404 Not Found: "Comment not found"
+  - HTTP 403 Forbidden
 
-20. Delete a Rating (Like or Dislike)
+19. Get User's Rating for a Comment
 - Session-Based: Yes
-- Method + Link: DELETE /api/course-comment-ratings/{commentId}/delete
+- Method + Link: GET /api/course-comment-ratings/{commentId}/user-rating
 - Input:
-  - commentId: The ID of the comment for which the rating will be deleted.
+  - commentId: The ID of the comment for which the user's rating is requested.
 - Expected Outputs:
-  - HTTP 200 OK: "Rating deleted successfully."
-  - HTTP 401 Unauthorized: "You must be logged in to delete a rating."
-  - HTTP 404 Not Found: "Comment not found."
+  - HTTP 200 OK: `true` (if liked), `false` (if disliked), or `null` (if not rated)
+  - HTTP 403 Forbidden
+
+20. Remove Rating from a Comment
+- Session-Based: Yes
+- Method + Link: DELETE /api/course-comment-ratings/{commentId}/rate
+- Input:
+  - commentId: The ID of the comment for which the rating will be removed.
+- Expected Outputs:
+  - HTTP 200 OK: "Rating removed successfully."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Rating not found"
 
 ---
 
