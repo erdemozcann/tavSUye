@@ -481,9 +481,108 @@ Controller: CourseViewLogController 21-22
 
 ---
 
-Controller: InstructorViewLogController 23-24
+Controller: NoteController 23-26
 
-23. Log an Instructor Visit
+23. Get All Notes for a Course
+- Session-Based: Yes
+- Method + Link: GET /api/notes/{courseId}
+- Input:
+  - courseId: The ID of the course for which notes are requested.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "noteId": 1,
+            "user": {
+                "userId": 9,
+                "username": "erdemozcan"
+            },
+            "course": {
+                "courseId": 885,
+                "subject": "CS",
+                "courseCode": "101"
+            },
+            "termTaken": 202401,
+            "instructorTaken": "Dr. John Smith",
+            "description": "This is an important note about the midterm.",
+            "createdAt": "2025-05-14T16:16:03",
+            "cloudLink": "https://drive.google.com/file/d/12345abcde"
+        },
+        {
+            "noteId": 2,
+            "user": {
+                "userId": 9,
+                "username": "erdemozcan"
+            },
+            "course": {
+                "courseId": 885,
+                "subject": "CS",
+                "courseCode": "101"
+            },
+            "termTaken": 202402,
+            "instructorTaken": "Dr. Jane Doe",
+            "description": "Remember to study chapter 5.",
+            "createdAt": "2025-05-14T17:12:07",
+            "cloudLink": "https://drive.google.com/file/d/67890fghij"
+        }
+    ]
+    ```
+  - HTTP 403 Forbidden
+
+24. Add a Note
+- Session-Based: Yes
+- Method + Link: POST /api/notes/{courseId}
+- Input:
+  - courseId: The ID of the course to which the note will be added.
+  ```json
+  {
+      "termTaken": 202401,
+      "instructorTaken": "Dr. John Smith",
+      "description": "This is a note about the course material.",
+      "cloudLink": "https://drive.google.com/file/d/12345abcde"
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Note added successfully."
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Course not found."
+
+25. Edit a Note
+- Session-Based: Yes
+- Method + Link: PUT /api/notes/{noteId}
+- Input:
+  - noteId: The ID of the note to be updated.
+  ```json
+  {
+      "termTaken": 202402,
+      "instructorTaken": "Dr. Jane Doe", 
+      "description": "Updated note description.",
+      "cloudLink": "https://drive.google.com/file/d/67890fghij"
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Note updated successfully."
+  - HTTP 403 Forbidden
+  - HTTP 403 Forbidden: "You are not authorized to edit this note."
+  - HTTP 404 Not Found: "Note not found."
+
+26. Delete a Note
+- Session-Based: Yes
+- Method + Link: DELETE /api/notes/{noteId}
+- Input:
+  - noteId: The ID of the note to be deleted.
+- Expected Outputs:
+  - HTTP 200 OK: "Note deleted successfully."
+  - HTTP 403 Forbidden
+  - HTTP 403 Forbidden: "You are not authorized to delete this note."
+  - HTTP 404 Not Found: "Note not found."
+
+---
+
+Controller: InstructorViewLogController 27-28
+
+27. Log an Instructor Visit
 - Session-Based: Yes
 - Method + Link: POST /api/instructor-view-log/log
 - Input:
@@ -494,7 +593,7 @@ Controller: InstructorViewLogController 23-24
   - HTTP 403 Forbidden
   - HTTP 404 Not Found: "Instructor not found"
 
-24. Get Top Visited Instructors
+28. Get Top Visited Instructors
 - Session-Based: Yes
 - Method + Link: GET /api/instructor-view-log/top-visited
 - Input: None

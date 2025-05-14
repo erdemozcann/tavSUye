@@ -1,7 +1,9 @@
 package com.tavsuye.backend.controller;
 
+import com.tavsuye.backend.dto.NoteDTO;
 import com.tavsuye.backend.entity.Note;
 import com.tavsuye.backend.entity.User;
+import com.tavsuye.backend.mapper.NoteMapper;
 import com.tavsuye.backend.service.NoteService;
 
 import org.springframework.http.HttpStatus;
@@ -23,14 +25,15 @@ public class NoteController {
 
     // 1. API: Get all notes for a course
     @GetMapping("/{courseId}")
-    public ResponseEntity<List<Note>> getNotesByCourse(@PathVariable Integer courseId, HttpSession session) {
+    public ResponseEntity<List<NoteDTO>> getNotesByCourse(@PathVariable Integer courseId, HttpSession session) {
         // Session control
         if (session.getAttribute("userId") == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Unauthorized
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null); // Forbidden
         }
 
         List<Note> notes = noteService.getNotesByCourse(courseId);
-        return ResponseEntity.ok(notes);
+        List<NoteDTO> noteDTOs = NoteMapper.toDTOList(notes);
+        return ResponseEntity.ok(noteDTOs);
     }
 
     // 2. API: Add a note
@@ -42,15 +45,23 @@ public class NoteController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to add a note.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to add a note.");
         }
 
         User user = new User();
         user.setUserId(userId); // Associate only with userId
         note.setUser(user);
 
-        noteService.addNote(courseId, note);
-        return ResponseEntity.ok("Note added successfully.");
+        try {
+            noteService.addNote(courseId, note);
+            return ResponseEntity.ok("Note added successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Course not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found.");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // 3. API: Edit a note
@@ -62,11 +73,21 @@ public class NoteController {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to edit a note.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to edit a note.");
         }
 
-        noteService.editNote(noteId, updatedNote, userId);
-        return ResponseEntity.ok("Note updated successfully.");
+        try {
+            noteService.editNote(noteId, updatedNote, userId);
+            return ResponseEntity.ok("Note updated successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Note not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Note not found.");
+            } else if (ex.getMessage().contains("not authorized")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to edit this note.");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // 4. API: Delete a note
@@ -78,11 +99,21 @@ public class NoteController {
         Integer userId = (Integer) session.getAttribute("userId");
         Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
         if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to delete a note.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to delete a note.");
         }
 
-        // Admin control or user authorization
-        noteService.deleteNote(noteId, userId, isAdmin != null && isAdmin);
-        return ResponseEntity.ok("Note deleted successfully.");
+        try {
+            // Admin control or user authorization
+            noteService.deleteNote(noteId, userId, isAdmin != null && isAdmin);
+            return ResponseEntity.ok("Note deleted successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Note not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Note not found.");
+            } else if (ex.getMessage().contains("not authorized")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to delete this note.");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 }
