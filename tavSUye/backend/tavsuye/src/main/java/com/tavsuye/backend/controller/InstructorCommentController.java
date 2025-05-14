@@ -51,8 +51,16 @@ public class InstructorCommentController {
         user.setUserId(userId); // Associate only with userId
         comment.setUser(user);
 
-        instructorCommentService.addCommentToInstructor(instructorId, comment);
-        return ResponseEntity.ok("Comment added successfully.");
+        try {
+            instructorCommentService.addCommentToInstructor(instructorId, comment);
+            return ResponseEntity.ok("Comment added successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Instructor not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Instructor not found");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Edit a comment
@@ -67,8 +75,18 @@ public class InstructorCommentController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to edit a comment.");
         }
 
-        instructorCommentService.editComment(commentId, updatedComment, userId);
-        return ResponseEntity.ok("Comment updated successfully.");
+        try {
+            instructorCommentService.editComment(commentId, updatedComment, userId);
+            return ResponseEntity.ok("Comment updated successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Comment not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+            } else if (ex.getMessage().contains("not authorized")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 
     // API: Delete a comment
@@ -78,13 +96,25 @@ public class InstructorCommentController {
             HttpSession session) {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        String role = (String) session.getAttribute("role");
+        boolean isAdmin = role != null && role.equals("ADMIN");
+        
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to delete a comment.");
         }
 
-        // Admin control or user authorization
-        instructorCommentService.deleteComment(commentId, userId, isAdmin != null && isAdmin);
-        return ResponseEntity.ok("Comment deleted successfully.");
+        try {
+            // Admin control or user authorization
+            instructorCommentService.deleteComment(commentId, userId, isAdmin);
+            return ResponseEntity.ok("Comment deleted successfully.");
+        } catch (RuntimeException ex) {
+            if (ex.getMessage().contains("Comment not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
+            } else if (ex.getMessage().contains("not authorized")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            }
+        }
     }
 }

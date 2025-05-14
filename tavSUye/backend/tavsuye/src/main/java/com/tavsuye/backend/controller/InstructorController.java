@@ -42,23 +42,27 @@ public class InstructorController {
 
     // 2. API: Get full details of an instructor by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Instructor> getInstructorById(@PathVariable Integer id, HttpSession session) {
+    public ResponseEntity<Object> getInstructorById(@PathVariable Integer id, HttpSession session) {
         // Check if the user is logged in
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        Instructor instructor = instructorService.getInstructorById(id);
-        return ResponseEntity.ok(instructor);
+        try {
+            Instructor instructor = instructorService.getInstructorById(id);
+            return ResponseEntity.ok(instructor);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Instructor not found.");
+        }
     }
 
     // API: Add a new instructor (Admin only)
     @PostMapping("/add")
     public ResponseEntity<String> addInstructor(@RequestBody Instructor instructor, HttpSession session) {
         // Session control
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-        if (isAdmin == null || !isAdmin) {
+        String role = (String) session.getAttribute("role");
+        if (role == null || !role.equals("ADMIN")) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to add an instructor.");
         }
 
@@ -74,13 +78,17 @@ public class InstructorController {
             @RequestBody Instructor updatedInstructor,
             HttpSession session) {
         // Session control
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-        if (isAdmin == null || !isAdmin) {
+        String role = (String) session.getAttribute("role");
+        if (role == null || !role.equals("ADMIN")) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to update an instructor.");
         }
 
         // Update the instructor
-        instructorService.updateInstructor(id, updatedInstructor);
-        return ResponseEntity.ok("Instructor updated successfully.");
+        try {
+            instructorService.updateInstructor(id, updatedInstructor);
+            return ResponseEntity.ok("Instructor updated successfully.");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Instructor not found.");
+        }
     }
 }

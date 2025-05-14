@@ -580,9 +580,100 @@ Controller: NoteController 23-26
 
 ---
 
-Controller: InstructorViewLogController 27-28
+Controller: InstructorController 27-30
 
-27. Log an Instructor Visit
+27. Get All Instructors Names and IDs
+- Session-Based: Yes
+- Method + Link: GET /api/instructors/all
+- Input: None
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    [
+        {
+            "id": 1,
+            "name": "John",
+            "surname": "Smith"
+        },
+        {
+            "id": 2,
+            "name": "Jane",
+            "surname": "Doe"
+        }
+    ]
+    ```
+  - HTTP 403 Forbidden
+
+28. Get Instructor Details by ID
+- Session-Based: Yes
+- Method + Link: GET /api/instructors/{id}
+- Input:
+  - id: The ID of the instructor to retrieve.
+- Expected Outputs:
+  - HTTP 200 OK:
+    ```json
+    {
+        "instructorId": 1,
+        "name": "John",
+        "surname": "Smith",
+        "department": "Computer Science",
+        "imageUrl": "https://example.com/profile.jpg",
+        "aboutTr": "Bu öğretim üyesi hakkında Türkçe bilgiler.",
+        "aboutEn": "Information about this instructor in English.",
+        "linkTr": "https://example.com/tr/instructor/1",
+        "linkEn": "https://example.com/en/instructor/1"
+    }
+    ```
+  - HTTP 403 Forbidden
+  - HTTP 404 Not Found: "Instructor not found."
+
+29. Add New Instructor (Admin Only)
+- Session-Based: Yes
+- Method + Link: POST /api/instructors/add
+- Input:
+  ```json
+  {
+      "name": "John",
+      "surname": "Smith",
+      "department": "Computer Science",
+      "imageUrl": "https://example.com/profile.jpg",
+      "aboutTr": "Bu öğretim üyesi hakkında Türkçe bilgiler.",
+      "aboutEn": "Information about this instructor in English.",
+      "linkTr": "https://example.com/tr/instructor/1",
+      "linkEn": "https://example.com/en/instructor/1"
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Instructor added successfully."
+  - HTTP 403 Forbidden: "You are not authorized to add an instructor."
+
+30. Update Instructor (Admin Only)
+- Session-Based: Yes
+- Method + Link: PUT /api/instructors/{id}
+- Input:
+  - id: The ID of the instructor to update.
+  ```json
+  {
+      "name": "John",
+      "surname": "Smith",
+      "department": "Mathematics",
+      "imageUrl": "https://example.com/new_profile.jpg",
+      "aboutTr": "Güncellenmiş Türkçe bilgiler.",
+      "aboutEn": "Updated information in English.",
+      "linkTr": "https://example.com/tr/instructor/updated",
+      "linkEn": "https://example.com/en/instructor/updated"
+  }
+  ```
+- Expected Outputs:
+  - HTTP 200 OK: "Instructor updated successfully."
+  - HTTP 403 Forbidden: "You are not authorized to update an instructor."
+  - HTTP 404 Not Found: "Instructor not found."
+
+---
+
+Controller: InstructorViewLogController 31-32
+
+31. Log an Instructor Visit
 - Session-Based: Yes
 - Method + Link: POST /api/instructor-view-log/log
 - Input:
@@ -593,7 +684,7 @@ Controller: InstructorViewLogController 27-28
   - HTTP 403 Forbidden
   - HTTP 404 Not Found: "Instructor not found"
 
-28. Get Top Visited Instructors
+32. Get Top Visited Instructors
 - Session-Based: Yes
 - Method + Link: GET /api/instructor-view-log/top-visited
 - Input: None
@@ -622,5 +713,4 @@ Controller: InstructorViewLogController 27-28
 
 ---
 
-Controller:
 

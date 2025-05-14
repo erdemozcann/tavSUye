@@ -97,14 +97,16 @@ public class NoteController {
             HttpSession session) {
         // Session control
         Integer userId = (Integer) session.getAttribute("userId");
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        String role = (String) session.getAttribute("role");
+        boolean isAdmin = role != null && role.equals("ADMIN");
+        
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You must be logged in to delete a note.");
         }
 
         try {
             // Admin control or user authorization
-            noteService.deleteNote(noteId, userId, isAdmin != null && isAdmin);
+            noteService.deleteNote(noteId, userId, isAdmin);
             return ResponseEntity.ok("Note deleted successfully.");
         } catch (RuntimeException ex) {
             if (ex.getMessage().contains("Note not found")) {

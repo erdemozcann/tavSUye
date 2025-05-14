@@ -24,8 +24,8 @@ public class AdminController {
             @RequestParam String reason,
             HttpSession session) {
         // Session control
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-        if (isAdmin == null || !isAdmin) {
+        String role = (String) session.getAttribute("role");
+        if (role == null || !role.equals("ADMIN")) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to ban a user.");
         }
 
@@ -41,8 +41,8 @@ public class AdminController {
             @RequestParam Integer newCourseId,
             HttpSession session) {
         // Session control
-        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-        if (isAdmin == null || !isAdmin) {
+        String role = (String) session.getAttribute("role");
+        if (role == null || !role.equals("ADMIN")) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to change a course.");
         }
 
