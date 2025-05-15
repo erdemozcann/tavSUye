@@ -136,6 +136,7 @@ Controller: AuthController 1-7
 - Session-Based: No
 - Method + Link: POST /api/auth/reset-password
 - Input:
+  - email: The email address of the user.
   - code: The password reset code sent to the user's email.
   - newPassword: The new password for the user account.
   {
@@ -980,7 +981,7 @@ Controller: StudentPlanController 47-49
 - Method + Link: POST /api/student-plan/save
 - Input:
   - courseId: The ID of the course to add to the student's plan (as a query parameter).
-  - term: The term in which the student plans to take the course (as a query parameter, format: YYYYMM).
+  - term: The term in which the student plans to take the course (as a query parameter, format: X).
   - Example: `/api/student-plan/save?courseId=101&term=1`
 - Expected Outputs:
   - HTTP 200 OK: "Student plan saved successfully."
