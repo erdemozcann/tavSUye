@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d94830e9-7077-4b60-a232-95f07e727b74" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Web_Scraping_Program/02_program_adding_to_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/05_programcourse_BSMS_scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../database.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2xJn8KrZesR4vrNbNdfKPFk7nb6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.01_programcourse_BSCS_scraper.executor": "Run",
+    "Python.01_programcourse_bscs_scraper.executor": "Run",
+    "Python.02_programcourse_BSDSA_scraper.executor": "Run",
+    "Python.02_programcourse_bsdsa_scraper.executor": "Run",
+    "Python.03_programcourse_baecon_scraper.executor": "Run",
+    "Python.04_programcourse_BAPSIR_scraper.executor": "Run",
+    "Python.04_programcourse_BSEE_scraper.executor": "Run",
+    "Python.05_programcourse_BSMS_scraper.executor": "Run",
+    "Python.06_programcourse_BAMAN_scraper.executor": "Run",
+    "Python.07_programcourse_BSMAT_scraper.executor": "Run",
+    "Python.08_programcourse_BSME_scraper.executor": "Run",
+    "Python.09_programcourse_BSBIO_scraper.executor": "Run",
+    "Python.11_programcourse_BAPSY_scraper.executor": "Run",
+    "Python.12_programcourse_BAVACD_scraper.executor": "Run",
+    "Python.13_merge_all_jsons.executor": "Run",
+    "Python.14_programcourse_loader.executor": "Run",
+    "Python.DENEME.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d94830e9-7077-4b60-a232-95f07e727b74" name="Changes" comment="" />
+      <created>1747664883271</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747664883271</updated>
+      <workItem from="1747664885127" duration="4375000" />
+      <workItem from="1747750409494" duration="13865000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$11_programcourse_BAPSY_scraper.coverage" NAME="11_programcourse_BAPSY_scraper Coverage Results" MODIFIED="1747777780155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$02_programcourse_BSDSA_scraper.coverage" NAME="02_programcourse_BSDSA_scraper Coverage Results" MODIFIED="1747774247987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$03_programcourse_baecon_scraper.coverage" NAME="03_programcourse_baecon_scraper Coverage Results" MODIFIED="1747775365914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$08_programcourse_BSME_scraper.coverage" NAME="08_programcourse_BSME_scraper Coverage Results" MODIFIED="1747777206933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$07_programcourse_BSMAT_scraper.coverage" NAME="07_programcourse_BSMAT_scraper Coverage Results" MODIFIED="1747776987339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$09_programcourse_BSBIO_scraper.coverage" NAME="09_programcourse_BSBIO_scraper Coverage Results" MODIFIED="1747777412036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$01_programcourse_bscs_scraper.coverage" NAME="01_programcourse_bscs_scraper Coverage Results" MODIFIED="1747750737210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$DENEME.coverage" NAME="DENEME Coverage Results" MODIFIED="1747764088708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$01_programcourse_BSCS_scraper.coverage" NAME="01_programcourse_BSCS_scraper Coverage Results" MODIFIED="1747770926762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$02_programcourse_bsdsa_scraper.coverage" NAME="02_programcourse_bsdsa_scraper Coverage Results" MODIFIED="1747751297418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$04_programcourse_BSEE_scraper.coverage" NAME="04_programcourse_BSEE_scraper Coverage Results" MODIFIED="1747775866938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$12_programcourse_BAVACD_scraper.coverage" NAME="12_programcourse_BAVACD_scraper Coverage Results" MODIFIED="1747778072946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$05_programcourse_BSMS_scraper.coverage" NAME="05_programcourse_BSMS_scraper Coverage Results" MODIFIED="1747776205129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$13_merge_all_jsons.coverage" NAME="13_merge_all_jsons Coverage Results" MODIFIED="1747778232451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$04_programcourse_BAPSIR_scraper.coverage" NAME="04_programcourse_BAPSIR_scraper Coverage Results" MODIFIED="1747770595186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$14_programcourse_loader.coverage" NAME="14_programcourse_loader Coverage Results" MODIFIED="1747779608148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Web_Scraping_Program_Course$06_programcourse_BAMAN_scraper.coverage" NAME="06_programcourse_BAMAN_scraper Coverage Results" MODIFIED="1747776771205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
