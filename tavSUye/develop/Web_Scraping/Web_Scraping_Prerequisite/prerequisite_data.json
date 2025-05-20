@@ -1,0 +1,7702 @@
+[
+  {
+    "course_subject": "ACC",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "MGMT",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "401",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "450",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ACC",
+    "course_code": "451",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ANTH",
+    "course_code": "413",
+    "prerequisites": [
+      {
+        "subject": "SOC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ANTH",
+    "course_code": "450",
+    "prerequisites": [
+      {
+        "subject": "CULT",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "SOC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ARA",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "ARA",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "ARA",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ARA",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "ARA",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "ARA",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ARA",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "ARA",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "ARA",
+        "course_code": "130",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ARA",
+    "course_code": "150",
+    "prerequisites": [
+      {
+        "subject": "ARA",
+        "course_code": "140",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ARA",
+    "course_code": "160",
+    "prerequisites": [
+      {
+        "subject": "ARA",
+        "course_code": "150",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "BIO",
+        "course_code": "321",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "306",
+    "prerequisites": [
+      {
+        "subject": "BIO",
+        "course_code": "321",
+        "is_and": true
+      },
+      {
+        "subject": "BIO",
+        "course_code": "332",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "310",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": true
+      },
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "321",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "NS",
+        "course_code": "207",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "332",
+    "prerequisites": [
+      {
+        "subject": "BIO",
+        "course_code": "321",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "421",
+    "prerequisites": [
+      {
+        "subject": "BIO",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "BIO",
+        "course_code": "332",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "452",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "467",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "BIO",
+    "course_code": "468",
+    "prerequisites": [
+      {
+        "subject": "BIO",
+        "course_code": "332",
+        "is_and": true
+      },
+      {
+        "subject": "BIO",
+        "course_code": "301",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "CHEM",
+    "course_code": "369",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CHI",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "CHI",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "CHI",
+        "course_code": "110",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CONF",
+    "course_code": "400",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "204",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "CS",
+        "course_code": "300",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "305",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "306",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      },
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "307",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "308",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "310",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "400",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "305",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "307",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "300",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "411",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "412",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "210",
+        "is_and": false
+      },
+      {
+        "subject": "DSA",
+        "course_code": "210",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "432",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "408",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "414",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "437",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "408",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "442",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "308",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "445",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "CS",
+        "course_code": "210",
+        "is_and": true
+      },
+      {
+        "subject": "DSA",
+        "course_code": "210",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "447",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "300",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "449",
+    "prerequisites": [
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "460",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "300",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "48004",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "308",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "48006",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "480",
+        "is_and": false
+      },
+      {
+        "subject": "CS",
+        "course_code": "438",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "48007",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CS",
+    "course_code": "48008",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "408",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "327",
+    "prerequisites": [
+      {
+        "subject": "CULT",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "SOC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "CULT",
+        "course_code": "401",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "432",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "CULT",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "434",
+    "prerequisites": [
+      {
+        "subject": "CULT",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "SOC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "451",
+    "prerequisites": [
+      {
+        "subject": "CULT",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "CULT",
+        "course_code": "291",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "CULT",
+    "course_code": "460",
+    "prerequisites": [
+      {
+        "subject": "CULT",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "SOC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "210",
+    "prerequisites": [
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "428",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "473",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "DSA",
+    "course_code": "492",
+    "prerequisites": [
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "DSA",
+        "course_code": "210",
+        "is_and": true
+      },
+      {
+        "subject": "CS",
+        "course_code": "210",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "310",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "320",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "321",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "323",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "330",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "301",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "340",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "345",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "350",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "360",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "370",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "400",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "340",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "412",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "330",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "301",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "420",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "430",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "488",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "492",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ECON",
+    "course_code": "495",
+    "prerequisites": [
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "204",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "200",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "202",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "302",
+    "prerequisites": [
+      {
+        "subject": "EL",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "EL",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "306",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "EE",
+        "course_code": "200",
+        "is_and": true
+      },
+      {
+        "subject": "EE",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "307",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "308",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "310",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "311",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "211",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "211",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "313",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "211",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "314",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "211",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "303",
+        "is_and": true
+      },
+      {
+        "subject": "EL",
+        "course_code": "302",
+        "is_and": true
+      },
+      {
+        "subject": "EE",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "EE",
+        "course_code": "401",
+        "is_and": false
+      },
+      {
+        "subject": "EL",
+        "course_code": "401",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "EE",
+        "course_code": "307",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "EL",
+        "course_code": "303",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "TE",
+        "course_code": "305",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "EL",
+        "course_code": "204",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "307",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "EL",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "EL",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "EE",
+        "course_code": "307",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "411",
+    "prerequisites": [
+      {
+        "subject": "EE",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "413",
+    "prerequisites": [
+      {
+        "subject": "TE",
+        "course_code": "304",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "314",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "415",
+    "prerequisites": [
+      {
+        "subject": "TE",
+        "course_code": "302",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "312",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "417",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "419",
+    "prerequisites": [
+      {
+        "subject": "TE",
+        "course_code": "302",
+        "is_and": false
+      },
+      {
+        "subject": "EE",
+        "course_code": "312",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "440",
+    "prerequisites": [
+      {
+        "subject": "EE",
+        "course_code": "302",
+        "is_and": true
+      },
+      {
+        "subject": "EE",
+        "course_code": "303",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "444",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "211",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "473",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "EE",
+    "course_code": "48008",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENG",
+    "course_code": "102",
+    "prerequisites": [
+      {
+        "subject": "ENG",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENRG",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "NS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENRG",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "202",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "203",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "204",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "205",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "206",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "208",
+    "prerequisites": [
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "210",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "IF",
+        "course_code": "100",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "211",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "309",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "209",
+        "is_and": true
+      },
+      {
+        "subject": "IE",
+        "course_code": "309",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "209",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "491",
+    "prerequisites": [
+      {
+        "subject": "BIO",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "BIO",
+        "course_code": "303",
+        "is_and": true
+      },
+      {
+        "subject": "CS",
+        "course_code": "300",
+        "is_and": true
+      },
+      {
+        "subject": "IE",
+        "course_code": "305",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "312",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "312",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "314",
+        "is_and": false
+      },
+      {
+        "subject": "ME",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ENS",
+    "course_code": "492",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "491",
+        "is_and": false
+      },
+      {
+        "subject": "ENS",
+        "course_code": "491",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "450",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "451",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FIN",
+    "course_code": "499",
+    "prerequisites": [
+      {
+        "subject": "FIN",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FRE",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "FRE",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "FRE",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FRE",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "FRE",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "FRE",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "FRE",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "FRE",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "FRE",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "GEN",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "GEN",
+        "course_code": "341",
+        "is_and": false
+      },
+      {
+        "subject": "CULT",
+        "course_code": "341",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "GEN",
+    "course_code": "480",
+    "prerequisites": [
+      {
+        "subject": "GEN",
+        "course_code": "341",
+        "is_and": false
+      },
+      {
+        "subject": "CULT",
+        "course_code": "341",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "GER",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "GER",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "GER",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "GER",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "GER",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "GER",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "GER",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "GER",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "GER",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "311",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "320",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "212",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "323",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "330",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "380",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "424",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "212",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "426",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "434",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HART",
+    "course_code": "444",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "212",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "192",
+    "prerequisites": [
+      {
+        "subject": "HIST",
+        "course_code": "191",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "205",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "315",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "316",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "331",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "335",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "336",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "348",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "349",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "371",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "434",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HIST",
+    "course_code": "489",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "311",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "317",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "321",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "371",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "207",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "413",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "HUM",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "204",
+        "is_and": false
+      },
+      {
+        "subject": "HUM",
+        "course_code": "214",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "302",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": true
+      },
+      {
+        "subject": "MS",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "IE",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "304",
+    "prerequisites": [
+      {
+        "subject": "MS",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "305",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "306",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "309",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "311",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "208",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "313",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "305",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "MS",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "MS",
+        "course_code": "309",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "309",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "209",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": true
+      },
+      {
+        "subject": "MS",
+        "course_code": "304",
+        "is_and": true
+      },
+      {
+        "subject": "IE",
+        "course_code": "304",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "311",
+        "is_and": true
+      },
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "411",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "312",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "304",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "415",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "311",
+        "is_and": true
+      },
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "DSA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "416",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "209",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "417",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "304",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "425",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "312",
+        "is_and": true
+      },
+      {
+        "subject": "IE",
+        "course_code": "305",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "430",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "312",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "432",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "436",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "451",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "454",
+    "prerequisites": [
+      {
+        "subject": "MS",
+        "course_code": "401",
+        "is_and": false
+      },
+      {
+        "subject": "IE",
+        "course_code": "401",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "48002",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IE",
+    "course_code": "48005",
+    "prerequisites": [
+      {
+        "subject": "IE",
+        "course_code": "309",
+        "is_and": false
+      },
+      {
+        "subject": "MS",
+        "course_code": "309",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IF",
+    "course_code": "467",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "341",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "342",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "391",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "392",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "394",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "489",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IR",
+    "course_code": "493",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "ECON",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "IS",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ITA",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "ITA",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "ITA",
+        "course_code": "110",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ITA",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "ITA",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "ITA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ITA",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "ITA",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "ITA",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "JAP",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "JAP",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "JAP",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "JAP",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "JAP",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "JAP",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "JAP",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "JAP",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "JAP",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "KUR",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "KUR",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "KUR",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "KUR",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "KUR",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "KUR",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "KUR",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "KUR",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "KUR",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "LAT",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "LAT",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "LAT",
+        "course_code": "312",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "LAT",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "LAT",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "LAT",
+        "course_code": "313",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "LAT",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "LAT",
+        "course_code": "130",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "LAW",
+    "course_code": "309",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "LAW",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "204",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "101",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "206",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "307",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "314",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "218",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "218",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "204",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "308",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "422",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "423",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "424",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "205",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "48004",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "207",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "302",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "305",
+        "is_and": true
+      },
+      {
+        "subject": "MAT",
+        "course_code": "307",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MAT",
+    "course_code": "48005",
+    "prerequisites": [
+      {
+        "subject": "MAT",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "102",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "202",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "203",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "206",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "221",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "305",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "306",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "317",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "318",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "301",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MATH",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "206",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "307",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "309",
+    "prerequisites": [
+      {
+        "subject": "ME",
+        "course_code": "307",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "204",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "395",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "206",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "214",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "203",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "303",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "415",
+    "prerequisites": [
+      {
+        "subject": "MATH",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "420",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "207",
+        "is_and": false
+      },
+      {
+        "subject": "ME",
+        "course_code": "307",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "309",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "307",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "309",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "ME",
+    "course_code": "425",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "206",
+        "is_and": false
+      },
+      {
+        "subject": "ENS",
+        "course_code": "211",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MGMT",
+    "course_code": "203",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MGMT",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "ENG",
+        "course_code": "300",
+        "is_and": true
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MGMT",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "ACC",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "MGMT",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MGMT",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "ORG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MGMT",
+    "course_code": "422",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "418",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MGMT",
+    "course_code": "491",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "408",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "411",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "412",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "450",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "MKTG",
+    "course_code": "451",
+    "prerequisites": [
+      {
+        "subject": "MKTG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "102",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "206",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "209",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "213",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "214",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "216",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "218",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "NS",
+    "course_code": "222",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "390",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "OPIM",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "OPIM",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "405",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "OPIM",
+        "course_code": "390",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "411",
+    "prerequisites": [
+      {
+        "subject": "OPIM",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "OPIM",
+    "course_code": "416",
+    "prerequisites": [
+      {
+        "subject": "MGMT",
+        "course_code": "203",
+        "is_and": false
+      },
+      {
+        "subject": "MATH",
+        "course_code": "306",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ORG",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "ORG",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "ORG",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "ORG",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PERS",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "PERS",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "PERS",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PERS",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "PERS",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "PERS",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PERS",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "PERS",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "PERS",
+        "course_code": "302",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PERS",
+    "course_code": "150",
+    "prerequisites": [
+      {
+        "subject": "PERS",
+        "course_code": "140",
+        "is_and": false
+      },
+      {
+        "subject": "PERS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PERS",
+    "course_code": "160",
+    "prerequisites": [
+      {
+        "subject": "PERS",
+        "course_code": "150",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PHIL",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PHIL",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PHYS",
+    "course_code": "211",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "101",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PHYS",
+    "course_code": "302",
+    "prerequisites": [
+      {
+        "subject": "PHYS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PHYS",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "NS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "MATH",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PHYS",
+    "course_code": "304",
+    "prerequisites": [
+      {
+        "subject": "PHYS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "250",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "251",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "252",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "271",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "302",
+    "prerequisites": [
+      {
+        "subject": "POLS",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "305",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "307",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "348",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "349",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "350",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "351",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "352",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "353",
+    "prerequisites": [
+      {
+        "subject": "POLS",
+        "course_code": "352",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "354",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "364",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "365",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "366",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "372",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "392",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "393",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "399",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "400",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "409",
+    "prerequisites": [
+      {
+        "subject": "POLS",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "POLS",
+        "course_code": "250",
+        "is_and": true
+      },
+      {
+        "subject": "IR",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "421",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "422",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "425",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "426",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "POLS",
+        "course_code": "301",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "431",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "440",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "441",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "446",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "448",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "455",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "457",
+    "prerequisites": [
+      {
+        "subject": "POLS",
+        "course_code": "250",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "462",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "472",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "473",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "483",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "491",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "492",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "493",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "POLS",
+    "course_code": "495",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSIR",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSIR",
+    "course_code": "311",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSIR",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "PSIR",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "304",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "305",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "306",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "310",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "311",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "314",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "315",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "310",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "316",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "317",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "320",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "323",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "325",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "320",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "340",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "341",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "343",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "344",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "345",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "PSY",
+        "course_code": "301",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "350",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "NS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "360",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "361",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "362",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "363",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "364",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "360",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "362",
+        "is_and": false
+      },
+      {
+        "subject": "PSY",
+        "course_code": "365",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "365",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "366",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "320",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "368",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "398",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "399",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "407",
+    "prerequisites": [
+      {
+        "subject": "CS",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "CS",
+        "course_code": "210",
+        "is_and": false
+      },
+      {
+        "subject": "PSY",
+        "course_code": "202",
+        "is_and": false
+      },
+      {
+        "subject": "DSA",
+        "course_code": "210",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "410",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "411",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "310",
+        "is_and": false
+      },
+      {
+        "subject": "PSY",
+        "course_code": "311",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "412",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "414",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "314",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "415",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "416",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "310",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "418",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "310",
+        "is_and": true
+      },
+      {
+        "subject": "PSY",
+        "course_code": "315",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "421",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "320",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "422",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "320",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "424",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "320",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "442",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "340",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "443",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "444",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "445",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "340",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "450",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "350",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "452",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": false
+      },
+      {
+        "subject": "PSY",
+        "course_code": "310",
+        "is_and": false
+      },
+      {
+        "subject": "PSY",
+        "course_code": "350",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "469",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "480",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "PSY",
+    "course_code": "481",
+    "prerequisites": [
+      {
+        "subject": "PSY",
+        "course_code": "340",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "RUS",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "RUS",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "RUS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "RUS",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "RUS",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "RUS",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "203",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "305",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "308",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "313",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "318",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "321",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "406",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "425",
+    "prerequisites": [
+      {
+        "subject": "SOC",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SOC",
+    "course_code": "444",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPA",
+    "course_code": "120",
+    "prerequisites": [
+      {
+        "subject": "SPA",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "SPA",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPA",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "SPA",
+        "course_code": "120",
+        "is_and": false
+      },
+      {
+        "subject": "SPA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPA",
+    "course_code": "140",
+    "prerequisites": [
+      {
+        "subject": "SPA",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "SPA",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "102",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "312",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "315",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "442",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": false
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "SPS",
+    "course_code": "452",
+    "prerequisites": [
+      {
+        "subject": "SPS",
+        "course_code": "101",
+        "is_and": true
+      },
+      {
+        "subject": "SPS",
+        "course_code": "102",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "TLL",
+    "course_code": "001",
+    "prerequisites": [
+      {
+        "subject": "TLL",
+        "course_code": "001",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TLL",
+    "course_code": "102",
+    "prerequisites": [
+      {
+        "subject": "TLL",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TLL",
+    "course_code": "130",
+    "prerequisites": [
+      {
+        "subject": "TLL",
+        "course_code": "110",
+        "is_and": false
+      },
+      {
+        "subject": "TLL",
+        "course_code": "301",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TLL",
+    "course_code": "150",
+    "prerequisites": [
+      {
+        "subject": "TLL",
+        "course_code": "130",
+        "is_and": false
+      },
+      {
+        "subject": "TLL",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TUR",
+    "course_code": "102",
+    "prerequisites": [
+      {
+        "subject": "TUR",
+        "course_code": "101",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TUR",
+    "course_code": "201",
+    "prerequisites": [
+      {
+        "subject": "TUR",
+        "course_code": "102",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TUR",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "TUR",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "TUR",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "TUR",
+        "course_code": "403",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "202",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "204",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "234",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "300",
+    "prerequisites": [
+      {
+        "subject": "PROJ",
+        "course_code": "102",
+        "is_and": false
+      },
+      {
+        "subject": "PROJ",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "301",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "302",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "VA",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "303",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "304",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "301",
+        "is_and": false
+      },
+      {
+        "subject": "VA",
+        "course_code": "303",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "321",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "322",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "323",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "324",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "323",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "329",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "328",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "331",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "401",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "402",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "401",
+        "is_and": false
+      },
+      {
+        "subject": "VA",
+        "course_code": "403",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "403",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": true
+      },
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": true
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "404",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "401",
+        "is_and": false
+      },
+      {
+        "subject": "VA",
+        "course_code": "403",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "424",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "234",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "430",
+    "prerequisites": [
+      {
+        "subject": "HUM",
+        "course_code": "202",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "431",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "203",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "437",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "431",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "439",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "201",
+        "is_and": false
+      }
+    ]
+  },
+  {
+    "course_subject": "VA",
+    "course_code": "461",
+    "prerequisites": [
+      {
+        "subject": "VA",
+        "course_code": "331",
+        "is_and": false
+      }
+    ]
+  }
+]
