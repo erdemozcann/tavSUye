@@ -1,0 +1,692 @@
+[
+  {
+    "name": "Ayşegül",
+    "surname": "Toker",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4331.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4331",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4331",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Abdullah",
+    "surname": "Daşcı",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1888.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1888",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1888",
+    "about_en": "Location theory, supply chain management, logistics",
+    "about_tr": "Lokasyon teorisi, tedarik zinciri yönetimi, lojistik"
+  },
+  {
+    "name": "A. Doruk",
+    "surname": "Günaydın",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2708.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2708",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2708",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Alex",
+    "surname": "Cayrol",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4186.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4186",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4186",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Altuğ",
+    "surname": "Tanaltay",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1471.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1471",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1471",
+    "about_en": "Data Mining, Text Mining, Machine Learning, Big Data Analytics",
+    "about_tr": "Veri Madenciliği, Makine Öğrenmesi, Büyük Veri Analitiği"
+  },
+  {
+    "name": "Arzu",
+    "surname": "Wasti",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/165.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/165",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/165",
+    "about_en": "Cross-cultural organizational behavior",
+    "about_tr": "Kültürün örgütsel davranışa etkileri"
+  },
+  {
+    "name": "Ata Can",
+    "surname": "Bertay",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3536.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3536",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3536",
+    "about_en": "Banking, Financial Economics, Financial Stability, Financial Regulation, Economic Growth, Gender Economics.",
+    "about_tr": null
+  },
+  {
+    "name": "Ayşe",
+    "surname": "Kocabıyıkoğlu",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2707.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2707",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2707",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Barış Erman",
+    "surname": "Depecik",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3535.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3535",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3535",
+    "about_en": "Marketing Analytics, Sales Response Models, Machine Learning, Bayesian Econometrics",
+    "about_tr": null
+  },
+  {
+    "name": "Berna",
+    "surname": "Beyhan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2206.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2206",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2206",
+    "about_en": "Technology and academic entrepreneurship, technology commercialization and technology transfer, university-industry interactions, innovation systems and management in emerging technologies",
+    "about_tr": null
+  },
+  {
+    "name": "Bünyamin",
+    "surname": "Önal",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3519.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3519",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3519",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Burak",
+    "surname": "Gökgür",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3296.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3296",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3296",
+    "about_en": "Supply Chain Management, Retail Operations, Revenue Management, Interface of Operations Management and Marketing",
+    "about_tr": "Supply Chain Management, Retail Operations, Revenue Management, Interface of Operations Management and Marketing"
+  },
+  {
+    "name": "Can",
+    "surname": "Akkan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/732.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/732",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/732",
+    "about_en": "Design and analysis of discrete-parts manufacturing systems, finite-capacity scheduling of discrete-parts manufacturing systems, project scheduling, applied mathemathical programming",
+    "about_tr": "İmalat sistemlerinin tasarım ve analizi, imalat sistemlerinin sonlu-kapasite çizelgelenmesi, proje çizelgelemesi, uygulamalı matematiksel programlama"
+  },
+  {
+    "name": "Can",
+    "surname": "Aktan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4198.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4198",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4198",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Celile Itır",
+    "surname": "Göğüş",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4661.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4661",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4661",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Cenk",
+    "surname": "Koçaş",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/779.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/779",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/779",
+    "about_en": "Game theoretical models of price promotions, evolution of online markets, network economics, industrial organization, and stochastic service systems.",
+    "about_tr": "Fiyatlandırma ve Promosyon modelleri, Oyun teorisi, Digital Pazarlar ve Digital Ekonomi."
+  },
+  {
+    "name": "Enes",
+    "surname": "Eryarsoy",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/955.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/955",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/955",
+    "about_en": "Broadly, I position my research on the wide spectrum of Information Systems, and Analytics research area. My work involves applications of Operations Research (OR) and Machine Learning techniques on problems that are important from business point of view. I concentrate on Statistical Learning and Data Science. My other research areas are pricing of information goods, software piracy, scheduling, and telecommunications (network design)",
+    "about_tr": "Makine Öğrenmesi, Veri Madenciliği, Bilişim Sistemleri Ekonomisi, Telekomünikasyon"
+  },
+  {
+    "name": "Evrim",
+    "surname": "Akdoğu",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2127.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2127",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2127",
+    "about_en": "Corporate Finance; Theory and Empirical.",
+    "about_tr": "Kurumsal Finans; Teori ve Ampirik."
+  },
+  {
+    "name": "Ezgi",
+    "surname": "Akpınar",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2388.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2388",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2388",
+    "about_en": "digital marketing, viral marketing, social media marketing",
+    "about_tr": null
+  },
+  {
+    "name": "Ezgi",
+    "surname": "Özgen",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4441.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4441",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4441",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Füsun",
+    "surname": "Ülengin",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2280.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2280",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2280",
+    "about_en": "Logistics, Supply Chain Management, Multi-criteria Decision Making, Decision Support Model for Macro-systems",
+    "about_tr": "Lojistik, Tedarik Zinciri Yönetimi, Çok Kriterli Karar Verme, Makro-sistemler için Karar Destek Modelleri"
+  },
+  {
+    "name": "İpek",
+    "surname": "Nibat",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4442.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4442",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4442",
+    "about_en": "Consumer Behavior",
+    "about_tr": "Tüketici Davranışları"
+  },
+  {
+    "name": "Jane",
+    "surname": "Maley",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3669.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3669",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3669",
+    "about_en": "Global Mobility, Performance Management, Human Resource Development, Crisis",
+    "about_tr": null
+  },
+  {
+    "name": "Kerem",
+    "surname": "Kılıç",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3722.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3722",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3722",
+    "about_en": "Behavioral strategy, entrepreneurship, incentive theory",
+    "about_tr": null
+  },
+  {
+    "name": "Melek Akın",
+    "surname": "Ateş",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3531.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3531",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3531",
+    "about_en": "Strategic purchasing; buyer-supplier relationships; sustainable purchasing; purchasing and innovation",
+    "about_tr": "Stratejik satınalma; alıcı-tedarikçi ilişkileri; sürdürülebilir satınalma; satınalma ve yenilikçilik"
+  },
+  {
+    "name": "Nihat",
+    "surname": "Kasap",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/820.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/820",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/820",
+    "about_en": "Social Media Analytics and Data Mining;\r\nMobile Technologies and M-Government Applications;\r\nPricing and Quality of Service in Telecommunication Networks;\r\nGeneration Expansion Planning and Investments in Energy Sector;\r\nMathematical Programming, Heuristic Design and Optimization.",
+    "about_tr": "Sosyal Medya Analitiği ve Veri Madenciliği;\r\nMobil Teknolojiler ve M-Devlet Uygulamaları;\r\nTelekomunikasyon Ağlarında Fiyatlandırma ve Servis Kalitesi;\r\nEnerji Sektöründe Elektrik Üretimi Planlaması ve Yatırımları;\r\nHeuristic Tasarımı ve Optimizasyonu."
+  },
+  {
+    "name": "Nüfer Yasin",
+    "surname": "Ateş",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3533.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3533",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3533",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Nuri Zafer",
+    "surname": "Yenal",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/709.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/709",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/709",
+    "about_en": "Sustainability, Political Economy, Sociology of consumption, Sociology of food and agriculture, Rural sociology, Human geography and Historical sociology",
+    "about_tr": "Sürdürülebilirlik, Gıda ve Tarım Sosyolojisi, Kır Sosyolojisi, Tüketim Çalışmaları, Siyasal İktisat, Tarihsel Sosyoloji ve Beşeri Coğrafya"
+  },
+  {
+    "name": "Oğuz",
+    "surname": "Babüroğlu",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/38.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/38",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/38",
+    "about_en": "Action Research;Participatory management and planning; business policy and strategy; collaborative advantage; change management; organization design and development; socio-technical system design.",
+    "about_tr": "Katılımlı yönetim ve strateji oluşturma; değişim yönetimi; eylem araştırması; organizasyon tasarımı ve geliştirme; sosyo-teknik sistem tasarımı; işbirliği avantajı."
+  },
+  {
+    "name": "Onuralp",
+    "surname": "Armağan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3462.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3462",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3462",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Orhan Erem",
+    "surname": "Ateşağaoğlu",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3809.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3809",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3809",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Öykü Arkan",
+    "surname": "Tunç",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4194.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4194",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4194",
+    "about_en": "Business Ethics; Organizational Behavior; Whistleblowing",
+    "about_tr": null
+  },
+  {
+    "name": "Ozan",
+    "surname": "Duygulu",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2468.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2468",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2468",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Özgür",
+    "surname": "Demirtaş",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1938.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1938",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1938",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Peren",
+    "surname": "Özturan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4169.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4169",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4169",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Raha",
+    "surname": "Akhavan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2705.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2705",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2705",
+    "about_en": "Stochastic modeling and analysis, applied to:\r\nHealth and Humanitarian Logistics\r\nMedical Decision Making\r\nRevenue Management\r\nVehicle Routing Problems\r\nManufacturing and Production Systems",
+    "about_tr": null
+  },
+  {
+    "name": "Remzi",
+    "surname": "Gözübüyük",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2566.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2566",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2566",
+    "about_en": "Strategy\r\nSocial Network Analysis\r\nCorporate Governance\r\nInternational Business\r\nInterorganizational Relationships",
+    "about_tr": "Strateji\r\nSosyal Ağ Analizi\r\nKurumsal Yönetişim\r\nUluslararası İşletme\r\nÖrgütlerarası İlişkiler"
+  },
+  {
+    "name": "Şerif Aziz",
+    "surname": "Şimşir",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1674.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1674",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1674",
+    "about_en": "Corporate Finance, Mergers and Acquisitions, Corporate Capital Structure",
+    "about_tr": null
+  },
+  {
+    "name": "Tevhide",
+    "surname": "Altekin",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1277.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1277",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1277",
+    "about_en": "Direct digital manufacturing (production planning and scheduling problems of additive manufacturing),\r\nSpare parts network design,\r\nOperations management,\r\nAssembly/disassembly line design,\r\nPlanning of production and remanufacturing systems, \r\nMathematical programming, \r\nMetaheuristics.",
+    "about_tr": "Doğrudan dijital üretim (eklemeli imalat için üretim planlama ve çizelgeleme),\r\nYedek parça ağ tasarlanması,\r\nOperasyon yönetimi, \r\nMontaj/demontaj hatlarının tasarlanması, \r\nÜretim ve yeniden üretim sistemlerinin planlaması,\r\nMatematiksel programlama, \r\nMetaheuristic."
+  },
+  {
+    "name": "Timothy Scott",
+    "surname": "Kiessling",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3530.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3530",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3530",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ulf",
+    "surname": "Nilsson",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/909.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/909",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/909",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Vahid Karimi",
+    "surname": "Motahhar",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4184.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4184",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4184",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Yiğit",
+    "surname": "Atılgan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1792.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1792",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1792",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Yusuf",
+    "surname": "Soner",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1725.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1725",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1725",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Zeynep Aydın",
+    "surname": "Gökgöz",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3939.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3939",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3939",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Zeynep",
+    "surname": "Karagür",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4438.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4438",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4438",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Burcu Albayrak",
+    "surname": "Günaydın",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2126.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2126",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2126",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Tunç Tekin",
+    "surname": "Evcimen",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4420.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4420",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4420",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Belgin",
+    "surname": "Hatırnaz",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3218.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3218",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3218",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Burcu Ergin",
+    "surname": "Menekşe",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2264.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2264",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2264",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Didem",
+    "surname": "Kocaer",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3674.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3674",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3674",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Elif",
+    "surname": "Arıcan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4092.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4092",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4092",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gökçe",
+    "surname": "Çalışkan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4446.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4446",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4446",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Oktay",
+    "surname": "Dindar",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1433.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1433",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1433",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Osman Reha",
+    "surname": "Yolalan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1881.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1881",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1881",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Eralp",
+    "surname": "Denktaş",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2381.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2381",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2381",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Dursun",
+    "surname": "Delen",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3471.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/3471",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/3471",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Attila",
+    "surname": "Yaprak",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1576.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1576",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1576",
+    "about_en": "Global marketing strategy, cross-national consumer behavior, consumer value transformations in emerging economies, international strategic alliances and networks.",
+    "about_tr": "Global marketing strategy, cross-national consumer behavior, consumer value transformations in emerging economies, international strategic alliances and networks."
+  },
+  {
+    "name": "Burçin",
+    "surname": "Bozkaya",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/797.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/797",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/797",
+    "about_en": "Big Data Analytics, Behavioral Analytics, Operations Research, Operations Management, Combinatorial Modeling and Optimization, Heuristic Algorithm Design and Optimization, Transportation and Logistics Planning, Geographical Information Systems and Applications",
+    "about_tr": "Büyük Veri Analitiği, Davranış Analitiği, Yöneylem Araştırması, Operasyon Yönetimi, Kombinatoryel Modelleme ve Eniyileme, Heuristic Algoritma Dizayni ve Heuristic Eniyileme, Lojistik ve Ulaştırma Planlaması, Coğrafi Bilgi Sistemleri ve Uygulamaları"
+  },
+  {
+    "name": "Dilek",
+    "surname": "Çetindamar",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/162.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/162",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/162",
+    "about_en": "Technology management; entrepreneurship.",
+    "about_tr": "Girişimcilik; teknoloji yönetimi."
+  },
+  {
+    "name": "Emre",
+    "surname": "Kılıç",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2683.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/2683",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/2683",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Hasan Onur",
+    "surname": "Bodur",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1414.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1414",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1414",
+    "about_en": "Consumer decision making, its managerial and public policy implications Consumer responses to price and price information Evolution of preferences in individual and joint consumption Social influences on individual and joint consumer decisions Self control in consumption",
+    "about_tr": null
+  },
+  {
+    "name": "Koray Deniz",
+    "surname": "Şimşek",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1104.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1104",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1104",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Mustafa Erol",
+    "surname": "Balkan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1232.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1232",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1232",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Selcen",
+    "surname": "Öztürkcan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1112.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/1112",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/1112",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Işıl Büdeyri",
+    "surname": "Turan",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4686.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4686",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4686",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Nur İrem",
+    "surname": "Nuhoğlu",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4679.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/4679",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/4679",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Behlül",
+    "surname": "Üsdiken",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/70.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/70",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/70",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Nakiye Avdan",
+    "surname": "Boyacıgiller",
+    "department": "FMAN",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/682.jpg",
+    "link_en": "https://sbs.sabanciuniv.edu/en/faculty-members-research-area/682",
+    "link_tr": "https://sbs.sabanciuniv.edu/tr/faculty-members-research-area/682",
+    "about_en": null,
+    "about_tr": null
+  }
+]

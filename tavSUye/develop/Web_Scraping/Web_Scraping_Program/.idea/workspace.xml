@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c6f727-ee35-4d47-b22b-a033206501bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/01_course_subject_code_scraping.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/02_course_active-renamed_filtering.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/03_course_content_scraping.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/04_course_pdf_basic-science_engineering_scraping.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/05_course_faculty_scraping.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/06_course_adding_to_db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/course_codes.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/courses.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/filtered_courses.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/source.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/updated_courses.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Web_Scraping_Courses/updated_courses_v2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../database.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../~$Is_Postman.docx" beforeDir="false" />
-    </list>
+    <list default="true" id="54c6f727-ee35-4d47-b22b-a033206501bb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,22 +28,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.01_scraper.executor": "Run",
-    "Python.02_program_adding_to_db.executor": "Run",
-    "Python.scraper.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/erdem/Desktop/School/2024_02/ENS492/Project/git file/tavSUye/develop/Web_Scraping/Web_Scraping_Program",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.01_scraper.executor&quot;: &quot;Run&quot;,
+    &quot;Python.02_program_adding_to_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scraper.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erdem/Desktop/School/2024_02/ENS492/Project/git file/tavSUye/develop/Web_Scraping/Web_Scraping_Program&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -78,6 +63,7 @@
       <workItem from="1747584989257" duration="736000" />
       <workItem from="1747586950330" duration="6081000" />
       <workItem from="1747780045873" duration="498000" />
+      <workItem from="1747817824641" duration="19000" />
     </task>
     <servers />
   </component>

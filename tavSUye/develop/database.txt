@@ -206,7 +206,10 @@ CREATE TABLE Program (
     philosophy_min_courses INT NULL, -- Minimum number of philosophy obligation courses required
 
     engineering_ects INT NULL, -- Engineering ECTS credits
-    basic_science_ects INT NULL -- Basic Science ECTS credits
+    basic_science_ects INT NULL, -- Basic Science ECTS credits
+    
+    total_min_ects INT NULL,
+    total_min_credits INT NULL
 );
 
 -- ProgramCourse (Program and Course Relationship) Table

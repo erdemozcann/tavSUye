@@ -1,0 +1,1622 @@
+[
+  {
+    "name": "Erkay",
+    "surname": "Savaş",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/552.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/552",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/552",
+    "about_en": "Cryptography and Security, Computer Aritmetic, High Perfomance Computing,Distributed Computing.",
+    "about_tr": "Şifreleme ve İletişim Güvenliği, Bilgisayar Aritmetiği, Yüksek Performanslı Bigisayarlı Hesaplama."
+  },
+  {
+    "name": "Burç",
+    "surname": "Mısırlıoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1483.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1483",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1483",
+    "about_en": "Our research is centered around understanding the effects of defects and microstructure on the physical properties of functional oxides. Using continuum level computational and experimental approaches, we try to reveal the mechanisms by which defects and interfaces impact the physical properties and at what magnitude this occurs. Such knowledge is the key to design and fabricate structures in various geometries for specific engineering applications. The applications governed by such phenomena encompass macro- and micro-scale capacitors for electric energy storage, non-volatile solid state memories, nanoscale devices, electrothermal materials and electrooptical thin films.",
+    "about_tr": null
+  },
+  {
+    "name": "Hüsnü",
+    "surname": "Yenigün",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/388.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/388",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/388",
+    "about_en": "Formal methods; hardware/software verification; model checking; finite state machine based testing",
+    "about_tr": "Biçimsel metodlar; donanım/yazılım doğrulama; model kontrolü; sonlu durum makinalarına dayalı sınama yöntemleri"
+  },
+  {
+    "name": "Adnan",
+    "surname": "Kefal",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2812.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2812",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2812",
+    "about_en": "Computational and experimental mechanics; Large-scale design and analysis; Structural health monitoring; Shape sensing; Composite and sandwich structures; Structural topology optimization; Additive manufacturing; Isogeometric analysis; Finite element analysis; Peridynamic theory; Beam, plate and shell theories.",
+    "about_tr": "Hesaplamalı ve deneysel mekanik; Büyük ölçekli tasarım ve analiz; Yapısal sağlık izleme; Şekil algılama; Kompozit ve sandviç yapılar; Yapısal topoloji optimizasyonu; Eklemeli üretim; İzogeometrik analiz; Sonlu elemanlar analizi; Peridinamik teori; Kiriş, plaka ve kabuk teorileri."
+  },
+  {
+    "name": "Ahmet",
+    "surname": "Demirelli",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/928.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/928",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/928",
+    "about_en": "Enterprise Software, Big data",
+    "about_tr": "Enterprise Software, Big data"
+  },
+  {
+    "name": "Ahmet",
+    "surname": "Güngör",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4264.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4264",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4264",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ahmet Can",
+    "surname": "Mert",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2822.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2822",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2822",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Albert",
+    "surname": "Erkip",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/74.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/74",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/74",
+    "about_en": "Partial differential equations;pseudo-differential operators; functional analysis.",
+    "about_tr": "Kısmi diferansiyel denklemler; psödo diferansiyel operatörler; fonksiyonel analiz."
+  },
+  {
+    "name": "Albert",
+    "surname": "Levi",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/478.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/478",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/478",
+    "about_en": "Information and Network Security, Wireless Network Security, IoT Security and Privacy, Cryptography, Certificate Systems and Public Key Infrastructures, Computer Networks",
+    "about_tr": "Bilgi ve iletişim Güvenliği, Telsiz ağ güvenliği, IoT Güvenliği ve Mahremiyet, şifreleme, sertifika sistemleri ve açık anahtar altyapıları, bilgisayar ağları"
+  },
+  {
+    "name": "Alev",
+    "surname": "Topuzoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/87.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/87",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/87",
+    "about_en": "Uniformly distributed sequences; finite fields and applications; pseudo random numbers.",
+    "about_tr": "Sonlu cisimlerin uygulamaları; düzgün dağılan diziler; yarı rastgele sayılar."
+  },
+  {
+    "name": "Alex",
+    "surname": "Lyakhovich",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3940.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3940",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3940",
+    "about_en": "Cancer biology, Mitochondrial dysfunction, Aging & personalized medicine, Rare diseases.\r\nCurrent research projects: \r\n(i)   antibiotics targeting mitochondrial functions;\r\n(ii)  cancer stem cells, cancer resistance and the role of OXPHOS;\r\n(iii) exosomes and horizontal mitochondrial transfer;\r\n(iv)  organ-based biological clock.",
+    "about_tr": null
+  },
+  {
+    "name": "Alhun",
+    "surname": "Aydın",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4440.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4440",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4440",
+    "about_en": "Quantum thermodynamics and transport, theory of quantum materials, nanoscale energy applications",
+    "about_tr": "Kuantum termodinamik ve transport, kuantum malzemelerin teorisi, nano ölçekte enerji uygulamaları"
+  },
+  {
+    "name": "Ali",
+    "surname": "Koşar",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1268.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1268",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1268",
+    "about_en": "Ali Kosar is one of the pioneers in the design and development of new generation micro heat sinks with functional surfaces and microfluidic devices including cavitation on chip devices. His research interests constitute a wide spectrum covering heat and fluid flow in micro/nano scale, condensation, boiling heat transfer, microfluidic systems, and cavitation. He is aiming at contributing to the literature by offering new knowledge and understanding about micro/nano scale heat transfer and fluid flow and providing experimental data and design guidelines for futuristic cooling and microfluidic system technologies. He has broad experience and knowledge on various types of experiments on heat and fluid flow and phase change phenomena in micro/nano scale. The results of his research have already generated more than 200 published journal research articles which have been published in prestigious journals like Physics of Fluids, Journal of Microelectromechanical Systems and International Journal of Heat and Mass Transfer. Moreover, he also has more than 100 conference papers in prestigious and well attended international conferences. He gave over 50 seminars and invited lectures/talks at various institutions and conferences. He has more than 20 granted (3 of them triadic) and pending patent applications. He is currently leading a large research group consisting of members from various disciplines, graduate students and engineers and could build bridges between different disciplines (Energy, Nanotechnology, Applied Physics, Bioengineering, Biochemistry, Mechanical Engineering) to enable interdisciplinary pioneering research approach on energy and healthcare applications. \r\nHe received many national and intrenational awards such as µFIP Prominent Researcher Award\" in the 2021 micro Flow and Interfacial Phenomena (µFIP) Conference, ASME (American Society of Mechanical Engineers) ICNMM (International Conference on Nanochannels, Microchannels and Minichannels) Outstanding Early Career Award, Japan, Sapporo (2013). In addition, during the last five years, he has been successful to secure funding of more than 2,500,000 Euro from a wide variety of resources. He also serves as a reviewer in many prestigious journals (reviewing more than 100 manuscripts per year) and is a Subject Editor in the Applied Thermal Engineering journal (processing more than 300 manuscripts per year). He is the Co-director of Center of Excellence for Functional Surfaces and Interfaces for Nano diagnostics (EFSUN) and a Distinguished Researcher of Nanotechnology and Application Center at Sabanci University. Within a short time, EFSUN became a 'Research Powerhouse' at Sabanci University with exhaustive and collaborative efforts of the members. Significant large-scale grants were also obtained from both national and international resources. He is a Member of Turkish Academy of Sciences (TÜBA). He also serves as an Executive Committee Member of the ODTU MEMS  (Middle East Technical University Microelectromechanical Systems) Center, one of the leading Research Centers in Turkey.\r\nResearch areas: Hydrodynamic Cavitation, Boiling Heat Transfer, Condensation Heat Transfer, Micro- and Nanoflows, Microfluidic Devices, Functional Surfaces and Interfaces for Energy Efficiency, Micro/Nanoscale Heat Transfer",
+    "about_tr": null
+  },
+  {
+    "name": "Ali Rana",
+    "surname": "Atılgan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1036.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1036",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1036",
+    "about_en": "Physics of proteins • Dynamics of complex systems • Simulation models • Mechanics of materials • Fiber-Reinforced composite structures",
+    "about_tr": "Protein fiziği • Karmaşık sistemlerin dinamiği • Benzetim modelleri • Mekanik • Fiber-takviyeli kompozit yapılar"
+  },
+  {
+    "name": "Alp",
+    "surname": "Yürüm",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1990.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1990",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1990",
+    "about_en": "Inorganic nanomaterials (metals, oxides, chalcogens, carbon), crystal facet controlled heterogeneous reactions, energy storage (Li-ion, Na-ion, Li-S, Li-air, supercapacitors), energy conversion (photocatalysis for green hydrogen production, electrolysis, fuel cells), water treatment",
+    "about_tr": "Anorganik nanomalzemeler (metal, oksit, kalkojen, karbon), kristal faset kontrollü heterojen reaksiyonlar, enerji depolama (Li-iyon, Na-iyon, Li-S, Li-hava, süperkapasitörler), enerji dönüşüm (yeşil hidrojen üretimi için fotokatalizötler, elektroliz, yakıt pilleri), su arıtımı"
+  },
+  {
+    "name": "Asif",
+    "surname": "Şabanoviç",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/118.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/118",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/118",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Atıl Utku",
+    "surname": "Ay",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3742.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3742",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3742",
+    "about_en": "Cryptographic Hardware Design, Computer Architectures",
+    "about_tr": "Kriptografik Donanım Tasarımı, Bilgisayar Mimarileri"
+  },
+  {
+    "name": "Ayesha Asloob",
+    "surname": "Topaçoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2716.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2716",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2716",
+    "about_en": "My research interest lies in the intersection of Commutative and Computational Algebra, Combinatorics and Algebraic Statistics.",
+    "about_tr": "My research interest lies in the intersection of Commutative and Computational Algebra, Combinatorics and Algebraic Statistics."
+  },
+  {
+    "name": "Ayhan",
+    "surname": "Bozkurt",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/319.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/319",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/319",
+    "about_en": "Design and modeling of Microelectromechanical Systems. IC Design for Transducer Interfaces.",
+    "about_tr": "Mikroelektromekanik sistem tasarımı ve modellenmesi. Dönüştürücü arayüzleri için tümleşik devre tasarımı."
+  },
+  {
+    "name": "Bahattin",
+    "surname": "Koç",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1796.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1796",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1796",
+    "about_en": "3D bioprinting/biomanufacturing for tissue and organ engineering;\r\ncomputational geometry and optimization for additive manufacturing process;\r\nheterogenous, multi-functional object modeling and manufacturing; \r\nnano-micro additive manufacturing of composite materials; \r\nproses planning and development for hybrid additive-subtractive processes.",
+    "about_tr": "3D bioprinting/biomanufacturing for tissue and organ engineering;\r\ncomputational geometry and optimization for additive manufacturing process;\r\nheterogenous, multi-functional object modeling and manufacturing; \r\nnano-micro additive manufacturing of composite materials; \r\nproses planning and development for hybrid additive-subtractive processes."
+  },
+  {
+    "name": "Barış",
+    "surname": "Balcıoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1799.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1799",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1799",
+    "about_en": "Stochastic Models • Analysis of Queueing Systems • Production/Inventory Systems • Call Centers • Simulation",
+    "about_tr": "Rassal Modeller • Kuyruk Sistemlerinin Analizi • Üretim/Envanter Sistemleri • Müşteri Hizmet Merkezleri • Benzetim"
+  },
+  {
+    "name": "Bekir",
+    "surname": "Bediz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2687.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2687",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2687",
+    "about_en": "Structural Dynamics, vibrations, biomechanics, micro-manufacturing",
+    "about_tr": "Dinamik, titresim, biomekanik, mikro-uretim"
+  },
+  {
+    "name": "Bekir",
+    "surname": "Dizman",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3240.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3240",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3240",
+    "about_en": "1. Structure-property relationship in functional/water-soluble/high performance polymers\r\n2. Nano-engineered prepregs and composite materials\r\n3. Out-of-autoclave (OOA) manufacturing of composite materials\r\n4. Catalysts and catalyst systems for composite materials\r\n5. Nanomedicines (advanced drug delivery systems, nanotheranostics)",
+    "about_tr": "1. Structure-property relationship in functional/water-soluble/high performance polymers\r\n2. Nano-engineered prepregs and composite materials\r\n3. Out-of-autoclave (OOA) manufacturing of composite materials\r\n4. Catalysts and catalyst systems for composite materials\r\n5. Nanomedicines (advanced drug delivery systems, nanotheranostics)"
+  },
+  {
+    "name": "Berrin",
+    "surname": "Yanıkoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/288.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/288",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/288",
+    "about_en": "Computer vision & Machine learning: biometrics, image understanding, NLP applications",
+    "about_tr": "Bilgisayarlı görme ve Makine Öğrenmesi: biometrik kişi tanıma, imge anlama, doğal dil işleme uygulamaları"
+  },
+  {
+    "name": "Beyhan",
+    "surname": "Puliçe",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3772.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3772",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3772",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Bülent",
+    "surname": "Çatay",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/292.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/292",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/292",
+    "about_en": "Sustainable Transport and Logistics • Vehicle Routing and Scheduling • Last-mile Distribution Systems • Smart Mobility • Applied Optimization • Metaheuristics",
+    "about_tr": "Sürdürülebilir Ulaşım ve Lojistik • Araç Rotalama ve Çizelgeleme • Son Kilometre Dağıtım Sistemleri • Akıllı Hareketlilik • Uygulamalı Eniyileme • Sezgisel Yöntemler"
+  },
+  {
+    "name": "Burak",
+    "surname": "Kocuk",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2709.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2709",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2709",
+    "about_en": "Mixed-integer nonlinear programming, conic programming, global optimization, engineering optimization problems with particular interest in electric power systems.",
+    "about_tr": "Karma-tamsayılı doğrusal olmayan programlama, konik programlama, global optimizasyon, elektriksel sistemlerde özel ilgi ile mühendislik optimizasyon problemleri."
+  },
+  {
+    "name": "Burcu Saner",
+    "surname": "Okan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1987.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1987",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1987",
+    "about_en": "Self-healing nanocomposites and coatings; graphene synthesis and its applications; recycling; core-shell electrospinning/electrospraying; anti-microbial coatings; thermoplastic compounding; nano composites",
+    "about_tr": null
+  },
+  {
+    "name": "Çağlar",
+    "surname": "Tunç",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4659.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4659",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4659",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Canan",
+    "surname": "Atılgan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/223.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/223",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/223",
+    "about_en": "Polymer and protein dynamics; theoretical and computational investigation of complex molecular systems; conformational multiplicity",
+    "about_tr": "Polimer ve protein dinamiği; karmaşık moleküler sistemlerin teorik ve hesapsal yöntemlerle incelenmesi; konformasyonel katlılık"
+  },
+  {
+    "name": "Canan",
+    "surname": "Kaşıkcı",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1614.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1614",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1614",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Cem",
+    "surname": "Güneri",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/410.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/410",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/410",
+    "about_en": "Algebraic coding theory, arithmetic of finite fields, applications of algebra and algebraic geometry to coding theory.",
+    "about_tr": "Cebirsel kodlama teorisi, sonlu cisimlerin aritmetiği, cebir ve cebirsel geometrinin kodlama teorisine uygulamaları."
+  },
+  {
+    "name": "Cemal",
+    "surname": "Yılmaz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1479.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1479",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1479",
+    "about_en": "Software Engineering; Software Security; Software Quality Assurance; Software Testing; Data-Driven Dynamic Program Analysis",
+    "about_tr": "Yazılım Mühendisliği; Yazılım Güvenliği; Yazılım Kalite Güvencesi; Yazılım Sınama; Veri Güdümlü Dinamik Program Analizi"
+  },
+  {
+    "name": "Devrim",
+    "surname": "Coşkun",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4787.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4787",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4787",
+    "about_en": "Plant physiology, cell & molecular biology, mineral nutrition, abiotic stress, membrane transport, potassium, nitrogen, silicon, sodium",
+    "about_tr": "Bitki fizyolojisi, hücre ve moleküler biyoloji, mineral beslenme, abiyotik stres, membran taşınımı, potasyum, azot, silikon, sodyum"
+  },
+  {
+    "name": "Dilara",
+    "surname": "Keküllüoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4662.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4662",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4662",
+    "about_en": "privacy, human computer interaction, natural language processing, computational social science, responsible artificial intelligence",
+    "about_tr": null
+  },
+  {
+    "name": "Dimitrios",
+    "surname": "Papathanasiou",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4499.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4499",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4499",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Duygu Kuzuoğlu",
+    "surname": "Öztürk",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4780.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4780",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4780",
+    "about_en": "Cancer, translation control, post-transcriptional gene regulation, prostate cancer",
+    "about_tr": null
+  },
+  {
+    "name": "Duygu",
+    "surname": "Taş",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4202.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4202",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4202",
+    "about_en": "Mathematical Programming and Combinatorial Optimization, Transportation Planning and Logistics, Production and Inventory Planning, Airline Crew Scheduling",
+    "about_tr": "Matematiksel Programlama ve Kombinatoryal Optimizasyon, Ulaşım Planlama ve Lojistik, Üretim ve Envanter Planlama, Havayolu Ekip Çizelgeleme"
+  },
+  {
+    "name": "Ece Naz",
+    "surname": "Karaca",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2572.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2572",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2572",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Elif Dürdane",
+    "surname": "Koç",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4235.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4235",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4235",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Emrah",
+    "surname": "Kalemci",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/953.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/953",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/953",
+    "about_en": "High Energy Astrophysics, black hole binaries, instrumentation",
+    "about_tr": "Yüksek Enerji Gökbilimi, Kara Delikler, X ışını algılayıcıları"
+  },
+  {
+    "name": "Emre",
+    "surname": "Erdem",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3233.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3233",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3233",
+    "about_en": "Physics of Materials; Spectroscopy (EPR, Raman, Photoluminesence, Impedance); Physical Chemistry; Solid State Physics; Graphene; Carbon dots; Semiconductors; Nanoparticles and Nanocrystals; Ceramics; Powder processing; Phase transitions; Photovoltaics; Solar cells; Thermoelectrics; Supercapacitors, Li-ion batteries; Piezoelectric nanowires and nanogenerators; Wearable electronics; Energy harvesting and storage; Electrical vehicles; Microelectronic systems; Battery management systems; Robot arms, Materials for grippers; Thin film batteries; Power to X technologies; Potentiostat; Electrolyte; Electrode for batteries and supercapacitors; Renewable energy, Batteries for Electrical vehicle; Defect structures",
+    "about_tr": "Ferroelektirk ve piezoelektrik malzemelerin sentezi ve karaterizasyonu, Lityum-iyon bataryaları ve süperkapasitörler için elektrot malzemelerin sentezi ve karakterizasyonu, süperkapasitor üretimi ve tasarımı, Raman, fotoluminisans, empedans spektrometresi, elektron paramanyetik rezonans (EPR) spektrometresi, metal oksit malzemelerin kristal alan teorisi hesaplamaları, seramikler, varistörler, süperiletken malzemeler ve alan etkili transistörlerin geliştirilmesi"
+  },
+  {
+    "name": "Erchan",
+    "surname": "Aptoula",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4243.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4243",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4243",
+    "about_en": "Computer Vision, Deep Learning, Remote Sensing, Precision agriculture, Industrial vision, Biomedical image analysis, Automotive vision systems",
+    "about_tr": "Bilgisayarla görü, Derin öğrenme, Uzaktan algılama, Hassas tarım, Sanayi için görü, Biyomedikal görüntü çözümleme, Otomotiv için görü"
+  },
+  {
+    "name": "Erhan",
+    "surname": "Budak",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/333.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/333",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/333",
+    "about_en": "Manufacturing processes and equipment; machining processes; machine tools; process modelling; monitoring and control; machine dynamics and mechanical vibrations.",
+    "about_tr": "Üretim süreçleri ve makinaları; talaşlı imalat; takım tezgahları; süreç modelleme; gözlemleme ve kontrol; makina dinamiği ve mekanik titreşimler."
+  },
+  {
+    "name": "Ersin",
+    "surname": "Göğüş",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/636.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/636",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/636",
+    "about_en": "High Energy Astrophysics: X-ray and Gamma-ray Properties of Magnetars, X-ray Binaries, Broadband Studies of Gamma Ray Bursts; Astronomy Education",
+    "about_tr": "Yüksek Enerji Astrofiziği: Magnetarların ve X-ışını İkili Sistemlerin X- ve Gama Işını Özellikleri, Gama Işını Patlamalarının Geniş Dalgaboyunda İncelenmesi; Astronomi Eğitimi"
+  },
+  {
+    "name": "Esra",
+    "surname": "Erdem",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1124.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1124",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1124",
+    "about_en": "Artificial intelligence. Knowledge representation. Automated reasoning. Cognitive Robotics.",
+    "about_tr": "Yapay zeka. Bilgi gösterimi. Otomatik akıl yürütme. Bilişsel robotik."
+  },
+  {
+    "name": "Esra",
+    "surname": "Koca",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2559.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2559",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2559",
+    "about_en": "Facility Location, Production Planning, Scheduling, Stochastic Programming, Integer Programming",
+    "about_tr": "Tesis Yerlestirme, Üretim Planlama, Cizelgeleme, Rassal Programlama, Tamsayılı Programlama"
+  },
+  {
+    "name": "Ezgi Karabulut",
+    "surname": "Türkseven",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3526.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3526",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3526",
+    "about_en": "Discrete Optimization, Preference Learning, Distributed Optimization, Online Optimization, Bilevel Optimization",
+    "about_tr": "Tamsayı Programlama, Makine Öğrenme"
+  },
+  {
+    "name": "Ferruh",
+    "surname": "Özbudak",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4341.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4341",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4341",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Fevzi Çakmak",
+    "surname": "Cebeci",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1800.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1800",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1800",
+    "about_en": "Polyelectrolyte multilayer thin films, surface chemistry, nanocomposites, vertically aligned and functionalized carbon nanotubes, boron nitride nanotubes, silica nanoparticles, supercapacitors.",
+    "about_tr": "Polielektrolit çok katmanlı ince filmler, yüzey kimyası, nanokompozitler, dikey olarak yönelimi ve fonksiyonel karbon nanotüpler, bor nitrür nanotüpler, silika nanoparçarcıklar, süperkapasitörler."
+  },
+  {
+    "name": "Gökalp",
+    "surname": "Alpan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4212.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4212",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4212",
+    "about_en": "orthogonal polynomials, approximation theory, random matrix theory.",
+    "about_tr": "ortogonal polinomlar, yaklaşımlar Teorisi, rassal matris teorisi."
+  },
+  {
+    "name": "Göktuğ",
+    "surname": "Karpat",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4691.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4691",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4691",
+    "about_en": "Quantum information theory, Open quantum systems Theory, Quantum Correlations",
+    "about_tr": "Kuantum enformasyon kuramı, Açık kuantum sistemleri kuramı, Kuantum ilintileri"
+  },
+  {
+    "name": "Gözde",
+    "surname": "İnce",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1811.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1811",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1811",
+    "about_en": "Design and synthesis of biomaterials, smart materials for controlled drug delivery, functional coatings for biosensors and flexible sensors, smart membranes for separation, chemical vapor deposition of thin film coatings",
+    "about_tr": "Biyomalzemelerin tasarımı ve sentezi, kontrollü ilaç salımı için akıllı malzemeler, biyosensörler ve esnek sensörler için fonksiyonel kaplamalar, ayrıştırma uygulamaları için akıllı membranlar, ince film kaplamaların kimyasal buhar biriktirmesi yöntemi ile üretimi"
+  },
+  {
+    "name": "Gözde Özbal",
+    "surname": "Sargın",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4358.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4358",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4358",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gül",
+    "surname": "Kozalak",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4229.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4229",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4229",
+    "about_en": "cancer\r\ndrug resistance\r\nnanoparticle \r\nmagnetically guided drug delivery systems\r\nmultiple myeloma\r\nbortezomib\r\napoptosis",
+    "about_tr": null
+  },
+  {
+    "name": "Güllü Kızıltaş",
+    "surname": "Şendur",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/952.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/952",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/952",
+    "about_en": "Design Optimization (Domain specific optimal design of mechanical, biomedical and electromagnetic systems, optimal design of complex/new technology products, Multidisciplinary design optimization) \r\n\r\nMaterial Design and Fabrication (Topology optimization, Homogenization theory, Advanced 3D fabrication (Solid Free Form Fabrication, Micro Fabrication by Co-Extrusion, etc.) \r\n\r\nComputational Mechanics (advanced micro-material modeling, Finite Element Methods (FEM)) \r\n\r\nElectromagnetics (FEM, miniature multifunctional antennas, filters, passive components, arrays)",
+    "about_tr": "Tasarım Optimizasyonu (mekanik, biomedikal ve elektromanyetik sistemlerin tasarımı, karmaşık/yeni teknoloji ürünlerin optimal tasarımı, çok-disiplinli sistem tasarımı)\r\n\r\nMalzeme Tasarımı ve Üretimi (Topoloji optimizasyonu, homojenleştirme teorisi, üç boyutlu ileri malzeme üretim teknikleri (katı serbest şekil üretimi, ko-extrüzyon ile mikro-fabrikayson)\r\n\r\nHesaplamalı Mekanik (ileri mikro malzeme modelleme, sonlu elemanlar yöntemi)\r\n\r\nElektromanyetizma (Sonlu elemanlar yöntemi, minyatür çok amaçlı antenler, filtreler ve pasif aygıtlar, faz dizilimli antenler)"
+  },
+  {
+    "name": "Gündüz",
+    "surname": "Ulusoy",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/164.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/164",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/164",
+    "about_en": "Project and machine scheduling; innovation and manufacturing strategies; operations and project management; evolutionary algorithms.",
+    "about_tr": "Proje ve makine çizelgeleme; inovasyon ve imalât stratejileri; üretim ve proje yönetimi; evrimsel algoritmalar;"
+  },
+  {
+    "name": "Güneş Yıldırım",
+    "surname": "Akdeniz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4188.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4188",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4188",
+    "about_en": "new drug discovery and design, pharmaceutical chemistry and structure-activity relationship, nanoparticle synthesis and characterization, bioinformatics",
+    "about_tr": "yeni ilaç keşfi ve dizaynı, farmasötik kimya ve yapı-aktivite ilişkisi, nanopartikül sentezi ve karakterizasyonu, biyoinformatik"
+  },
+  {
+    "name": "Hasan Sait",
+    "surname": "Ölmez",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/446.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/446",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/446",
+    "about_en": "Theoretical and numerical hydrodynamics, Experimental hydrodynamics \r\nNumerical techniques in nonlinear wave mechanics, Remote sensing of water waves\r\nWave-turbulence interaction, Surfactant effects on wave dissipation\r\nData networking and security, E-commerce applications\r\nHydrodynamic aspects of yacht design, Hull design in high-speed boats",
+    "about_tr": "Teorik ve nümerik hidrodinamik, Deneysel hidrodinamik\r\nLineer olmayan dalga mekaniğinde nümerik teknikler, Dalga-türbülans etkileşimi\r\nVeri iletişimi ve güvenlik, E-ticaret uygulamaları\r\nYat dizaynında hidrodinamik, Yüksek süratli teknelerde sualtı dizaynı"
+  },
+  {
+    "name": "Hatice Sinem Şaş",
+    "surname": "Çaycı",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3138.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3138",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3138",
+    "about_en": "Composite Process Design, Mold Filling Simulation, Computational Fluid Mechanics, Mathematical Modeling, Rheology",
+    "about_tr": null
+  },
+  {
+    "name": "Hüseyin",
+    "surname": "Özkan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3026.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3026",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3026",
+    "about_en": "Machine Learning, Computer Vision, Signal Processing and Visual Neuroscience",
+    "about_tr": null
+  },
+  {
+    "name": "Hüveyda",
+    "surname": "Başağa",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/86.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/86",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/86",
+    "about_en": "Role of oxidative stress and antioxidants on signaling pathways leading to gene expression.",
+    "about_tr": "Oksidatif stres ve antioksidanların biyolojik sistemlerde ve gen ekspresyonunu etkileyen hücre sinyal iletimi mekanizmalarındaki rolü."
+  },
+  {
+    "name": "İbrahim",
+    "surname": "Tekin",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/340.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/340",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/340",
+    "about_en": "Microwave and Millimeter Wave Active/Passive Circuit And Antenna Design, Millimeter Wave Systems, Full Duplex/MIMO Radio Antennas,  Antenna Design, RF Circuit Design, GPS Based Indoor Positioning.",
+    "about_tr": "Mikrodalga, milimetrik dalga aktif/pasif devre ve anten tasarımı, Full duplex antenler, RF devre tasarımı, Anten tasarımı ve ölçümü, Kapalı alan yer bulma."
+  },
+  {
+    "name": "İhsan",
+    "surname": "Sadati",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3458.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3458",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3458",
+    "about_en": "- Logistics\r\n\r\n- Metaheuristics\r\n\r\n- Vehicle Routing\r\n\r\n- Green Logistics\r\n\r\n- Operations Research",
+    "about_tr": "- Lojistik\r\n\r\n- Metaheuristikler \r\n\r\n- Araç Rotalama\r\n\r\n- Yeşil Lojistik\r\n\r\n- Yöneylem Araştırması"
+  },
+  {
+    "name": "İnanç",
+    "surname": "Adagideli",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1609.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1609",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1609",
+    "about_en": "Theoretical condensed matter physics. Topological quantum computation. Spintronics and spin Hall effect. Topological insulators and superconductors. Mesoscale and nanoscale physics. Quantum transport theory. Quantum thermodynamics",
+    "about_tr": "Kuramsal yogun madde fizigi. Topolojik kuantum hesaplama. Spintronik, spin-orbitronik ve spin Hall etkisi. Topolojik yalitkan ve superiletkenler. Mezo- ve nano-olcek fizigi. Kuantum tasinim kurami. Kuantum termodinamigi."
+  },
+  {
+    "name": "İnanç",
+    "surname": "Arın",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3060.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3060",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3060",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "İrem",
+    "surname": "Kırış",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4342.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4342",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4342",
+    "about_en": "Proteomics, Alzheimer's disease",
+    "about_tr": null
+  },
+  {
+    "name": "İsmail",
+    "surname": "Çakmak",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/307.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/307",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/307",
+    "about_en": "- Micronutrient deficiencies  plants -  Oxygen free radicals and antioxidants in stressed plants - Heavy metal uptake, transport and accumulation in plants - Physiological characterization of plants suffering from abiotic stress factors -human Nutritional Aspects of Plant Nutrition",
+    "about_tr": "Mikro besin elementleri noksanlığı; Bitkilerde serbest oksijen  radikalleri ve antioxidantlar; Bitkilerde ağır metallerin alınımı, taşınması ve birikimi; Abiotic stress koşullarındaki bitkilerde fizyolojik çalışmalar; Bitki besleme ve insan sağlığı arasındaki ilişkiler"
+  },
+  {
+    "name": "İsmet İnönü",
+    "surname": "Kaya",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/674.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/674",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/674",
+    "about_en": "quantum transport, quantum devices, device physics,  nanoelectronics, graphene, 2d materials, low temperature physics, OLED displays",
+    "about_tr": "kuantum taşınımı, kuantum aygıtlar, aygıt fiziği, nanoelektronik, grafen, 2d malzemeler, düşük sıcaklık fiziği, OLED ekranlar"
+  },
+  {
+    "name": "Kağan",
+    "surname": "Kurşungöz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1984.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1984",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1984",
+    "about_en": "Integer partitions from a combinatorial perspective, partition generating functions, Rogers-Ramanujan generalizations, q-series, enumerative combinatorics.",
+    "about_tr": "Kombinatorik bakış açısıyla tamsayı parçalanışları, parçalanış üreteç fonksiyonları, Rogers-Ramanujan genelleştirmeleri, q-serileri, sayı saymalı kombinatorik."
+  },
+  {
+    "name": "Kamer",
+    "surname": "Kaya",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2380.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2380",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2380",
+    "about_en": "Parallel Algorithms; high performance computing; BigData analysis; cryptography; bioinformatics",
+    "about_tr": "Paralel algoritmalar; yüksek performanslı veri işleme; Büyük veri analizi; kriptografi; biyoinformatik"
+  },
+  {
+    "name": "Kemal",
+    "surname": "İnan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/40.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/40",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/40",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Kemal",
+    "surname": "Kılıç",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/562.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/562",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/562",
+    "about_en": "Research Interests • Decision Making Under Uncertainty • Heuristic Search and Optimization Techniques • Data Mining • Decision Support Systems • Bioinformatics • Innovation Management • Digital Transformation • Data Analytics • Creativity • Artificial Intelligence •",
+    "about_tr": "Araştırma İlgi Alanları • Belirsizlik Altında Karar Verme • Buluşsal Yöntemlerle Eniyileme Teknikleri • Veri Madenciliği • Karar Destek Sistemleri • Biyoenformatik • Inovasyon Yönetimi • Dijital Dönüşüm • Veri Analitiği • Yaratıcılık • Yapay Zeka •"
+  },
+  {
+    "name": "Kemalettin",
+    "surname": "Erbatur",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/506.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/506",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/506",
+    "about_en": "His primary research interest is in intelligent motion control and humanoid robots. He is the author of 50 papers which have appeared in international conference proceedings and journals.",
+    "about_tr": "Bulanık mantıklı kontrol \r\nBulanık mantıklı uyarlama sistemleri\r\nGenetik algoritmalar\r\nKayan kipli kontrol\r\nEndüstriyel robotik\r\nEndüstriyel otomasyon\r\nİnsansı robotlar\r\nDört bacaklı robotlar\r\nBacaklı robotlar\r\nOtonom robotlar"
+  },
+  {
+    "name": "Korkut Kaan",
+    "surname": "Tokgöz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3672.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3672",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3672",
+    "about_en": "millimeter-wave, sub-terahertz, terahertz, CMOS, edge-AI, IoT",
+    "about_tr": null
+  },
+  {
+    "name": "Kürşat",
+    "surname": "Şendur",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1272.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1272",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1272",
+    "about_en": "– Electromagnetic theory and applications, electromagnetic scattering and radiation problems.\r\n– Heat transfer modeling, thermal analysis.\r\n– Interaction of photons with nanostructures, surface plasmon polaritons, surface plasmon resonances.\r\n– Heat assisted magnetic recording, magnetoresistive read heads and sensors.",
+    "about_tr": "- Elektromanyetik teorisi ve uygulamaları, elektromanyetik saçınım ve ışınım problemleri.\r\n- Isı tranferi modellemesi, termal analiz.\r\n- Fotonların nanoparçacıklarla etkileşimi, yüzey plazmon dalgaları."
+  },
+  {
+    "name": "Levent",
+    "surname": "Öztürk",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/781.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/781",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/781",
+    "about_en": "plant biology, plant physiology, plant nutrition, agriculture, food security, nutrition security, biofortification, climate change, agronomy, crop science",
+    "about_tr": "bitki biyolojisi, bitki fizyolojisi, bitki besleme, tarım, gıda güvenliği, beslenme güvenliği, biyofortifikasyon, iklim değişikliği, agronomi, tarla bitkileri"
+  },
+  {
+    "name": "Lütfi Taner",
+    "surname": "Tunç",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2003.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2003",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2003",
+    "about_en": "Multi-axis milling.\r\nMachine Tool Dynamics, Metal Cutting Dynamics.\r\nTool path generation.\r\nRobotic frezeleme.",
+    "about_tr": "Çok eksenli frezeleme.\r\nTakım tezgahları dinamiği, Metal kesme dinamiği.\r\nTakım yolu hesaplama.\r\nRobotik frezeleme."
+  },
+  {
+    "name": "Mahmut Faruk",
+    "surname": "Akşit",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/590.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/590",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/590",
+    "about_en": "Design and Development of Micro-Hydro Power Systems, Project Coordinator & Responsible for Mechanical Design, Supported by DPT (Devlet Planlama Teskilati), Sabancı Univ. Proje No. EACF05-00337, 2005-2008. Reverse engineering and modeling of turbine blades, Project Leader, Funded by Scientific Research Council of Turkey (TUBITAK - MAM), Sabancı Univ. Proje No. EACF04-00269, 2004-2007. Development of an automated system to label fabric pieces used in shirt manufacturing, Project Leader, Funded by Abbate Shirts / Oztay Tekstil Co., Sabancı Univ. Proje No. EACF04-00260, 2004-2005. Petrol Yakıtlı Bir Aracın Hibrit Araca Dönüşümü, Gebze Yüksek Teknoloji Enstitüsü Bilimsel Araştırma Projesi, Proje No. 02-A-03-01-09, Project Leader, 2001-2003. High Temperature Sealing of Gas Turbine Hot Gas Path Junctions, General Electric Corporate R&D Center, SO #s 212597, 210174, Project Leader, 1998-2001. Hydrogen and Oil Sealing in Industrial Generators, General Electric Corporate R&D Center, SO #s 212605, 212606, 212628, Project Leader, 1998-2001. Non-metallic Piston Ring Seals for Natural Gas Compressors, General Electric Corporate R&D Center, NP PO # 0/08225, Project Leader, 2000-2001. Non-Metallic Oil Brush Seals Technology Development for Aircraft Engines, General Electric Corporate R&D Center, SO #208716, 208897, Project Leader, 2000-2001.",
+    "about_tr": null
+  },
+  {
+    "name": "Mehmet",
+    "surname": "Yıldız",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1282.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1282",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1282",
+    "about_en": "Polymer based Composite Materials, Nano Composites, Structural Health Monitoring, Fiber Optic Sensors, Meshless Computational Fluid Mechanics (Smoothed Particle Hydrodynamics), Transport Phenomena in Materials Processing, Semiconductor Single Crystal Growth.",
+    "about_tr": null
+  },
+  {
+    "name": "Mehmet Ali",
+    "surname": "Alpar",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/614.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/614",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/614",
+    "about_en": "Neutron Stars. Pulsars. X-ray binaries. Fallback disks.",
+    "about_tr": "Nötron Yıldızları. Pulsarlar. X-ışını çiftyıldızları. Kalıntı diskler."
+  },
+  {
+    "name": "Mehmet Ali",
+    "surname": "Gülgün",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/322.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/322",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/322",
+    "about_en": "Phase and morphology control for targetted functionalities in Ceramics, Revalorization of End-of-Life materials for Cement industries, Effects of impurity cations on the microstructural development and properties of polycrystalline ceramics; synthesis and characterization of multi cation solid oxide electrolytes for solid oxide fuel cell (clean energy generation of the near future) applications; ceramic materials and structures in photonics applications; synthesis and characterization of polymer ceramic composite materials; atomic level characterization of structure and chemical binding in materials through electron microscopy and spectroscopy.",
+    "about_tr": "Mikroyapi ve morfoloji kontrolu sayesinde malzeme ozelliklerinin gelistrilmesi, işlevini tamamlamış malzemelerin yeniden farklı endüstrlere hammadde olarak kazandırılması, Çok kristalli seramik malzemelerde yabancı metal iyonlarının malzeme anayapı ve özelliklerine etkisi; malzemelerin anayapılarının ve kimyasal bağlarının atom seviyesinde elektron mikroskopu ve spektrometreleriyle incelenmesi; katı yakıt pilleri için çok metalli oksid seramik malzemelerin kimyasal yollarla üretilmesi; ışıksal (Photonic) seramik malzemelerin üretimi ve karakterizasyonu; polimer seramik kompozit malzemelerinin üretimi ve ana yapılarının incelenmesi."
+  },
+  {
+    "name": "Mehmet Murat",
+    "surname": "Fadıloğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4663.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4663",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4663",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Melih",
+    "surname": "Türkseven",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3527.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3527",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3527",
+    "about_en": "Non-linear System Control, Haptics, Tele-operation, Medical Robotics, Pneumatics, Soft Robotics",
+    "about_tr": null
+  },
+  {
+    "name": "Meltem",
+    "surname": "Elitaş",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2476.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2476",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2476",
+    "about_en": "Biomechatronics, biosensors, microfluidics, antibiotics, microscopy, laparoscopic tools, personalized medicine, cancer-immune cell interactions",
+    "about_tr": "Biyomekatronik, biyorsensorler, mikroakiskanlar, antibiyotikler, microscopy, tumor mikrocevresi, laparoskopik cihazlar, kişiselleştirilmiş tedavi, kanser-bagisiklik sistemi hücrelerinin etkileşimleri"
+  },
+  {
+    "name": "Mohammad",
+    "surname": "Sadek",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3419.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3419",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3419",
+    "about_en": "Computational Number Theory, Arithmetic of Elliptic Curves, Arithmetic of Hyperelliptic Curves,\r\nDiophantine Equations, Arithmetic Dynamical Systems",
+    "about_tr": "Computational Number Theory, Arithmetic of Elliptic Curves, Arithmetic of Hyperelliptic Curves,\r\nDiophantine Equations, Arithmetic Dynamical Systems"
+  },
+  {
+    "name": "Mohaned",
+    "surname": "Chraiti",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4133.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4133",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4133",
+    "about_en": "5G/6G New Radio; IoT/IoE; UAV communications; self-organized network (SON); non-orthogonal multiple access (NOMA); cellular planning; mmWave technology.",
+    "about_tr": null
+  },
+  {
+    "name": "Muhammad",
+    "surname": "Asif",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3283.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3283",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3283",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Murat",
+    "surname": "Kaya",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1193.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1193",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1193",
+    "about_en": "Supply chain management, Inventory modeling, Decision analysis, Behavioral operations management, Energy and electricity supply chains",
+    "about_tr": "Tedarik zinciri yönetimi, Stok modelleme, Karar analizi, Davranışsal operasyon yönetimi, Enerji ve elektrik tedarik zincirleri"
+  },
+  {
+    "name": "Murat Kaya",
+    "surname": "Yapıcı",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2607.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2607",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2607",
+    "about_en": "Microelectromechanical System (MEMS), Micromachining and Micro/Nanofabrication Technologies, Micro Sensors and Actuators, Semiconductor Process Technologies, Scanning-Probe based Nanotechnology and Nanomanufacturing, Biomedical Microsystems and Devices, Microfluidic Systems, MEMS-CMOS and nanomaterial integration",
+    "about_tr": "Mikroelektromekanik Sistemler (MEMS), Mikroimalat ve Mikro/Nanofabrikasyon Teknolojileri, Mikro Algılayıcı ve Eyleyiciler, Yarıiletken Proses Teknolojileri, Taramalı Uç Temelli Nanoteknoloji ve Nanoimalat, Biyomedikal Mikrosistemler ve Aygıtlar, Mikroakışkan Sistemler, MEMS-CMOS ve nanomalzeme tümleşimi"
+  },
+  {
+    "name": "Mustafa",
+    "surname": "Ünel",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/691.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/691",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/691",
+    "about_en": "Automotive, Computer Vision, Machine Learning, Control, Robotics, Unmanned Aerial Vehicles",
+    "about_tr": "Automotive, Computer Vision, Machine Learning, Control, Robotics, Unmanned Aerial Vehicles"
+  },
+  {
+    "name": "Nihat Gökhan",
+    "surname": "Göğüş",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1253.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1253",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1253",
+    "about_en": "Complex analysis in multi-variables, pluripotential theory, operator theory",
+    "about_tr": "Çok boyutlu kompleks analiz, çoklu potansiyel kuramı, operatör kuramı"
+  },
+  {
+    "name": "Nikolaos",
+    "surname": "Koltsaklis",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4137.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4137",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4137",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Nilay Duruk",
+    "surname": "Mutlubaş",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/898.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/898",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/898",
+    "about_en": "mathematical analysis of nonlinear partial differential equations, nonlinear dispersive and hyperbolic waves, water waves, stability of solitary waves, fractional differential equations.",
+    "about_tr": "doğrusal olmayan diferansiyel denklemlerin analizi, doğrusal olmayan dispersif ve hiperbolik dalgalar, su dalgaları, soliter dalgaların kararlılık analizi, kesirli mertebeden diferansiyel denklemler."
+  },
+  {
+    "name": "Nur",
+    "surname": "Mustafaoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3775.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3775",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3775",
+    "about_en": "Bioengineering, organ-on-a-chip models, blood-brain barrier, brain diseases, stem cell technologies, drug delivery, nanoparticles, liposomes, biosensors, disease detection, neurobiology",
+    "about_tr": "Biyomuhendislik, organ cip modelleri, kan-beyin bariyeri, beyin hastaliklari, kok hucre teknolojileri, ilac salinimi, nano parcaciklar, lipozomlar, biyosensor, hastalik tanisi, norobiyoloji"
+  },
+  {
+    "name": "Nurdagül",
+    "surname": "Anbar",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3311.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3311",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3311",
+    "about_en": "Function Fields and Algebraic Curves over Finite Fields: Rational points of curves, automorphisms, towers of function fields and their asymptotic properties, Drinfeld modular curves;\r\n    \r\nCoding Theory: Algebraic Geometry Codes;\r\n\r\nFinite Galois Geometry and Cryptographically significant functions (particularly quadratic functions, their nonlinearity distribution) their applications to Coding Theory and their interaction with Algebraic Curves over Finite Fields;\r\n\r\nBoolean functions and functions from F_{p^n} to F_p: Functions with high nonlinearity, Bent functions (and their connections to coding theory, cryptography, finite geometry, difference sets), (Modified) Planar functions, Almost Perfect Nonlinear functions;\r\n\r\nPermutations: (Vectorial) Permutations over finite fields.",
+    "about_tr": "Function Fields and Algebraic Curves over Finite Fields: Rational points of curves, automorphisms, towers of function fields and their asymptotic properties, Drinfeld modular curves;\r\n    \r\nCoding Theory: Algebraic Geometry Codes;\r\n\r\nFinite Galois Geometry and Cryptographically significant functions (particularly quadratic functions, their nonlinearity distribution) their applications to Coding Theory and their interaction with Algebraic Curves over Finite Fields;\r\n\r\nBoolean functions and functions from F_{p^n} to F_p: Functions with high nonlinearity, Bent functions (and their connections to coding theory, cryptography, finite geometry, difference sets), (Modified) Planar functions, Almost Perfect Nonlinear functions;\r\n\r\nPermutations: (Vectorial) Permutations over finite fields."
+  },
+  {
+    "name": "Ogün",
+    "surname": "Adebali",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3203.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3203",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3203",
+    "about_en": "Computational Genomics, Protein Informatics, Molecular Evolution, DNA Damage and Repair",
+    "about_tr": "Hesaplamali Genomik, Protein Enformatiği, Moleküler Evrim, DNA Hasarı ve Onarımı"
+  },
+  {
+    "name": "Ongun",
+    "surname": "Özçelik",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4213.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4213",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4213",
+    "about_en": "Computational materials science and solid state systems for energy applications. Examples of the ongoing research include metal/organic hybrid interfaces, MOFs, supercapacitors using two dimensional materials, inter-layer excitons in van der Waals heterostructures, CO2 capture materials, and tuning the reactivity of alkali activated cementitious materials with the aim of reducing greenhouse gas emissions.",
+    "about_tr": "Hesaplamalı Malzeme Bilimleri ve Katı Hal Fiziği, Enerji Malzemeleri, İki Boyutlu ve Metal-Organik Yapılar, Hibrit Malzemeler, Alternatif\r\nÇimento Malzemeleri, Karbon Yakalama ve Depolama"
+  },
+  {
+    "name": "Onur",
+    "surname": "Varol",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3774.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3774",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3774",
+    "about_en": "Computational Social Science; Data Science; Machine Learning; Complex Systems; Network Science; Data Mining",
+    "about_tr": "Hesaplamalı sosyal bilimler; Veri bilimi; Makine öğrenmesi; Karmaşık sistemler; Ağ bilimi; Veri madenciliği"
+  },
+  {
+    "name": "Orçun",
+    "surname": "Çetin",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3582.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3582",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3582",
+    "about_en": "Network security, Cybersecurity, Security Economics, Socio-technical security, Privacy",
+    "about_tr": null
+  },
+  {
+    "name": "Özcan",
+    "surname": "Öztürk",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4547.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4547",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4547",
+    "about_en": "Hardware Accelerators, Heterogeneous Systems, Parallel Computing, Computer Architecture, GPU Computing, Compiler Optimizations, Embedded Systems, System-on-Chip Architectures",
+    "about_tr": "Donanım Hızlandırıcıları, Heterojen Sistemler, Paralel Bilgi İşlem, Bilgisayar Mimarisi, GPU Hesaplama, Derleyici Optimizasyonları, Gömülü Sistemler, Yonga Üzeri Sistem Mimarileri"
+  },
+  {
+    "name": "Özge",
+    "surname": "Akbulut",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2042.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2042",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2042",
+    "about_en": "silicone-based composite models, surgical models, colloid and dispersant science, rheology, cement",
+    "about_tr": null
+  },
+  {
+    "name": "Özgür",
+    "surname": "Erçetin",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/555.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/555",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/555",
+    "about_en": "6G, machine learning, wireless networks, stochastic optimization, network economics, game theory, high altitude communications",
+    "about_tr": "Bilgisayar ve haberleşme ağları, telsiz, uydu ve yüksek hızla haberleşme, Internet ekonomik modelleri ve olasikli eniyileme."
+  },
+  {
+    "name": "Özgür",
+    "surname": "Gürbüz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/553.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/553",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/553",
+    "about_en": "Communication networks, wireless communications, wireless local area and wide area networks, mesh networks, multiple access techniques, Quality of Service (QoS), cooperative communication and networks, full duplex communication and networks, terahertz communication",
+    "about_tr": "Haberleşme ağları, telsiz haberleşme, yerel ve genis alanlı telsiz ağlar, örgü ağlar, çoklu erişim teknikleri, servis kalitesi, işbirlikli haberleşme ve ağlar, tam çift yönlü haberleşme ve ağlar, terahertz haberleşmesi"
+  },
+  {
+    "name": "Özgür",
+    "surname": "Kütük",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4471.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4471",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4471",
+    "about_en": "Targeted Cancer Therapeutics, Programmed Cell Death, High-throughput genetic and pharmacological  screening, 3D tumor organoid models",
+    "about_tr": "Hedeflenmiş kanser terapileri, programlı hücre ölümü, yüksek-kapasiteli genetik ve farmakolojik tarama sistemleri, 3D tümör organoid modelleri."
+  },
+  {
+    "name": "Öznur",
+    "surname": "Taştan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3116.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3116",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3116",
+    "about_en": "Computational Biology, Bioinformatics,  Machine learning,",
+    "about_tr": "İşlemsel Biyoloji, Biyoenformatik, Yapay öğrenme"
+  },
+  {
+    "name": "Saliha Ece Acuner",
+    "surname": "Zorluuysal",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2784.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2784",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2784",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Selim",
+    "surname": "Balcısoy",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/746.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/746",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/746",
+    "about_en": "Data Science, Data Analytics, Applied Machine Learning and AI, Visual Analytics, Complex Systems, Computer Graphics, Virtual Reality, Augmented Reality, Cultural Heritage",
+    "about_tr": "Veri Bilimi, Veri Analitiği, Uygulamalı Makine Öğrenme ve Yapay Zeka, Görsel Analiz, Karmaşık Sistemler, Bilgisayar Grafikleri, Sanal Gerçeklilik, Artırılmış Gerçeklilik, Kültürel Miras"
+  },
+  {
+    "name": "Selim",
+    "surname": "Çetiner",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/406.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/406",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/406",
+    "about_en": "Plant Biotechnology and Biosafety, DNA fingerprinting, Alternative Energy, Algae Research, Plant Tissue Culture, Whole Genome Sequencing",
+    "about_tr": "Bitki Biyoteknolojisi, Biyogüvenlik, DNA parmakizi, Alternatif Enerji, Alg Araştırmaları, Bitki Hücre Kültürü, Tüm Genom Sekanslaması"
+  },
+  {
+    "name": "Selmiye Alkan",
+    "surname": "Gürsel",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1371.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1371",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1371",
+    "about_en": "Polymer Electrolyte Membrane (PEM) Fuel Cells,\r\nLithium-Ion Batteries,\r\nLithium-Air Batteries,\r\nAll Solid State Batteries,\r\nGraphene for Energy Applications, \r\nRadiation-Induced Graft Polymerization,\r\nElectroactive & Conducting Polymers",
+    "about_tr": "Polimer Elektrolit Membranlı (PEM) Yakıt Pilleri,\r\nLityum-iyon Piller\r\nLityum-Hava Piller\r\nKatı-Hal Piller,\r\nGrafenin Enerji Çevrim ve Depolama Sistemlerinde Kullanımı,\r\nRadyasyon Başlatmalı Aşılama, \r\nElektroaktif & İletken Polimerler"
+  },
+  {
+    "name": "Semih Onur",
+    "surname": "Sezer",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1670.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1670",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1670",
+    "about_en": "Applied probability, statistics, stochastic processes, optimal stopping, stochastic optimal control with applications in finance and engineering",
+    "about_tr": "Uygulamalı olasılık, istatistik, rassal süreçler, rassal kontrollerde eniyileme ile finans ve muhendislikteki uygulamaları"
+  },
+  {
+    "name": "Serhat",
+    "surname": "Yeşilyurt",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/479.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/479",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/479",
+    "about_en": "Fluid mechanics, heat transfer, microflows, microswimmers, renewable energy systems, wind turbines, PEM fuel cells.",
+    "about_tr": "Akışkanlar mekaniği ve uygulamaları, ısı transferi, mikroakışlar ve mikroyüzücüler, yenilenebilir enerji sistemlerii, dikey eksenli rüzgar türbinleri, PEM yakıt hücreleri."
+  },
+  {
+    "name": "Serkan",
+    "surname": "Ünal",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2043.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2043",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2043",
+    "about_en": "Polymer synthesis, characterization and structure-property relationships, polyurethane chemistry, surface coatings, adhesives, structural composites, polymeric nanocomposites, carbon nanomaterials, carbon nanotubes, energy materials.",
+    "about_tr": null
+  },
+  {
+    "name": "Sinan",
+    "surname": "Yıldırım",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2558.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2558",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2558",
+    "about_en": "Bayesian Statistics, Monte Carlo methods",
+    "about_tr": "Bayesci İstatistik, Monte Carlo yöntemleri"
+  },
+  {
+    "name": "Süha Orhun",
+    "surname": "Mutluergil",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3735.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3735",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3735",
+    "about_en": "software verification and validation, concurrency theory, linearizability, deductive verification, developing testing methods with provable guarantees, proposing reasoning mechanisms for shared-memory and distributed concurrent programs focusing on block-chain platforms",
+    "about_tr": "yazılım güvenliği ve doğruluğu, koşut zamanlılık kuramı, doğrusallık, didaktif doğrulama, ispatlanabilir garantili test yöntemleri geliştirilmesi, blok-zincir platformlarına odaklı olarak dağıtık ve paylaşımlı-bellek koşut-zamanlı programlar için akıl yürütme yöntemleri geliştirilmesi"
+  },
+  {
+    "name": "Tonguç",
+    "surname": "Ünlüyurt",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/308.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/308",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/308",
+    "about_en": "Applications of combinatorial optimization,\r\nsequential testing,\r\nfault diagnosis,\r\noptimization problems in telecommunications systems,\r\noptimization problems in logistics and transportation systems.",
+    "about_tr": "Kombinatoryal eniyilemenin uygulamaları,\r\nsıralı sınama,\r\nhata tespiti,\r\ntelekomünikasyon sistemlerinde eniyileme problemleri,\r\nlojistik ve ulaştırma sistemlerinde eniyileme problemleri."
+  },
+  {
+    "name": "Tuğçe",
+    "surname": "Yüksel",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2717.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2717",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2717",
+    "about_en": "Vehicle Electrification\r\nSustainable Transportation\r\nBattery Modeling \r\nBattery System Analysis\r\nVehicle Dynamics",
+    "about_tr": "Elektrikli Araçlar\r\nSürdürülebilir Ulaşım\r\nBatarya Modelleme\r\nBatarya Sistem Analizi\r\nAraç Dinamiği"
+  },
+  {
+    "name": "Turgay",
+    "surname": "Bayraktar",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1959.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1959",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1959",
+    "about_en": "Several Complex Variables, Holomorphic Dynamics and Complex Geometry",
+    "about_tr": "Çok Değişkenli Kompleks Analiz, Kompleks Dinamik Sistemler ve Kompleks Geometri"
+  },
+  {
+    "name": "Umut",
+    "surname": "Şahin",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4697.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4697",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4697",
+    "about_en": "Cell biology & Biochemistry; Protein Post-translational Modifications; Protein Stability and Degradation; Ubiquitin-Proteasome System; Ubiquitin-like modifications; SUMOylation; Targeted Therapies & Precision Medicine; Neurodegeneration; Amyotrophic Lateral Sclerosis (ALS); Cancer Mechanisms.",
+    "about_tr": "Hücre Biyolojisi & Biyokimya; Post-translasyonel Modifikasyonlar, Protein Stabilitesi ve Yıkımı; Ubiquitin-Proteazom Sistemi; Ubiquitin Benzeri Modifikasyonlar, SUMO Modifikasyonu, Hedefli Terapiler; Nörodejenerasyon; ALS hastalığı; Kanser"
+  },
+  {
+    "name": "Ünal",
+    "surname": "Ertan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/565.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/565",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/565",
+    "about_en": "High Energy Astrophysics: Neutron stars, accretion disks, electromagnetic radiative processes",
+    "about_tr": "Yüksek Enerji Astrofiziği: Nötron yıldızları,  kütle aktarım diskleri, electromanyetik ışıma mekanizmaları"
+  },
+  {
+    "name": "Utku",
+    "surname": "Seven",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2347.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2347",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2347",
+    "about_en": "-3D CAD Design, CAM, Finite Element Analysis & Manufacturing\r\n-Dynamic Robot Modeling\r\n-Industrial Robotics and Automation\r\n-Bipedal Humanoid Robots\r\n-Force Control",
+    "about_tr": null
+  },
+  {
+    "name": "Volkan",
+    "surname": "Patoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1109.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1109",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1109",
+    "about_en": "Physical human-machine interaction, rehabilitation robotics, cognitive robotics, haptic guidance schemes for skill training and rehabilitation, design of exoskeletons and prosthetics devices, interaction control",
+    "about_tr": "Fiziksel insan-makina etkileşimi, robot destekli rehabilitasyon (fizik tedavi) sistemleri, bilişsel robotik, kuvvet geri-beslemeli sanal gerçeklik sistemlerinin eğitim ve fizik tedavi uygulamaları, kuvvet geri-beslemeli dış iskelet ve protez tasarımı, etkileşim kontrolü"
+  },
+  {
+    "name": "Yaşar",
+    "surname": "Gürbüz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/323.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/323",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/323",
+    "about_en": "Analog and Mixed-Signal Integrated Circuits; RF & Microwave Integrated Circuits; Sensors and Actuators; Micro-Electro-Mechanical Systems (MEMS); Solid-State Electronic Devices",
+    "about_tr": "Analog, Karışık-Sinyal Entegre Devreler; RF & Mikrodalga Entegre Devreler; Algılayıcı ve Çeviriciler; Mikro-Elektro-Mekanik Sistemler (MEMS); Katı-hal Elektronik Devreler"
+  },
+  {
+    "name": "Yücel",
+    "surname": "Saygın",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/419.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/419",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/419",
+    "about_en": "Active database systems; data mining; data mining security; data warehouses; mobile data management.",
+    "about_tr": "Aktif veri tabanları; veri madenciliği; veri madenciliğine karşı veri güveliği; veri ambarları; hareketli verilerin yönetimi."
+  },
+  {
+    "name": "Yusuf",
+    "surname": "Leblebici",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/256.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/256",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/256",
+    "about_en": "Design of high-speed CMOS digital and mixed-signal integrated circuits, computer-aided design of VLSI systems, intelligent sensor interfaces, modeling and simulation of semiconductor devices, and VLSI reliability analysis.",
+    "about_tr": "Yüksek hızlı CMOS dijital ve karışık sinyalli tümleştirilmiş devrelerin tasarımı, VLSI sistemlerin bilgisayar destekli tasarımı, akıllı algılayıcı arayüzleri, yarı iletken elemanların modellenmesi ve simülasyonu ile VLSI devrelerin güvenirlik sorunları."
+  },
+  {
+    "name": "Yusuf Ziya",
+    "surname": "Menceloğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/311.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/311",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/311",
+    "about_en": "Composite materials, Nanosize materials, Polymer synthesis; characterization, modification and structure/property/application relationship; florinated polymers, oligomers and surfactants (synthesis and characterization); reactions and extractions in supercritical carbon dioxide; formulation of performance chemicals, Antimicrobial active substances and formulations.",
+    "about_tr": "Kompozit malzemeler, Nano boyutlu malzemeler, Polimer sentezi; karakterizasyon, değiştirme ve yapı / özellik / uygulama ilişkisi; florlu polimerler, oligomerler ve yüzey aktif maddeler (sentez ve karakterizasyon); süper kritik karbondioksit içinde reaksiyonlar ve ekstraksiyonlar; performans kimyasallarının formülasyonu, Antimikrobiyal aktif maddeler ve formülasyonlar."
+  },
+  {
+    "name": "Zaeema",
+    "surname": "Khan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3400.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3400",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3400",
+    "about_en": "plant, honeybee, bacteria",
+    "about_tr": null
+  },
+  {
+    "name": "Zafer",
+    "surname": "Gedik",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/556.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/556",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/556",
+    "about_en": "Theory of quantum information and quantum computation, fundamentals of quantum mechanics.",
+    "about_tr": "Kuantum enformasyon kuramı ve kuantum hesaplama, kuantum mekaniğinin temelleri."
+  },
+  {
+    "name": "Carmine",
+    "surname": "Difiglio",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2769.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2769",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2769",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Cleva Ow",
+    "surname": "Yang",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/632.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/632",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/632",
+    "about_en": "mechanisms of persistent luminescence \r\nplasmonic insulators \r\nmaterials for energy harvesting and storage\r\ncement regeneration \r\nCircular economy and sustainability in materials process industries\r\nstructure and properties of interfaces\r\nthermodynamics and kinetics of phase transformation in materials\r\ncontrolled assembly of nanoparticles",
+    "about_tr": "mechanisms of persistent luminescence \r\nplasmonic insulators \r\nmaterials for energy harvesting and storage\r\ncement regeneration\r\nCircular economy and sustainability in materials process industries\r\nstructure and properties of interfaces \r\nthermodynamics and kinetics of phase transformation in materials\r\ncontrolled assembly of nanoparticles"
+  },
+  {
+    "name": "Emine",
+    "surname": "Yılmaz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4807.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4807",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4807",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Engin",
+    "surname": "Kırda",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3778.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3778",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3778",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Kemal",
+    "surname": "Oflazer",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/726.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/726",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/726",
+    "about_en": "Natural language processing; speech processing.",
+    "about_tr": "Doğal dil işleme; konuşma işleme."
+  },
+  {
+    "name": "Kubilay",
+    "surname": "Atasu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3734.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3734",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3734",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Mükerrem",
+    "surname": "Çakmak",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2824.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2824",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2824",
+    "about_en": "Processing-structure and property relationships, their computer simulation, particularly the effect of stress history on the development of structural hierarchy in various polymer processes including injection molding, film and fiber forming; developing on-line structural monitoring strategies to understand the fundamentals of structural evolution under complex thermal deformation; histories that are imparted onto polymers during their processing; the effect of nano-sized organic and inorganic particles on the evolution of structural hierarchy in processed polymers.",
+    "about_tr": "Polimerlerin işlenebilirlikleri ile kimyasal fiziksel yapı ve özellik ilişkileri, ve bunların bilgisayar modellemesi."
+  },
+  {
+    "name": "Naci",
+    "surname": "Dai",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3152.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3152",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3152",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Rabia Tuğçe",
+    "surname": "Yazıcıgil",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3686.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3686",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3686",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Utku Günay",
+    "surname": "Acer",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4238.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4238",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4238",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Melik",
+    "surname": "Yazıcı",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2739.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2739",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2739",
+    "about_en": "- mm-Wave circuits\r\n- 5G and beyond communication,\r\n- Measurement technologies,\r\n- RADAR front-end,\r\n- Analog, digital and mixed-mode integrated circuits,\r\n- Sensor interface,\r\n- Readout IC (ROIC) for infrared detectors,\r\n- VLSI.",
+    "about_tr": "- milimetre dalga devreleri,\r\n- 5G ve ötesi iletişim,\r\n- Ölçüm teknolojileri,\r\n- RADAR ön uç devreleri,\r\n- Analog, sayısal ve karışık sinyal entegre devreler,\r\n- Sensör arayüz devreleri,\r\n- Kızılötesi sensörler için entegre okuma devreleri,\r\n- VLSI."
+  },
+  {
+    "name": "Morteza",
+    "surname": "Ghorbani",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/2794.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/2794",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/2794",
+    "about_en": "Fluid Mechanics; Cavitation; CFD; Microfluidics and Nanofluidics",
+    "about_tr": null
+  },
+  {
+    "name": "Ömer",
+    "surname": "Ceylan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/1605.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/1605",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/1605",
+    "about_en": "Analog / Mixed Mode Integrated Circuits\r\nSensor Interface Circuit Design\r\nCMOS Integrated Circuit Design\r\nLow Power CMOS Integrated Circuit Design\r\nAnalog-to-Digital Converters (ADCs)\r\nAnalog / Digital Readout Integrated Circuits for Infrared and CMOS Image Sensors\r\nIntegrated Circuits for Neuromorphic Computing\r\nInfrared Detectors\r\nSemiconductors",
+    "about_tr": "Analog / Sayısal Entegre Devre Tasarımı\r\nSensör Arayüz Dvresi Tasarımı\r\nCMOS Entegre Devre Tasarımı\r\nDüşük Güç Tüketen Entegre Devre Tasarımı\r\nÖrneksel Sayısal Çeviriciler\r\nKızılötesi ve CMOS Görüntü Sensörleri için Analog / Sayısal Entegre Okuma Devresi Tasarımı\r\nYapay Zeka için Entegre Devre Tasarımı\r\nKızılötesi Dedektörler\r\nYarıiletkenler"
+  },
+  {
+    "name": "Alize Yaprak",
+    "surname": "Gül",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4770.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4770",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4770",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Alperen",
+    "surname": "Doğan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4517.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4517",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4517",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Baran Deniz",
+    "surname": "Karahan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4422.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4422",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4422",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Cem",
+    "surname": "Azgari",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4059.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4059",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4059",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Cemile",
+    "surname": "Uslu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4250.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4250",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4250",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ceren",
+    "surname": "Yıldırım",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4551.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4551",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4551",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Cihan",
+    "surname": "Arlı",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3807.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3807",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3807",
+    "about_en": "Two dimensional piezoelectric and ferroelectric crystals, Modern Polarization Theory, DFT, Cold Sintering Process, PbO2 polymorphs",
+    "about_tr": "İki boyutlu piezoelektrik ve ferroelektrik kristaller, modern polarizasyon teorisi, DFT, Soğuk sinterleme prosesi, PbO2 polimorfları"
+  },
+  {
+    "name": "Deniz",
+    "surname": "Tuncer",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4423.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4423",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4423",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Emine Ayşe",
+    "surname": "Sunar",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4226.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4226",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4226",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Görkem",
+    "surname": "Gemalmaz",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4771.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4771",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4771",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Mehmet Emin",
+    "surname": "Mumcuoğlu",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3517.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3517",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3517",
+    "about_en": "Automotive, Computer Vision, Machine Learning, Control, Robotics",
+    "about_tr": null
+  },
+  {
+    "name": "Mert",
+    "surname": "Özçelik",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4769.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4769",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4769",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Mervenaz",
+    "surname": "Şahin",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3740.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3740",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3740",
+    "about_en": "Bone tissue engineering, Bone scaffold design, Simulations, Optimization, 3D printing",
+    "about_tr": "Kemik doku mühendisliği, Kemik iskelesi tasarımı, Simülasyon, Optimizasyon, 3B basım"
+  },
+  {
+    "name": "Özberk",
+    "surname": "Öztürk",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4273.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4273",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4273",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Raci Berk",
+    "surname": "İslim",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4085.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4085",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4085",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Serhat",
+    "surname": "Demirkıran",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4309.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4309",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4309",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Tahsin Alper",
+    "surname": "Özkan",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/3960.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/3960",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/3960",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ratko",
+    "surname": "Darda",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4690.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4690",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4690",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Sahar",
+    "surname": "Porrang",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/4454.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/4454",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/4454",
+    "about_en": "My background and research interest are in fundamental, application, technology, and commercialization in biocompatible and green advance nanomaterials such as nanoparticles, nanocomposites, their surface engineering (modification by various state-of-the art techniques, and surface functionalization by controlled radical polymerization), and its related field of study for different applications, including controlled drug delivery for diseases treatment, cancer treatment, theranostic nanoparticles fabrication, gene delivery, nanomedicine, pharmaceutical formulation, tumor- targeted delivery, stimuli- responsive systems, active and passive targeting, polymer chemistry, food nanotechnology and vitamins/ minerals stabilizing in cosmetics which contribute to industry and society.\r\nRecently I have focused on applying smart drug delivery systems on 3D microfluidic systems as a state-of-the-art technique to treat glioblastoma and any brain related diseases.",
+    "about_tr": null
+  },
+  {
+    "name": "Henning",
+    "surname": "Stichtenoth",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/907.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/907",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/907",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Vyacheslav",
+    "surname": "Zakharyuta",
+    "department": "FENS",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/other/608.jpg",
+    "link_en": "https://fens.sabanciuniv.edu/en/faculty-members/detail/608",
+    "link_tr": "https://fens.sabanciuniv.edu/tr/faculty-members/detail/608",
+    "about_en": null,
+    "about_tr": null
+  }
+]

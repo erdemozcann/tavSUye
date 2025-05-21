@@ -1,0 +1,43 @@
+[
+  {
+    "course_subject": "ME",
+    "course_code": "420",
+    "prerequisites": [
+      {
+        "subject": "ENS",
+        "course_code": "207",
+        "is_and": false
+      },
+      {
+        "subject": "ME",
+        "course_code": "307",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "309",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "307",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      },
+      {
+        "subject": "ME",
+        "course_code": "309",
+        "is_and": true
+      },
+      {
+        "subject": "ENS",
+        "course_code": "202",
+        "is_and": true
+      }
+    ]
+  }
+]

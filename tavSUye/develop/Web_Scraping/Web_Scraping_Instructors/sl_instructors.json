@@ -1,0 +1,872 @@
+[
+  {
+    "name": "Jacqueline",
+    "surname": "Einer",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4377.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4377",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4377",
+    "about_en": "Materials development; systemic functional linguistics; English for maths and science.",
+    "about_tr": "Malzeme geliştirme; sistemik fonksiyonel dilbilimi"
+  },
+  {
+    "name": "Ahmed",
+    "surname": "Elmahi",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1329.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1329",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1329",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ali",
+    "surname": "Aydın",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4191.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4191",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4191",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ali Nihat",
+    "surname": "Eken",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/545.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/545",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/545",
+    "about_en": "Media literacy,classroom research, film literacy, literature, critical thinking",
+    "about_tr": null
+  },
+  {
+    "name": "Alper",
+    "surname": "Çakmak",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4447.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4447",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4447",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Amy",
+    "surname": "Stopper",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1717.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1717",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1717",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Andrew Christopher",
+    "surname": "Bosson",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2150.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2150",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2150",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Arda",
+    "surname": "Bayraktaroğlu",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3730.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3730",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3730",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Arzu Nihan",
+    "surname": "Poyraz",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4445.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4445",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4445",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Aybüke Filiz",
+    "surname": "Gürer",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3820.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3820",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3820",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ayşe Güler",
+    "surname": "Demirkır",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3936.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3936",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3936",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ayşegül",
+    "surname": "İnce",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3978.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3978",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3978",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Baki Sonat",
+    "surname": "Demirdirek",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2312.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2312",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2312",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Birgül",
+    "surname": "Köktürk",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1797.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1797",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1797",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Bünyamin",
+    "surname": "Mengi",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1663.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1663",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1663",
+    "about_en": "Curriculum and Instruction, Program Evaluation, Qualitative Research",
+    "about_tr": "Program Geliştirme ve Öğretim, Program Değerlendirme, Nitel Araştırma"
+  },
+  {
+    "name": "Burçin",
+    "surname": "Şenyurt",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3964.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3964",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3964",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Buse",
+    "surname": "Aral",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4481.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4481",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4481",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Büşra Nur Özer",
+    "surname": "Musaoğlu",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4664.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4664",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4664",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Celile",
+    "surname": "Gürsu",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2426.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2426",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2426",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ceyda",
+    "surname": "Gümüş",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3962.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3962",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3962",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Dalince",
+    "surname": "Çongara",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3086.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3086",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3086",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "David",
+    "surname": "Hill",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4370.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4370",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4370",
+    "about_en": "English as an International Language, Colonial & Postcolonial Literature",
+    "about_tr": null
+  },
+  {
+    "name": "Deniz",
+    "surname": "Çiçekoğlu",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2123.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2123",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2123",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Deniz Kurtoğlu",
+    "surname": "Eken",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/544.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/544",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/544",
+    "about_en": "Trainer training, teacher training and development, creative methodology for teaching and training, affect and psychology in education, discourse analysis, teaching writing, qualitative research\r\nELTJ Editorial Advisory Panel Member, January 2002-January 2005",
+    "about_tr": "Personal and professional development, training and development, qualitative research"
+  },
+  {
+    "name": "Deniz Özden",
+    "surname": "Rodrigues",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/705.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/705",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/705",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ebru",
+    "surname": "Özgür",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1850.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1850",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1850",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ebru",
+    "surname": "Yamaç",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4204.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4204",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4204",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ekrem",
+    "surname": "Şimşek",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/951.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/951",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/951",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Elif",
+    "surname": "Çam",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4550.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4550",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4550",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Engin",
+    "surname": "Kaça",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4218.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4218",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4218",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Engin",
+    "surname": "Onuk",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4549.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4549",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4549",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Eren",
+    "surname": "Benderli",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3534.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3534",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3534",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Erhan",
+    "surname": "Uçal",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3847.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3847",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3847",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Esra Gün",
+    "surname": "Alayafi",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1802.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1802",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1802",
+    "about_en": "Sociolinguistics, language planning , teacher training",
+    "about_tr": null
+  },
+  {
+    "name": "Ezgi",
+    "surname": "Öner",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4206.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4206",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4206",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Feyza Sena",
+    "surname": "Avşar",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4678.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4678",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4678",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gamze",
+    "surname": "Bozkurt",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3540.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3540",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3540",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gökçe",
+    "surname": "Dülgerci",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4205.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4205",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4205",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gökçen",
+    "surname": "Kaça",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4221.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4221",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4221",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gökçe Selen",
+    "surname": "Ulusay",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2277.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2277",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2277",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gorica",
+    "surname": "Stevanovic",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3408.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3408",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3408",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Gülçin",
+    "surname": "Coşgun",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4444.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4444",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4444",
+    "about_en": "teacher education, teacher training, mentoring, language learning/teaching, project-based learning, EMI",
+    "about_tr": null
+  },
+  {
+    "name": "Halil",
+    "surname": "Ergül",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4704.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4704",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4704",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Hatice Sarıgül",
+    "surname": "Aydoğan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/791.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/791",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/791",
+    "about_en": "Affective factors in language learning, especially anxiety, stress / motivation\r\ncritical reading / thinking skills\r\nlearner autonomy\r\nwriting portfolios\r\ntechnology in the classroom\r\nclassroom dynamics",
+    "about_tr": null
+  },
+  {
+    "name": "İdil",
+    "surname": "Ertuğan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1507.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1507",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1507",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "İlkay",
+    "surname": "Bülbül",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4665.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4665",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4665",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "İlkem Kayıcan",
+    "surname": "Dipcin",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2346.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2346",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2346",
+    "about_en": "Cross- Cultural Rhetoric in Academic Writing, Critical Thinking, Critical Pedagogy, Humanistic & Democratic Education.",
+    "about_tr": null
+  },
+  {
+    "name": "İrem",
+    "surname": "Gedil",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3732.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3732",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3732",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Itır",
+    "surname": "Beğen",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3049.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3049",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3049",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Kadir",
+    "surname": "Turgut",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2729.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2729",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2729",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Kassandra",
+    "surname": "Robertson",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3066.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3066",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3066",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Kenneth Mark",
+    "surname": "Fıne",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4460.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4460",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4460",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Levent",
+    "surname": "Çoban",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4435.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4435",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4435",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Lukka Alp",
+    "surname": "Akarçay",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3047.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3047",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3047",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Melek Didem Beyazoğlu",
+    "surname": "Turan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4544.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4544",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4544",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Meral",
+    "surname": "Öztürk",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4545.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4545",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4545",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Merve",
+    "surname": "Demirkapılı",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3937.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3937",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3937",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Merve Karabulut",
+    "surname": "Baykan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/792.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/792",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/792",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Metin",
+    "surname": "Çırpan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4193.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4193",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4193",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Michael John",
+    "surname": "Thomas",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1333.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1333",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1333",
+    "about_en": "Spoken discourse\r\nPedagogic grammar\r\nNeeds analysis",
+    "about_tr": null
+  },
+  {
+    "name": "Mine Gündüz",
+    "surname": "Kartal",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4064.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4064",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4064",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Mona",
+    "surname": "Tavakoli",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2714.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2714",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2714",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Mutlu",
+    "surname": "Bosson",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2428.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2428",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2428",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Naime Meltem",
+    "surname": "Aygüneş",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/606.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/606",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/606",
+    "about_en": "Students' perceptions of the effect of error correction on their learning\r\nUsing technology to improve students' reading ability by exposing themto more instances ofparticular words\r\nVideo coaching: effective tool in improving one's own teaching skills by giving and getting feedback from peers, students and others without creating observation anxiety\r\nUsing blogging in language teaching",
+    "about_tr": null
+  },
+  {
+    "name": "Nesibe",
+    "surname": "Bilgiç",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3537.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3537",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3537",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Neslihan",
+    "surname": "Demirdirek",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1123.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1123",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1123",
+    "about_en": "vocabulary teaching,podcasts",
+    "about_tr": null
+  },
+  {
+    "name": "Nezaket",
+    "surname": "Özgirin",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/894.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/894",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/894",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Nilay",
+    "surname": "Konuşkan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1478.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1478",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1478",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Nurdan Çoksezen",
+    "surname": "Metel",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1311.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1311",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1311",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Okan",
+    "surname": "Bölükbaş",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1096.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1096",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1096",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Ozan",
+    "surname": "Tekin",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3961.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3961",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3961",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Özlem",
+    "surname": "Yanar",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3973.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3973",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3973",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Özlem",
+    "surname": "Zengin",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3539.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3539",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3539",
+    "about_en": "Teacher Education, ICT Skills, Technology-Enhanced Learning, Curriculum Design, Curriculum Evaluation",
+    "about_tr": null
+  },
+  {
+    "name": "Pınar",
+    "surname": "Gündüz",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1095.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1095",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1095",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Seda Ertüm",
+    "surname": "Emirler",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/1488.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/1488",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/1488",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Selin",
+    "surname": "Şenay",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4220.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4220",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4220",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Serpil",
+    "surname": "Öz",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3385.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3385",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3385",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Seyran",
+    "surname": "Erdoğan",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/790.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/790",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/790",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Sibel",
+    "surname": "Dığın",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/2753.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/2753",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/2753",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Simge",
+    "surname": "Özgören",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4192.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4192",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4192",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Soner",
+    "surname": "Yaşar",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4680.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4680",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4680",
+    "about_en": "Vocabulary learning, self-regulated learning, educational technologies, gamification, digital tools, mobile-assisted language learning",
+    "about_tr": null
+  },
+  {
+    "name": "Suant Jane",
+    "surname": "Sezgin",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3731.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3731",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3731",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Sultan Düzenli",
+    "surname": "Gülhisar",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4310.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4310",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4310",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Tuğba Yıldırım",
+    "surname": "Kumbasar",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3947.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3947",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3947",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Tuğçe",
+    "surname": "Gürer",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/92.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/92",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/92",
+    "about_en": "Literature, Translation Studies, Critical Thinking, Project Based Learning",
+    "about_tr": null
+  },
+  {
+    "name": "Ulaş",
+    "surname": "Yalvaç",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/4666.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/4666",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/4666",
+    "about_en": null,
+    "about_tr": null
+  },
+  {
+    "name": "Züleyha",
+    "surname": "Tulay",
+    "department": "SL",
+    "image_url": "https://www.sabanciuniv.edu/rehber/fotograflar/3975.jpg",
+    "link_en": "https://sl.sabanciuniv.edu/en/faculty_members/detail/3975",
+    "link_tr": "https://sl.sabanciuniv.edu/tr/faculty_members/detail/3975",
+    "about_en": null,
+    "about_tr": null
+  }
+]
