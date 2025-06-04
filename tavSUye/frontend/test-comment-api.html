@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+        textarea { width: 100%; height: 100px; margin: 10px 0; }
+        input { margin: 5px; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Comment API Test</h1>
+    <p>This test verifies that comment API calls are working correctly.</p>
+    
+    <div>
+        <h3>Test Comment Submission</h3>
+        <input type="number" id="courseId" placeholder="Course ID (e.g., 1)" value="1">
+        <textarea id="commentContent" placeholder="Enter your test comment here...">This is a test comment to verify the API is working correctly.</textarea>
+        <label><input type="checkbox" id="isAnonymous"> Anonymous</label><br>
+        <input type="text" id="termTaken" placeholder="Term (e.g., 202401)" value="202401">
+        <input type="text" id="gradeReceived" placeholder="Grade (e.g., A)" value="A"><br>
+        <button onclick="testAddComment()">Add Test Comment</button>
+        <button onclick="testGetComments()">Get Comments</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+    
+    <div id="results"></div>
+    
+    <script>
+        const API_URL = 'http://localhost:8080/api';
+        let testResults = [];
+        
+        function addResult(message, type = 'info') {
+            testResults.push({ message, type, timestamp: new Date().toLocaleTimeString() });
+            updateDisplay();
+        }
+        
+        function updateDisplay() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = testResults.map(result => 
+                `<div class="test-result ${result.type}">
+                    [${result.timestamp}] ${result.message}
+                </div>`
+            ).join('');
+        }
+        
+        function clearResults() {
+            testResults = [];
+            updateDisplay();
+        }
+        
+        async function testGetComments() {
+            const courseId = document.getElementById('courseId').value;
+            
+            try {
+                addResult(`🔄 Fetching comments for course ${courseId}...`, 'info');
+                
+                const response = await fetch(`${API_URL}/course-comments/${courseId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    const comments = await response.json();
+                    addResult(`✅ Successfully fetched ${comments.length} comments`, 'success');
+                    if (comments.length > 0) {
+                        addResult(`📝 Comments: ${JSON.stringify(comments, null, 2)}`, 'info');
+                    }
+                } else {
+                    const errorText = await response.text();
+                    addResult(`⚠️ Failed to fetch comments: ${response.status} - ${errorText}`, 'error');
+                }
+                
+            } catch (error) {
+                addResult(`❌ Error fetching comments: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testAddComment() {
+            const courseId = document.getElementById('courseId').value;
+            const content = document.getElementById('commentContent').value;
+            const isAnonymous = document.getElementById('isAnonymous').checked;
+            const termTaken = document.getElementById('termTaken').value;
+            const gradeReceived = document.getElementById('gradeReceived').value;
+            
+            if (!content.trim()) {
+                addResult('❌ Please enter a comment', 'error');
+                return;
+            }
+            
+            try {
+                addResult(`🔄 Adding comment to course ${courseId}...`, 'info');
+                
+                const commentData = {
+                    content: content,
+                    anonymous: isAnonymous,
+                    termTaken: termTaken ? parseInt(termTaken) : null,
+                    gradeReceived: gradeReceived || null,
+                    parentCommentId: null
+                };
+                
+                addResult(`📤 Sending comment data: ${JSON.stringify(commentData, null, 2)}`, 'info');
+                
+                const response = await fetch(`${API_URL}/course-comments/${courseId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(commentData)
+                });
+                
+                if (response.ok) {
+                    const result = await response.text();
+                    addResult(`✅ Comment added successfully: ${result}`, 'success');
+                    
+                    // Automatically fetch comments to see if it appears
+                    setTimeout(() => {
+                        addResult('🔄 Auto-fetching comments to verify...', 'info');
+                        testGetComments();
+                    }, 1000);
+                } else {
+                    const errorText = await response.text();
+                    addResult(`⚠️ Failed to add comment: ${response.status} - ${errorText}`, 'error');
+                }
+                
+            } catch (error) {
+                addResult(`❌ Error adding comment: ${error.message}`, 'error');
+            }
+        }
+        
+        // Auto-run get comments on page load
+        window.addEventListener('load', () => {
+            addResult('📋 Page loaded. Testing comment API...', 'info');
+            testGetComments();
+        });
+    </script>
+</body>
+</html> 

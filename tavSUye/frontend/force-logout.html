@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Force Logout</title>
+  <script>
+    // Immediately clear everything
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Force redirect with noAutoLogin parameter
+    window.location.href = '/login?noAutoLogin=true';
+  </script>
+</head>
+<body>
+  <p>Forcing logout...</p>
+</body>
+</html> 

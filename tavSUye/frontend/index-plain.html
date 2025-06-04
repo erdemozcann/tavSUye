@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tavSUye - Emergency Mode</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background: #1976d2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    button, .button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 5px;
+    }
+    .warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>tavSUye - Emergency Mode</h1>
+    <p>This is a simplified version with no React dependencies</p>
+  </header>
+
+  <div class="container">
+    <div class="warning">
+      <h3>⚠️ Notice</h3>
+      <p>You are viewing the emergency version of tavSUye. This page is designed to work even when the main application fails.</p>
+    </div>
+
+    <div class="card">
+      <h2>Actions</h2>
+      <a href="/" class="button">Try Main Application</a>
+      <a href="/test" class="button">Go to Test Page</a>
+      <button onclick="clearAllStorage()">Reset All Data</button>
+    </div>
+
+    <div class="card">
+      <h2>Sample Courses</h2>
+      <div id="courses">
+        <div>
+          <h3>CS101: Introduction to Programming</h3>
+          <p>Learn the basics of programming with Python.</p>
+        </div>
+        <div>
+          <h3>MATH201: Calculus II</h3>
+          <p>Advanced calculus topics including integration techniques.</p>
+        </div>
+        <div>
+          <h3>HIST105: World History</h3>
+          <p>Survey of major historical events from ancient times to present.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>System Status</h2>
+      <div id="diagnostics">
+        <p>Browser: <span id="browser-info">Checking...</span></p>
+        <p>Local Storage: <span id="storage-info">Checking...</span></p>
+        <p>Session Storage: <span id="session-info">Checking...</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Very simple script - no frameworks, no dependencies
+    function clearAllStorage() {
+      try {
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Clear cookies
+        document.cookie.split(";").forEach(function(c) {
+          document.cookie = c.trim().split("=")[0] + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        });
+        
+        alert('All application data has been cleared. The page will now reload.');
+        window.location.reload();
+      } catch (e) {
+        alert('Error clearing data: ' + e.message);
+      }
+    }
+
+    // Display basic diagnostics
+    document.getElementById('browser-info').textContent = navigator.userAgent;
+    document.getElementById('storage-info').textContent = 
+      (typeof localStorage !== 'undefined') ? `Available (${localStorage.length} items)` : 'Not available';
+    document.getElementById('session-info').textContent = 
+      (typeof sessionStorage !== 'undefined') ? `Available (${sessionStorage.length} items)` : 'Not available';
+  </script>
+</body>
+</html> 

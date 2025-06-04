@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="tavSUye - Course and instructor review platform for Sabanci University" />
+    <meta name="theme-color" content="#1976d2" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <title>tavSUye - Sabanci University</title>
+    <style>
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        color: #333;
+      }
+      
+      #root {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      
+      .initial-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        background-color: #f5f5f5;
+        color: #1976d2;
+      }
+      
+      .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #1976d2;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .app-error {
+        text-align: center;
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+      
+      .app-button {
+        padding: 8px 16px;
+        margin: 5px;
+        cursor: pointer;
+        background: #1976d2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      
+      .app-button.secondary {
+        background: #f44336;
+      }
+      
+      .app-button.outline {
+        background: transparent;
+        color: #1976d2;
+        border: 1px solid #1976d2;
+      }
+    </style>
+    <script type="text/javascript">
+      // Application state tracking
+      window.appState = {
+        loadStartTime: Date.now(),
+        hasError: false,
+        errorCount: 0,
+        lastError: null
+      };
+      
+      // Reset session storage on fresh page load (not refresh)
+      if (performance.navigation && performance.navigation.type === 0) {
+        sessionStorage.removeItem('autoLoginAttempts');
+        sessionStorage.removeItem('appLoadErrors');
+      }
+      
+      // Track error count across sessions
+      const storedErrorCount = parseInt(sessionStorage.getItem('appLoadErrors') || '0');
+      window.appState.errorCount = storedErrorCount;
+      
+      function showAppError(message, error) {
+        window.appState.hasError = true;
+        window.appState.errorCount++;
+        window.appState.lastError = error || new Error(message);
+        
+        // Store error count in session storage
+        sessionStorage.setItem('appLoadErrors', window.appState.errorCount.toString());
+        
+        const rootEl = document.getElementById('root');
+        if (!rootEl) return;
+        
+        let errorActions = '';
+        
+        // Show different options based on error count
+        if (window.appState.errorCount >= 3) {
+          errorActions = `
+            <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+              <button onclick="window.location.href='http://localhost:5173/?forceFallback=true'" class="app-button secondary">
+                Use Fallback Mode
+              </button>
+              <button onclick="resetApp()" class="app-button">
+                Reset Application
+              </button>
+              <button onclick="localStorage.clear(); sessionStorage.clear(); window.location.reload()" class="app-button outline">
+                Clear All Data & Reload
+              </button>
+            </div>
+          `;
+        } else {
+          errorActions = `
+            <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+              <button onclick="window.location.reload()" class="app-button">
+                Reload Page
+              </button>
+              ${window.appState.errorCount >= 2 ? `
+                <button onclick="window.location.href='http://localhost:5173/?forceFallback=true'" class="app-button secondary">
+                  Try Fallback Mode
+                </button>
+              ` : ''}
+            </div>
+          `;
+        }
+        
+        rootEl.innerHTML = `
+          <div class="app-error">
+            <h2 style="color: #d32f2f;">Application Error</h2>
+            <p>${message}</p>
+            ${error ? `
+              <div style="background: #f5f5f5; padding: 10px; margin: 10px 0; text-align: left; overflow: auto; max-height: 200px; border-radius: 4px;">
+                <code style="white-space: pre-wrap; word-break: break-word; font-family: monospace; font-size: 12px;">
+                  ${error instanceof Error ? `${error.name}: ${error.message}${error.stack ? '\n' + error.stack : ''}` : String(error)}
+                </code>
+              </div>
+            ` : ''}
+            ${errorActions}
+          </div>
+        `;
+      }
+      
+      function resetApp() {
+        // Clear specific app-related storage items but keep others
+        localStorage.removeItem('demo_user_mode');
+        sessionStorage.removeItem('autoLoginAttempts');
+        sessionStorage.removeItem('appLoadErrors');
+        
+        // Reload the page
+        window.location.href = '/login?noAutoLogin=true';
+      }
+      
+      // Global error handling
+      window.addEventListener('error', function(event) {
+        console.error('Global error caught:', event.error);
+        showAppError('An error occurred while loading the application.', event.error);
+      });
+      
+      // Unhandled rejection handling
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled rejection:', event.reason);
+        showAppError('A promise was rejected without being handled.', event.reason);
+      });
+
+      // Application timeout handler
+      setTimeout(function() {
+        const rootEl = document.getElementById('root');
+        const loadTime = Date.now() - window.appState.loadStartTime;
+        
+        // Check if we're still showing loading after timeout
+        if (rootEl && !window.appState.hasError && 
+            (rootEl.innerHTML.includes('Loading tavSUye...') || 
+             rootEl.innerHTML === '' || 
+             loadTime > 15000)) {
+          
+          console.error('Application failed to initialize within timeout period');
+          showAppError('The application is taking too long to load.');
+        }
+      }, 10000);
+
+      // Fallback mode handler
+      if (window.location.search.includes('forceFallback=true')) {
+        document.addEventListener('DOMContentLoaded', function() {
+          const rootEl = document.getElementById('root');
+          if (rootEl) {
+            // Instead of inline HTML, load the fallback script
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = '/src/main-fallback.tsx';
+            document.body.appendChild(script);
+            
+            // Remove the main script to prevent conflicts
+            const mainScript = document.querySelector('script[src="/src/main.tsx"]');
+            if (mainScript) {
+              mainScript.remove();
+            }
+          }
+        });
+      }
+      
+      function useDirectLogin() {
+        localStorage.setItem('demo_user_mode', 'true');
+        window.location.href = '/login';
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <div class="initial-loading">
+        <div class="loader"></div>
+        <h2>Loading tavSUye...</h2>
+        <p>If the application doesn't load within a few seconds, please try refreshing the page.</p>
+      </div>
+    </div>
+    <noscript>
+      <div style="text-align: center; padding: 20px;">
+        <h2>JavaScript Required</h2>
+        <p>Please enable JavaScript to use tavSUye.</p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

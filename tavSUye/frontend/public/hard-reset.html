@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tavSUye - Hard Reset</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    h1 {
+      color: #d32f2f;
+      margin-top: 0;
+    }
+    
+    .progress {
+      width: 100%;
+      height: 20px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background-color: #4caf50;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    .log {
+      background-color: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 20px 0;
+      max-height: 150px;
+      overflow-y: auto;
+      text-align: left;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    .status {
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      background-color: #1976d2;
+      color: white;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Complete Application Reset</h1>
+    <p>This page will perform a hard reset of the tavSUye application, clearing all data and reloading from scratch.</p>
+    
+    <div class="progress">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <div class="status" id="status">Ready to reset</div>
+    
+    <div class="log" id="log">Waiting to start reset process...</div>
+    
+    <button id="reset-button" onclick="performHardReset()">Start Hard Reset</button>
+    <button id="home-button" onclick="window.location.href='/'" disabled>Return to Home</button>
+  </div>
+  
+  <script>
+    // Log function
+    function log(message) {
+      const logElement = document.getElementById('log');
+      const now = new Date();
+      const timestamp = now.toLocaleTimeString();
+      logElement.innerHTML += `[${timestamp}] ${message}<br>`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    // Update progress
+    function updateProgress(percent, status) {
+      const progressBar = document.getElementById('progress-bar');
+      const statusElement = document.getElementById('status');
+      
+      progressBar.style.width = `${percent}%`;
+      if (status) {
+        statusElement.textContent = status;
+      }
+    }
+    
+    // The aggressive reset function
+    async function performHardReset() {
+      document.getElementById('reset-button').disabled = true;
+      
+      try {
+        // Step 1: Clear localStorage
+        log('Clearing localStorage...');
+        updateProgress(10, 'Clearing localStorage');
+        localStorage.clear();
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Step 2: Clear sessionStorage
+        log('Clearing sessionStorage...');
+        updateProgress(20, 'Clearing sessionStorage');
+        sessionStorage.clear();
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Step 3: Clear cookies
+        log('Clearing cookies...');
+        updateProgress(30, 'Clearing cookies');
+        document.cookie.split(";").forEach(function(c) {
+          document.cookie = c.trim().split("=")[0] + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        });
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Step 4: Clear application cache if possible
+        log('Attempting to clear application cache...');
+        updateProgress(40, 'Clearing application cache');
+        if ('caches' in window) {
+          try {
+            const cacheNames = await caches.keys();
+            await Promise.all(cacheNames.map(name => caches.delete(name)));
+            log('Application cache cleared successfully');
+          } catch (e) {
+            log(`Cache clear error: ${e.message}`);
+          }
+        } else {
+          log('Cache API not available in this browser');
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Step 5: Reset application state
+        log('Resetting application state...');
+        updateProgress(60, 'Resetting application state');
+        
+        // Set known good values
+        localStorage.setItem('demo_user_mode', 'true');
+        localStorage.setItem('hardReset', Date.now().toString());
+        sessionStorage.setItem('renderAttempts', '0');
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Step 6: Prepare for navigation
+        log('Preparing for navigation...');
+        updateProgress(80, 'Preparing for navigation');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Step 7: Complete
+        log('Reset complete! Safe to navigate to home page.');
+        updateProgress(100, 'Reset complete');
+        document.getElementById('home-button').disabled = false;
+        
+      } catch (error) {
+        log(`Error during reset: ${error.message}`);
+        updateProgress(0, 'Reset failed');
+        document.getElementById('reset-button').disabled = false;
+      }
+    }
+  </script>
+</body>
+</html> 

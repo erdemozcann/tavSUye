@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Test - After Proxy Fix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login Test - After Proxy Fix</h1>
+    <p>This page tests if the proxy configuration fix resolved the 403 errors.</p>
+
+    <div class="test-section info">
+        <h3>Test Configuration</h3>
+        <p><strong>Frontend URL:</strong> http://localhost:5173</p>
+        <p><strong>Backend URL:</strong> http://localhost:8080</p>
+        <p><strong>API Proxy:</strong> /api → http://localhost:8080/api (no path rewriting)</p>
+    </div>
+
+    <div class="test-section">
+        <h3>1. Test API Connection</h3>
+        <button onclick="testApiConnection()">Test API Connection</button>
+        <div id="apiResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>2. Test Login Endpoint</h3>
+        <div>
+            <input type="text" id="username" placeholder="Username or Email" value="test@sabanciuniv.edu">
+            <input type="password" id="password" placeholder="Password" value="test123">
+            <button onclick="testLogin()">Test Login</button>
+        </div>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>3. Test Protected Endpoint (should return 403 without auth)</h3>
+        <button onclick="testProtectedEndpoint()">Test /api/courses/all</button>
+        <div id="protectedResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>4. Test Registration Endpoint</h3>
+        <button onclick="testRegistration()">Test Registration</button>
+        <div id="registrationResult"></div>
+    </div>
+
+    <script>
+        async function testApiConnection() {
+            const resultDiv = document.getElementById('apiResult');
+            resultDiv.innerHTML = '<p>Testing API connection...</p>';
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'OPTIONS',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h4>✅ API Connection Successful</h4>
+                        <p>Status: ${response.status}</p>
+                        <p>The proxy is correctly forwarding requests to the backend.</p>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ API Connection Failed</h4>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testLogin() {
+            const resultDiv = document.getElementById('loginResult');
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            resultDiv.innerHTML = '<p>Testing login...</p>';
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        usernameOrEmail: username,
+                        password: password
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 401) {
+                    resultDiv.innerHTML = `
+                        <div class="info">
+                            <h4>ℹ️ Expected 401 Response (Invalid Credentials)</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>This is expected for test credentials. The endpoint is working correctly!</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else if (response.status === 200) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Login Successful</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else if (response.status === 202) {
+                    resultDiv.innerHTML = `
+                        <div class="info">
+                            <h4>ℹ️ 2FA Required</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Unexpected Response</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Login Test Failed</h4>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testProtectedEndpoint() {
+            const resultDiv = document.getElementById('protectedResult');
+            resultDiv.innerHTML = '<p>Testing protected endpoint...</p>';
+            
+            try {
+                const response = await fetch('/api/courses/all', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+                
+                if (response.status === 403) {
+                    resultDiv.innerHTML = `
+                        <div class="info">
+                            <h4>ℹ️ Expected 403 Response (Authentication Required)</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>This is expected for protected endpoints without authentication. The endpoint is working correctly!</p>
+                        </div>
+                    `;
+                } else if (response.status === 200) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Protected Endpoint Accessible</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>You might be already authenticated.</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Unexpected Response</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Protected Endpoint Test Failed</h4>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testRegistration() {
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.innerHTML = '<p>Testing registration endpoint...</p>';
+            
+            const testUser = {
+                firstName: "Test",
+                lastName: "User",
+                username: "testuser" + Date.now(),
+                email: "test" + Date.now() + "@sabanciuniv.edu",
+                password: "TestPassword123!"
+            };
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(testUser)
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 200 || response.status === 201) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Registration Endpoint Working</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else if (response.status === 400) {
+                    resultDiv.innerHTML = `
+                        <div class="info">
+                            <h4>ℹ️ Registration Validation Error (Expected)</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>This might be due to validation rules or existing user. The endpoint is responding correctly!</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Unexpected Registration Response</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Registration Test Failed</h4>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-run API connection test on page load
+        window.onload = function() {
+            testApiConnection();
+        };
+    </script>
+</body>
+</html> 

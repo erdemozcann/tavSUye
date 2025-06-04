@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Instructor API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 20px; margin: 10px 0; }
+        pre { background: #f8f9fa; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Test Instructor API</h1>
+    <p>This page tests the instructor API to see if real database data is being returned.</p>
+    
+    <button onclick="testInstructorAPI()">Test Instructor API</button>
+    <button onclick="clearResults()">Clear Results</button>
+    
+    <div id="results"></div>
+
+    <script>
+        async function testInstructorAPI() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="result">Testing instructor API...</div>';
+            
+            try {
+                console.log('🔍 Testing instructor API...');
+                
+                // Test the actual API endpoint
+                const response = await fetch('http://localhost:8080/api/instructors/all', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('✅ API call successful:', data);
+                    resultsDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ API Call Successful</h3>
+                            <p>Status: ${response.status}</p>
+                            <p>Instructors count: ${data.length}</p>
+                            <pre>${JSON.stringify(data.slice(0, 2), null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+            } catch (error) {
+                console.error('❌ API call failed:', error);
+                
+                if (error.message.includes('403') || error.message.includes('401')) {
+                    console.log('🔒 Expected 403/401 error - testing fallback data');
+                    
+                    // Simulate the fallback data that should be returned
+                    const fallbackData = [
+                        {
+                            instructorId: 1,
+                            firstName: 'Erkay',
+                            lastName: 'Savaş',
+                            name: 'Erkay',
+                            surname: 'Savaş',
+                            title: 'Professor',
+                            email: 'erkays@sabanciuniv.edu',
+                            department: 'FENS',
+                            aboutTr: 'Şifreleme ve İletişim Güvenliği, Bilgisayar Aritmetiği, Yüksek Performanslı Bigisayarlı Hesaplama.',
+                            aboutEn: 'Cryptography and Security, Computer Aritmetic, High Perfomance Computing,Distributed Computing.'
+                        },
+                        {
+                            instructorId: 2,
+                            firstName: 'Albert',
+                            lastName: 'Levi',
+                            name: 'Albert',
+                            surname: 'Levi',
+                            title: 'Professor',
+                            email: 'levi@sabanciuniv.edu',
+                            department: 'FENS',
+                            aboutTr: 'Bilgi ve iletişim Güvenliği, Telsiz ağ güvenliği, IoT Güvenliği ve Mahremiyet',
+                            aboutEn: 'Information and Network Security, Wireless Network Security, IoT Security and Privacy'
+                        }
+                    ];
+                    
+                    resultsDiv.innerHTML = `
+                        <div class="result error">
+                            <h3>🔒 API Returned 403 (Expected)</h3>
+                            <p>Error: ${error.message}</p>
+                            <p><strong>Frontend should return this fallback data:</strong></p>
+                            <pre>${JSON.stringify(fallbackData, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultsDiv.innerHTML = `
+                        <div class="result error">
+                            <h3>❌ Unexpected Error</h3>
+                            <p>Error: ${error.message}</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            setTimeout(testInstructorAPI, 1000);
+        });
+    </script>
+</body>
+</html> 

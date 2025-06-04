@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #results {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Test</h1>
+    
+    <div>
+        <h2>Authentication</h2>
+        <div>
+            <input type="text" id="username" placeholder="Username or Email" value="test@sabanciuniv.edu">
+            <input type="password" id="password" placeholder="Password" value="password123">
+            <button onclick="login()">Login</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    
+    <div>
+        <h2>Course API</h2>
+        <button onclick="getSubjects()">Get Subjects</button>
+        <button onclick="getTopVisitedCourses()">Get Top Visited Courses</button>
+    </div>
+
+    <div>
+        <h2>Server Status</h2>
+        <button onclick="checkBackendStatus()">Check Backend Status</button>
+        <div id="status-message" class="status"></div>
+    </div>
+    
+    <div>
+        <h2>Results</h2>
+        <div id="results">Results will appear here</div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8091/api';
+        
+        function displayResult(title, data) {
+            const resultsElement = document.getElementById('results');
+            resultsElement.textContent = title + ':\n' + JSON.stringify(data, null, 2);
+        }
+        
+        function displayError(title, error) {
+            const resultsElement = document.getElementById('results');
+            let errorMessage = title + ':\n';
+            
+            if (error.response) {
+                errorMessage += `Status: ${error.response.status}\n`;
+                errorMessage += `Data: ${JSON.stringify(error.response.data, null, 2)}\n`;
+            } else if (error.request) {
+                errorMessage += 'No response received from server\n';
+            } else {
+                errorMessage += `Error: ${error.message}\n`;
+            }
+            
+            resultsElement.textContent = errorMessage;
+            console.error(title, error);
+        }
+
+        async function checkBackendStatus() {
+            const statusElement = document.getElementById('status-message');
+            statusElement.textContent = "Checking backend status...";
+            statusElement.className = "status";
+            
+            try {
+                const startTime = Date.now();
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'OPTIONS',
+                    credentials: 'include'
+                });
+                const endTime = Date.now();
+                const responseTime = endTime - startTime;
+                
+                statusElement.textContent = `Backend is online! Response time: ${responseTime}ms`;
+                statusElement.className = "status success";
+            } catch (error) {
+                statusElement.textContent = `Backend is offline or unreachable: ${error.message}`;
+                statusElement.className = "status error";
+                console.error("Backend status check failed:", error);
+            }
+        }
+        
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                console.log("Sending login request to:", `${API_URL}/auth/login`);
+                console.log("With data:", { usernameOrEmail: username, password: "***" });
+                
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ usernameOrEmail: username, password }),
+                    credentials: 'include'
+                });
+                
+                console.log("Login response status:", response.status);
+                console.log("Login response headers:", Object.fromEntries([...response.headers]));
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error ${response.status}: ${errorText}`);
+                }
+                
+                const data = await response.json();
+                displayResult('Login Response', data);
+            } catch (error) {
+                displayError('Login Error', error);
+            }
+        }
+        
+        async function logout() {
+            try {
+                const response = await fetch(`${API_URL}/auth/logout`, {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error ${response.status}: ${errorText}`);
+                }
+                
+                const data = await response.text();
+                displayResult('Logout Response', data || 'Logout successful');
+            } catch (error) {
+                displayError('Logout Error', error);
+            }
+        }
+        
+        async function getSubjects() {
+            try {
+                console.log("Fetching subjects from:", `${API_URL}/courses/subjects`);
+                
+                const response = await fetch(`${API_URL}/courses/subjects`, {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                console.log("Subjects response status:", response.status);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error ${response.status}: ${errorText}`);
+                }
+                
+                const data = await response.json();
+                displayResult('Subjects', data);
+            } catch (error) {
+                displayError('Get Subjects Error', error);
+            }
+        }
+        
+        async function getTopVisitedCourses() {
+            try {
+                const response = await fetch(`${API_URL}/course-view-log/top-visited`, {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error ${response.status}: ${errorText}`);
+                }
+                
+                const data = await response.json();
+                displayResult('Top Visited Courses', data);
+            } catch (error) {
+                displayError('Get Top Visited Courses Error', error);
+            }
+        }
+
+        // Check backend status when page loads
+        window.addEventListener('DOMContentLoaded', checkBackendStatus);
+    </script>
+</body>
+</html> 

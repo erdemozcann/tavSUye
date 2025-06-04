@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Error Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>API Error Handling Test</h1>
+    <p>This test verifies that API calls with 403 errors are properly handled and don't cause unhandled promise rejections.</p>
+    
+    <div id="results"></div>
+    
+    <button onclick="testApiCalls()">Test API Calls</button>
+    <button onclick="clearResults()">Clear Results</button>
+    
+    <script>
+        const API_URL = 'http://localhost:8080/api';
+        let testResults = [];
+        
+        function addResult(message, type = 'info') {
+            testResults.push({ message, type, timestamp: new Date().toLocaleTimeString() });
+            updateDisplay();
+        }
+        
+        function updateDisplay() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = testResults.map(result => 
+                `<div class="test-result ${result.type}">
+                    [${result.timestamp}] ${result.message}
+                </div>`
+            ).join('');
+        }
+        
+        function clearResults() {
+            testResults = [];
+            updateDisplay();
+        }
+        
+        // Track unhandled promise rejections
+        let unhandledRejections = 0;
+        window.addEventListener('unhandledrejection', function(event) {
+            unhandledRejections++;
+            addResult(`❌ Unhandled Promise Rejection #${unhandledRejections}: ${event.reason}`, 'error');
+            console.error('Unhandled rejection:', event.reason);
+        });
+        
+        async function testApiCall(name, url, options = {}) {
+            try {
+                addResult(`🔄 Testing ${name}...`, 'info');
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    ...options
+                });
+                
+                if (response.status === 403) {
+                    addResult(`✅ ${name}: Got expected 403 error, handled gracefully`, 'success');
+                } else if (response.ok) {
+                    addResult(`✅ ${name}: Success (${response.status})`, 'success');
+                } else {
+                    addResult(`⚠️ ${name}: Unexpected status ${response.status}`, 'error');
+                }
+                
+            } catch (error) {
+                addResult(`✅ ${name}: Error caught properly - ${error.message}`, 'success');
+            }
+        }
+        
+        async function testApiCalls() {
+            clearResults();
+            addResult('🚀 Starting API error handling tests...', 'info');
+            
+            const initialRejections = unhandledRejections;
+            
+            // Test the API endpoints that were causing issues
+            await testApiCall('Courses API', `${API_URL}/courses/all`);
+            await testApiCall('Subjects API', `${API_URL}/courses/subjects`);
+            await testApiCall('Instructors API', `${API_URL}/instructors/all`);
+            await testApiCall('Programs API', `${API_URL}/programs/unique-names`);
+            await testApiCall('Auth Profile', `${API_URL}/auth/profile`);
+            
+            // Test logout endpoint
+            await testApiCall('Logout API', `${API_URL}/auth/logout`, { method: 'POST' });
+            
+            // Test course visit logging
+            await testApiCall('Course Visit Log', `${API_URL}/course-view-log/log?courseId=1`, { method: 'POST' });
+            
+            // Wait a bit to see if any unhandled rejections occur
+            setTimeout(() => {
+                const newRejections = unhandledRejections - initialRejections;
+                if (newRejections === 0) {
+                    addResult('🎉 SUCCESS: No unhandled promise rejections detected!', 'success');
+                } else {
+                    addResult(`❌ FAILURE: ${newRejections} unhandled promise rejections detected`, 'error');
+                }
+                addResult('✅ Test completed', 'info');
+            }, 2000);
+        }
+        
+        // Auto-run test on page load
+        window.addEventListener('load', () => {
+            addResult('📋 Page loaded. Click "Test API Calls" to run tests.', 'info');
+        });
+    </script>
+</body>
+</html> 

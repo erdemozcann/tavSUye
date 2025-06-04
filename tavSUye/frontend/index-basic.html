@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tavSUye - Basic Mode</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    h1 {
+      color: #1976d2;
+      margin-bottom: 10px;
+    }
+    .card {
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>tavSUye</h1>
+      <p>Basic Mode - No React, No Dependencies</p>
+    </header>
+
+    <div class="card">
+      <h2>Demo User</h2>
+      <p><strong>Username:</strong> demo.user</p>
+      <p><strong>Password:</strong> password123</p>
+      <button onclick="useDemoUser()">Continue as Demo User</button>
+    </div>
+
+    <div class="card">
+      <h2>Available Resources</h2>
+      <button onclick="window.location.href='/'">Main Application</button>
+      <button onclick="window.location.href='/test'">Test Page</button>
+      <button onclick="window.location.href='/index-plain.html'">Ultra Emergency Mode</button>
+      <button onclick="clearAllStorage()">Reset All Data</button>
+    </div>
+
+    <div class="card">
+      <h2>Courses</h2>
+      <div id="courses">Loading...</div>
+    </div>
+
+    <div class="card">
+      <h2>System Diagnostics</h2>
+      <div id="diagnostics"></div>
+    </div>
+  </div>
+
+  <script>
+    // Simple function to use demo user
+    function useDemoUser() {
+      localStorage.clear();
+      sessionStorage.clear();
+      localStorage.setItem('demo_user_mode', 'true');
+      alert('Demo user mode activated. You can now return to the main application.');
+    }
+
+    // Clear all storage
+    function clearAllStorage() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.cookie.split(";").forEach(function(c) {
+        document.cookie = c.trim().split("=")[0] + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      });
+      alert('All application data has been cleared.');
+      window.location.reload();
+    }
+
+    // Show system diagnostics
+    function showDiagnostics() {
+      const diagEl = document.getElementById('diagnostics');
+      const diagInfo = [
+        `Browser: ${navigator.userAgent}`,
+        `Window Size: ${window.innerWidth}x${window.innerHeight}`,
+        `localStorage available: ${typeof localStorage !== 'undefined'}`,
+        `localStorage items: ${localStorage.length}`,
+        `sessionStorage items: ${sessionStorage.length}`,
+        `Demo mode: ${localStorage.getItem('demo_user_mode') === 'true' ? 'Enabled' : 'Disabled'}`,
+      ];
+      diagEl.innerHTML = diagInfo.map(info => `<div>${info}</div>`).join('');
+    }
+
+    // Simple mock data
+    const mockCourses = [
+      { id: 1, code: "CS201", name: "Programming Fundamentals" },
+      { id: 2, code: "CS301", name: "Algorithms" },
+      { id: 3, code: "CS401", name: "Database Systems" }
+    ];
+
+    // Render courses
+    function renderCourses() {
+      const coursesEl = document.getElementById('courses');
+      coursesEl.innerHTML = mockCourses.map(course => 
+        `<div>
+          <strong>${course.code}</strong>: ${course.name}
+         </div>`
+      ).join('');
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      showDiagnostics();
+      renderCourses();
+    });
+  </script>
+</body>
+</html> 
