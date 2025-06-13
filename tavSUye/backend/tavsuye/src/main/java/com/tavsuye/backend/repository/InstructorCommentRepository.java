@@ -10,4 +10,7 @@ import java.util.List;
 public interface InstructorCommentRepository extends JpaRepository<InstructorComment, Integer> {
 
     List<InstructorComment> findByInstructor_InstructorIdAndDeletedFalse(Integer instructorId);
+    
+    // Find all comments for an instructor, including deleted ones
+    List<InstructorComment> findByInstructor_InstructorId(Integer instructorId);
 }

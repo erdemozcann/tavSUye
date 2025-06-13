@@ -28,6 +28,11 @@ public class NoteService {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new RuntimeException("Course not found"));
 
+        // Check if course is active
+        if (!course.getCourseStatus()) {
+            throw new RuntimeException("Note uploads are disabled for inactive courses");
+        }
+
         note.setCourse(course);
         note.setCreatedAt(LocalDateTime.now());
         noteRepository.save(note);

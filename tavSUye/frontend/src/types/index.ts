@@ -110,6 +110,7 @@ export interface InstructorComment {
   isReported?: boolean;
   reportCount?: number;
   isAnonymous?: boolean;
+  deleted?: boolean;
   user?: {
     name?: string;
     surname?: string;
@@ -149,14 +150,21 @@ export interface Program {
   facultyCredits?: number;
   facultyMinCourses?: number;
   mathRequiredCredits?: number;
+  mathMinCourses?: number;
+  philosophyRequiredCredits?: number;
+  philosophyMinCourses?: number;
+  engineeringEcts?: number;
+  basicScienceEcts?: number;
+  totalMinEcts?: number;
+  totalMinCredits?: number;
 }
 
 export interface StudentPlan {
   planId: number;
-  userId: number;
+  courseId: number;
+  subject: string;
+  courseCode: string;
   term: number;
-  admissionTerm?: number;
-  courses: Course[];
 }
 
 export interface Note {

@@ -34,7 +34,7 @@ import apiService from '../services/api';
 const ADMISSION_TERMS = [
   201701, 201702, 201703, 201801, 201802, 201803, 201901, 201902, 201903,
   202001, 202002, 202003, 202101, 202102, 202103, 202201, 202202, 202203,
-  202301, 202302, 202303, 202401, 202402, 202403, 202501, 202502
+  202301, 202302, 202303, 202401, 202402, 202403, 202501, 202502, 202503
 ];
 
 export default function Programs() {
@@ -59,7 +59,7 @@ export default function Programs() {
   const formatTerm = (termNumber: number): string => {
     const year = Math.floor(termNumber / 100);
     const semester = termNumber % 100;
-    const semesterName = semester === 1 ? 'Fall' : 'Spring';
+    const semesterName = semester === 1 ? 'Fall' : semester === 2 ? 'Spring' : 'Summer';
     return `${year} ${semesterName}`;
   };
 

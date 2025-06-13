@@ -33,7 +33,11 @@ public class CourseCommentController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You must be logged in to view comments.");
         }
 
-        List<CourseCommentResponseDto> comments = courseCommentService.getCommentsByCourseFiltered(courseId, userId);
+        // Check if user is admin
+        String role = (String) session.getAttribute("role");
+        boolean isAdmin = "ADMIN".equals(role);
+
+        List<CourseCommentResponseDto> comments = courseCommentService.getCommentsByCourseFiltered(courseId, userId, isAdmin);
         return ResponseEntity.ok(comments);
     }
 

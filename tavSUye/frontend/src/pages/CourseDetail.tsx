@@ -41,6 +41,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Select,
+  FormControl,
+  InputLabel,
+  Switch,
 } from '@mui/material';
 import {
   School,
@@ -102,19 +106,24 @@ interface CommentItemProps {
   onReply: (commentId: number) => void;
   onRate: (commentId: number, isLike: boolean) => void;
   onDelete: (commentId: number) => void;
-  onEdit: (commentId: number, content: string, anonymous: boolean) => void;
+  onEdit: (commentId: number, content: string, anonymous: boolean, termTaken?: number | null, gradeReceived?: string | null) => void;
   onBan: (comment: CourseComment) => void;
   currentUser: any;
   commentStats: { [key: number]: { likes: number; dislikes: number } };
   userRatings: { [key: number]: boolean | null };
+  formatTermForDisplay: (termCode: string) => string;
+  courseStatus: boolean;
 }
 
-function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, onEdit, onBan, currentUser, commentStats, userRatings }: CommentItemProps) {
+function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, onEdit, onBan, currentUser, commentStats, userRatings, formatTermForDisplay, courseStatus }: CommentItemProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(comment.content);
   const [editAnonymous, setEditAnonymous] = useState(comment.anonymous || false);
+  const [editTermYear, setEditTermYear] = useState('');
+  const [editTermSeason, setEditTermSeason] = useState('');
+  const [editGradeReceived, setEditGradeReceived] = useState('');
   const replies = allComments.filter(reply => reply.parentCommentId === comment.commentId);
   const maxLevel = 5; // Prevent infinite nesting
   
@@ -166,12 +175,44 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
     setIsEditing(true);
     setEditContent(comment.content);
     setEditAnonymous(comment.anonymous || false);
+    
+    // Parse existing term data
+    if (comment.termTaken) {
+      const termStr = comment.termTaken.toString();
+      if (termStr.length === 6) {
+        const year = termStr.substring(0, 4);
+        const seasonCode = termStr.substring(4, 6);
+        const season = seasonCode === '01' ? 'Fall' : seasonCode === '02' ? 'Spring' : 'Summer';
+        setEditTermYear(year);
+        setEditTermSeason(season);
+      }
+    } else {
+      setEditTermYear('');
+      setEditTermSeason('');
+    }
+    
+    setEditGradeReceived(comment.gradeReceived || '');
     handleMenuClose();
   };
 
   const handleSaveEdit = () => {
     if (editContent.trim()) {
-      onEdit(comment.commentId, editContent.trim(), editAnonymous);
+      // Validate that both year and season are provided together
+      if ((editTermYear && !editTermSeason) || (!editTermYear && editTermSeason)) {
+        alert('Please select both year and season, or leave both empty');
+        return;
+      }
+      
+      // Validate year if provided
+      if (editTermYear && (parseInt(editTermYear) < 2000 || parseInt(editTermYear) > 2025)) {
+        alert('Year must be between 2000 and 2025');
+        return;
+      }
+      
+      const formattedTerm = editTermYear && editTermSeason ? 
+        parseInt(`${editTermYear}${editTermSeason === 'Fall' ? '01' : editTermSeason === 'Spring' ? '02' : '03'}`) : null;
+      
+      onEdit(comment.commentId, editContent.trim(), editAnonymous, formattedTerm, editGradeReceived || null);
       setIsEditing(false);
     }
   };
@@ -180,6 +221,9 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
     setIsEditing(false);
     setEditContent(comment.content);
     setEditAnonymous(comment.anonymous || false);
+    setEditTermYear('');
+    setEditTermSeason('');
+    setEditGradeReceived('');
   };
 
   const handleRate = (isLike: boolean) => {
@@ -209,14 +253,26 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
               </IconButton>
             )}
             <Avatar sx={{ width: 32, height: 32, mr: 1 }}>
-              {comment.username ? comment.username[0] : 'A'}
+              {comment.anonymous ? 'A' : (comment.username ? comment.username[0] : 'U')}
             </Avatar>
             <Typography variant="subtitle2">
-              {comment.username || 'Anonymous User'}
-              {comment.anonymous && ' (Anonymous)'}
+              {comment.anonymous ? (
+                // If anonymous and (current user is the comment owner OR user is admin), show username + Anonymous
+                (currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN') ? 
+                  (comment.username || 'User') :
+                  'Anonymous'
+              ) : (
+                // If not anonymous, show username normally
+                comment.username || 'User'
+              )}
+              {comment.anonymous && ((currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN')) && (
+                <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                  • Anonymous
+                </Typography>
+              )}
               {isCollapsed && totalReplies > 0 && (
                 <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
-                  ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
+                  • ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
                 </Typography>
               )}
               <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
@@ -234,8 +290,77 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
                     rows={3}
                     value={editContent}
                     onChange={(e) => setEditContent(e.target.value)}
-                    sx={{ mb: 1 }}
+                    sx={{ mb: 2 }}
                   />
+                  <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+                    <TextField
+                      label="Year"
+                      value={editTermYear}
+                      onChange={(e) => setEditTermYear(e.target.value)}
+                      placeholder="e.g., 2021"
+                      type="number"
+                      inputProps={{ min: 2000, max: 2025 }}
+                      sx={{ flex: 1 }}
+                      size="small"
+                    />
+                    <FormControl sx={{ flex: 1 }} size="small">
+                      <InputLabel>Season</InputLabel>
+                      <Select
+                        value={editTermSeason}
+                        onChange={(e) => setEditTermSeason(e.target.value)}
+                        label="Season"
+                        MenuProps={{
+                          PaperProps: {
+                            style: {
+                              maxHeight: 150,
+                              width: 100,
+                            },
+                          },
+                        }}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="Fall">Fall</MenuItem>
+                        <MenuItem value="Spring">Spring</MenuItem>
+                        <MenuItem value="Summer">Summer</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                  <FormControl fullWidth sx={{ mb: 2 }} size="small">
+                    <InputLabel>Grade Received</InputLabel>
+                    <Select
+                      value={editGradeReceived}
+                      onChange={(e) => setEditGradeReceived(e.target.value)}
+                      label="Grade Received"
+                      MenuProps={{
+                        PaperProps: {
+                          style: {
+                            maxHeight: 300,
+                            width: 80,
+                          },
+                        },
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="A">A</MenuItem>
+                      <MenuItem value="A-">A-</MenuItem>
+                      <MenuItem value="B+">B+</MenuItem>
+                      <MenuItem value="B">B</MenuItem>
+                      <MenuItem value="B-">B-</MenuItem>
+                      <MenuItem value="C+">C+</MenuItem>
+                      <MenuItem value="C">C</MenuItem>
+                      <MenuItem value="C-">C-</MenuItem>
+                      <MenuItem value="D+">D+</MenuItem>
+                      <MenuItem value="D">D</MenuItem>
+                      <MenuItem value="F">F</MenuItem>
+                      <MenuItem value="NA">NA</MenuItem>
+                      <MenuItem value="S">S</MenuItem>
+                      <MenuItem value="W">W</MenuItem>
+                    </Select>
+                  </FormControl>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -269,9 +394,15 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
                     {comment.content}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Button size="small" onClick={() => onReply(comment.commentId)}>
-                      Reply
-                    </Button>
+                    {courseStatus ? (
+                      <Button size="small" onClick={() => onReply(comment.commentId)}>
+                        Reply
+                      </Button>
+                    ) : (
+                      <Button size="small" disabled title="Replies are disabled for inactive courses">
+                        Reply
+                      </Button>
+                    )}
                     {/* Rating buttons for nested comments */}
                     <IconButton size="small" onClick={() => handleRate(true)} color={userRating === true ? "primary" : "inherit"}>
                       <ThumbUp fontSize="small" />
@@ -323,32 +454,45 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
               )}
               <ListItemAvatar>
                 <Avatar>
-                  {comment.username ? comment.username[0] : 'A'}
+                  {comment.anonymous ? 'A' : (comment.username ? comment.username[0] : 'U')}
                 </Avatar>
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography variant="subtitle1">
-                      {comment.username || 'Anonymous User'}
-                    </Typography>
-                    {isCollapsed && totalReplies > 0 && (
-                      <Typography variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
-                        ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
+                  <Typography variant="subtitle1">
+                    {comment.anonymous ? (
+                      // If anonymous and (current user is the comment owner OR user is admin), show username + Anonymous
+                      (currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN') ? 
+                        (comment.username || 'User') :
+                        'Anonymous'
+                    ) : (
+                      // If not anonymous, show username normally
+                      comment.username || 'User'
+                    )}
+                    {comment.termTaken && (
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                        • Term: {formatTermForDisplay(comment.termTaken.toString())}
                       </Typography>
                     )}
-                  </Box>
-                }
-                secondary={
-                  <>
-                    {comment.termTaken && `Term: ${comment.termTaken}`}
-                    {comment.gradeReceived && ` • Grade: ${comment.gradeReceived}`}
-                    {comment.anonymous && ' • Anonymous'}
-                    <br />
-                    <Typography component="span" variant="caption" color="text.secondary">
-                      {`${new Date(comment.createdAt).toLocaleDateString()} ${new Date(comment.createdAt).toLocaleTimeString().slice(0, -3)}`}
+                    {comment.gradeReceived && (
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                        • Grade: {comment.gradeReceived}
+                      </Typography>
+                    )}
+                    {comment.anonymous && ((currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN')) && (
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                        • Anonymous
+                      </Typography>
+                    )}
+                    {isCollapsed && totalReplies > 0 && (
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                        • ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
+                      </Typography>
+                    )}
+                    <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                      • {`${new Date(comment.createdAt).toLocaleDateString()} ${new Date(comment.createdAt).toLocaleTimeString().slice(0, -3)}`}
                     </Typography>
-                  </>
+                  </Typography>
                 }
               />
             </Box>
@@ -396,8 +540,77 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
                     rows={3}
                     value={editContent}
                     onChange={(e) => setEditContent(e.target.value)}
-                    sx={{ mb: 1 }}
+                    sx={{ mb: 2 }}
                   />
+                  <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+                    <TextField
+                      label="Year"
+                      value={editTermYear}
+                      onChange={(e) => setEditTermYear(e.target.value)}
+                      placeholder="e.g., 2021"
+                      type="number"
+                      inputProps={{ min: 2000, max: 2025 }}
+                      sx={{ flex: 1 }}
+                      size="small"
+                    />
+                    <FormControl sx={{ flex: 1 }} size="small">
+                      <InputLabel>Season</InputLabel>
+                      <Select
+                        value={editTermSeason}
+                        onChange={(e) => setEditTermSeason(e.target.value)}
+                        label="Season"
+                        MenuProps={{
+                          PaperProps: {
+                            style: {
+                              maxHeight: 150,
+                              width: 100,
+                            },
+                          },
+                        }}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="Fall">Fall</MenuItem>
+                        <MenuItem value="Spring">Spring</MenuItem>
+                        <MenuItem value="Summer">Summer</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                  <FormControl fullWidth sx={{ mb: 2 }} size="small">
+                    <InputLabel>Grade Received</InputLabel>
+                    <Select
+                      value={editGradeReceived}
+                      onChange={(e) => setEditGradeReceived(e.target.value)}
+                      label="Grade Received"
+                      MenuProps={{
+                        PaperProps: {
+                          style: {
+                            maxHeight: 300,
+                            width: 80,
+                          },
+                        },
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="A">A</MenuItem>
+                      <MenuItem value="A-">A-</MenuItem>
+                      <MenuItem value="B+">B+</MenuItem>
+                      <MenuItem value="B">B</MenuItem>
+                      <MenuItem value="B-">B-</MenuItem>
+                      <MenuItem value="C+">C+</MenuItem>
+                      <MenuItem value="C">C</MenuItem>
+                      <MenuItem value="C-">C-</MenuItem>
+                      <MenuItem value="D+">D+</MenuItem>
+                      <MenuItem value="D">D</MenuItem>
+                      <MenuItem value="F">F</MenuItem>
+                      <MenuItem value="NA">NA</MenuItem>
+                      <MenuItem value="S">S</MenuItem>
+                      <MenuItem value="W">W</MenuItem>
+                    </Select>
+                  </FormControl>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -431,9 +644,15 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
                     {comment.content}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Button size="small" onClick={() => onReply(comment.commentId)}>
-                      Reply
-                    </Button>
+                    {courseStatus ? (
+                      <Button size="small" onClick={() => onReply(comment.commentId)}>
+                        Reply
+                      </Button>
+                    ) : (
+                      <Button size="small" disabled title="Replies are disabled for inactive courses">
+                        Reply
+                      </Button>
+                    )}
                     {/* Rating buttons for nested comments */}
                     <IconButton size="small" onClick={() => handleRate(true)} color={userRating === true ? "primary" : "inherit"}>
                       <ThumbUp fontSize="small" />
@@ -486,6 +705,8 @@ function CommentItem({ comment, allComments, level, onReply, onRate, onDelete, o
               currentUser={currentUser}
               commentStats={commentStats}
               userRatings={userRatings}
+              formatTermForDisplay={formatTermForDisplay}
+              courseStatus={courseStatus}
             />
           ))}
         </Box>
@@ -512,10 +733,15 @@ export default function CourseDetail() {
   const [replyToCommentId, setReplyToCommentId] = useState<number | null>(null);
   const [replyContent, setReplyContent] = useState('');
   const [replyAnonymous, setReplyAnonymous] = useState(false);
+  const [replyTermYear, setReplyTermYear] = useState('');
+  const [replyTermSeason, setReplyTermSeason] = useState('');
+  const [replyGradeReceived, setReplyGradeReceived] = useState('');
   const [uploadNoteDialogOpen, setUploadNoteDialogOpen] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [termTaken, setTermTaken] = useState('');
+  const [termYear, setTermYear] = useState('');
+  const [termSeason, setTermSeason] = useState('');
   const [gradeReceived, setGradeReceived] = useState('');
   const [tabValue, setTabValue] = useState(0);
   const [googleDriveLink, setGoogleDriveLink] = useState('');
@@ -553,8 +779,26 @@ export default function CourseDetail() {
   const [editBasicScienceEcts, setEditBasicScienceEcts] = useState('');
   const [editContentEn, setEditContentEn] = useState('');
   const [editContentTr, setEditContentTr] = useState('');
+  const [editLinkEn, setEditLinkEn] = useState('');
+  const [editLinkTr, setEditLinkTr] = useState('');
+  const [editCourseStatus, setEditCourseStatus] = useState(true);
   
   const queryClient = useQueryClient();
+
+  // Helper functions for term formatting
+  const formatTermForDB = (year: string, season: string): string => {
+    if (!year || !season) return '';
+    const seasonCode = season === 'Fall' ? '01' : season === 'Spring' ? '02' : '03';
+    return `${year}${seasonCode}`;
+  };
+
+  const formatTermForDisplay = (termCode: string): string => {
+    if (!termCode || termCode.length !== 6) return termCode;
+    const year = termCode.substring(0, 4);
+    const seasonCode = termCode.substring(4, 6);
+    const season = seasonCode === '01' ? 'Fall' : seasonCode === '02' ? 'Spring' : 'Summer';
+    return `${year} ${season}`;
+  };
 
   const { data: course, isLoading: courseLoading } = useQuery<Course>({
     enabled: !!subject && !!code,
@@ -635,8 +879,14 @@ export default function CourseDetail() {
   });
 
   const editCommentMutation = useMutation({
-    mutationFn: ({ commentId, content, anonymous }: { commentId: number; content: string; anonymous: boolean }) => 
-      apiService.courses.updateComment(commentId, { content, anonymous }),
+    mutationFn: ({ commentId, content, anonymous, termTaken, gradeReceived }: { 
+      commentId: number; 
+      content: string; 
+      anonymous: boolean; 
+      termTaken?: number | null; 
+      gradeReceived?: string | null; 
+    }) => 
+      apiService.courses.updateComment(commentId, { content, anonymous, termTaken, gradeReceived }),
     onSuccess: async () => {
       // Refresh comments and their stats
       await queryClient.invalidateQueries({ queryKey: ['courseComments', subject, code] });
@@ -658,9 +908,12 @@ export default function CourseDetail() {
       
       setNewComment('');
       setTermTaken('');
+      setTermYear('');
+      setTermSeason('');
       setGradeReceived('');
       setIsAnonymous(false);
       setCommentDialogOpen(false);
+      setCommentError('');
     },
     onError: (error) => {
       console.error('Failed to add comment:', error);
@@ -678,8 +931,12 @@ export default function CourseDetail() {
       
       setReplyContent('');
       setReplyAnonymous(false);
+      setReplyTermYear('');
+      setReplyTermSeason('');
+      setReplyGradeReceived('');
       setReplyDialogOpen(false);
       setReplyToCommentId(null);
+      setCommentError('');
     },
     onError: (error) => {
       console.error('Failed to add reply:', error);
@@ -824,6 +1081,9 @@ export default function CourseDetail() {
       setEditBasicScienceEcts('');
       setEditContentEn('');
       setEditContentTr('');
+      setEditLinkEn('');
+      setEditLinkTr('');
+      setEditCourseStatus(true);
     },
     onError: (error: any) => {
       console.error('Error updating course:', error);
@@ -865,10 +1125,24 @@ export default function CourseDetail() {
       return;
     }
     
+    // Validate year if provided
+    if (termYear && (parseInt(termYear) < 2000 || parseInt(termYear) > 2025)) {
+      setCommentError('Year must be between 2000 and 2025');
+      return;
+    }
+    
+    // Validate that both year and season are provided together
+    if ((termYear && !termSeason) || (!termYear && termSeason)) {
+      setCommentError('Please select both year and season, or leave both empty');
+      return;
+    }
+    
+    const formattedTerm = termYear && termSeason ? formatTermForDB(termYear, termSeason) : null;
+    
     addCommentMutation.mutate({
       content: newComment,
       anonymous: isAnonymous,
-      termTaken: termTaken ? parseInt(termTaken) : null,
+      termTaken: formattedTerm ? parseInt(formattedTerm) : null,
       gradeReceived: gradeReceived || null,
       parentCommentId: null // For now, we'll add top-level comments only
     });
@@ -880,11 +1154,25 @@ export default function CourseDetail() {
       return;
     }
     
+    // Validate year if provided
+    if (replyTermYear && (parseInt(replyTermYear) < 2000 || parseInt(replyTermYear) > 2025)) {
+      setCommentError('Year must be between 2000 and 2025');
+      return;
+    }
+    
+    // Validate that both year and season are provided together
+    if ((replyTermYear && !replyTermSeason) || (!replyTermYear && replyTermSeason)) {
+      setCommentError('Please select both year and season, or leave both empty');
+      return;
+    }
+    
+    const formattedTerm = replyTermYear && replyTermSeason ? formatTermForDB(replyTermYear, replyTermSeason) : null;
+    
     addReplyMutation.mutate({
       content: replyContent,
       anonymous: replyAnonymous,
-      termTaken: null, // Replies don't need term/grade info
-      gradeReceived: null,
+      termTaken: formattedTerm ? parseInt(formattedTerm) : null,
+      gradeReceived: replyGradeReceived || null,
       parentCommentId: replyToCommentId
     });
   };
@@ -961,6 +1249,9 @@ export default function CourseDetail() {
       setEditBasicScienceEcts(course.basicScienceEcts?.toString() || '');
       setEditContentEn(course.contentEn || '');
       setEditContentTr(course.contentTr || '');
+      setEditLinkEn(course.linkEn || '');
+      setEditLinkTr(course.linkTr || '');
+      setEditCourseStatus(course.courseStatus);
       setEditCourseDialogOpen(true);
     }
   };
@@ -977,6 +1268,9 @@ export default function CourseDetail() {
       basicScienceEcts: editBasicScienceEcts ? parseInt(editBasicScienceEcts) : undefined,
       contentEn: editContentEn.trim(),
       contentTr: editContentTr.trim(),
+      linkEn: editLinkEn.trim(),
+      linkTr: editLinkTr.trim(),
+      courseStatus: editCourseStatus,
     };
 
     editCourseMutation.mutate(courseData);
@@ -1014,6 +1308,14 @@ export default function CourseDetail() {
                 <Typography variant="h6" color="text.secondary" gutterBottom>
                   {course.courseNameTr}
                 </Typography>
+                {!course.courseStatus && (
+                  <Alert severity="warning" sx={{ mt: 2, mb: 2 }}>
+                    <Typography variant="body2">
+                      <strong>This course is inactive/outdated.</strong> This course is no longer offered or has been replaced. 
+                      Comments and new notes are disabled for this course.
+                    </Typography>
+                  </Alert>
+                )}
               </Box>
               <Box sx={{ display: 'flex', gap: 1 }}>
                 {user?.role === 'ADMIN' && (
@@ -1063,9 +1365,53 @@ export default function CourseDetail() {
               <Typography variant="body1" paragraph>
                 {course.contentEn || "No English content available."}
               </Typography>
-              <Typography variant="body1">
+              <Typography variant="body1" paragraph>
                 {course.contentTr || "No Turkish content available."}
               </Typography>
+              
+              {/* Course Links Section */}
+              {(course.linkEn || course.linkTr) && (
+                <>
+                  <Divider sx={{ my: 3 }} />
+                  <Typography variant="h6" gutterBottom>
+                    Course Links
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    {course.linkEn && (
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 'bold', minWidth: '40px' }}>
+                          ENG:
+                        </Typography>
+                        <Button
+                          startIcon={<Link />}
+                          variant="outlined"
+                          size="small"
+                          onClick={() => window.open(course.linkEn, '_blank')}
+                          sx={{ textTransform: 'none' }}
+                        >
+                          {course.linkEn.length > 50 ? `${course.linkEn.substring(0, 50)}...` : course.linkEn}
+                        </Button>
+                      </Box>
+                    )}
+                    {course.linkTr && (
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 'bold', minWidth: '40px' }}>
+                          TR:
+                        </Typography>
+                        <Button
+                          startIcon={<Link />}
+                          variant="outlined"
+                          size="small"
+                          onClick={() => window.open(course.linkTr, '_blank')}
+                          sx={{ textTransform: 'none' }}
+                        >
+                          {course.linkTr.length > 50 ? `${course.linkTr.substring(0, 50)}...` : course.linkTr}
+                        </Button>
+                      </Box>
+                    )}
+                  </Box>
+                </>
+              )}
             </TabPanel>
 
             <TabPanel value={tabValue} index={1}>
@@ -1073,14 +1419,31 @@ export default function CourseDetail() {
                 <Typography variant="h6">
                   Comments and Reviews
                 </Typography>
-                <Button
-                  variant="contained"
-                  startIcon={<Add />}
-                  onClick={() => setCommentDialogOpen(true)}
-                >
-                  Add Comment
-                </Button>
+                {course.courseStatus ? (
+                  <Button
+                    variant="contained"
+                    startIcon={<Add />}
+                    onClick={() => setCommentDialogOpen(true)}
+                  >
+                    Add Comment
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    startIcon={<Add />}
+                    disabled
+                    title="Comments are disabled for inactive courses"
+                  >
+                    Add Comment
+                  </Button>
+                )}
               </Box>
+              
+              {!course.courseStatus && (
+                <Alert severity="info" sx={{ mb: 2 }}>
+                  Comments are disabled for this inactive course. You can view existing comments but cannot add new ones.
+                </Alert>
+              )}
               
               {commentsLoading ? (
                 <LinearProgress />
@@ -1095,13 +1458,15 @@ export default function CourseDetail() {
                       onReply={openReplyDialog}
                       onRate={(commentId, isLike) => rateCommentMutation.mutate({ commentId, isLike })}
                       onDelete={(commentId) => deleteCommentMutation.mutate(commentId)}
-                      onEdit={(commentId, content, anonymous) => {
-                        editCommentMutation.mutate({ commentId, content, anonymous });
+                      onEdit={(commentId, content, anonymous, termTaken, gradeReceived) => {
+                        editCommentMutation.mutate({ commentId, content, anonymous, termTaken, gradeReceived });
                       }}
                       onBan={handleBanUser}
                       currentUser={user}
                       commentStats={commentStats}
                       userRatings={userRatings}
+                      formatTermForDisplay={formatTermForDisplay}
+                      courseStatus={course.courseStatus}
                     />
                   ))}
                 </List>
@@ -1115,14 +1480,31 @@ export default function CourseDetail() {
                 <Typography variant="h6">
                   Course Notes and Materials
                 </Typography>
-                <Button
-                  variant="contained"
-                  startIcon={<CloudUpload />}
-                  onClick={() => setUploadNoteDialogOpen(true)}
-                >
-                  Upload Note
-                </Button>
+                {course.courseStatus ? (
+                  <Button
+                    variant="contained"
+                    startIcon={<CloudUpload />}
+                    onClick={() => setUploadNoteDialogOpen(true)}
+                  >
+                    Upload Note
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    startIcon={<CloudUpload />}
+                    disabled
+                    title="Note uploads are disabled for inactive courses"
+                  >
+                    Upload Note
+                  </Button>
+                )}
               </Box>
+              
+              {!course.courseStatus && (
+                <Alert severity="info" sx={{ mb: 2 }}>
+                  Note uploads are disabled for this inactive course. You can view existing notes but cannot upload new ones.
+                </Alert>
+              )}
 
               {notesLoading ? (
                 <LinearProgress />
@@ -1228,20 +1610,74 @@ export default function CourseDetail() {
             onChange={(e) => setNewComment(e.target.value)}
             sx={{ mb: 2, mt: 1 }}
           />
-          <TextField
-            fullWidth
-            label="Term Taken (e.g., 202401)"
-            value={termTaken}
-            onChange={(e) => setTermTaken(e.target.value)}
-            sx={{ mb: 2 }}
-          />
-          <TextField
-            fullWidth
-            label="Grade Received"
-            value={gradeReceived}
-            onChange={(e) => setGradeReceived(e.target.value)}
-            sx={{ mb: 2 }}
-          />
+          <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+            <TextField
+              label="Year"
+              value={termYear}
+              onChange={(e) => setTermYear(e.target.value)}
+              placeholder="e.g., 2021"
+              type="number"
+              inputProps={{ min: 2000, max: 2025 }}
+              sx={{ flex: 1 }}
+            />
+            <FormControl sx={{ flex: 1 }}>
+              <InputLabel>Season</InputLabel>
+              <Select
+                value={termSeason}
+                onChange={(e) => setTermSeason(e.target.value)}
+                label="Season"
+                MenuProps={{
+                  PaperProps: {
+                    style: {
+                      maxHeight: 150,
+                      width: 100,
+                    },
+                  },
+                }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="Fall">Fall</MenuItem>
+                <MenuItem value="Spring">Spring</MenuItem>
+                <MenuItem value="Summer">Summer</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <FormControl fullWidth sx={{ mb: 2 }}>
+            <InputLabel>Grade Received</InputLabel>
+            <Select
+              value={gradeReceived}
+              onChange={(e) => setGradeReceived(e.target.value)}
+              label="Grade Received"
+              MenuProps={{
+                PaperProps: {
+                  style: {
+                    maxHeight: 300,
+                    width: 80,
+                  },
+                },
+              }}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="A">A</MenuItem>
+              <MenuItem value="A-">A-</MenuItem>
+              <MenuItem value="B+">B+</MenuItem>
+              <MenuItem value="B">B</MenuItem>
+              <MenuItem value="B-">B-</MenuItem>
+              <MenuItem value="C+">C+</MenuItem>
+              <MenuItem value="C">C</MenuItem>
+              <MenuItem value="C-">C-</MenuItem>
+              <MenuItem value="D+">D+</MenuItem>
+              <MenuItem value="D">D</MenuItem>
+              <MenuItem value="F">F</MenuItem>
+              <MenuItem value="NA">NA</MenuItem>
+              <MenuItem value="S">S</MenuItem>
+              <MenuItem value="W">W</MenuItem>
+            </Select>
+          </FormControl>
           <FormControlLabel
             control={
               <Checkbox
@@ -1353,6 +1789,74 @@ export default function CourseDetail() {
             onChange={(e) => setReplyContent(e.target.value)}
             sx={{ mb: 2, mt: 1 }}
           />
+          <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+            <TextField
+              label="Year"
+              value={replyTermYear}
+              onChange={(e) => setReplyTermYear(e.target.value)}
+              placeholder="e.g., 2021"
+              type="number"
+              inputProps={{ min: 2000, max: 2025 }}
+              sx={{ flex: 1 }}
+            />
+                         <FormControl sx={{ flex: 1 }}>
+               <InputLabel>Season</InputLabel>
+               <Select
+                 value={replyTermSeason}
+                 onChange={(e) => setReplyTermSeason(e.target.value)}
+                 label="Season"
+                 MenuProps={{
+                   PaperProps: {
+                     style: {
+                       maxHeight: 150,
+                       width: 100,
+                     },
+                   },
+                 }}
+               >
+                 <MenuItem value="">
+                   <em>None</em>
+                 </MenuItem>
+                 <MenuItem value="Fall">Fall</MenuItem>
+                 <MenuItem value="Spring">Spring</MenuItem>
+                 <MenuItem value="Summer">Summer</MenuItem>
+               </Select>
+             </FormControl>
+          </Box>
+                     <FormControl fullWidth sx={{ mb: 2 }}>
+             <InputLabel>Grade Received</InputLabel>
+             <Select
+               value={replyGradeReceived}
+               onChange={(e) => setReplyGradeReceived(e.target.value)}
+               label="Grade Received"
+               MenuProps={{
+                 PaperProps: {
+                   style: {
+                     maxHeight: 300,
+                     width: 80,
+                   },
+                 },
+               }}
+             >
+               <MenuItem value="">
+                 <em>None</em>
+               </MenuItem>
+               <MenuItem value="A">A</MenuItem>
+               <MenuItem value="A-">A-</MenuItem>
+               <MenuItem value="B+">B+</MenuItem>
+               <MenuItem value="B">B</MenuItem>
+               <MenuItem value="B-">B-</MenuItem>
+               <MenuItem value="C+">C+</MenuItem>
+               <MenuItem value="C">C</MenuItem>
+               <MenuItem value="C-">C-</MenuItem>
+               <MenuItem value="D+">D+</MenuItem>
+               <MenuItem value="D">D</MenuItem>
+               <MenuItem value="F">F</MenuItem>
+               <MenuItem value="NA">NA</MenuItem>
+               <MenuItem value="S">S</MenuItem>
+               <MenuItem value="W">W</MenuItem>
+             </Select>
+           </FormControl>
           <FormControlLabel
             control={
               <Checkbox
@@ -1362,6 +1866,12 @@ export default function CourseDetail() {
             }
             label="Reply anonymously"
           />
+          
+          {commentError && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+              {commentError}
+            </Alert>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setReplyDialogOpen(false)}>Cancel</Button>
@@ -1607,6 +2117,51 @@ export default function CourseDetail() {
                   sx={{ mb: 2 }}
                   placeholder="Detaylı ders açıklaması (Türkçe)..."
                 />
+              </Grid>
+              <Grid size={12}>
+                <TextField
+                  fullWidth
+                  label="ENG: Course Link (English)"
+                  value={editLinkEn}
+                  onChange={(e) => setEditLinkEn(e.target.value)}
+                  sx={{ mb: 2 }}
+                  placeholder="https://example.com/course-link-en"
+                  helperText="Optional: Link to course page or syllabus in English"
+                />
+              </Grid>
+              <Grid size={12}>
+                <TextField
+                  fullWidth
+                  label="TR: Course Link (Turkish)"
+                  value={editLinkTr}
+                  onChange={(e) => setEditLinkTr(e.target.value)}
+                  sx={{ mb: 2 }}
+                  placeholder="https://example.com/course-link-tr"
+                  helperText="Optional: Link to course page or syllabus in Turkish"
+                />
+              </Grid>
+              <Grid size={12}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, p: 2, border: '1px solid #e0e0e0', borderRadius: 1 }}>
+                  <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+                    Course Status:
+                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Typography variant="body2" color={editCourseStatus ? 'text.secondary' : 'primary'}>
+                      Deactive
+                    </Typography>
+                    <Switch
+                      checked={editCourseStatus}
+                      onChange={(e) => setEditCourseStatus(e.target.checked)}
+                      color="primary"
+                    />
+                    <Typography variant="body2" color={editCourseStatus ? 'primary' : 'text.secondary'}>
+                      Active
+                    </Typography>
+                  </Box>
+                  <Typography variant="caption" color="text.secondary" sx={{ ml: 2 }}>
+                    {editCourseStatus ? 'Students can add comments and notes' : 'Comments and notes are disabled'}
+                  </Typography>
+                </Box>
               </Grid>
             </Grid>
           </Box>

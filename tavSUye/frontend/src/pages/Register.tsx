@@ -219,6 +219,18 @@ export default function Register() {
             width: '100%',
           }}
         >
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+            <img 
+              src="/tavsuye_logo.jpeg" 
+              alt="tavSUye" 
+              style={{ 
+                height: '60px', 
+                width: 'auto',
+                objectFit: 'contain'
+              }} 
+            />
+          </Box>
+          
           <Typography component="h1" variant="h5">
             Create your account
           </Typography>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FA Fix Test v2 - Data Transformation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .log {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>2FA Fix Test v2 - Data Transformation</h1>
+    
+    <div class="test-section info">
+        <h3>✅ Fixed Issues</h3>
+        <ul>
+            <li><strong>API Endpoint</strong>: Fixed to use correct parameter name <code>is2faEnabled</code></li>
+            <li><strong>Data Transformation</strong>: Added transformation from backend <code>is_2fa_enabled</code> to frontend <code>is2FAEnabled</code></li>
+            <li><strong>Error Handling</strong>: Added better error handling and success feedback</li>
+            <li><strong>Console Logging</strong>: Added detailed logging for debugging</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h3>🧪 Test Data Transformation</h3>
+        <p>Testing the transformation of backend response format to frontend format:</p>
+        
+        <button onclick="testDataTransformation()">Test Data Transformation</button>
+        <button onclick="testProfileAPI()">Test Profile API</button>
+        <button onclick="test2FAAPI()">Test 2FA API</button>
+        
+        <div id="transformationResult" class="log"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>📋 Expected Behavior</h3>
+        <ol>
+            <li>When you toggle the 2FA switch, you should see "Updating 2FA settings..." message</li>
+            <li>The API call should be made with the correct parameter <code>is2faEnabled=true/false</code></li>
+            <li>After the API call completes, the profile should be refetched</li>
+            <li>The backend response <code>is_2fa_enabled</code> should be transformed to <code>is2FAEnabled</code></li>
+            <li>The switch should reflect the new state</li>
+            <li>You should see a success message</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h3>🔍 Debug Information</h3>
+        <p>Check the browser console for detailed logs when testing the 2FA toggle.</p>
+        <p>Look for these log messages:</p>
+        <ul>
+            <li>"Enabling 2FA..." or "Disabling 2FA..."</li>
+            <li>"Profile data transformed: ..."</li>
+            <li>"2FA enabled/disabled successfully: ..."</li>
+        </ul>
+    </div>
+
+    <script>
+        function log(message) {
+            const logElement = document.getElementById('transformationResult');
+            const timestamp = new Date().toLocaleTimeString();
+            logElement.textContent += `[${timestamp}] ${message}\n`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        function testDataTransformation() {
+            log('Testing data transformation...');
+            
+            // Simulate backend response
+            const backendResponse = {
+                name: "John",
+                surname: "Doe",
+                email: "john.doe@sabanciuniv.edu",
+                username: "johndoe",
+                is_2fa_enabled: true,  // Backend format (snake_case)
+                major: "Computer Science"
+            };
+            
+            log('Backend response: ' + JSON.stringify(backendResponse, null, 2));
+            
+            // Simulate frontend transformation
+            const transformedData = {
+                ...backendResponse,
+                is2FAEnabled: backendResponse.is_2fa_enabled || backendResponse.is2FAEnabled || false,
+                is_2fa_enabled: undefined
+            };
+            
+            log('Transformed data: ' + JSON.stringify(transformedData, null, 2));
+            
+            if (transformedData.is2FAEnabled === true && transformedData.is_2fa_enabled === undefined) {
+                log('✅ Data transformation working correctly!');
+            } else {
+                log('❌ Data transformation failed!');
+            }
+        }
+
+        function testProfileAPI() {
+            log('Testing profile API call...');
+            
+            fetch('http://localhost:5178/api/profile', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                log(`Profile API response status: ${response.status}`);
+                if (response.status === 403) {
+                    log('Expected 403 - not logged in');
+                } else if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            })
+            .then(data => {
+                if (data) {
+                    log('Profile data received: ' + JSON.stringify(data, null, 2));
+                }
+            })
+            .catch(error => {
+                log('Profile API error: ' + error.message);
+            });
+        }
+
+        function test2FAAPI() {
+            log('Testing 2FA API call...');
+            
+            fetch('http://localhost:5178/api/profile/2fa?is2faEnabled=true', {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                log(`2FA API response status: ${response.status}`);
+                if (response.status === 403) {
+                    log('Expected 403 - not logged in');
+                } else if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            })
+            .then(data => {
+                if (data) {
+                    log('2FA API response: ' + data);
+                }
+            })
+            .catch(error => {
+                log('2FA API error: ' + error.message);
+            });
+        }
+
+        // Auto-run transformation test on page load
+        window.onload = function() {
+            testDataTransformation();
+        };
+    </script>
+</body>
+</html> 

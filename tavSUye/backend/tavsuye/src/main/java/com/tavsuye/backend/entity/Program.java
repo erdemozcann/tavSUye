@@ -86,6 +86,12 @@ public class Program {
     @Column(name = "basic_science_ects")
     private Integer basicScienceEcts;
 
+    @Column(name = "total_min_ects")
+    private Integer totalMinEcts;
+
+    @Column(name = "total_min_credits")
+    private Integer totalMinCredits;
+
     // No-arg constructor
     public Program() {
     }
@@ -298,5 +304,21 @@ public class Program {
 
     public void setBasicScienceEcts(Integer basicScienceEcts) {
         this.basicScienceEcts = basicScienceEcts;
+    }
+
+    public Integer getTotalMinEcts() {
+        return totalMinEcts;
+    }
+
+    public void setTotalMinEcts(Integer totalMinEcts) {
+        this.totalMinEcts = totalMinEcts;
+    }
+
+    public Integer getTotalMinCredits() {
+        return totalMinCredits;
+    }
+
+    public void setTotalMinCredits(Integer totalMinCredits) {
+        this.totalMinCredits = totalMinCredits;
     }
 }

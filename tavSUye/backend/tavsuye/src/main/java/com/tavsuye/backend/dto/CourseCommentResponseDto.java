@@ -16,8 +16,8 @@ public class CourseCommentResponseDto {
     private Boolean anonymous;
     private Boolean deleted;
 
-    // Static factory method to create DTO from entity
-    public static CourseCommentResponseDto fromEntity(CourseComment comment, Integer requestUserId) {
+    // Static factory method to create DTO from entity with admin support
+    public static CourseCommentResponseDto fromEntity(CourseComment comment, Integer requestUserId, boolean isAdmin) {
         CourseCommentResponseDto dto = new CourseCommentResponseDto();
         dto.setCommentId(comment.getCommentId());
         dto.setCourseId(comment.getCourse().getCourseId());
@@ -50,8 +50,8 @@ public class CourseCommentResponseDto {
             dto.setUserId(comment.getUser().getUserId());
             dto.setUsername(comment.getUser().getUsername());
         } else {
-            // Anonymous - check if requester is the author
-            if (requestUserId != null && requestUserId.equals(comment.getUser().getUserId())) {
+            // Anonymous - check if requester is the author or admin
+            if ((requestUserId != null && requestUserId.equals(comment.getUser().getUserId())) || isAdmin) {
                 dto.setUserId(comment.getUser().getUserId());
                 dto.setUsername(comment.getUser().getUsername());
             } else {
@@ -62,6 +62,11 @@ public class CourseCommentResponseDto {
         }
         
         return dto;
+    }
+    
+    // Static factory method to create DTO from entity (backward compatibility)
+    public static CourseCommentResponseDto fromEntity(CourseComment comment, Integer requestUserId) {
+        return fromEntity(comment, requestUserId, false);
     }
 
     // Getters and setters

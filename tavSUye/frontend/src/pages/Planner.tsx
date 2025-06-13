@@ -10,10 +10,8 @@ import {
   Card,
   CardContent,
   Chip,
-  Divider,
   Alert,
   CircularProgress,
-  Grid,
   FormControl,
   InputLabel,
   Select,
@@ -23,28 +21,15 @@ import {
   DialogContent,
   DialogActions,
   IconButton,
-  Tooltip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  LinearProgress,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
 } from '@mui/material';
 import {
-  Add as AddIcon,
   Delete as DeleteIcon,
   Save as SaveIcon,
   ArrowBack,
   ExpandMore,
-  Warning,
-  CheckCircle,
-  School,
-  Clear as ClearIcon,
 } from '@mui/icons-material';
 import apiService from '../services/api';
 import type { Program, Course, StudentPlan } from '../types';
@@ -63,7 +48,7 @@ interface CourseGroup {
   minCourses?: number;
 }
 
-// Simple term numbers (1-8 with ability to add more)
+// Default terms (1-8) with ability to add extra terms
 const DEFAULT_TERMS = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default function Planner() {
@@ -115,6 +100,17 @@ export default function Planner() {
     enabled: !!nameEn && !!admissionTerm,
   });
 
+  // Debug: Program verisini kontrol et
+  useEffect(() => {
+    if (program) {
+      console.log('Program data from API:', program);
+      console.log('Total Min Credits:', program.totalMinCredits);
+      console.log('Total Min ECTS:', program.totalMinEcts);
+      console.log('Engineering ECTS:', program.engineeringEcts);
+      console.log('Basic Science ECTS:', program.basicScienceEcts);
+    }
+  }, [program]);
+
   // Fetch program courses with proper API call
   const { data: programCoursesRaw, isLoading: isCoursesLoading, error: coursesError } = useQuery<any[]>({
     queryKey: ['program-courses', program?.programId],
@@ -133,18 +129,31 @@ export default function Planner() {
 
   // Transform raw course data to include course groups from API
   const programCourses = useMemo(() => {
-    if (!programCoursesRaw) return [];
-    
-    return programCoursesRaw.map(courseData => ({
-      ...courseData,
-      courseGroup: courseData.courseGroup || 'Other' // Use courseGroup from API
-    })) as PlannerCourse[];
-  }, [programCoursesRaw]);
+          if (!programCoursesRaw) return [];
+      
+      const courses = programCoursesRaw.map(courseData => ({
+        ...courseData,
+        courseGroup: courseData.courseGroup || 'Other' // Use courseGroup from API
+      })) as PlannerCourse[];
+      
+      // Debug: Course groups
+      if (courses.length > 0) {
+        console.log('Sample courses with groups:', courses.slice(0, 5).map(c => ({
+          courseName: c.courseNameEn,
+          courseGroup: c.courseGroup
+        })));
+        
+        const uniqueGroups = [...new Set(courses.map(c => c.courseGroup))];
+        console.log('Unique course groups from API:', uniqueGroups);
+      }
+      
+      return courses;
+    }, [programCoursesRaw]);
 
   // Fetch existing student plans
   const { data: existingPlans } = useQuery<StudentPlan[]>({
     queryKey: ['student-plans'],
-    queryFn: () => apiService.plans.getPlans(),
+    queryFn: () => apiService.plans.getAllPlans(),
   });
 
   // Load existing plans into selected courses
@@ -152,11 +161,16 @@ export default function Planner() {
     if (existingPlans && existingPlans.length > 0) {
       const courseTermMap = new Map<number, number>();
       existingPlans.forEach(plan => {
-        plan.courses.forEach(course => {
-          courseTermMap.set(course.courseId, plan.term);
-        });
+        courseTermMap.set(plan.courseId, plan.term);
       });
       setSelectedCourses(courseTermMap);
+      
+      // Expand terms if needed
+      const maxTerm = Math.max(...existingPlans.map(plan => plan.term));
+      if (maxTerm > 8) {
+        const extraTerms = Array.from({length: maxTerm - 8}, (_, i) => 9 + i);
+        setAvailableTerms(prev => [...prev, ...extraTerms]);
+      }
     }
   }, [existingPlans]);
 
@@ -285,7 +299,12 @@ export default function Planner() {
         'CORE I': 'Core I',
         'CORE II': 'Core II', 
         'AREA': 'Area',
-        'FREE': 'Free'
+        'FREE': 'Free',
+        'FACULTY': 'Faculty',
+        // Add any other groups that might exist in database
+        'ELECTIVE': 'Elective',
+        'GENERAL': 'General Education',
+        'MAJOR': 'Major Courses'
       };
 
       // Group courses by their courseGroup field from the API
@@ -299,47 +318,24 @@ export default function Planner() {
         coursesByGroup.get(group)!.push(course);
       });
 
-      // Create groups based on the mappings and program-specific rules
+      // Create groups based on the mappings - show ALL groups that exist in database
       Object.entries(courseGroupMappings).forEach(([dbGroup, displayName]) => {
         const coursesInGroup = coursesByGroup.get(dbGroup) || [];
         
-        // Apply program-specific filtering
-        let filteredCourses = coursesInGroup;
-        
-        // Math Required only for ECON
-        if (displayName === 'Math Required' && !programName.includes('econ')) {
-          filteredCourses = [];
-        }
-        
-        // Philosophy Required only for PHIL
-        if (displayName === 'Philosophy Required' && !programName.includes('phil')) {
-          filteredCourses = [];
-        }
-        
-        // Core I and Core II only for Political Science, International Relations, and VA
-        if ((displayName === 'Core I' || displayName === 'Core II') && 
-            !programName.includes('political') && 
-            !programName.includes('international') && 
-            !programName.includes('va')) {
-          filteredCourses = [];
-        }
-        
-        // If we have Core I or Core II, don't show regular Core
+        // Only filter out regular 'Core' if we have specific Core I or Core II
         if (displayName === 'Core') {
           const hasCoreI = (coursesByGroup.get('CORE I') || []).length > 0;
           const hasCoreII = (coursesByGroup.get('CORE II') || []).length > 0;
-          if ((hasCoreI || hasCoreII) && 
-              (programName.includes('political') || 
-               programName.includes('international') || 
-               programName.includes('va'))) {
-            filteredCourses = [];
+          if (hasCoreI || hasCoreII) {
+            // Skip regular Core if we have specific Core I/II
+            return;
           }
         }
 
-        if (filteredCourses.length > 0) {
+        if (coursesInGroup.length > 0) {
           groups.push({
             groupName: displayName,
-            courses: filteredCourses,
+            courses: coursesInGroup,
             requiredCredits: getRequiredCreditsForGroup(displayName, program),
             minCourses: getMinCoursesForGroup(displayName, program),
           });
@@ -358,11 +354,13 @@ export default function Planner() {
       case 'University': return program.universityCredits;
       case 'Required': return program.requiredCredits;
       case 'Math Required': return program.mathRequiredCredits;
+      case 'Philosophy Required': return program.philosophyRequiredCredits;
       case 'Core': return program.coreCredits;
       case 'Core I': return program.coreElectiveCreditsI;
       case 'Core II': return program.coreElectiveCreditsII;
       case 'Area': return program.areaCredits;
       case 'Free': return program.freeElectiveCredits;
+      case 'Faculty': return program.facultyCredits;
       default: return undefined;
     }
   };
@@ -374,11 +372,14 @@ export default function Planner() {
     switch (groupName) {
       case 'University': return program.universityMinCourses;
       case 'Required': return program.requiredMinCourses;
+      case 'Math Required': return program.mathMinCourses;
+      case 'Philosophy Required': return program.philosophyMinCourses;
       case 'Core': return program.coreMinCourses;
       case 'Core I': return program.coreElectiveMinCoursesI;
       case 'Core II': return program.coreElectiveMinCoursesII;
       case 'Area': return program.areaMinCourses;
       case 'Free': return program.freeElectiveMinCourses;
+      case 'Faculty': return program.facultyMinCourses;
       default: return undefined;
     }
   };
@@ -422,10 +423,63 @@ export default function Planner() {
   }, [programCourses, groupCoursesByType, program]);
 
   const formatTerm = (termNumber: number): string => {
-    return `Term ${termNumber}`;
-  };
-
-  if (!nameEn || !admissionTerm) {
+    if (termNumber <= 8) {
+      return `Term ${termNumber}`;
+    } else {
+      // Extra terms (9+) can be summer terms or extra semesters
+      return `Extra Term ${termNumber}`;
+          }
+    };
+ 
+   // Helper function to normalize course group from database to display name
+   const normalizeGroupName = (courseGroup: string | undefined): string => {
+     if (!courseGroup) return 'Other';
+     
+     // Define course groups mapping from database values (ALL CAPS) to display names
+     const courseGroupMappings: { [key: string]: string } = {
+       'UNIVERSITY': 'University',
+       'REQUIRED': 'Required', 
+       'MATH': 'Math Required',
+       'PHIL': 'Philosophy Required',
+       'CORE': 'Core',
+       'CORE I': 'Core I',
+       'CORE II': 'Core II', 
+       'AREA': 'Area',
+       'FREE': 'Free',
+       'FACULTY': 'Faculty',
+       // Add any other groups that might exist in database
+       'ELECTIVE': 'Elective',
+       'GENERAL': 'General Education',
+       'MAJOR': 'Major Courses'
+     };
+     
+     // Return mapped name or fallback to original
+     return courseGroupMappings[courseGroup] || courseGroup;
+   };
+ 
+   // Helper function to calculate actual credits for a specific group
+   const calculateActualCreditsForGroup = (targetGroup: string): number => {
+     return Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+       const course = programCourses?.find(c => c.courseId === courseId);
+       if (!course) return total;
+       
+       const normalizedGroup = normalizeGroupName(course.courseGroup);
+       return normalizedGroup === targetGroup ? total + (course.suCredit || 0) : total;
+     }, 0);
+   };
+ 
+   // Helper function to calculate actual course count for a specific group
+   const calculateActualCountForGroup = (targetGroup: string): number => {
+     return Array.from(selectedCourses.keys()).reduce((count, courseId) => {
+       const course = programCourses?.find(c => c.courseId === courseId);
+       if (!course) return count;
+       
+       const normalizedGroup = normalizeGroupName(course.courseGroup);
+       return normalizedGroup === targetGroup ? count + 1 : count;
+     }, 0);
+   };
+  
+    if (!nameEn || !admissionTerm) {
     return (
       <Container>
         <Alert severity="error" sx={{ mt: 2 }}>
@@ -528,7 +582,7 @@ export default function Planner() {
               Academic Planner
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
-              {program?.nameEn} • Admission Term: {formatTerm(parseInt(admissionTerm!))}
+              {program?.nameEn} • Admission Term: {admissionTerm?.slice(0, 4)} {admissionTerm?.slice(4) === '01' ? 'Fall' : 'Spring'}
             </Typography>
           </Box>
           <Box>
@@ -550,76 +604,40 @@ export default function Planner() {
           </Box>
         </Box>
 
-        {/* Term Overview */}
-        <Paper sx={{ p: 3, mb: 3 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-            <Typography variant="h6">
-              Term Overview
+        <Box sx={{ 
+          display: 'grid', 
+          gridTemplateColumns: { xs: '1fr', lg: '1.6fr 1fr 0.8fr' },
+          gap: 3 
+        }}>
+          {/* Course Selection Panel */}
+          <Paper sx={{ p: 3 }}>
+            <Typography variant="h6" gutterBottom>
+              Available Courses
             </Typography>
-            <Button
-              startIcon={<AddIcon />}
-              onClick={addExtraTerm}
-              size="small"
-              variant="outlined"
-            >
-              Add Extra Term
-            </Button>
-          </Box>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-            {availableTerms.map(term => (
-              <Box key={term} sx={{ flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 8px)', md: '1 1 calc(25% - 12px)' } }}>
-                <Card variant="outlined">
-                  <CardContent sx={{ p: 2 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
-                      <Typography variant="subtitle2">
-                        {formatTerm(term)}
-                      </Typography>
-                      {term > 8 && (
-                        <IconButton
-                          size="small"
-                          onClick={() => removeExtraTerm(term)}
-                          color="error"
-                          sx={{ p: 0.5 }}
-                        >
-                          <DeleteIcon fontSize="small" />
-                        </IconButton>
-                      )}
-                    </Box>
-                    <Typography variant="h6" color="primary">
-                      {calculateCredits(term)} Credits
+            
+            {courseGroups.map((group) => (
+              <Accordion
+                key={group.groupName}
+                expanded={expandedGroups.has(group.groupName)}
+                onChange={() => toggleGroupExpansion(group.groupName)}
+                sx={{ mb: 2 }}
+              >
+                <AccordionSummary expandIcon={<ExpandMore />}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                      {group.groupName}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {Array.from(selectedCourses.entries()).filter(([_, t]) => t === term).length} Courses
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Box>
-        </Paper>
-
-        {/* Course Groups */}
-        <Box>
-          {courseGroups.map((group) => (
-            <Accordion
-              key={group.groupName}
-              expanded={expandedGroups.has(group.groupName)}
-              onChange={() => toggleGroupExpansion(group.groupName)}
-              sx={{ mb: 2 }}
-            >
-              <AccordionSummary expandIcon={<ExpandMore />}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', mr: 2 }}>
-                  <Typography variant="h6">{group.groupName}</Typography>
-                  <Box sx={{ display: 'flex', gap: 1 }}>
                     <Chip
                       label={`${group.courses.length} courses`}
                       size="small"
+                      sx={{ mr: 1 }}
                     />
                     {group.requiredCredits && (
                       <Chip
                         label={`${group.requiredCredits} credits required`}
                         size="small"
                         color="primary"
+                        sx={{ mr: 1 }}
                       />
                     )}
                     {group.minCourses && (
@@ -630,100 +648,774 @@ export default function Planner() {
                       />
                     )}
                   </Box>
-                </Box>
-              </AccordionSummary>
-              <AccordionDetails>
-                <TableContainer>
-                  <Table size="small">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Course</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="center">Credits</TableCell>
-                        <TableCell align="center">Prerequisites</TableCell>
-                        <TableCell align="center">Term</TableCell>
-                        <TableCell align="center">Actions</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {group.courses.map((course) => {
-                        const prerequisites = loadedPrerequisites.get(course.courseId) || [];
-                        const isPrereqMet = checkPrerequisites(course);
-                        const selectedTerm = selectedCourses.get(course.courseId);
-                        
-                        return (
-                          <TableRow key={course.courseId}>
-                            <TableCell>
-                              <Typography variant="body2" fontWeight="medium">
-                                {course.subject} {course.courseCode}
-                              </Typography>
-                            </TableCell>
-                            <TableCell>
-                              <Typography variant="body2">
-                                {course.courseNameEn}
-                              </Typography>
-                            </TableCell>
-                            <TableCell align="center">
-                              <Chip
-                                label={`${course.suCredit} SU`}
-                                size="small"
-                                variant="outlined"
-                              />
-                            </TableCell>
-                            <TableCell align="center">
-                              {loadingPrerequisites.has(course.courseId) ? (
-                                <CircularProgress size={16} />
-                              ) : prerequisites.length > 0 ? (
-                                <Tooltip title={prerequisites.map(p => `${p.subject} ${p.courseCode}`).join(', ')}>
-                                  <Chip
-                                    icon={isPrereqMet ? <CheckCircle /> : <Warning />}
-                                    label={prerequisites.length}
-                                    size="small"
-                                    color={isPrereqMet ? "success" : "warning"}
-                                  />
-                                </Tooltip>
-                              ) : (
-                                <Chip label="None" size="small" variant="outlined" />
-                              )}
-                            </TableCell>
-                            <TableCell align="center">
-                              <FormControl size="small" sx={{ minWidth: 120 }}>
-                                <Select
-                                  value={selectedTerm?.toString() || ''}
-                                  onChange={(e) => handleCourseTermChange(course.courseId, e.target.value ? parseInt(e.target.value as string) : null)}
-                                  displayEmpty
-                                >
-                                  <MenuItem value="">
-                                    <em>Not selected</em>
-                                  </MenuItem>
-                                  {availableTerms.map(term => (
-                                    <MenuItem key={term} value={term.toString()}>
-                                      {formatTerm(term)}
+                </AccordionSummary>
+                <AccordionDetails>
+                  {loadingPrerequisites.size > 0 && expandedGroups.has(group.groupName) && (
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                      <CircularProgress size={16} sx={{ mr: 1 }} />
+                      <Typography variant="caption" color="text.secondary">
+                        Loading prerequisites...
+                      </Typography>
+                    </Box>
+                  )}
+                  <Box sx={{ display: 'grid', gap: 2 }}>
+                    {group.courses.map((course) => {
+                      const isSelected = selectedCourses.has(course.courseId);
+                      const selectedTerm = selectedCourses.get(course.courseId);
+                      const prerequisites = loadedPrerequisites?.get(course.courseId) || [];
+                      const prereqsMet = checkPrerequisites(course);
+                      
+                      return (
+                        <Card
+                          key={course.courseId}
+                          sx={{
+                            border: isSelected ? 2 : 1,
+                            borderColor: isSelected ? 'primary.main' : 'divider',
+                          }}
+                        >
+                          <CardContent>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                              <Box sx={{ flexGrow: 1 }}>
+                                <Typography variant="h6" gutterBottom>
+                                  {course.subject} {course.courseCode}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                  {course.courseNameEn}
+                                </Typography>
+                                <Box sx={{ display: 'flex', gap: 1, mb: 2, flexWrap: 'wrap' }}>
+                                  <Chip label={`${course.suCredit} SU Credits`} size="small" />
+                                  <Chip label={`${course.ectsCredit} ECTS`} size="small" />
+                                  {(course.engineeringEcts || 0) > 0 && (
+                                    <Chip label={`${course.engineeringEcts} Engineering ECTS`} size="small" />
+                                  )}
+                                  {(course.basicScienceEcts || 0) > 0 && (
+                                    <Chip label={`${course.basicScienceEcts} Basic Science ECTS`} size="small" />
+                                  )}
+                                  <Chip label={course.faculty} size="small" />
+                                </Box>
+                                
+                                {prerequisites.length > 0 && (
+                                  <Box sx={{ mb: 2 }}>
+                                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                                      Prerequisites:
+                                    </Typography>
+                                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                                      {prerequisites.map((prereq) => (
+                                        <Chip
+                                          key={prereq.courseId}
+                                          label={`${prereq.subject} ${prereq.courseCode}`}
+                                          size="small"
+                                          color={selectedCourses.has(prereq.courseId) ? 'success' : 'default'}
+                                        />
+                                      ))}
+                                    </Box>
+                                  </Box>
+                                )}
+                                
+                                {isSelected && !prereqsMet && (
+                                  <Alert severity="warning" sx={{ mb: 2 }}>
+                                    Prerequisites not met or scheduled in wrong order
+                                  </Alert>
+                                )}
+                              </Box>
+                              
+                              <Box sx={{ ml: 2 }}>
+                                <FormControl size="small" sx={{ minWidth: 120 }}>
+                                  <InputLabel>Term</InputLabel>
+                                  <Select
+                                    value={selectedTerm || ''}
+                                    label="Term"
+                                    onChange={(e) => handleCourseTermChange(
+                                      course.courseId,
+                                      e.target.value ? Number(e.target.value) : null
+                                    )}
+                                    MenuProps={{
+                                      PaperProps: {
+                                        style: {
+                                          maxHeight: 300,
+                                          width: 120,
+                                          overflow: 'auto'
+                                        }
+                                      },
+                                      anchorOrigin: {
+                                        vertical: 'bottom',
+                                        horizontal: 'left'
+                                      },
+                                      transformOrigin: {
+                                        vertical: 'top',
+                                        horizontal: 'left'
+                                      }
+                                    }}
+                                  >
+                                    <MenuItem value="">
+                                      <em>Not selected</em>
                                     </MenuItem>
-                                  ))}
-                                </Select>
-                              </FormControl>
-                            </TableCell>
-                            <TableCell align="center">
-                              {selectedTerm && (
-                                <IconButton
-                                  size="small"
-                                  onClick={() => handleCourseTermChange(course.courseId, null)}
-                                  color="error"
-                                >
-                                  <ClearIcon />
-                                </IconButton>
-                              )}
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+                                    {availableTerms.map((term) => (
+                                      <MenuItem key={term} value={term}>
+                                        {formatTerm(term)}
+                                      </MenuItem>
+                                    ))}
+                                  </Select>
+                                </FormControl>
+                              </Box>
+                            </Box>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </Box>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Paper>
+
+          {/* Your Plan Panel (Middle Column) */}
+          <Paper sx={{ p: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+              <Typography variant="h6">
+                Your Plan
+              </Typography>
+              <Button
+                size="small"
+                variant="outlined"
+                onClick={addExtraTerm}
+                sx={{ fontSize: '0.75rem', py: 0.5, px: 1 }}
+              >
+                + Extra Term
+              </Button>
+            </Box>
+            
+            {availableTerms.map((term) => {
+              const termCourses = Array.from(selectedCourses.entries())
+                .filter(([_, courseTerm]) => courseTerm === term)
+                .map(([courseId, _]) => programCourses?.find(c => c.courseId === courseId))
+                .filter(Boolean) as PlannerCourse[];
+              
+              const termCredits = calculateCredits(term);
+              
+              return (
+                <Card key={term} sx={{ mb: 2 }}>
+                  <CardContent>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                      <Typography variant="h6">
+                        {formatTerm(term)}
+                      </Typography>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Chip
+                          label={`${termCredits} credits`}
+                          color={termCredits > 20 ? 'warning' : termCredits > 0 ? 'primary' : 'default'}
+                          size="small"
+                        />
+                        {term > 8 && (
+                          <IconButton
+                            size="small"
+                            onClick={() => removeExtraTerm(term)}
+                            color="error"
+                            sx={{ p: 0.5 }}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        )}
+                      </Box>
+                    </Box>
+                    
+                    {termCourses.length === 0 ? (
+                      <Typography variant="body2" color="text.secondary">
+                        No courses selected
+                      </Typography>
+                    ) : (
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                        {termCourses.map((course) => (
+                          <Box
+                            key={course.courseId}
+                            sx={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              p: 1,
+                              bgcolor: 'background.paper',
+                              borderRadius: 1,
+                              border: '1px solid',
+                              borderColor: 'divider'
+                            }}
+                          >
+                            {/* Course Code */}
+                            <Typography variant="body2" fontWeight="medium">
+                              {course.subject} {course.courseCode}
+                            </Typography>
+                            
+                            {/* Credits & Actions */}
+                            <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+                              <Chip label={`${course.suCredit} SU`} size="small" />
+                              <Chip label={`${course.ectsCredit} ECTS`} size="small" />
+                              <IconButton
+                                size="small"
+                                onClick={() => handleCourseTermChange(course.courseId, null)}
+                                color="error"
+                              >
+                                <DeleteIcon fontSize="small" />
+                              </IconButton>
+                            </Box>
+                          </Box>
+                        ))}
+                      </Box>
+                    )}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </Paper>
+
+          {/* Program Summary Panel (Right Column) */}
+          <Paper sx={{ p: 3, position: 'sticky', top: 20 }}>
+            <Card sx={{ mb: 3, bgcolor: 'primary.50' }}>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Program Summary
+                </Typography>
+                
+                                  {/* Program Totals */}
+                  <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Program SU Credit</Typography>
+                  <Box sx={{ 
+                    display: 'flex', 
+                    mb: 2, 
+                    borderRadius: 1,
+                    overflow: 'hidden',
+                    border: '1px solid #ddd'
+                  }}>
+                    <Box sx={{ 
+                      flex: 1, 
+                      p: 1, 
+                      bgcolor: 'info.light',
+                      color: 'black',
+                      borderRight: '2px solid #333'
+                    }}>
+                      <Typography variant="body2">Min: {program?.totalMinCredits || 0}</Typography>
+                    </Box>
+                    <Box sx={{ 
+                      flex: 1, 
+                      p: 1, 
+                      bgcolor: (() => {
+                        const actualSU = Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                         const course = programCourses?.find(c => c.courseId === courseId);
+                         return total + (course?.suCredit || 0);
+                         }, 0);
+                         const minSU = program?.totalMinCredits || 0;
+                         return actualSU >= minSU ? 'success.light' : 'warning.light';
+                       })(),
+                       color: 'black'
+                     }}>
+                       <Typography variant="body2">Actual: {Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                         const course = programCourses?.find(c => c.courseId === courseId);
+                         return total + (course?.suCredit || 0);
+                       }, 0)}</Typography>
+                     </Box>
+                  </Box>
+
+                                  <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Program ECTS Credit</Typography>
+                  <Box sx={{ 
+                    display: 'flex', 
+                    mb: 2, 
+                    borderRadius: 1,
+                    overflow: 'hidden',
+                    border: '1px solid #ddd'
+                  }}>
+                    <Box sx={{ 
+                      flex: 1, 
+                      p: 1, 
+                      bgcolor: 'info.light',
+                      color: 'black',
+                      borderRight: '2px solid #333'
+                    }}>
+                      <Typography variant="body2">Min: {program?.totalMinEcts || 0}</Typography>
+                    </Box>
+                    <Box sx={{ 
+                      flex: 1, 
+                      p: 1, 
+                      bgcolor: (() => {
+                        const actualECTS = Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                         const course = programCourses?.find(c => c.courseId === courseId);
+                         return total + (course?.ectsCredit || 0);
+                         }, 0);
+                         const minECTS = program?.totalMinEcts || 0;
+                         return actualECTS >= minECTS ? 'success.light' : 'warning.light';
+                       })(),
+                       color: 'black'
+                     }}>
+                       <Typography variant="body2">Actual: {Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                         const course = programCourses?.find(c => c.courseId === courseId);
+                         return total + (course?.ectsCredit || 0);
+                       }, 0)}</Typography>
+                     </Box>
+                  </Box>
+
+                                  {program?.engineeringEcts && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Engineering ECTS Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.engineeringEcts}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualEng = Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                             const course = programCourses?.find(c => c.courseId === courseId);
+                             return total + (course?.engineeringEcts || 0);
+                             }, 0);
+                             return actualEng >= program.engineeringEcts ? 'success.light' : 'warning.light';
+                           })(),
+                           color: 'black'
+                         }}>
+                           <Typography variant="body2">Actual: {Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                             const course = programCourses?.find(c => c.courseId === courseId);
+                             return total + (course?.engineeringEcts || 0);
+                           }, 0)}</Typography>
+                         </Box>
+                      </Box>
+                    </>
+                  )}
+
+                                  {program?.basicScienceEcts && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Basic Science ECTS Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.basicScienceEcts}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualBS = Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                             const course = programCourses?.find(c => c.courseId === courseId);
+                             return total + (course?.basicScienceEcts || 0);
+                             }, 0);
+                             return actualBS >= program.basicScienceEcts ? 'success.light' : 'warning.light';
+                           })(),
+                           color: 'black'
+                         }}>
+                           <Typography variant="body2">Actual: {Array.from(selectedCourses.keys()).reduce((total, courseId) => {
+                             const course = programCourses?.find(c => c.courseId === courseId);
+                             return total + (course?.basicScienceEcts || 0);
+                           }, 0)}</Typography>
+                         </Box>
+                      </Box>
+                    </>
+                  )}
+
+                                  {/* 1. University Courses Credit */}
+                  {program?.universityCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>University Courses Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.universityCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualUniv = calculateActualCreditsForGroup('University');
+                            return actualUniv >= program.universityCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('University')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 2. Required Courses Credit */}
+                  {program?.requiredCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Required Courses Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.requiredCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualReq = calculateActualCreditsForGroup('Required');
+                            return actualReq >= program.requiredCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Required')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* Required Courses Count */}
+                  {program?.requiredMinCourses && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Required Courses Count</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.requiredMinCourses}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualReqCount = calculateActualCountForGroup('Required');
+                            return actualReqCount >= program.requiredMinCourses ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCountForGroup('Required')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 3. Math Required Credits */}
+                  {program?.mathRequiredCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Math Required Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.mathRequiredCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualMath = calculateActualCreditsForGroup('Math Required');
+                            return actualMath >= program.mathRequiredCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Math Required')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 4. Philosophy Required Credits */}
+                  {program?.philosophyRequiredCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Philosophy Required Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.philosophyRequiredCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualPhil = calculateActualCreditsForGroup('Philosophy Required');
+                            return actualPhil >= program.philosophyRequiredCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Philosophy Required')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 5. Core Courses Credit (eğer tek Core varsa) */}
+                  {program?.coreCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Core Courses Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.coreCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualCore = calculateActualCreditsForGroup('Core');
+                            return actualCore >= program.coreCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Core')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 6. Core I Credits (eğer ayrı Core I/II varsa) */}
+                  {program?.coreElectiveCreditsI && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Core I Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.coreElectiveCreditsI}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualCoreI = calculateActualCreditsForGroup('Core I');
+                            return actualCoreI >= program.coreElectiveCreditsI ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Core I')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 7. Core II Credits (eğer ayrı Core I/II varsa) */}
+                  {program?.coreElectiveCreditsII && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Core II Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.coreElectiveCreditsII}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualCoreII = calculateActualCreditsForGroup('Core II');
+                            return actualCoreII >= program.coreElectiveCreditsII ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Core II')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 8. Area Courses Credit */}
+                  {program?.areaCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Area Courses Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.areaCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualArea = calculateActualCreditsForGroup('Area');
+                            return actualArea >= program.areaCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Area')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 9. Free Courses Credit */}
+                  {program?.freeElectiveCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Free Courses Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.freeElectiveCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualFree = calculateActualCreditsForGroup('Free');
+                            return actualFree >= program.freeElectiveCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Free')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+
+                  {/* 10. Faculty Credits */}
+                  {program?.facultyCredits && (
+                    <>
+                      <Typography variant="body2" sx={{ mb: 0.5, fontWeight: 'medium' }}>Faculty Credit</Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        mb: 2, 
+                        borderRadius: 1,
+                        overflow: 'hidden',
+                        border: '1px solid #ddd'
+                      }}>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: 'info.light',
+                          color: 'black',
+                          borderRight: '2px solid #333'
+                        }}>
+                          <Typography variant="body2">Min: {program.facultyCredits}</Typography>
+                        </Box>
+                        <Box sx={{ 
+                          flex: 1, 
+                          p: 1, 
+                          bgcolor: (() => {
+                            const actualFaculty = calculateActualCreditsForGroup('Faculty');
+                            return actualFaculty >= program.facultyCredits ? 'success.light' : 'warning.light';
+                          })(),
+                          color: 'black'
+                        }}>
+                          <Typography variant="body2">Actual: {calculateActualCreditsForGroup('Faculty')}</Typography>
+                        </Box>
+                      </Box>
+                    </>
+                  )}
+              </CardContent>
+            </Card>
+          </Paper>
         </Box>
       </Box>
 

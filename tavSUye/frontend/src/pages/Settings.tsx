@@ -103,6 +103,7 @@ const Settings: React.FC = () => {
               value={user.email}
               disabled
               margin="normal"
+              helperText="Email cannot be changed"
             />
             <TextField
               fullWidth
@@ -110,6 +111,7 @@ const Settings: React.FC = () => {
               value={user.username}
               disabled
               margin="normal"
+              helperText="Username cannot be changed"
             />
           </Box>
         </Paper>

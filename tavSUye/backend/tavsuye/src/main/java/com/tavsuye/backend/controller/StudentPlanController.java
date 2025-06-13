@@ -1,6 +1,7 @@
 package com.tavsuye.backend.controller;
 
 import com.tavsuye.backend.dto.StudentPlanDTO;
+import com.tavsuye.backend.dto.SavePlanRequest;
 import com.tavsuye.backend.entity.StudentPlan;
 import com.tavsuye.backend.service.StudentPlanService;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,7 @@ public class StudentPlanController {
     // 1. API: Save a student's plan
     @PostMapping("/save")
     public ResponseEntity<String> saveStudentPlan(
-            @RequestParam Integer courseId,
-            @RequestParam Integer term,
+            @RequestBody SavePlanRequest request,
             HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
@@ -32,7 +32,7 @@ public class StudentPlanController {
         }
 
         try {
-            studentPlanService.saveStudentPlan(userId, courseId, term);
+            studentPlanService.saveStudentPlan(userId, request.getCourseId(), request.getTerm());
             return ResponseEntity.ok("Student plan saved successfully.");
         } catch (RuntimeException ex) {
             if (ex.getMessage().contains("User not found")) {

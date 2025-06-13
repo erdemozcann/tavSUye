@@ -30,6 +30,11 @@ public class CourseCommentService {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new RuntimeException("Course not found"));
 
+        // Check if course is active
+        if (!course.getCourseStatus()) {
+            throw new RuntimeException("Comments are disabled for inactive courses");
+        }
+
         // Set parent comment if parentCommentId exists
         Integer parentCommentId = comment.getParentCommentId();
         if (parentCommentId != null) {
@@ -76,11 +81,16 @@ public class CourseCommentService {
         courseCommentRepository.save(comment);
     }
 
-    public List<CourseCommentResponseDto> getCommentsByCourseFiltered(Integer courseId, Integer requestUserId) {
+    public List<CourseCommentResponseDto> getCommentsByCourseFiltered(Integer courseId, Integer requestUserId, boolean isAdmin) {
         // Get all comments including deleted ones
         List<CourseComment> comments = courseCommentRepository.findByCourse_CourseId(courseId);
         return comments.stream()
-                .map(comment -> CourseCommentResponseDto.fromEntity(comment, requestUserId))
+                .map(comment -> CourseCommentResponseDto.fromEntity(comment, requestUserId, isAdmin))
                 .collect(Collectors.toList());
+    }
+    
+    // Backward compatibility method
+    public List<CourseCommentResponseDto> getCommentsByCourseFiltered(Integer courseId, Integer requestUserId) {
+        return getCommentsByCourseFiltered(courseId, requestUserId, false);
     }
 }

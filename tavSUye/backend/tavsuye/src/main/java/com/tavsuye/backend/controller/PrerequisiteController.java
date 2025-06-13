@@ -32,4 +32,18 @@ public class PrerequisiteController {
         List<Map<String, Object>> prerequisites = prerequisiteService.getPrerequisitesByCourseId(courseId);
         return ResponseEntity.ok(prerequisites);
     }
+
+    // API: Get prerequisites for multiple courses (bulk endpoint for performance)
+    @PostMapping("/bulk")
+    public ResponseEntity<Map<Integer, List<Map<String, Object>>>> getBulkPrerequisites(
+            @RequestBody List<Integer> courseIds,
+            HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+        }
+
+        Map<Integer, List<Map<String, Object>>> bulkPrerequisites = prerequisiteService.getBulkPrerequisites(courseIds);
+        return ResponseEntity.ok(bulkPrerequisites);
+    }
 }

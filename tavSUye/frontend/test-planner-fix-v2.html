@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-result {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Planner forEach Error Fix Test</h1>
+    
+    <div class="test-container">
+        <h2>Test Scenario: Handling undefined plan.courses</h2>
+        <p>This test simulates the exact scenario that was causing the "Cannot read properties of undefined (reading 'forEach')" error in the Planner component.</p>
+        
+        <div id="test-results"></div>
+        
+        <button onclick="runTest()">Run Test</button>
+        <button onclick="testWithValidData()">Test with Valid Data</button>
+        <button onclick="testWithMixedData()">Test with Mixed Data</button>
+    </div>
+
+    <div class="test-container">
+        <h2>Test Results</h2>
+        <div id="detailed-results"></div>
+    </div>
+
+    <script>
+        // Simulate the exact code structure from the Planner component
+        function simulatePlannerUseEffect(existingPlans) {
+            const results = [];
+            
+            try {
+                if (existingPlans && existingPlans.length > 0) {
+                    const courseTermMap = new Map();
+                    
+                    existingPlans.forEach(plan => {
+                        // This is the fix: Add null check for plan.courses to prevent forEach error
+                        if (plan.courses && Array.isArray(plan.courses)) {
+                            plan.courses.forEach(course => {
+                                courseTermMap.set(course.courseId, plan.term);
+                            });
+                        } else {
+                            results.push(`⚠️ Plan ${plan.planId} has invalid courses data: ${typeof plan.courses}`);
+                        }
+                    });
+                    
+                    results.push(`✅ Successfully processed ${existingPlans.length} plans`);
+                    results.push(`📊 Course-term mappings created: ${courseTermMap.size}`);
+                    
+                    return { success: true, courseTermMap, results };
+                }
+                
+                results.push('ℹ️ No existing plans to process');
+                return { success: true, courseTermMap: new Map(), results };
+                
+            } catch (error) {
+                results.push(`❌ Error: ${error.message}`);
+                return { success: false, error: error.message, results };
+            }
+        }
+
+        function runTest() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailedDiv = document.getElementById('detailed-results');
+            
+            // Test case 1: Plans with undefined courses (the problematic case)
+            const problematicPlans = [
+                { planId: 1, userId: 1, term: 1, courses: undefined },
+                { planId: 2, userId: 1, term: 2, courses: null },
+                { planId: 3, userId: 1, term: 3 } // missing courses property
+            ];
+            
+            resultsDiv.innerHTML = '<div class="info">Running test with problematic data...</div>';
+            
+            const result = simulatePlannerUseEffect(problematicPlans);
+            
+            if (result.success) {
+                resultsDiv.innerHTML = '<div class="success">✅ Test PASSED! No forEach error occurred.</div>';
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ Test FAILED! Error: ' + result.error + '</div>';
+            }
+            
+            detailedDiv.innerHTML = `
+                <h3>Detailed Test Results:</h3>
+                <pre>${result.results.join('\n')}</pre>
+                <h4>Input Data:</h4>
+                <pre>${JSON.stringify(problematicPlans, null, 2)}</pre>
+            `;
+        }
+
+        function testWithValidData() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailedDiv = document.getElementById('detailed-results');
+            
+            // Test case 2: Valid plans with proper courses array
+            const validPlans = [
+                { 
+                    planId: 1, 
+                    userId: 1, 
+                    term: 1, 
+                    courses: [
+                        { courseId: 101, subject: 'CS', courseCode: '101' },
+                        { courseId: 102, subject: 'MATH', courseCode: '101' }
+                    ]
+                },
+                { 
+                    planId: 2, 
+                    userId: 1, 
+                    term: 2, 
+                    courses: [
+                        { courseId: 201, subject: 'CS', courseCode: '201' }
+                    ]
+                }
+            ];
+            
+            resultsDiv.innerHTML = '<div class="info">Running test with valid data...</div>';
+            
+            const result = simulatePlannerUseEffect(validPlans);
+            
+            if (result.success) {
+                resultsDiv.innerHTML = '<div class="success">✅ Valid data test PASSED!</div>';
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ Valid data test FAILED! Error: ' + result.error + '</div>';
+            }
+            
+            detailedDiv.innerHTML = `
+                <h3>Valid Data Test Results:</h3>
+                <pre>${result.results.join('\n')}</pre>
+                <h4>Course-Term Mappings:</h4>
+                <pre>${Array.from(result.courseTermMap.entries()).map(([courseId, term]) => `Course ${courseId} -> Term ${term}`).join('\n')}</pre>
+                <h4>Input Data:</h4>
+                <pre>${JSON.stringify(validPlans, null, 2)}</pre>
+            `;
+        }
+
+        function testWithMixedData() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailedDiv = document.getElementById('detailed-results');
+            
+            // Test case 3: Mixed data (some valid, some invalid)
+            const mixedPlans = [
+                { 
+                    planId: 1, 
+                    userId: 1, 
+                    term: 1, 
+                    courses: [
+                        { courseId: 101, subject: 'CS', courseCode: '101' }
+                    ]
+                },
+                { planId: 2, userId: 1, term: 2, courses: undefined },
+                { 
+                    planId: 3, 
+                    userId: 1, 
+                    term: 3, 
+                    courses: [
+                        { courseId: 301, subject: 'PHYS', courseCode: '101' }
+                    ]
+                },
+                { planId: 4, userId: 1, term: 4, courses: null }
+            ];
+            
+            resultsDiv.innerHTML = '<div class="info">Running test with mixed data...</div>';
+            
+            const result = simulatePlannerUseEffect(mixedPlans);
+            
+            if (result.success) {
+                resultsDiv.innerHTML = '<div class="success">✅ Mixed data test PASSED!</div>';
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ Mixed data test FAILED! Error: ' + result.error + '</div>';
+            }
+            
+            detailedDiv.innerHTML = `
+                <h3>Mixed Data Test Results:</h3>
+                <pre>${result.results.join('\n')}</pre>
+                <h4>Course-Term Mappings:</h4>
+                <pre>${Array.from(result.courseTermMap.entries()).map(([courseId, term]) => `Course ${courseId} -> Term ${term}`).join('\n')}</pre>
+                <h4>Input Data:</h4>
+                <pre>${JSON.stringify(mixedPlans, null, 2)}</pre>
+            `;
+        }
+
+        // Run initial test on page load
+        window.onload = function() {
+            document.getElementById('test-results').innerHTML = '<div class="info">Click "Run Test" to verify the forEach error fix.</div>';
+        };
+    </script>
+</body>
+</html> 

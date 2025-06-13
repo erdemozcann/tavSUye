@@ -15,24 +15,60 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import type { RootState } from '../store';
 import { useAuth } from '../contexts/AuthContext';
+import { authApi } from '../services/api';
 
 export default function Verify2FA() {
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>('');
+  const [displayEmail, setDisplayEmail] = useState<string>(''); // For showing to user
+  const [isLoadingEmail, setIsLoadingEmail] = useState(false);
   const navigate = useNavigate();
   const { verify2FA, isLoading } = useAuth();
 
   useEffect(() => {
-    // As per specifications: email should come automatically from login page
+    // Get the stored email/username from login
     const storedEmail = localStorage.getItem('2fa_email');
+    const storedUsername = localStorage.getItem('2fa_username');
+    
     if (storedEmail) {
       setEmail(storedEmail);
+      
+      // Check if the stored value is an email or username
+      if (storedEmail.includes('@')) {
+        // It's an email, use it directly
+        setDisplayEmail(storedEmail);
+      } else {
+        // It's a username, we need to get the actual email for display
+        setDisplayEmail(storedEmail); // Show username initially
+        fetchUserEmail(storedEmail);
+      }
     } else {
       // If no email found, redirect back to login
       navigate('/login');
     }
   }, [navigate]);
+
+  const fetchUserEmail = async (username: string) => {
+    setIsLoadingEmail(true);
+    try {
+      // Try to get user profile to get their email
+      const profile = await authApi.getProfile();
+      if (profile && profile.email) {
+        setDisplayEmail(profile.email);
+        setEmail(profile.email); // Use actual email for verification
+      } else {
+        // If we can't get the email, show a generic message
+        setDisplayEmail('your registered email address');
+      }
+    } catch (error) {
+      console.warn('Could not fetch user email for display:', error);
+      // Show a generic message if we can't get the email
+      setDisplayEmail('your registered email address');
+    } finally {
+      setIsLoadingEmail(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +85,7 @@ export default function Verify2FA() {
     setError(null);
 
     try {
-      // Use AuthContext verify2FA which handles redirects based on role
+      // Use the email we determined (either from direct email login or fetched from profile)
       await verify2FA(email, code);
     } catch (error: any) {
       console.error("2FA verification error:", error);
@@ -104,12 +140,31 @@ export default function Verify2FA() {
           }}
         >
           <Stack spacing={3}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+              <img 
+                src="/tavsuye_logo.jpeg" 
+                alt="tavSUye" 
+                style={{ 
+                  height: '60px', 
+                  width: 'auto',
+                  objectFit: 'contain'
+                }} 
+              />
+            </Box>
+
             <Typography variant="h4" component="h1" gutterBottom align="center">
               Two-Factor Authentication
             </Typography>
 
             <Typography variant="body1" color="text.secondary" align="center">
-              Please enter the verification code sent to: {email}
+              {isLoadingEmail ? (
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+                  <CircularProgress size={16} />
+                  <span>Loading...</span>
+                </Box>
+              ) : (
+                `Please enter the verification code sent to: ${displayEmail}`
+              )}
             </Typography>
 
             <form onSubmit={handleSubmit}>
@@ -119,7 +174,7 @@ export default function Verify2FA() {
                   label="Verification Code"
                   value={code}
                   onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  disabled={isLoading}
+                  disabled={isLoading || isLoadingEmail}
                   placeholder="Enter 6-digit code"
                   inputProps={{
                     maxLength: 6,
@@ -139,7 +194,7 @@ export default function Verify2FA() {
                   variant="contained"
                   fullWidth
                   size="large"
-                  disabled={isLoading || code.length !== 6}
+                  disabled={isLoading || code.length !== 6 || isLoadingEmail}
                 >
                   {isLoading ? (
                     <CircularProgress size={24} color="inherit" />

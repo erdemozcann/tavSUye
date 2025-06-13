@@ -248,9 +248,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               src="/images/tavsuye-high-resolution-logo-transparent.png" 
               alt="tavSUye" 
               style={{ 
-                height: '32px',
+                height: '32px', 
+                width: 'auto',
                 objectFit: 'contain'
-              }}
+              }} 
             />
           </Box>
         )}

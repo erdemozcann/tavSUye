@@ -58,35 +58,111 @@ export default function Plans() {
     queryFn: () => apiService.courses.getSubjects(),
   });
 
-  // Fetch all courses by subject and course code
+    // Fetch all courses using bulk API - ULTRA FAST VERSION
   useEffect(() => {
     const fetchAllCourses = async () => {
+      try {
+        console.log('Starting bulk course fetch...');
+        const startTime = Date.now();
+        
+        // Use the new bulk API endpoint - single call instead of 1000+
+        const allCourses = await apiService.courses.getAllCourses(true); // Only active courses
+        
+        console.log(`Bulk fetch completed in ${Date.now() - startTime}ms. Loaded ${allCourses.length} courses.`);
+        setAllCourses(allCourses);
+        
+      } catch (error) {
+        console.error('Error in bulk course fetching:', error);
+        
+        // Fallback to old parallel method if bulk API fails
+        console.log('Falling back to parallel fetching method...');
+        await fallbackParallelFetch();
+      }
+    };
+
+    // Fallback method using parallel individual calls
+    const fallbackParallelFetch = async () => {
       if (!subjects.length) return;
       
-      const coursesPromises: Promise<Course>[] = [];
-      
-      for (const subject of subjects) {
-        try {
-          const courseCodes = await apiService.courses.getCourseCodesBySubject(subject);
-          
-          for (const courseCode of courseCodes) {
-            coursesPromises.push(apiService.courses.getCourse(subject, courseCode));
-          }
-        } catch (error) {
-          console.error(`Error fetching course codes for ${subject}:`, error);
-        }
-      }
-      
       try {
-        const fetchedCourses = await Promise.all(coursesPromises);
-        setAllCourses(fetchedCourses);
+        console.log(`Starting parallel fetch for ${subjects.length} subjects...`);
+        const startTime = Date.now();
+        
+        // 1. Paralel olarak tüm subject'ler için course code'ları al
+        const subjectCodesPromises = subjects.map(async (subject) => {
+          try {
+            const courseCodes = await apiService.courses.getCourseCodesBySubject(subject);
+            return { subject, courseCodes };
+          } catch (error) {
+            console.error(`Error fetching course codes for ${subject}:`, error);
+            return { subject, courseCodes: [] };
+          }
+        });
+        
+        const subjectCodesResults = await Promise.all(subjectCodesPromises);
+        console.log(`Fetched course codes for all subjects in ${Date.now() - startTime}ms`);
+        
+        // 2. Paralel olarak tüm kursları al (batch'ler halinde)
+        const allCoursesPromises: Promise<Course>[] = [];
+        
+        subjectCodesResults.forEach(({ subject, courseCodes }) => {
+          courseCodes.forEach((courseCode: string) => {
+            allCoursesPromises.push(
+              apiService.courses.getCourse(subject, courseCode).catch(error => {
+                console.error(`Error fetching course ${subject}-${courseCode}:`, error);
+                // Return a placeholder course object to avoid breaking Promise.all
+                return {
+                  courseId: 0,
+                  subject,
+                  courseCode,
+                  courseNameEn: `${subject} ${courseCode}`,
+                  courseNameTr: `${subject} ${courseCode}`,
+                  suCredit: 0,
+                  ectsCredit: 0,
+                  courseStatus: true
+                } as Course;
+              })
+            );
+          });
+        });
+        
+        console.log(`Starting parallel fetch for ${allCoursesPromises.length} courses...`);
+        
+        // 3. Batch'ler halinde paralel çağrı (server'ı overwhelm etmemek için)
+        const BATCH_SIZE = 50; // Aynı anda maksimum 50 çağrı
+        const batches: Promise<Course>[][] = [];
+        
+        for (let i = 0; i < allCoursesPromises.length; i += BATCH_SIZE) {
+          batches.push(allCoursesPromises.slice(i, i + BATCH_SIZE));
+        }
+        
+        const allCourses: Course[] = [];
+        
+        for (let i = 0; i < batches.length; i++) {
+          const batchStartTime = Date.now();
+          console.log(`Processing batch ${i + 1}/${batches.length} (${batches[i].length} courses)...`);
+          
+          const batchResults = await Promise.all(batches[i]);
+          allCourses.push(...batchResults.filter(course => course.courseId !== 0)); // Filter out error placeholders
+          
+          console.log(`Batch ${i + 1} completed in ${Date.now() - batchStartTime}ms`);
+          
+          // Kısa bir delay ekle (server'ı rahatlatmak için)
+          if (i < batches.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+          }
+        }
+        
+        console.log(`Fallback fetch completed in ${Date.now() - startTime}ms. Loaded ${allCourses.length} courses.`);
+        setAllCourses(allCourses);
+        
       } catch (error) {
-        console.error('Error fetching courses:', error);
+        console.error('Error in fallback parallel course fetching:', error);
       }
     };
     
     fetchAllCourses();
-  }, [subjects]);
+  }, []); // Remove subjects dependency since we're using bulk API
 
   const createPlanMutation = useMutation({
     mutationFn: (plan: Partial<StudentPlan>) => apiService.plans.createPlan(plan),

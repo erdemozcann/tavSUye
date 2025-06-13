@@ -31,6 +31,9 @@ import {
   Badge,
   Stack,
   Grid,
+  Select,
+  FormControl,
+  InputLabel,
 } from '@mui/material';
 import {
   School,
@@ -49,6 +52,7 @@ import {
   Delete,
   Block,
   ArrowBack,
+  Link,
 } from '@mui/icons-material';
 import apiService from '../services/api';
 import type { Instructor, InstructorComment } from '../types';
@@ -74,7 +78,7 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(comment.content);
-  const [editAnonymous, setEditAnonymous] = useState(comment.isAnonymous || false);
+  const [editAnonymous, setEditAnonymous] = useState((comment as any).anonymous || false);
   const replies = allComments.filter(reply => reply.parentCommentId === comment.commentId);
   const maxLevel = 5; // Prevent infinite nesting
   
@@ -91,6 +95,9 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
   const userRating = userRatings[comment.commentId];
   const netScore = stats.likes - stats.dislikes;
   
+  // Check if comment is deleted
+  const isDeleted = comment.deleted || false;
+  
   // Check if user can edit/delete this comment
   console.log('Debug canEdit/canDelete with username:', {
     currentUser: currentUser,
@@ -103,11 +110,11 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
   
   // Use username for comparison instead of userId
   const commentUsername = comment.username || `${comment.user?.name || ''} ${comment.user?.surname || ''}`.trim();
-  const canEdit = currentUser && currentUser.username === commentUsername;
+  const canEdit = currentUser && currentUser.username === commentUsername && !isDeleted;
   const canDelete = currentUser && (
     currentUser.role === 'ADMIN' || 
     currentUser.username === commentUsername
-  );
+  ) && !isDeleted;
   const isAdmin = currentUser && currentUser.role === 'ADMIN';
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -140,7 +147,7 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
   const handleCancelEdit = () => {
     setIsEditing(false);
     setEditContent(comment.content);
-    setEditAnonymous(comment.isAnonymous || false);
+    setEditAnonymous((comment as any).anonymous || false);
   };
 
   const handleRate = (isLike: boolean) => {
@@ -169,13 +176,28 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
               </IconButton>
             )}
             <Avatar sx={{ width: 32, height: 32, mr: 1 }}>
-              {comment.isAnonymous ? 'A' : (comment.user?.name?.[0] || comment.username?.[0] || 'U')}
+              {isDeleted ? 'D' : (comment as any).anonymous ? 'A' : (comment.user?.name?.[0] || comment.username?.[0] || 'U')}
             </Avatar>
             <Typography variant="subtitle2">
-              {comment.isAnonymous ? 'Anonymous' : (comment.user?.name ? `${comment.user.name} ${comment.user.surname || ''}` : comment.username || 'User')}
+              {isDeleted ? (
+                'Deleted User'
+              ) : (comment as any).anonymous ? (
+                // If anonymous and (current user is the comment owner OR user is admin), show username + Anonymous
+                (currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN') ? 
+                  (comment.user?.name ? `${comment.user.name} ${comment.user.surname || ''}` : comment.username || 'User') :
+                  'Anonymous'
+              ) : (
+                // If not anonymous, show username normally
+                comment.user?.name ? `${comment.user.name} ${comment.user.surname || ''}` : comment.username || 'User'
+              )}
+              {!isDeleted && (comment as any).anonymous && ((currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN')) && (
+                <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                  • Anonymous
+                </Typography>
+              )}
               {isCollapsed && totalReplies > 0 && (
                 <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
-                  ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
+                  • ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
                 </Typography>
               )}
               <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
@@ -228,21 +250,27 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
                     {comment.content}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Button size="small" onClick={() => onReply(comment.commentId)}>
-                      Reply
-                    </Button>
+                    {!isDeleted && (
+                      <Button size="small" onClick={() => onReply(comment.commentId)}>
+                        Reply
+                      </Button>
+                    )}
                     {/* Rating buttons for nested comments */}
-                    <IconButton size="small" onClick={() => handleRate(true)} color={userRating === true ? "primary" : "inherit"}>
-                      <ThumbUp fontSize="small" />
-                    </IconButton>
-                    <Typography variant="caption">{stats.likes}</Typography>
-                    <IconButton size="small" onClick={() => handleRate(false)} color={userRating === false ? "error" : "inherit"}>
-                      <ThumbDown fontSize="small" />
-                    </IconButton>
-                    <Typography variant="caption">{stats.dislikes}</Typography>
-                    <Typography variant="caption" color={netScore > 0 ? 'success.main' : netScore < 0 ? 'error.main' : 'text.secondary'}>
-                      ({netScore > 0 ? `+${netScore}` : netScore})
-                    </Typography>
+                    {!isDeleted && (
+                      <>
+                        <IconButton size="small" onClick={() => handleRate(true)} color={userRating === true ? "primary" : "inherit"}>
+                          <ThumbUp fontSize="small" />
+                        </IconButton>
+                        <Typography variant="caption">{stats.likes}</Typography>
+                        <IconButton size="small" onClick={() => handleRate(false)} color={userRating === false ? "error" : "inherit"}>
+                          <ThumbDown fontSize="small" />
+                        </IconButton>
+                        <Typography variant="caption">{stats.dislikes}</Typography>
+                        <Typography variant="caption" color={netScore > 0 ? 'success.main' : netScore < 0 ? 'error.main' : 'text.secondary'}>
+                          ({netScore > 0 ? `+${netScore}` : netScore})
+                        </Typography>
+                      </>
+                    )}
                     {canEdit && (
                       <IconButton size="small" onClick={handleEdit}>
                         <Edit />
@@ -253,7 +281,7 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
                         <Delete />
                       </IconButton>
                     )}
-                    {isAdmin && currentUser.username !== commentUsername && (
+                    {isAdmin && currentUser.username !== commentUsername && !isDeleted && (
                       <IconButton size="small" onClick={() => onBan(comment)} color="warning">
                         <Block />
                       </IconButton>
@@ -282,23 +310,38 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
               )}
               <ListItemAvatar>
                 <Avatar>
-                  {comment.isAnonymous ? 'A' : (comment.user?.name?.[0] || comment.username?.[0] || 'U')}
+                  {isDeleted ? 'D' : (comment as any).anonymous ? 'A' : (comment.user?.name?.[0] || comment.username?.[0] || 'U')}
                 </Avatar>
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography variant="subtitle1">
-                      {comment.isAnonymous ? 'Anonymous' : (comment.user?.name ? `${comment.user.name} ${comment.user.surname || ''}` : comment.username || 'User')}
-                    </Typography>
-                    {isCollapsed && totalReplies > 0 && (
-                      <Typography variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
-                        ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
+                  <Typography variant="subtitle1">
+                    {isDeleted ? (
+                      'Deleted User'
+                    ) : (comment as any).anonymous ? (
+                      // If anonymous and (current user is the comment owner OR user is admin), show username + Anonymous
+                      (currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN') ? 
+                        (comment.user?.name ? `${comment.user.name} ${comment.user.surname || ''}` : comment.username || 'User') :
+                        'Anonymous'
+                    ) : (
+                      // If not anonymous, show username normally
+                      comment.user?.name ? `${comment.user.name} ${comment.user.surname || ''}` : comment.username || 'User'
+                    )}
+                    {!isDeleted && (comment as any).anonymous && ((currentUser && currentUser.username === comment.username) || (currentUser && currentUser.role === 'ADMIN')) && (
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                        • Anonymous
                       </Typography>
                     )}
-                  </Box>
+                    {isCollapsed && totalReplies > 0 && (
+                      <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                        • ({totalReplies} {totalReplies === 1 ? 'reply' : 'replies'} hidden)
+                      </Typography>
+                    )}
+                    <Typography component="span" variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                      • {`${new Date(comment.createdAt).toLocaleDateString()} ${new Date(comment.createdAt).toLocaleTimeString().slice(0, -3)}`}
+                    </Typography>
+                  </Typography>
                 }
-                secondary={`${new Date(comment.createdAt).toLocaleDateString()} ${new Date(comment.createdAt).toLocaleTimeString().slice(0, -3)}`}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -380,21 +423,27 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
                     {comment.content}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Button size="small" onClick={() => onReply(comment.commentId)}>
-                      Reply
-                    </Button>
+                    {!isDeleted && (
+                      <Button size="small" onClick={() => onReply(comment.commentId)}>
+                        Reply
+                      </Button>
+                    )}
                     {/* Rating buttons for level 0 comments */}
-                    <IconButton size="small" onClick={() => handleRate(true)} color={userRating === true ? "primary" : "inherit"}>
-                      <ThumbUp fontSize="small" />
-                    </IconButton>
-                    <Typography variant="caption">{stats.likes}</Typography>
-                    <IconButton size="small" onClick={() => handleRate(false)} color={userRating === false ? "error" : "inherit"}>
-                      <ThumbDown fontSize="small" />
-                    </IconButton>
-                    <Typography variant="caption">{stats.dislikes}</Typography>
-                    <Typography variant="caption" color={netScore > 0 ? 'success.main' : netScore < 0 ? 'error.main' : 'text.secondary'}>
-                      ({netScore > 0 ? `+${netScore}` : netScore})
-                    </Typography>
+                    {!isDeleted && (
+                      <>
+                        <IconButton size="small" onClick={() => handleRate(true)} color={userRating === true ? "primary" : "inherit"}>
+                          <ThumbUp fontSize="small" />
+                        </IconButton>
+                        <Typography variant="caption">{stats.likes}</Typography>
+                        <IconButton size="small" onClick={() => handleRate(false)} color={userRating === false ? "error" : "inherit"}>
+                          <ThumbDown fontSize="small" />
+                        </IconButton>
+                        <Typography variant="caption">{stats.dislikes}</Typography>
+                        <Typography variant="caption" color={netScore > 0 ? 'success.main' : netScore < 0 ? 'error.main' : 'text.secondary'}>
+                          ({netScore > 0 ? `+${netScore}` : netScore})
+                        </Typography>
+                      </>
+                    )}
                     {canEdit && (
                       <IconButton size="small" onClick={handleEdit}>
                         <Edit />
@@ -405,7 +454,7 @@ function InstructorCommentItem({ comment, allComments, level, onReply, onRate, o
                         <Delete />
                       </IconButton>
                     )}
-                    {isAdmin && currentUser.username !== commentUsername && (
+                    {isAdmin && currentUser.username !== commentUsername && !isDeleted && (
                       <IconButton size="small" onClick={() => onBan(comment)} color="warning">
                         <Block />
                       </IconButton>
@@ -455,6 +504,8 @@ export default function InstructorDetail() {
   const [replyAnonymous, setReplyAnonymous] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const [termYear, setTermYear] = useState('');
+  const [termSeason, setTermSeason] = useState('');
   const [commentStats, setCommentStats] = useState<{ [key: number]: { likes: number; dislikes: number } }>({});
   const [userRatings, setUserRatings] = useState<{ [key: number]: boolean | null }>({});
   const [commentError, setCommentError] = useState('');
@@ -930,9 +981,53 @@ export default function InstructorDetail() {
             )}
             
             {instructor.aboutTr && (
-              <Typography variant="body1">
+              <Typography variant="body1" paragraph>
                 {instructor.aboutTr}
               </Typography>
+            )}
+
+            {/* Instructor Links Section */}
+            {(instructor.linkEn || instructor.linkTr) && (
+              <>
+                <Divider sx={{ my: 3 }} />
+                <Typography variant="h6" gutterBottom>
+                  Instructor Links
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {instructor.linkEn && (
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ fontWeight: 'bold', minWidth: '40px' }}>
+                        ENG:
+                      </Typography>
+                      <Button
+                        startIcon={<Link />}
+                        variant="outlined"
+                        size="small"
+                        onClick={() => window.open(instructor.linkEn, '_blank')}
+                        sx={{ textTransform: 'none' }}
+                      >
+                        {instructor.linkEn.length > 50 ? `${instructor.linkEn.substring(0, 50)}...` : instructor.linkEn}
+                      </Button>
+                    </Box>
+                  )}
+                  {instructor.linkTr && (
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ fontWeight: 'bold', minWidth: '40px' }}>
+                        TR:
+                      </Typography>
+                      <Button
+                        startIcon={<Link />}
+                        variant="outlined"
+                        size="small"
+                        onClick={() => window.open(instructor.linkTr, '_blank')}
+                        sx={{ textTransform: 'none' }}
+                      >
+                        {instructor.linkTr.length > 50 ? `${instructor.linkTr.substring(0, 50)}...` : instructor.linkTr}
+                      </Button>
+                    </Box>
+                  )}
+                </Box>
+              </>
             )}
           </Box>
 

@@ -14,20 +14,26 @@ public class InstructorCommentDTO {
     private String content;
     private LocalDateTime createdAt;
     private Boolean anonymous;
+    private Boolean deleted;
 
     // Default constructor
     public InstructorCommentDTO() {
     }
 
-    // Constructor from InstructorComment entity, with current user check
-    public InstructorCommentDTO(InstructorComment comment, Integer currentUserId) {
+    // Constructor from InstructorComment entity, with current user check and admin flag
+    public InstructorCommentDTO(InstructorComment comment, Integer currentUserId, boolean isAdmin) {
         this.commentId = comment.getCommentId();
         
-        // Handle anonymous comments
-        if (comment.getAnonymous() && !comment.getDeleted()) {
-            // If the comment is by the current user, show their info even if anonymous
-            if (currentUserId != null && comment.getUser() != null && 
-                currentUserId.equals(comment.getUser().getUserId())) {
+        // Handle deleted comments first
+        if (comment.getDeleted()) {
+            // For deleted comments, hide user info
+            this.userId = null;
+            this.username = null;
+        } else if (comment.getAnonymous()) {
+            // Handle anonymous comments
+            // If the comment is by the current user or user is admin, show their info even if anonymous
+            if ((currentUserId != null && comment.getUser() != null && 
+                currentUserId.equals(comment.getUser().getUserId())) || isAdmin) {
                 this.userId = comment.getUser().getUserId();
                 this.username = comment.getUser().getUsername();
             } else {
@@ -35,7 +41,7 @@ public class InstructorCommentDTO {
                 this.userId = null;
                 this.username = null;
             }
-        } else if (!comment.getDeleted()) {
+        } else {
             // For non-anonymous and non-deleted comments, show user info
             this.userId = comment.getUser().getUserId();
             this.username = comment.getUser().getUsername();
@@ -46,13 +52,19 @@ public class InstructorCommentDTO {
         
         // For deleted comments, replace content with a message
         if (comment.getDeleted()) {
-            this.content = "[This comment has been deleted]";
+            this.content = "[Deleted Comment]";
         } else {
             this.content = comment.getContent();
         }
         
         this.createdAt = comment.getCreatedAt();
         this.anonymous = comment.getAnonymous();
+        this.deleted = comment.getDeleted();
+    }
+    
+    // Constructor from InstructorComment entity, with current user check (backward compatibility)
+    public InstructorCommentDTO(InstructorComment comment, Integer currentUserId) {
+        this(comment, currentUserId, false);
     }
     
     // Constructor without current user ID (for backward compatibility)
@@ -60,16 +72,21 @@ public class InstructorCommentDTO {
         this(comment, null);
     }
 
-    // Convert list of entities to list of DTOs with current user check
-    public static List<InstructorCommentDTO> fromEntities(List<InstructorComment> comments, Integer currentUserId) {
+    // Convert list of entities to list of DTOs with current user check and admin flag
+    public static List<InstructorCommentDTO> fromEntities(List<InstructorComment> comments, Integer currentUserId, boolean isAdmin) {
         return comments.stream()
-                .map(comment -> new InstructorCommentDTO(comment, currentUserId))
+                .map(comment -> new InstructorCommentDTO(comment, currentUserId, isAdmin))
                 .collect(Collectors.toList());
+    }
+    
+    // Convert list of entities to list of DTOs with current user check (backward compatibility)
+    public static List<InstructorCommentDTO> fromEntities(List<InstructorComment> comments, Integer currentUserId) {
+        return fromEntities(comments, currentUserId, false);
     }
     
     // Convert list of entities to list of DTOs without current user check
     public static List<InstructorCommentDTO> fromEntities(List<InstructorComment> comments) {
-        return fromEntities(comments, null);
+        return fromEntities(comments, null, false);
     }
 
     // Getters and setters
@@ -135,5 +152,13 @@ public class InstructorCommentDTO {
 
     public void setAnonymous(Boolean anonymous) {
         this.anonymous = anonymous;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 } 

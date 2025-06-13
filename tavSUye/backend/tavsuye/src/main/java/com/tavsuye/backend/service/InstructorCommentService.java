@@ -21,7 +21,7 @@ public class InstructorCommentService {
     }
 
     public List<InstructorComment> getCommentsByInstructor(Integer instructorId) {
-        return instructorCommentRepository.findByInstructor_InstructorIdAndDeletedFalse(instructorId);
+        return instructorCommentRepository.findByInstructor_InstructorId(instructorId);
     }
 
     public void addCommentToInstructor(Integer instructorId, InstructorComment comment) {

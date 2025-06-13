@@ -23,6 +23,15 @@ public class CourseService {
         return courseRepository.findCourseCodesBySubject(subject);
     }
 
+    // Get all courses (bulk endpoint for performance)
+    public List<Course> getAllCourses(boolean activeOnly) {
+        if (activeOnly) {
+            return courseRepository.findByCourseStatusTrue();
+        } else {
+            return courseRepository.findAll();
+        }
+    }
+
     public Course getCourseDetails(String subject, String courseCode) {
         return courseRepository.findBySubjectAndCourseCode(subject, courseCode)
                 .orElseThrow(() -> new RuntimeException("Course not found"));

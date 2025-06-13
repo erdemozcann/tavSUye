@@ -41,16 +41,30 @@ export default function Profile() {
   });
 
   const enable2FAMutation = useMutation({
-    mutationFn: () => apiService.user.enable2FA(),
-    onSuccess: () => {
+    mutationFn: () => {
+      console.log('Enabling 2FA...');
+      return apiService.user.enable2FA();
+    },
+    onSuccess: (data) => {
+      console.log('2FA enabled successfully:', data);
       queryClient.invalidateQueries({ queryKey: ['profile'] });
+    },
+    onError: (error) => {
+      console.error('Failed to enable 2FA:', error);
     },
   });
 
   const disable2FAMutation = useMutation({
-    mutationFn: () => apiService.user.disable2FA(),
-    onSuccess: () => {
+    mutationFn: () => {
+      console.log('Disabling 2FA...');
+      return apiService.user.disable2FA();
+    },
+    onSuccess: (data) => {
+      console.log('2FA disabled successfully:', data);
       queryClient.invalidateQueries({ queryKey: ['profile'] });
+    },
+    onError: (error) => {
+      console.error('Failed to disable 2FA:', error);
     },
   });
 
@@ -102,7 +116,6 @@ export default function Profile() {
     e.stopPropagation();
     
     const newFormData = {
-      email: profile?.email || '',
       name: profile?.name || '',
       surname: profile?.surname || '',
     };
@@ -152,9 +165,9 @@ export default function Profile() {
                     label="Email"
                     name="email"
                     type="email"
-                    value={isEditing ? (formData.email ?? '') : (profile?.email || '')}
-                    onChange={handleInputChange}
-                    disabled={!isEditing}
+                    value={profile?.email || ''}
+                    disabled
+                    helperText="Email cannot be changed"
                   />
                 </Box>
               </Box>
@@ -242,6 +255,24 @@ export default function Profile() {
           {(enable2FAMutation.isPending || disable2FAMutation.isPending) && (
             <Alert severity="info" sx={{ mt: 2 }}>
               Updating 2FA settings...
+            </Alert>
+          )}
+
+          {enable2FAMutation.isError && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+              Failed to enable 2FA: {enable2FAMutation.error?.message || 'Unknown error'}
+            </Alert>
+          )}
+
+          {disable2FAMutation.isError && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+              Failed to disable 2FA: {disable2FAMutation.error?.message || 'Unknown error'}
+            </Alert>
+          )}
+
+          {(enable2FAMutation.isSuccess || disable2FAMutation.isSuccess) && (
+            <Alert severity="success" sx={{ mt: 2 }}>
+              2FA settings updated successfully!
             </Alert>
           )}
         </Paper>

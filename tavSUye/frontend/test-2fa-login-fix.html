@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FA Login Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-result {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .scenario {
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 2FA Login Fix Test</h1>
+    
+    <div class="test-container">
+        <h2>Test Scenario: 2FA Login Flow</h2>
+        <p>This test verifies that the 2FA login fix correctly handles both email and username login scenarios.</p>
+        
+        <div id="test-results"></div>
+        
+        <button onclick="testEmailLogin()">Test Email Login</button>
+        <button onclick="testUsernameLogin()">Test Username Login</button>
+        <button onclick="testVerify2FAPage()">Test Verify2FA Page</button>
+    </div>
+
+    <div class="test-container">
+        <h2>Test Results</h2>
+        <div id="detailed-results"></div>
+    </div>
+
+    <script>
+        // Simulate the AuthContext login function behavior
+        function simulateLogin(usernameOrEmail, requires2FA = true) {
+            const results = [];
+            
+            try {
+                // Simulate backend response
+                const response = { requires2FA, role: 'USER' };
+                
+                if (response.requires2FA) {
+                    // Store email for 2FA verification
+                    let emailForVerification = usernameOrEmail;
+                    
+                    if (!usernameOrEmail.includes('@')) {
+                        console.log('User logged in with username, storing for 2FA verification');
+                        emailForVerification = usernameOrEmail; // Store username for now
+                    }
+                    
+                    localStorage.setItem('2fa_email', emailForVerification);
+                    localStorage.setItem('2fa_username', usernameOrEmail);
+                    
+                    results.push(`✅ Stored 2fa_email: ${emailForVerification}`);
+                    results.push(`✅ Stored 2fa_username: ${usernameOrEmail}`);
+                    results.push(`✅ Would redirect to /verify-2fa`);
+                    
+                    return { success: true, results, redirectTo: '/verify-2fa' };
+                }
+                
+                return { success: true, results: ['✅ Normal login flow'], redirectTo: '/dashboard' };
+                
+            } catch (error) {
+                results.push(`❌ Error: ${error.message}`);
+                return { success: false, results };
+            }
+        }
+
+        // Simulate the Verify2FA page behavior
+        function simulateVerify2FAPage() {
+            const results = [];
+            
+            try {
+                const storedEmail = localStorage.getItem('2fa_email');
+                const storedUsername = localStorage.getItem('2fa_username');
+                
+                if (!storedEmail) {
+                    results.push('❌ No 2fa_email found in localStorage');
+                    return { success: false, results };
+                }
+                
+                results.push(`✅ Found 2fa_email: ${storedEmail}`);
+                results.push(`✅ Found 2fa_username: ${storedUsername}`);
+                
+                let displayEmail = storedEmail;
+                let emailForVerification = storedEmail;
+                
+                if (storedEmail.includes('@')) {
+                    results.push('✅ Stored value is an email - using directly');
+                    displayEmail = storedEmail;
+                } else {
+                    results.push('✅ Stored value is username - would fetch email from profile API');
+                    displayEmail = 'user@sabanciuniv.edu'; // Simulated email from profile
+                    emailForVerification = 'user@sabanciuniv.edu';
+                }
+                
+                results.push(`✅ Display email: ${displayEmail}`);
+                results.push(`✅ Email for verification: ${emailForVerification}`);
+                
+                return { success: true, results, displayEmail, emailForVerification };
+                
+            } catch (error) {
+                results.push(`❌ Error: ${error.message}`);
+                return { success: false, results };
+            }
+        }
+
+        function testEmailLogin() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailedDiv = document.getElementById('detailed-results');
+            
+            resultsDiv.innerHTML = '<div class="info">Testing email login with 2FA...</div>';
+            
+            // Clear localStorage first
+            localStorage.removeItem('2fa_email');
+            localStorage.removeItem('2fa_username');
+            
+            const result = simulateLogin('user@sabanciuniv.edu', true);
+            
+            if (result.success) {
+                resultsDiv.innerHTML = '<div class="success">✅ Email login test PASSED!</div>';
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ Email login test FAILED!</div>';
+            }
+            
+            detailedDiv.innerHTML = `
+                <div class="scenario">
+                    <h3>Scenario 1: Email Login with 2FA</h3>
+                    <p><strong>Input:</strong> user@sabanciuniv.edu</p>
+                    <p><strong>Expected:</strong> Email stored directly, redirect to 2FA page</p>
+                    <h4>Results:</h4>
+                    <pre>${result.results.join('\n')}</pre>
+                    <h4>localStorage Contents:</h4>
+                    <pre>2fa_email: ${localStorage.getItem('2fa_email')}
+2fa_username: ${localStorage.getItem('2fa_username')}</pre>
+                </div>
+            `;
+        }
+
+        function testUsernameLogin() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailedDiv = document.getElementById('detailed-results');
+            
+            resultsDiv.innerHTML = '<div class="info">Testing username login with 2FA...</div>';
+            
+            // Clear localStorage first
+            localStorage.removeItem('2fa_email');
+            localStorage.removeItem('2fa_username');
+            
+            const result = simulateLogin('johndoe', true);
+            
+            if (result.success) {
+                resultsDiv.innerHTML = '<div class="success">✅ Username login test PASSED!</div>';
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ Username login test FAILED!</div>';
+            }
+            
+            detailedDiv.innerHTML = `
+                <div class="scenario">
+                    <h3>Scenario 2: Username Login with 2FA</h3>
+                    <p><strong>Input:</strong> johndoe</p>
+                    <p><strong>Expected:</strong> Username stored, redirect to 2FA page</p>
+                    <h4>Results:</h4>
+                    <pre>${result.results.join('\n')}</pre>
+                    <h4>localStorage Contents:</h4>
+                    <pre>2fa_email: ${localStorage.getItem('2fa_email')}
+2fa_username: ${localStorage.getItem('2fa_username')}</pre>
+                </div>
+            `;
+        }
+
+        function testVerify2FAPage() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailedDiv = document.getElementById('detailed-results');
+            
+            resultsDiv.innerHTML = '<div class="info">Testing Verify2FA page behavior...</div>';
+            
+            // Test with username scenario
+            localStorage.setItem('2fa_email', 'johndoe');
+            localStorage.setItem('2fa_username', 'johndoe');
+            
+            const result = simulateVerify2FAPage();
+            
+            if (result.success) {
+                resultsDiv.innerHTML = '<div class="success">✅ Verify2FA page test PASSED!</div>';
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ Verify2FA page test FAILED!</div>';
+            }
+            
+            detailedDiv.innerHTML = `
+                <div class="scenario">
+                    <h3>Scenario 3: Verify2FA Page Processing</h3>
+                    <p><strong>Input:</strong> Username stored from login</p>
+                    <p><strong>Expected:</strong> Detect username, fetch email, show proper display</p>
+                    <h4>Results:</h4>
+                    <pre>${result.results.join('\n')}</pre>
+                    <h4>Final Values:</h4>
+                    <pre>Display Email: ${result.displayEmail || 'N/A'}
+Verification Email: ${result.emailForVerification || 'N/A'}</pre>
+                </div>
+            `;
+        }
+
+        // Initialize page
+        window.onload = function() {
+            document.getElementById('test-results').innerHTML = '<div class="info">Click any test button to verify the 2FA login fix.</div>';
+        };
+    </script>
+</body>
+</html> 

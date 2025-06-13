@@ -33,8 +33,12 @@ public class InstructorCommentController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null); // Forbidden
         }
 
+        // Check if user is admin
+        String role = (String) session.getAttribute("role");
+        boolean isAdmin = "ADMIN".equals(role);
+
         List<InstructorComment> comments = instructorCommentService.getCommentsByInstructor(instructorId);
-        List<InstructorCommentDTO> commentDTOs = InstructorCommentDTO.fromEntities(comments, userId);
+        List<InstructorCommentDTO> commentDTOs = InstructorCommentDTO.fromEntities(comments, userId, isAdmin);
         return ResponseEntity.ok(commentDTOs);
     }
 

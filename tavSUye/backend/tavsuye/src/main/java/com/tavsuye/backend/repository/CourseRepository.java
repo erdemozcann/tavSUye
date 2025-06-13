@@ -19,4 +19,10 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query("SELECT c FROM Course c WHERE c.subject = :subject AND c.courseCode = :courseCode")
     Optional<Course> findBySubjectAndCourseCode(String subject, String courseCode);
+
+    // Find all active courses (for bulk operations)
+    List<Course> findByCourseStatusTrue();
+
+    // Find all courses by status
+    List<Course> findByCourseStatus(Boolean courseStatus);
 }

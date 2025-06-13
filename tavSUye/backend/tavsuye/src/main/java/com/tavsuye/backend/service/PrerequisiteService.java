@@ -41,4 +41,45 @@ public class PrerequisiteService {
 
         return result.isEmpty() ? null : result; // Return null if no prerequisites
     }
+
+    // Get prerequisites for multiple courses (bulk operation for performance)
+    public Map<Integer, List<Map<String, Object>>> getBulkPrerequisites(List<Integer> courseIds) {
+        Map<Integer, List<Map<String, Object>>> result = new HashMap<>();
+        
+        // Get all prerequisites for the given course IDs in one query
+        List<Prerequisite> allPrerequisites = prerequisiteRepository.findByCourse_CourseIdIn(courseIds);
+        
+        // Group prerequisites by course ID
+        Map<Integer, List<Prerequisite>> groupedPrerequisites = new HashMap<>();
+        for (Prerequisite prerequisite : allPrerequisites) {
+            Integer courseId = prerequisite.getCourse().getCourseId();
+            groupedPrerequisites.computeIfAbsent(courseId, k -> new ArrayList<>()).add(prerequisite);
+        }
+        
+        // Convert to the expected format
+        for (Integer courseId : courseIds) {
+            List<Prerequisite> prerequisites = groupedPrerequisites.getOrDefault(courseId, new ArrayList<>());
+            List<Map<String, Object>> prerequisiteData = new ArrayList<>();
+            
+            for (Prerequisite prerequisite : prerequisites) {
+                Map<String, Object> data = new HashMap<>();
+                if (prerequisite.getPrerequisiteCourse() != null) {
+                    data.put("courseId", prerequisite.getPrerequisiteCourse().getCourseId());
+                    data.put("subject", prerequisite.getPrerequisiteCourse().getSubject());
+                    data.put("courseCode", prerequisite.getPrerequisiteCourse().getCourseCode());
+                    data.put("isAnd", prerequisite.getIsAnd());
+                } else {
+                    data.put("courseId", null);
+                    data.put("subject", null);
+                    data.put("courseCode", null);
+                    data.put("isAnd", null);
+                }
+                prerequisiteData.add(data);
+            }
+            
+            result.put(courseId, prerequisiteData.isEmpty() ? null : prerequisiteData);
+        }
+        
+        return result;
+    }
 }

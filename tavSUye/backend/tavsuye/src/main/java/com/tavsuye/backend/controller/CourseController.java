@@ -31,6 +31,20 @@ public class CourseController {
         return ResponseEntity.ok(subjects);
     }
 
+    // API: Get all courses (bulk endpoint for performance)
+    @GetMapping("/all")
+    public ResponseEntity<List<Course>> getAllCourses(
+            @RequestParam(defaultValue = "true") boolean activeOnly,
+            HttpSession session) {
+        // Session control
+        if (session.getAttribute("userId") == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // Unauthorized
+        }
+
+        List<Course> courses = courseService.getAllCourses(activeOnly);
+        return ResponseEntity.ok(courses);
+    }
+
     // API: Get all course codes by subject
     @GetMapping("/{subject}/codes")
     public ResponseEntity<List<String>> getCourseCodesBySubject(

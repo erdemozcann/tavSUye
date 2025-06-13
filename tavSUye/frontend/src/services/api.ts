@@ -655,6 +655,15 @@ export const courseApi = {
         // Don't provide fallback data - let the error bubble up
         throw error;
       }),
+
+  // Bulk endpoint to get all courses at once (for performance)
+  getAllCourses: (activeOnly: boolean = true) =>
+    api.get<Course[]>(`/courses/all?activeOnly=${activeOnly}`)
+      .then(extractData)
+      .catch(error => {
+        console.error('Error fetching all courses:', error);
+        throw error;
+      }),
 };
  
 // Note endpoints
@@ -1356,14 +1365,6 @@ export const programApi = {
 
 // Student Plan endpoints
 export const planApi = {
-  getPlans: () =>
-    api.get<StudentPlan[]>('/student-plan/all')
-      .then(response => response.data)
-      .catch(error => {
-        console.error('Error fetching student plans:', error);
-        throw error;
-      }),
-
   getAllPlans: () =>
     api.get<StudentPlan[]>('/student-plan/all')
       .then(response => response.data)
@@ -1385,30 +1386,6 @@ export const planApi = {
       .then(response => response.data)
       .catch(error => {
         console.error('Error saving plan:', error);
-        throw error;
-      }),
-
-  createPlan: (plan: Partial<StudentPlan>) =>
-    api.post('/student-plan/create', plan)
-      .then(response => response.data)
-      .catch(error => {
-        console.error('Error creating plan:', error);
-        throw error;
-      }),
-
-  updatePlan: (planId: number, plan: Partial<StudentPlan>) =>
-    api.put(`/student-plan/${planId}`, plan)
-      .then(response => response.data)
-      .catch(error => {
-        console.error('Error updating plan:', error);
-        throw error;
-      }),
-
-  deletePlan: (planId: number) =>
-    api.delete(`/student-plan/${planId}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error('Error deleting plan:', error);
         throw error;
       }),
 };

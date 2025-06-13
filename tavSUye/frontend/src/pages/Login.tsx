@@ -113,9 +113,20 @@ export default function Login() {
             backgroundColor: 'background.paper'
           }}
         >
-          <Typography component="h1" variant="h5" align="center" gutterBottom>
-            Sign In
-          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 2 }}>
+            <img 
+              src="/images/tavsuye-high-resolution-logo-transparent.png" 
+              alt="tavSUye Logo" 
+              style={{ 
+                height: '80px', 
+                width: 'auto', 
+                marginBottom: '16px' 
+              }} 
+            />
+            <Typography component="h1" variant="h5" align="center" gutterBottom>
+              Login
+            </Typography>
+          </Box>
           
           {loginError && (
             <Alert severity="error" sx={{ mb: 2 }}>
@@ -179,7 +190,7 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
               disabled={isLoading}
             >
-              {isLoading ? <CircularProgress size={24} /> : 'Sign In'}
+              {isLoading ? <CircularProgress size={24} /> : 'Login'}
             </Button>
             
             <Stack direction="row" justifyContent="space-between">
